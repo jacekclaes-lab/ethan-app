@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///C:/Users/User/Downloads/ethan_app_6.html -->
+<!-- saved from url=(0048)file:///C:/Users/User/Downloads/ethan_app_7.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1258,6 +1258,10 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 
   <div class="ob-progress" id="ob-progress"></div>
 
+  <button onclick="skipOnboardingTest()" style="margin-top:16px;background:none;border:none;color:rgba(255,255,255,0.25);font-size:11px;font-weight:700;cursor:pointer;font-family:Nunito,sans-serif;text-decoration:underline;padding:4px 8px">
+    ⚙ Mode test (papa)
+  </button>
+
   <!-- Étape 1 : Passion principale -->
   <div class="ob-step active" id="ob-step-0">
     <div class="ob-q">C'est quoi ton truc en ce moment ?</div>
@@ -1525,14 +1529,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
      ============================================================ -->
 <div class="screen active" id="screen-aujourd">
   <!-- Widget icône hebdomadaire -->
-  <div id="weekly-icon-widget" style="margin:12px 16px 0;background:linear-gradient(135deg,#5B5FEF,#9B59B6);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-    <img id="weekly-icon-img" style="display: block; width: 52px; height: 52px; border-radius: 10px; object-fit: cover; border: 2px solid rgba(255, 255, 255, 0.3);" src="./index_files/OnePiece-Icones.jpg">
-    <div id="weekly-icon-emoji" style="font-size: 40px; display: none;">🏴‍☠️</div>
-    <div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.7);font-weight:600;margin-bottom:2px">Manga de la semaine</div>
-      <div id="weekly-manga-name" style="font-family:Bangers,cursive;font-size:20px;color:white;letter-spacing:0.5px">One Piece</div>
-    </div>
-  </div>
+  
   <div class="pad">
 
     <!-- Prochain cours -->
@@ -1848,8 +1845,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 
   <!-- QG TIMER -->
   <div class="inner-content active pad" id="qg-timer">
-    <div class="slabel">Pour quelle matière ?</div>
-    <div class="qg-mat-row" id="qg-mat-row"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
+    <div class="qg-mat-row" id="qg-mat-row" style="display:none"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
     <div class="auto-pause-banner" id="auto-pause-banner">
       <div class="apb-title">☕ Pause recharge !</div>
       <div class="apb-acts">
@@ -1869,7 +1865,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
         <div class="ring-center">
           <div class="timer-num" id="t-num">00:00</div>
           <div class="timer-phase-lbl" id="t-phase" style="color:var(--text-2)">PRÊT</div>
-          <div class="timer-mat-lbl" id="t-mat">Choisis une matière</div>
+          <div class="timer-mat-lbl" id="t-mat" style="display:none">Choisis une matière</div>
         </div>
       </div>
       <div style="display:flex;justify-content:center;margin-bottom:16px">
@@ -2702,6 +2698,7 @@ function showWeekDetail(dow, label) {
    ============================================================= */
 function buildMatiereGrid() {
   const grid = document.getElementById('matieres-grid');
+  grid.innerHTML = '';
   MATIERES_DEF.forEach(m=>{
     const notes = retrieve('mat_notes_'+m.id,[]);
     const devoirs = retrieve('mat_devoirs_'+m.id,[]);
@@ -3725,7 +3722,7 @@ function startMicFor(targetId, e, pitemIdx) {
   if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){
     const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
     micRecognition=new SR();
-    micRecognition.lang='fr-FR'; micRecognition.continuous=true; micRecognition.interimResults=true;
+    micRecognition.lang='fr-FR'; micRecognition.continuous=false; micRecognition.interimResults=false;
     micRecognition.onresult=ev=>{
       const txt=Array.from(ev.results).map(r=>r[0].transcript).join('');
       const el=document.getElementById(targetId);
@@ -4137,7 +4134,19 @@ function resetOnboarding() {
   localStorage.removeItem('ethan_profile');
   localStorage.removeItem('ethan_icon_week');
   localStorage.removeItem('ethan_icon_data');
-  showToast('Profil remis a zero - relance l appli');
+  location.reload();
+}
+
+function skipOnboardingTest() {
+  // Mode test papa — charge un profil fictif sans toucher au profil Ethan
+  const testProfile = {
+    passion: 'One Piece', style: 'Exemples concrets',
+    difficile: 'Maths', blocage: 'Je me laisse distraire',
+    _isTest: true
+  };
+  window.ETHAN_PROFILE_CTX = 'Mode test papa actif.';
+  document.getElementById('screen-onboarding').classList.add('hidden');
+  showToast('Mode test actif — profil Ethan non modifie');
 }
 
 function checkOnboarding() {
@@ -4166,7 +4175,13 @@ function injectProfileIntoAI(profile) {
 }
 
 function getProfileCtx() {
-  return window.ETHAN_PROFILE_CTX || '';
+  if(window.ETHAN_PROFILE_CTX) return window.ETHAN_PROFILE_CTX;
+  // Fallback : lis directement le profil localStorage
+  try {
+    const p = JSON.parse(localStorage.getItem('ethan_profile') || 'null');
+    if(p) return 'Ethan aime ' + (p.passion||'ses passions') + '. Style : ' + (p.style||'exemples concrets') + '.';
+  } catch(e) {}
+  return '';
 }
 
 
@@ -4306,7 +4321,7 @@ function registerNewIcon(id, filename) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => { init(); checkOnboarding(); loadWeeklyIcon(); });
+document.addEventListener('DOMContentLoaded', () => { init(); checkOnboarding(); });
 </script>
 
 
