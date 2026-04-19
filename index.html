@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///C:/Users/User/Downloads/ethan_app_5.html -->
+<!-- saved from url=(0048)file:///C:/Users/User/Downloads/ethan_app_6.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -2063,6 +2063,14 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
         <div style="padding:8px 0;display:flex;justify-content:space-between"><span>Semaine du 31 mars</span><span style="color:var(--ok);font-weight:700">Envoyé ✓</span></div>
       </div>
     </div>
+
+    <!-- Bouton reset discret — pour papa uniquement -->
+    <div style="margin-top:24px;padding:0 4px">
+      <button onclick="resetOnboarding()" style="width:100%;padding:10px;border-radius:10px;border:1.5px dashed #ccc;background:transparent;color:#bbb;font-size:12px;font-weight:600;cursor:pointer">
+        🔄 Réinitialiser le profil d'Ethan
+      </button>
+    </div>
+
   </div>
 </div>
 
@@ -4122,6 +4130,14 @@ function obFinish() {
   navTo('aujourd');
 
   showToast('Bienvenue Ethan ! Ton espace est prêt 🏴‍☠️');
+}
+
+function resetOnboarding() {
+  if(!confirm('Remettre le quiz a zero ? Ethan devra le refaire au prochain lancement.')) return;
+  localStorage.removeItem('ethan_profile');
+  localStorage.removeItem('ethan_icon_week');
+  localStorage.removeItem('ethan_icon_data');
+  showToast('Profil remis a zero - relance l appli');
 }
 
 function checkOnboarding() {
