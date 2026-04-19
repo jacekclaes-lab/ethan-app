@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///C:/Users/User/Downloads/ethan_app_7.html -->
+<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_1.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1845,7 +1845,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 
   <!-- QG TIMER -->
   <div class="inner-content active pad" id="qg-timer">
-    <div class="qg-mat-row" id="qg-mat-row" style="display:none"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
+    <div class="qg-mat-row" id="qg-mat-row" style="display:none"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
     <div class="auto-pause-banner" id="auto-pause-banner">
       <div class="apb-title">☕ Pause recharge !</div>
       <div class="apb-acts">
@@ -2065,6 +2065,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
       <button onclick="resetOnboarding()" style="width:100%;padding:10px;border-radius:10px;border:1.5px dashed #ccc;background:transparent;color:#bbb;font-size:12px;font-weight:600;cursor:pointer">
         🔄 Réinitialiser le profil d'Ethan
       </button>
+    <button class="btn-secondary" onclick="openApiKeyModal()" style="margin-top:10px;width:100%">🔑 Changer la cle API</button>
     </div>
 
   </div>
@@ -2387,6 +2388,44 @@ const WORK_INTERVAL = 25 * 60;
 /* =============================================================
    STORAGE — persistance
    ============================================================= */
+/* =============================================================
+   GESTION CLE API ANTHROPIC
+   ============================================================= */
+function getApiKey() {
+  return localStorage.getItem('ethan_anthropic_key') || '';
+}
+
+function saveApiKey() {
+  const input = document.getElementById('api-key-input');
+  const key = input ? input.value.trim() : '';
+  if (!key.startsWith('sk-ant-')) {
+    showToast('Cle invalide — elle doit commencer par sk-ant-');
+    return;
+  }
+  localStorage.setItem('ethan_anthropic_key', key);
+  document.getElementById('modal-apikey').style.display = 'none';
+  showToast('Cle API sauvegardee !');
+}
+
+function checkApiKey() {
+  const key = getApiKey();
+  if (!key) {
+    document.getElementById('modal-apikey').style.display = 'flex';
+  }
+}
+
+function openApiKeyModal() {
+  const input = document.getElementById('api-key-input');
+  if (input) input.value = getApiKey();
+  document.getElementById('modal-apikey').style.display = 'flex';
+}
+
+function deleteApiKey() {
+  if (!confirm('Supprimer la cle API ? Application ne fonctionnera plus sans.')) return;
+  localStorage.removeItem('ethan_anthropic_key');
+  showToast('Cle supprimee.');
+}
+
 function store(key, val) {
   try { localStorage.setItem('ethan_'+key, JSON.stringify(val)); } catch(e) {}
 }
@@ -2924,7 +2963,12 @@ async function askAI() {
 
     const r=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key': getApiKey(),
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:300,
@@ -3046,7 +3090,12 @@ async function generatePhotoQuiz() {
   try {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': getApiKey(),
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1500,
@@ -3492,7 +3541,12 @@ async function generateRapport() {
   try {
     const r=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key': getApiKey(),
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:500,
@@ -4321,8 +4375,21 @@ function registerNewIcon(id, filename) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => { init(); checkOnboarding(); });
+document.addEventListener('DOMContentLoaded', () => { init(); checkOnboarding(); checkApiKey(); });
 </script>
 
+
+
+<!-- MODAL CLE API -->
+<div id="modal-apikey" style="display: flex; position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.7); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+  <div style="background:#fff;border-radius:20px;padding:28px;max-width:420px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,0.2)">
+    <div style="font-size:2rem;text-align:center;margin-bottom:8px">🔑</div>
+    <h2 style="font-family:&#39;Nunito&#39;,sans-serif;font-size:1.2rem;font-weight:800;color:#1A1A2E;text-align:center;margin:0 0 8px">Cle API Anthropic</h2>
+    <p style="font-family:&#39;Nunito&#39;,sans-serif;font-size:0.9rem;color:#6B6B8A;text-align:center;margin:0 0 20px;line-height:1.5">Entre ta cle pour activer l'IA. Elle commence par <strong>sk-ant-</strong></p>
+    <input id="api-key-input" type="password" placeholder="sk-ant-api03-..." style="width:100%;padding:14px;border:2px solid #E0E0F0;border-radius:12px;font-family:&#39;Nunito&#39;,sans-serif;font-size:1rem;box-sizing:border-box;margin-bottom:14px;outline:none">
+    <button onclick="saveApiKey()" style="width:100%;padding:14px;background:#5B5FEF;color:#fff;border:none;border-radius:12px;font-family:&#39;Nunito&#39;,sans-serif;font-size:1rem;font-weight:700;cursor:pointer;margin-bottom:10px">Sauvegarder</button>
+    <p style="font-family:&#39;Nunito&#39;,sans-serif;font-size:0.75rem;color:#9898B0;text-align:center;margin:0">Ta cle est stockee uniquement sur cet appareil.</p>
+  </div>
+</div>
 
 </body></html>
