@@ -1,0 +1,4297 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)file:///C:/Users/User/Downloads/ethan_app_5.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#5B5FEF">
+<title>Mon École — Ethan</title>
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN SYSTEM — Tablette Ethan Claes
+   Saint Roch Ferrière · 1ère secondaire · TDAH
+   ============================================================ */
+:root {
+  --bg: #F4F3EF;
+  --card: #FFFFFF;
+  --text: #1A1A2E;
+  --text-2: #6B6B8A;
+  --text-3: #9898B0;
+  --accent: #5B5FEF;
+  --accent-soft: #EEEFFE;
+  --accent-dark: #3D41C8;
+  --red: #E63946;
+  --red-soft: #FEF0F1;
+  --ok: #2ED573;
+  --ok-soft: #E8F8EF;
+  --warn: #F7B731;
+  --warn-soft: #FEF9E7;
+  --orange: #FF9F43;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+  --shadow: 0 2px 12px rgba(26,26,46,0.07);
+  --shadow-md: 0 4px 20px rgba(26,26,46,0.1);
+  /* Matières */
+  --sciences: #45B7D1; --sciences-soft: #EAF7FB;
+  --techno: #20BF6B;  --techno-soft: #E8F8F0;
+  --religion: #778CA3;--religion-soft: #EEF1F4;
+  --francais: #4ECDC4;--francais-soft: #EAF9F8;
+  --anglais: #A29BFE; --anglais-soft: #F0EFFE;
+  --sport: #55EFC4;   --sport-soft: #EAFBF6;
+  --maths: #FF6B6B;   --maths-soft: #FFF0F0;
+  --edm: #FFA502;     --edm-soft: #FFF5E6;
+  --latin: #9B59B6;   --latin-soft: #F5EEF8;
+  --natation: #3498DB;--natation-soft: #EAF4FB;
+  --plastique: #E17055;--plastique-soft: #FDF0ED;
+}
+
+/* RESET */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 90px;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+button { cursor: pointer; font-family: inherit; }
+input, textarea { font-family: inherit; }
+
+/* ============================================================
+   TYPOGRAPHY — police min 14px partout (prescription logopède)
+   ============================================================ */
+.font-display { font-family: 'Bangers', cursive; letter-spacing: 1px; }
+.font-body { font-family: 'Nunito', sans-serif; }
+h1 { font-family: 'Bangers', cursive; font-size: 26px; letter-spacing: 1px; color: var(--text); }
+h2 { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); }
+h3 { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); }
+p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
+.pad { padding: 14px 16px; }
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+}
+.card-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.slabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 14px 0 8px;
+}
+.row { display: flex; align-items: center; gap: 10px; }
+.col { display: flex; flex-direction: column; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.app-header {
+  background: var(--card);
+  padding: 14px 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.header-brand { display: flex; align-items: center; gap: 10px; }
+.header-anchor { font-size: 22px; }
+.header-texts {}
+.header-title { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); line-height: 1.2; }
+.header-sub { font-size: 12px; color: var(--text-2); font-weight: 600; }
+.header-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   TAB BAR (top)
+   ============================================================ */
+.tab-bar {
+  display: flex;
+  background: var(--card);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  position: sticky;
+  top: 65px;
+  z-index: 29;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-2);
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-icon { font-size: 15px; display: block; margin-bottom: 2px; }
+
+/* ============================================================
+   BOTTOM NAV
+   ============================================================ */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; max-width: 480px;
+  background: var(--card);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  z-index: 25;
+  padding: 6px 0 10px;
+}
+.nav-btn {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 4px 2px;
+  background: none; border: none;
+  color: var(--text-2);
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.nav-btn.active { color: var(--accent); }
+.nav-icon { font-size: 20px; line-height: 1; }
+.nav-label { font-size: 9px; font-weight: 700; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.03em; }
+.nav-spacer { flex: 1; }
+
+/* ============================================================
+   DRAGGABLE MIC BUTTON
+   ============================================================ */
+.mic-fab {
+  position: fixed;
+  bottom: 84px; left: 50%;
+  transform: translateX(-50%);
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 3px solid white;
+  box-shadow: 0 5px 18px rgba(230,57,70,0.45);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  cursor: grab;
+  z-index: 35;
+  touch-action: none;
+  user-select: none;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.mic-fab:active { cursor: grabbing; }
+.mic-fab.pressing {
+  transform: scale(0.9);
+  box-shadow: 0 3px 10px rgba(230,57,70,0.6);
+  background: #C0392B;
+}
+.mic-fab.recording {
+  background: var(--warn);
+  animation: micPulse 0.8s infinite;
+}
+@keyframes micPulse {
+  0%,100%{box-shadow:0 5px 18px rgba(247,183,49,0.45)}
+  50%{box-shadow:0 5px 32px rgba(247,183,49,0.75)}
+}
+
+/* ============================================================
+   TIMER BUBBLE (flottante déplaçable)
+   ============================================================ */
+.timer-bubble {
+  position: fixed;
+  bottom: 150px; right: 16px;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid white;
+  box-shadow: var(--shadow-md);
+  display: none;
+  align-items: center; justify-content: center;
+  cursor: grab;
+  z-index: 34;
+  touch-action: none;
+  user-select: none;
+  flex-direction: column;
+  transition: width 0.2s, height 0.2s, border-radius 0.2s;
+}
+.timer-bubble.visible { display: flex; }
+.timer-bubble.expanded {
+  width: 140px; height: 52px;
+  border-radius: 26px;
+  cursor: default;
+}
+.tb-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: white;
+  animation: tbPulse 1.5s infinite;
+}
+.timer-bubble.paused .tb-dot { background: var(--warn); }
+@keyframes tbPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.8)} }
+.tb-controls {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+}
+.timer-bubble.expanded .tb-dot { display: none; }
+.timer-bubble.expanded .tb-controls { display: flex; }
+.tb-btn {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.tb-pause { background: rgba(255,255,255,0.25); color: white; }
+.tb-stop { background: rgba(255,255,255,0.15); color: white; }
+.tb-resume { background: rgba(255,255,255,0.25); color: white; }
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+  position: fixed;
+  top: 16px; left: 50%;
+  transform: translateX(-50%) translateY(-80px);
+  background: var(--text);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+  max-width: 90vw;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 50;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-sheet {
+  background: var(--card);
+  border-radius: 22px 22px 0 0;
+  padding: 20px 18px 40px;
+  width: 100%; max-width: 480px;
+  animation: slideUp 0.25s ease;
+}
+@keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+.modal-handle {
+  width: 36px; height: 4px;
+  background: rgba(0,0,0,0.12);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+.modal-title {
+  font-family: 'Bangers', cursive;
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.modal-sub { font-size: 14px; color: var(--text-2); margin-bottom: 18px; line-height: 1.5; }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  padding: 13px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--accent); color: white; box-shadow: 0 3px 14px rgba(91,95,239,0.3); }
+.btn-danger { background: var(--red); color: white; box-shadow: 0 3px 14px rgba(230,57,70,0.3); }
+.btn-ghost { background: var(--bg); color: var(--text-2); }
+.btn-ok { background: var(--ok); color: white; }
+.btn-warn { background: var(--orange); color: white; }
+.btn-full { width: 100%; }
+.btn-bangers { font-family: 'Bangers', cursive; font-size: 18px; letter-spacing: 1px; }
+
+/* ============================================================
+   BADGES / TAGS
+   ============================================================ */
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  line-height: 1.4;
+}
+.badge-devoir { background: #FFF3E0; color: #BF360C; }
+.badge-interro { background: #FCE4EC; color: #880E4F; }
+.badge-cours { background: #E8F5E9; color: #1B5E20; }
+.badge-urgent { background: var(--red-soft); color: var(--red); }
+.badge-ok { background: var(--ok-soft); color: #1B5E20; }
+
+/* ============================================================
+   FORM ELEMENTS
+   ============================================================ */
+.field-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+  resize: none;
+}
+.field-input:focus { border-color: var(--accent); }
+.field-input::placeholder { color: var(--text-3); }
+
+/* TOGGLE */
+.toggle {
+  width: 52px; height: 28px;
+  background: #D0D0D8;
+  border-radius: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.toggle.on { background: var(--ok); }
+.toggle-ball {
+  width: 22px; height: 22px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px; left: 3px;
+  transition: left 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.toggle.on .toggle-ball { left: 27px; }
+
+/* ============================================================
+   PLANNING ITEMS
+   ============================================================ */
+.pitem {
+  background: var(--card);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border-left: 4px solid transparent;
+  margin-bottom: 6px;
+  transition: box-shadow 0.2s;
+}
+.pitem.current { border-left-color: var(--accent); box-shadow: 0 4px 18px rgba(91,95,239,0.15); }
+.pitem.past { opacity: 0.4; }
+.pitem.is-break { background: #FAFAF8; border-left-color: #D0D0D8; }
+.pitem.is-free { background: var(--ok-soft); border-left-color: var(--ok); }
+
+.pitem-header {
+  display: flex;
+  align-items: center;
+  padding: 11px 12px;
+  cursor: pointer;
+  gap: 10px;
+  min-height: 54px;
+}
+.pitem-stripe { width: 3px; border-radius: 3px; align-self: stretch; min-height: 30px; flex-shrink: 0; }
+.pitem-time { font-size: 11px; font-weight: 700; color: var(--text-2); white-space: nowrap; min-width: 40px; }
+.pitem-main { flex: 1; }
+.pitem-name { font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; color: var(--text); }
+.pitem-local { font-size: 11px; color: var(--text-3); margin-top: 1px; }
+.pitem-note-prev { font-size: 12px; color: var(--accent); margin-top: 2px; font-weight: 600; }
+.pitem-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.pitem-chevron { font-size: 16px; color: var(--text-2); transition: transform 0.2s; }
+.pitem.open .pitem-chevron { transform: rotate(90deg); }
+
+/* EXPANDED NOTE ZONE */
+.pitem-expanded { display: none; padding: 0 12px 14px; border-top: 1px solid rgba(0,0,0,0.05); }
+.pitem.open .pitem-expanded { display: block; }
+.note-saved {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  margin: 10px 0 8px;
+  border-left: 3px solid var(--ok);
+  display: none;
+  position: relative;
+}
+.note-saved.visible { display: block; }
+.note-saved-time { font-size: 11px; color: var(--text-3); margin-top: 4px; }
+.note-edit-btn {
+  position: absolute; top: 8px; right: 10px;
+  font-size: 12px; color: var(--text-2);
+  background: none; border: none;
+  font-family: 'Nunito', sans-serif; font-weight: 700; cursor: pointer;
+}
+.note-input-zone { margin: 10px 0 0; }
+.note-input-zone.hidden { display: none; }
+.note-input-row { display: flex; gap: 8px; align-items: flex-start; }
+.note-textarea {
+  flex: 1;
+  min-height: 44px;
+  resize: none;
+}
+.mic-round {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 2.5px solid white;
+  box-shadow: 0 3px 12px rgba(230,57,70,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+  touch-action: none;
+  transition: all 0.1s;
+}
+.mic-round.pressing { transform: scale(0.88); background: #C0392B; }
+.note-save-row { display: flex; gap: 8px; margin-top: 8px; }
+.wave-bars { display: none; align-items: center; gap: 3px; margin-top: 8px; }
+.wave-bars.active { display: flex; }
+.wave-bar { width: 3px; border-radius: 3px; background: var(--red); animation: waveAnim 0.6s ease-in-out infinite; }
+.wave-bar:nth-child(1){height:8px;animation-delay:0s}
+.wave-bar:nth-child(2){height:16px;animation-delay:0.1s}
+.wave-bar:nth-child(3){height:22px;animation-delay:0.2s}
+.wave-bar:nth-child(4){height:14px;animation-delay:0.3s}
+.wave-bar:nth-child(5){height:8px;animation-delay:0.4s}
+@keyframes waveAnim { 0%,100%{transform:scaleY(0.4)} 50%{transform:scaleY(1)} }
+
+/* ============================================================
+   MATIERE CARDS
+   ============================================================ */
+.mat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mat-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px 14px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+  border-left: 5px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+.mat-card:active { transform: scale(0.97); }
+.mat-corner {
+  position: absolute; top: -8px; right: -8px;
+  font-family: 'Bangers', cursive;
+  font-size: 48px; opacity: 0.07;
+  color: var(--text); pointer-events: none;
+}
+.mat-emoji { font-size: 28px; display: block; margin-bottom: 8px; }
+.mat-name { font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; color: var(--text); }
+.mat-stats { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.mat-stat { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+
+/* MATIERE DETAIL */
+.mat-detail-header {
+  background: var(--card);
+  padding: 14px 18px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  position: sticky; top: 65px; z-index: 28;
+}
+.back-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: none;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0;
+  color: var(--text);
+}
+.inner-tabs {
+  display: flex;
+  background: var(--card);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky; top: 115px; z-index: 27;
+}
+.inner-tabs::-webkit-scrollbar { display: none; }
+.inner-tab {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  font-size: 12px; font-weight: 700;
+  color: var(--text-2);
+  background: none; border: none;
+  border-bottom: 2.5px solid transparent;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.inner-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.inner-content { display: none; padding: 14px 16px; }
+.inner-content.active { display: block; animation: fadeIn 0.2s ease; }
+
+/* AI BOX */
+.ai-box { background: var(--card); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.ai-source-row { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; scrollbar-width: none; }
+.ai-source-row::-webkit-scrollbar { display: none; }
+.src-btn {
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  background: var(--bg);
+  font-size: 12px; font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer; color: var(--text-2);
+  transition: all 0.15s;
+}
+.src-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.upload-zone {
+  border: 2px dashed rgba(0,0,0,0.12);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+  display: none;
+}
+.upload-zone.visible { display: block; }
+.upload-zone:hover { border-color: var(--accent); }
+.upload-zone-icon { font-size: 28px; margin-bottom: 6px; }
+.upload-zone-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.upload-zone-sub { font-size: 12px; color: var(--text-2); }
+.upload-preview {
+  background: var(--ok-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1B5E20;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: none;
+}
+.upload-preview.visible { display: block; }
+.ai-question-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.ai-response-box {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  min-height: 70px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text);
+}
+.ai-response-box.empty { color: var(--text-2); font-style: italic; font-size: 14px; }
+.ai-response-box.loading { color: var(--text-2); }
+.ai-response-box.loading::after {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: dotBlink 0.8s infinite;
+  margin-left: 4px;
+}
+@keyframes dotBlink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+.verify-btn {
+  width: 100%;
+  padding: 11px;
+  background: none;
+  border: 1.5px dashed rgba(0,0,0,0.15);
+  border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 700;
+  color: var(--text-2);
+  cursor: pointer;
+  margin-top: 10px;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.15s;
+  display: none;
+}
+.verify-btn:hover { border-color: var(--accent); color: var(--accent); }
+.verify-btn.visible { display: block; }
+
+/* NOTES LIST */
+.note-card {
+  background: var(--card);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 8px;
+}
+.note-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.note-body { flex: 1; }
+.note-text { font-size: 14px; color: var(--text); line-height: 1.5; }
+.note-date { font-size: 11px; color: var(--text-3); margin-top: 3px; }
+
+/* AGENDA ITEMS */
+.agenda-item {
+  background: var(--card);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 8px;
+}
+.agenda-stripe { width: 4px; border-radius: 4px; align-self: stretch; min-height: 30px; flex-shrink: 0; }
+.agenda-main { flex: 1; }
+.agenda-title { font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; color: var(--text); }
+.agenda-date { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+.agenda-urgence { font-size: 18px; flex-shrink: 0; }
+.add-dashed {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: none;
+  border: 1.5px dashed rgba(0,0,0,0.12);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 14px; font-weight: 700;
+  color: var(--text-2);
+  cursor: pointer;
+  width: 100%;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.15s;
+}
+.add-dashed:hover { border-color: var(--accent); color: var(--accent); }
+
+/* QUIZ */
+.quiz-section { margin-bottom: 16px; }
+.quiz-wrap { background: var(--card); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.quiz-q { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.5; }
+.quiz-choices { display: flex; flex-direction: column; gap: 8px; }
+.quiz-choice {
+  background: var(--bg);
+  border: 1.5px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 14px;
+  cursor: pointer; text-align: left;
+  font-family: 'Nunito Sans', sans-serif;
+  color: var(--text);
+  transition: all 0.15s;
+}
+.quiz-choice.correct { background: var(--ok-soft); border-color: var(--ok); color: #1B5E20; font-weight: 700; }
+.quiz-choice.wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+.quiz-result { margin-top: 12px; font-size: 14px; font-weight: 700; min-height: 20px; padding: 10px; border-radius: var(--radius-xs); }
+.quiz-result.ok { background: var(--ok-soft); color: #1B5E20; }
+.quiz-result.ko { background: var(--red-soft); color: var(--red); }
+
+/* ============================================================
+   SEMAINE
+   ============================================================ */
+.week-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; margin-bottom: 12px; }
+.week-day {
+  background: var(--card);
+  border-radius: var(--radius-sm);
+  padding: 9px 4px;
+  text-align: center;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+}
+.week-day.today { border-color: var(--accent); background: var(--accent-soft); }
+.week-day-name { font-size: 9px; font-weight: 700; color: var(--text-2); text-transform: uppercase; }
+.week-day-num { font-family: 'Bangers', cursive; font-size: 20px; margin: 2px 0; color: var(--text); letter-spacing: 1px; }
+.week-day.today .week-day-num { color: var(--accent); }
+.week-dots { display: flex; justify-content: center; gap: 2px; flex-wrap: wrap; }
+.week-dot { width: 5px; height: 5px; border-radius: 50%; }
+.week-detail { background: var(--card); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); }
+.week-detail-title { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; margin-bottom: 10px; color: var(--text); }
+.week-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.week-item:last-child { border-bottom: none; }
+.week-item-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.week-item-text { font-size: 14px; flex: 1; color: var(--text); }
+
+/* ============================================================
+   MON QG — TIMER
+   ============================================================ */
+.qg-mat-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.qg-mat-btn {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  background: var(--bg);
+  font-size: 13px; font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer; color: var(--text-2);
+  transition: all 0.15s;
+}
+.qg-mat-btn.sel { border-width: 2px; }
+.ring-wrap { position: relative; width: 200px; height: 200px; margin: 0 auto 16px; }
+.ring-svg { width: 200px; height: 200px; transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: rgba(0,0,0,0.07); stroke-width: 12; }
+.ring-track { fill: none; stroke-width: 12; stroke-linecap: round; transition: stroke-dashoffset 1s linear, stroke 0.5s; }
+.ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.timer-num { font-family: 'Bangers', cursive; font-size: 54px; letter-spacing: 2px; line-height: 1; color: var(--text); }
+.timer-phase-lbl { font-size: 12px; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+.timer-mat-lbl { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+.status-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px; font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  margin: 0 auto 16px;
+}
+.status-pill.working { background: var(--accent-soft); color: var(--accent); }
+.status-pill.paused-m { background: var(--warn-soft); color: #B7791F; }
+.status-pill.paused-a { background: var(--ok-soft); color: #1B5E20; }
+.status-pill.stopped { background: var(--bg); color: var(--text-2); }
+.status-pip { width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pipBlink 1.2s infinite; }
+.status-pill.stopped .status-pip { animation: none; }
+@keyframes pipBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.timer-ctrls { display: flex; gap: 12px; justify-content: center; align-items: center; margin-bottom: 16px; }
+.ctrl {
+  border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: var(--shadow);
+  transition: all 0.15s;
+}
+.ctrl:active { transform: scale(0.91); }
+.ctrl-pause { width: 56px; height: 56px; font-size: 22px; background: var(--orange); color: white; box-shadow: 0 3px 14px rgba(255,159,67,0.4); }
+.ctrl-play { width: 70px; height: 70px; font-size: 28px; background: var(--accent); color: white; box-shadow: 0 4px 18px rgba(91,95,239,0.4); }
+.ctrl-stop { width: 56px; height: 56px; font-size: 22px; background: var(--red); color: white; box-shadow: 0 3px 14px rgba(230,57,70,0.35); }
+.ctrl:disabled { opacity: 0.3; cursor: default; }
+.ctrl-labels { display: flex; gap: 12px; justify-content: center; margin-bottom: 16px; }
+.ctrl-lbl { font-size: 10px; font-weight: 700; color: var(--text-2); text-align: center; text-transform: uppercase; letter-spacing: 0.05em; }
+.auto-pause-banner {
+  background: var(--ok-soft);
+  border: 1.5px solid #A5D6A7;
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  margin-bottom: 12px;
+  display: none;
+}
+.auto-pause-banner.visible { display: block; }
+.apb-title { font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; color: #1B5E20; margin-bottom: 10px; }
+.apb-acts { display: flex; gap: 8px; }
+.apb-act {
+  flex: 1; background: white;
+  border-radius: var(--radius-sm);
+  padding: 10px 6px; text-align: center;
+  cursor: pointer; border: 1.5px solid rgba(0,0,0,0.06);
+  transition: all 0.15s;
+}
+.apb-act.done { border-color: var(--ok); background: var(--ok-soft); }
+.apb-icon { font-size: 22px; display: block; }
+.apb-lbl { font-size: 11px; font-weight: 700; color: var(--text-2); margin-top: 3px; }
+.apb-skip {
+  width: 100%; margin-top: 10px;
+  padding: 9px;
+  background: none;
+  border: 1px dashed rgba(0,0,0,0.15);
+  border-radius: var(--radius-sm);
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--text-2); cursor: pointer;
+}
+.timer-stats { display: flex; gap: 8px; }
+.t-stat { flex: 1; background: var(--bg); border-radius: var(--radius-sm); padding: 10px 8px; text-align: center; }
+.t-stat-num { font-family: 'Bangers', cursive; font-size: 22px; letter-spacing: 0.5px; color: var(--text); }
+.t-stat-lbl { font-size: 11px; color: var(--text-2); margin-top: 2px; }
+
+/* STOP MODAL */
+.stop-choices { display: flex; flex-direction: column; gap: 10px; }
+.stop-choice {
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(0,0,0,0.08);
+  background: var(--bg);
+  cursor: pointer;
+  display: flex; align-items: center; gap: 12px;
+  transition: all 0.15s;
+}
+.stop-choice:active { transform: scale(0.98); }
+.stop-choice.c-ok { border-color: var(--ok); }
+.stop-choice.c-warn { border-color: var(--warn); }
+.stop-choice.c-info { border-color: var(--accent); }
+.sc-emoji { font-size: 26px; flex-shrink: 0; }
+.sc-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.sc-sub { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+
+/* BROUILLARD */
+.brouillard-btn {
+  position: fixed;
+  top: 80px; right: 16px;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--warn);
+  border: 2.5px solid white;
+  box-shadow: 0 3px 14px rgba(247,183,49,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 33;
+}
+.brouillard-choices { display: flex; flex-direction: column; gap: 10px; }
+.bc {
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(0,0,0,0.08);
+  background: var(--bg);
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer; transition: all 0.15s;
+}
+.bc:active { transform: scale(0.98); }
+.bc-icon { font-size: 28px; flex-shrink: 0; }
+.bc-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.bc-sub { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+
+/* HUMEUR BTNS */
+.humeur-row { display: flex; gap: 6px; }
+.h-btn {
+  flex: 1; aspect-ratio: 1;
+  border: 2px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  cursor: pointer;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 3px;
+  transition: all 0.15s;
+}
+.h-btn:active { transform: scale(0.95); }
+.h-btn.sel { border-color: var(--accent); background: var(--accent-soft); transform: scale(1.05); }
+.h-emoji { font-size: 22px; line-height: 1; }
+.h-label { font-size: 9px; font-weight: 700; font-family: 'Bangers', cursive; color: var(--text-2); letter-spacing: 0.5px; }
+.h-btn.sel .h-label { color: var(--accent); }
+
+/* PROGRESS BARS */
+.pb-item { margin-bottom: 10px; }
+.pb-head { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.pb-lbl { font-size: 13px; font-weight: 600; color: var(--text); }
+.pb-val { font-size: 13px; font-weight: 700; color: var(--accent); }
+.pb-bar { background: rgba(0,0,0,0.07); border-radius: 4px; height: 8px; overflow: hidden; }
+.pb-fill { height: 100%; border-radius: 4px; background: var(--accent); transition: width 0.8s ease; }
+
+/* RAPPORT */
+.rapport-preview {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 12px;
+  border-left: 3px solid var(--accent);
+  min-height: 80px;
+  font-style: italic;
+}
+.rapport-preview.empty { color: var(--text-2); }
+.rapport-reco {
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  display: none;
+}
+.rapport-reco.visible { display: block; }
+.rapport-reco-title { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.rapport-reco-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+/* EXTRA SCOLAIRE */
+.extra-item {
+  background: var(--card);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--orange);
+  padding: 12px 14px;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+}
+.extra-icon { font-size: 22px; flex-shrink: 0; }
+.extra-name { font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; color: var(--text); }
+.extra-time { font-size: 12px; color: var(--text-2); margin-top: 1px; }
+
+/* MODAL FORM ELEMENTS */
+.modal-field { margin-bottom: 14px; }
+.modal-label { font-size: 11px; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 6px; }
+.type-row { display: flex; gap: 8px; }
+.type-btn {
+  flex: 1; padding: 10px 6px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(0,0,0,0.08);
+  background: var(--bg);
+  font-size: 12px; font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer; text-align: center;
+  transition: all 0.15s; color: var(--text-2);
+}
+.type-btn.sel-dev { border-color: #BF360C; background: #FFF3E0; color: #BF360C; }
+.type-btn.sel-int { border-color: #880E4F; background: #FCE4EC; color: #880E4F; }
+.type-btn.sel-sport { border-color: var(--orange); background: #FFF3E0; color: #B7791F; }
+.type-btn.sel-rdv { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.modal-row2 { display: flex; gap: 8px; }
+
+/* NEXT BANNER */
+.next-banner {
+  background: var(--accent);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  color: white;
+}
+.next-label { font-size: 10px; font-weight: 700; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.06em; }
+.next-name { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 800; margin-top: 2px; }
+.next-time { font-size: 13px; opacity: 0.85; margin-top: 1px; }
+.next-cntdwn { background: rgba(255,255,255,0.2); border-radius: 12px; padding: 10px 14px; text-align: center; }
+.next-num { font-family: 'Bangers', cursive; font-size: 30px; display: block; letter-spacing: 1px; }
+.next-lbl { font-size: 10px; opacity: 0.8; font-weight: 700; }
+
+/* URGENT STRIP */
+.urgent-strip {
+  background: var(--red-soft);
+  border: 1.5px solid #FFCDD2;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer;
+}
+.urgent-pip { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; animation: pipBlink 1.5s infinite; }
+.urgent-text { font-size: 14px; font-weight: 700; color: var(--red); }
+.urgent-sub { font-size: 12px; color: #E57373; margin-top: 1px; }
+
+/* CE SOIR */
+.ce-soir-strip {
+  background: var(--warn-soft);
+  border: 1.5px solid #F6D860;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+.ce-soir-title { font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; color: #7D5A00; margin-bottom: 8px; }
+.ce-soir-item { font-size: 14px; color: #5D4037; padding: 3px 0; display: flex; align-items: center; gap: 8px; }
+.cs-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--warn); flex-shrink: 0; }
+
+/* RAPPORT DATA GRID */
+.rapport-data { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.rd-item { background: var(--bg); border-radius: var(--radius-sm); padding: 10px 12px; }
+.rd-num { font-family: 'Bangers', cursive; font-size: 26px; letter-spacing: 0.5px; color: var(--text); }
+.rd-lbl { font-size: 11px; color: var(--text-2); margin-top: 2px; }
+
+/* JOURNAL LIST */
+.jl-item { background: var(--card); border-radius: var(--radius-sm); padding: 12px 14px; box-shadow: var(--shadow); display: flex; gap: 10px; margin-bottom: 8px; }
+.jl-left { text-align: center; flex-shrink: 0; }
+.jl-date { font-size: 10px; color: var(--text-2); font-weight: 700; }
+.jl-emoji { font-size: 20px; display: block; margin-top: 2px; }
+.jl-body { flex: 1; }
+.jl-session { font-size: 12px; font-weight: 700; color: var(--accent); }
+.jl-note { font-size: 14px; color: var(--text); margin-top: 2px; line-height: 1.5; }
+
+/* CHECKIN */
+.cq { margin-bottom: 16px; padding-bottom: 14px; border-bottom: 0.5px solid rgba(0,0,0,0.06); }
+.cq:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.cq-txt { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.5; margin-bottom: 10px; }
+.cq-scale { display: flex; gap: 6px; }
+.cq-v { flex: 1; padding: 9px 4px; border-radius: var(--radius-sm); border: 1.5px solid rgba(0,0,0,0.08); background: var(--bg); text-align: center; cursor: pointer; transition: all 0.15s; }
+.cq-v.sel { border-color: var(--accent); background: var(--accent-soft); }
+.cq-n { font-family: 'Bangers', cursive; font-size: 18px; color: var(--text); }
+.cq-l { font-size: 10px; color: var(--text-2); font-weight: 700; }
+
+/* ROUTINE HISTORY */
+.rh-item { background: var(--bg); border-radius: var(--radius-sm); padding: 10px 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.rh-date { font-size: 12px; font-weight: 700; color: var(--text-2); min-width: 44px; }
+.rh-emoji { font-size: 18px; }
+.rh-note { font-size: 13px; color: var(--text); flex: 1; }
+
+/* =============================================================
+   ONBOARDING
+   ============================================================= */
+#screen-onboarding {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  overflow-y: auto; padding: 0;
+}
+#screen-onboarding.hidden { display: none; }
+
+.ob-header {
+  background: linear-gradient(135deg, #5B5FEF 0%, #9B59B6 100%);
+  padding: 48px 24px 32px;
+  text-align: center; color: white;
+}
+.ob-logo { font-size: 52px; margin-bottom: 8px; }
+.ob-title { font-family: 'Bangers', cursive; font-size: 32px; letter-spacing: 1px; margin-bottom: 6px; }
+.ob-sub { font-size: 15px; opacity: 0.85; }
+
+.ob-progress {
+  display: flex; gap: 6px; justify-content: center;
+  padding: 16px 24px 8px;
+}
+.ob-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--text-3); transition: all 0.3s;
+}
+.ob-dot.active { background: var(--accent); transform: scale(1.3); }
+.ob-dot.done { background: var(--ok); }
+
+.ob-step { display: none; padding: 16px 20px 24px; flex: 1; }
+.ob-step.active { display: block; }
+
+.ob-q { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+.ob-hint { font-size: 13px; color: var(--text-2); margin-bottom: 16px; }
+
+.ob-choices {
+  display: grid; gap: 10px;
+}
+.ob-choices.cols2 { grid-template-columns: 1fr 1fr; }
+.ob-choices.cols1 { grid-template-columns: 1fr; }
+
+.ob-choice {
+  background: white; border: 2.5px solid var(--text-3);
+  border-radius: 14px; padding: 14px 12px;
+  text-align: center; cursor: pointer;
+  transition: all 0.2s; font-size: 14px; font-weight: 700;
+  color: var(--text);
+}
+.ob-choice .ob-emoji { font-size: 28px; display: block; margin-bottom: 4px; }
+.ob-choice:hover { border-color: var(--accent); background: var(--accent-soft); }
+.ob-choice.selected {
+  border-color: var(--accent); background: var(--accent-soft);
+  color: var(--accent);
+  transform: scale(1.03);
+}
+.ob-choice.multi.selected {
+  border-color: #9B59B6; background: #F5EEF8; color: #9B59B6;
+}
+
+.ob-nav {
+  display: flex; gap: 10px; padding: 12px 20px 32px;
+  justify-content: space-between; align-items: center;
+}
+.ob-btn-back {
+  background: none; border: 2px solid var(--text-3);
+  border-radius: 12px; padding: 12px 20px;
+  font-size: 14px; font-weight: 700; color: var(--text-2);
+  cursor: pointer;
+}
+.ob-btn-next {
+  flex: 1; background: var(--accent); color: white;
+  border: none; border-radius: 12px; padding: 14px;
+  font-size: 15px; font-weight: 800; cursor: pointer;
+  transition: all 0.2s;
+}
+.ob-btn-next:disabled { background: var(--text-3); cursor: not-allowed; }
+.ob-btn-next:not(:disabled):hover { background: var(--accent-dark); }
+
+/* Résultat final */
+.ob-result {
+  text-align: center; padding: 20px;
+}
+.ob-result-avatar { font-size: 64px; margin-bottom: 12px; }
+.ob-result-name { font-family: 'Bangers', cursive; font-size: 28px; color: var(--accent); margin-bottom: 6px; }
+.ob-result-sub { font-size: 14px; color: var(--text-2); margin-bottom: 20px; }
+.ob-profile-card {
+  background: white; border-radius: 16px; padding: 16px;
+  margin-bottom: 16px; text-align: left;
+  box-shadow: var(--shadow);
+}
+.ob-profile-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; font-size: 14px; }
+.ob-profile-row:last-child { margin-bottom: 0; }
+.ob-profile-label { font-weight: 700; color: var(--text); min-width: 80px; }
+.ob-profile-val { color: var(--text-2); }
+.ob-launch-btn {
+  width: 100%; background: linear-gradient(135deg, #5B5FEF, #9B59B6);
+  color: white; border: none; border-radius: 16px;
+  padding: 18px; font-size: 17px; font-weight: 900;
+  cursor: pointer; font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+}
+
+
+/* =============================================================
+   QUIZ PHOTO D'INTERRO
+   ============================================================= */
+.quiz-mode-tabs {
+  display: flex; gap: 8px; margin-bottom: 14px;
+}
+.quiz-mode-btn {
+  flex: 1; padding: 10px 8px; border-radius: 12px;
+  border: 2.5px solid var(--text-3); background: white;
+  font-size: 13px; font-weight: 700; color: var(--text-2);
+  cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.quiz-mode-btn.active {
+  border-color: var(--accent); background: var(--accent-soft);
+  color: var(--accent);
+}
+.quiz-photo-zone {
+  background: white; border: 2.5px dashed var(--text-3);
+  border-radius: 14px; padding: 20px 16px;
+  text-align: center; cursor: pointer;
+  transition: all 0.2s; margin-bottom: 12px;
+}
+.quiz-photo-zone:hover { border-color: var(--accent); background: var(--accent-soft); }
+.quiz-photo-zone.has-photo { border-style: solid; border-color: var(--ok); }
+.quiz-photo-preview {
+  width: 100%; max-height: 200px; object-fit: cover;
+  border-radius: 10px; display: none; margin-bottom: 8px;
+}
+.quiz-photo-preview.visible { display: block; }
+.quiz-ai-question {
+  background: white; border-radius: 14px;
+  padding: 16px; margin-bottom: 10px;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+.quiz-ai-q-num {
+  font-size: 11px; font-weight: 700; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+.quiz-ai-q-text {
+  font-size: 15px; font-weight: 700; color: var(--text);
+  line-height: 1.4; margin-bottom: 12px;
+}
+.quiz-ai-choices { display: flex; flex-direction: column; gap: 7px; }
+.quiz-ai-choice {
+  padding: 12px 14px; border-radius: 10px;
+  border: 2px solid var(--text-3); background: white;
+  font-size: 14px; font-weight: 600; color: var(--text);
+  cursor: pointer; transition: all 0.15s; text-align: left;
+}
+.quiz-ai-choice:hover { border-color: var(--accent); background: var(--accent-soft); }
+.quiz-ai-choice.correct { background: var(--ok-soft); border-color: var(--ok); color: #1B5E20; }
+.quiz-ai-choice.wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+.quiz-ai-explication {
+  margin-top: 10px; padding: 10px 12px;
+  border-radius: 10px; font-size: 13px; font-weight: 600;
+  line-height: 1.5; display: none;
+}
+.quiz-ai-explication.ok { background: var(--ok-soft); color: #1B5E20; display: block; }
+.quiz-ai-explication.ko { background: var(--red-soft); color: var(--red); display: block; }
+.quiz-score-bar {
+  background: var(--accent-soft); border-radius: 12px;
+  padding: 12px 16px; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.quiz-score-num {
+  font-family: Bangers, cursive; font-size: 28px; color: var(--accent);
+}
+.quiz-score-label { font-size: 13px; color: var(--text-2); font-weight: 600; }
+.quiz-generating {
+  text-align: center; padding: 24px;
+  color: var(--text-2); font-size: 14px; font-weight: 600;
+}
+.quiz-generating .spin { display: inline-block; animation: spin 1s linear infinite; font-size: 24px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     ONBOARDING — Premier lancement
+     ============================================================ -->
+<div id="screen-onboarding" class="hidden">
+  <div class="ob-header">
+    <div class="ob-logo">🏴‍☠️</div>
+    <div class="ob-title">Salut Ethan !</div>
+    <div class="ob-sub">2 minutes pour configurer ton espace — promis c'est rapide</div>
+  </div>
+
+  <div class="ob-progress" id="ob-progress"></div>
+
+  <!-- Étape 1 : Passion principale -->
+  <div class="ob-step active" id="ob-step-0">
+    <div class="ob-q">C'est quoi ton truc en ce moment ?</div>
+    <div class="ob-hint">Ce qui te passionne le plus</div>
+    <div class="ob-choices cols2">
+      <div class="ob-choice" onclick="obSelect(0,this,&#39;one-piece&#39;)">
+        <span class="ob-emoji">🏴‍☠️</span>One Piece
+      </div>
+      <div class="ob-choice" onclick="obSelect(0,this,&#39;basket&#39;)">
+        <span class="ob-emoji">🏀</span>Basket
+      </div>
+      <div class="ob-choice" onclick="obSelect(0,this,&#39;gaming&#39;)">
+        <span class="ob-emoji">🎮</span>Jeux vidéo
+      </div>
+      <div class="ob-choice" onclick="obSelect(0,this,&#39;musique&#39;)">
+        <span class="ob-emoji">🎵</span>Musique
+      </div>
+      <div class="ob-choice" onclick="obSelect(0,this,&#39;sport&#39;)">
+        <span class="ob-emoji">⚽</span>Sport (autre)
+      </div>
+      <div class="ob-choice" onclick="obSelect(0,this,&#39;autre&#39;)">
+        <span class="ob-emoji">✨</span>Autre chose
+      </div>
+    </div>
+  </div>
+
+  <!-- Étape 2 : Style d'apprentissage -->
+  <div class="ob-step" id="ob-step-1">
+    <div class="ob-q">Comment tu retiens le mieux ?</div>
+    <div class="ob-hint">Quand tu dois apprendre quelque chose</div>
+    <div class="ob-choices cols1">
+      <div class="ob-choice" onclick="obSelect(1,this,&#39;exemple&#39;)">
+        <span class="ob-emoji">💡</span>Avec un exemple concret que je comprends
+      </div>
+      <div class="ob-choice" onclick="obSelect(1,this,&#39;image&#39;)">
+        <span class="ob-emoji">🖼️</span>En voyant un schéma ou un dessin
+      </div>
+      <div class="ob-choice" onclick="obSelect(1,this,&#39;oral&#39;)">
+        <span class="ob-emoji">🗣️</span>En l'entendant expliquer à voix haute
+      </div>
+      <div class="ob-choice" onclick="obSelect(1,this,&#39;etapes&#39;)">
+        <span class="ob-emoji">📋</span>Étape par étape, pas trop à la fois
+      </div>
+    </div>
+  </div>
+
+  <!-- Étape 3 : Matière préférée -->
+  <div class="ob-step" id="ob-step-2">
+    <div class="ob-q">Ta matière préférée ?</div>
+    <div class="ob-hint">Celle où tu te sens le mieux</div>
+    <div class="ob-choices cols2">
+      <div class="ob-choice" onclick="obSelect(2,this,&#39;sport&#39;)">
+        <span class="ob-emoji">🏃</span>Sport / Natation
+      </div>
+      <div class="ob-choice" onclick="obSelect(2,this,&#39;sciences&#39;)">
+        <span class="ob-emoji">🔬</span>Sciences
+      </div>
+      <div class="ob-choice" onclick="obSelect(2,this,&#39;anglais&#39;)">
+        <span class="ob-emoji">💬</span>Anglais
+      </div>
+      <div class="ob-choice" onclick="obSelect(2,this,&#39;francais&#39;)">
+        <span class="ob-emoji">📖</span>Français
+      </div>
+      <div class="ob-choice" onclick="obSelect(2,this,&#39;maths&#39;)">
+        <span class="ob-emoji">📐</span>Maths
+      </div>
+      <div class="ob-choice" onclick="obSelect(2,this,&#39;edm&#39;)">
+        <span class="ob-emoji">🌍</span>EDM / Histoire
+      </div>
+    </div>
+  </div>
+
+  <!-- Étape 4 : Matière difficile -->
+  <div class="ob-step" id="ob-step-3">
+    <div class="ob-q">Celle qui te prend la tête ?</div>
+    <div class="ob-hint">Pas de jugement — on va t'aider là-dessus</div>
+    <div class="ob-choices cols2">
+      <div class="ob-choice" onclick="obSelect(3,this,&#39;maths&#39;)">
+        <span class="ob-emoji">📐</span>Maths
+      </div>
+      <div class="ob-choice" onclick="obSelect(3,this,&#39;francais&#39;)">
+        <span class="ob-emoji">📖</span>Français
+      </div>
+      <div class="ob-choice" onclick="obSelect(3,this,&#39;sciences&#39;)">
+        <span class="ob-emoji">🔬</span>Sciences
+      </div>
+      <div class="ob-choice" onclick="obSelect(3,this,&#39;anglais&#39;)">
+        <span class="ob-emoji">💬</span>Anglais
+      </div>
+      <div class="ob-choice" onclick="obSelect(3,this,&#39;latin&#39;)">
+        <span class="ob-emoji">🏛️</span>Latin
+      </div>
+      <div class="ob-choice" onclick="obSelect(3,this,&#39;edm&#39;)">
+        <span class="ob-emoji">🌍</span>EDM / Histoire
+      </div>
+    </div>
+  </div>
+
+  <!-- Étape 5 : Moment de concentration -->
+  <div class="ob-step" id="ob-step-4">
+    <div class="ob-q">Tu bosses mieux à quel moment ?</div>
+    <div class="ob-hint">En général, quand t'es le plus en forme</div>
+    <div class="ob-choices cols1">
+      <div class="ob-choice" onclick="obSelect(4,this,&#39;matin&#39;)">
+        <span class="ob-emoji">🌅</span>Le matin — je suis frais
+      </div>
+      <div class="ob-choice" onclick="obSelect(4,this,&#39;aprem&#39;)">
+        <span class="ob-emoji">☀️</span>L'après-midi — après manger
+      </div>
+      <div class="ob-choice" onclick="obSelect(4,this,&#39;soir&#39;)">
+        <span class="ob-emoji">🌙</span>Le soir — quand c'est calme
+      </div>
+      <div class="ob-choice" onclick="obSelect(4,this,&#39;variable&#39;)">
+        <span class="ob-emoji">🎲</span>Ça dépend des jours
+      </div>
+    </div>
+  </div>
+
+  <!-- Étape 6 : Ce qui aide à se concentrer -->
+  <div class="ob-step" id="ob-step-5">
+    <div class="ob-q">Ce qui t'aide à rester focus ?</div>
+    <div class="ob-hint">Tu peux choisir plusieurs</div>
+    <div class="ob-choices cols2" id="ob-multi-5">
+      <div class="ob-choice multi" onclick="obMultiSelect(5,this,&#39;silence&#39;)">
+        <span class="ob-emoji">🤫</span>Silence total
+      </div>
+      <div class="ob-choice multi" onclick="obMultiSelect(5,this,&#39;musique&#39;)">
+        <span class="ob-emoji">🎧</span>Musique/casque
+      </div>
+      <div class="ob-choice multi" onclick="obMultiSelect(5,this,&#39;pauses&#39;)">
+        <span class="ob-emoji">⏸️</span>Pauses régulières
+      </div>
+      <div class="ob-choice multi" onclick="obMultiSelect(5,this,&#39;minuteur&#39;)">
+        <span class="ob-emoji">⏱️</span>Un minuteur
+      </div>
+      <div class="ob-choice multi" onclick="obMultiSelect(5,this,&#39;accompagne&#39;)">
+        <span class="ob-emoji">👤</span>Être accompagné
+      </div>
+      <div class="ob-choice multi" onclick="obMultiSelect(5,this,&#39;snack&#39;)">
+        <span class="ob-emoji">🍎</span>Un snack à côté
+      </div>
+    </div>
+  </div>
+
+  <!-- Étape 7 : Ce qui bloque -->
+  <div class="ob-step" id="ob-step-6">
+    <div class="ob-q">Ce qui te fait décrocher le plus vite ?</div>
+    <div class="ob-hint">Pour qu'on évite ça dans l'appli</div>
+    <div class="ob-choices cols1">
+      <div class="ob-choice" onclick="obSelect(6,this,&#39;trop-long&#39;)">
+        <span class="ob-emoji">😮‍💨</span>Les explications trop longues
+      </div>
+      <div class="ob-choice" onclick="obSelect(6,this,&#39;trop-dur&#39;)">
+        <span class="ob-emoji">🤯</span>Quand c'est trop difficile d'un coup
+      </div>
+      <div class="ob-choice" onclick="obSelect(6,this,&#39;ennui&#39;)">
+        <span class="ob-emoji">😴</span>L'ennui — quand c'est pas intéressant
+      </div>
+      <div class="ob-choice" onclick="obSelect(6,this,&#39;stress&#39;)">
+        <span class="ob-emoji">😰</span>Le stress — peur de rater
+      </div>
+    </div>
+  </div>
+
+  <!-- Étape 8 : Objectif -->
+  <div class="ob-step" id="ob-step-7">
+    <div class="ob-q">Ton objectif pour cette année ?</div>
+    <div class="ob-hint">Ce que tu veux vraiment</div>
+    <div class="ob-choices cols1">
+      <div class="ob-choice" onclick="obSelect(7,this,&#39;passer&#39;)">
+        <span class="ob-emoji">✅</span>Passer en 2ème — c'est déjà bien
+      </div>
+      <div class="ob-choice" onclick="obSelect(7,this,&#39;progresser&#39;)">
+        <span class="ob-emoji">📈</span>Progresser dans mes matières difficiles
+      </div>
+      <div class="ob-choice" onclick="obSelect(7,this,&#39;confiance&#39;)">
+        <span class="ob-emoji">💪</span>Être plus confiant quand j'ai pas compris
+      </div>
+      <div class="ob-choice" onclick="obSelect(7,this,&#39;organisation&#39;)">
+        <span class="ob-emoji">📅</span>Mieux m'organiser pour les devoirs
+      </div>
+    </div>
+  </div>
+
+  <!-- Résultat -->
+  <div class="ob-step" id="ob-step-result">
+    <div class="ob-result">
+      <div class="ob-result-avatar" id="ob-avatar">🏴‍☠️</div>
+      <div class="ob-result-name">Ton profil est prêt, Ethan !</div>
+      <div class="ob-result-sub">L'appli est maintenant configurée pour toi</div>
+      <div class="ob-profile-card" id="ob-profile-summary"></div>
+      <button class="ob-launch-btn" onclick="obFinish()">
+        ⚓ Lancer Mon École !
+      </button>
+    </div>
+  </div>
+
+  <div class="ob-nav" id="ob-nav">
+    <button class="ob-btn-back" id="ob-back" onclick="obBack()">← Retour</button>
+    <button class="ob-btn-next" id="ob-next" onclick="obNext()" disabled="">Suivant →</button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     TOAST
+     ============================================================ -->
+<div class="toast" id="toast"></div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<div class="app-header" id="app-header">
+  <div class="header-brand">
+    <span class="header-anchor">⚓</span>
+    <div class="header-texts">
+      <div class="header-title" id="header-title">Mon École</div>
+      <div class="header-sub" id="header-sub">Dimanche 19 avril</div>
+    </div>
+  </div>
+  <div class="header-avatar" onclick="navTo(&#39;qg&#39;)">EC</div>
+</div>
+
+<!-- ============================================================
+     TAB BAR
+     ============================================================ -->
+<div class="tab-bar" id="tab-bar" style="display: flex;">
+  <button class="tab-btn active" onclick="navTo(&#39;aujourd&#39;)">
+    <span class="tab-icon">📅</span>Aujourd'hui
+  </button>
+  <button class="tab-btn" onclick="navTo(&#39;semaine&#39;)">
+    <span class="tab-icon">🗓</span>Semaine
+  </button>
+  <button class="tab-btn" onclick="navTo(&#39;matieres&#39;)">
+    <span class="tab-icon">📚</span>Matières
+  </button>
+  <button class="tab-btn" onclick="navTo(&#39;qg&#39;)">
+    <span class="tab-icon">🏴‍☠️</span>Mon QG
+  </button>
+</div>
+
+<!-- ============================================================
+     BROUILLARD BUTTON (toujours visible)
+     ============================================================ -->
+<button class="brouillard-btn" onclick="openBrouillard()" title="J&#39;ai la tête dans le brouillard">🌫</button>
+
+<!-- ============================================================
+     TIMER BUBBLE (flottante)
+     ============================================================ -->
+<div class="timer-bubble" id="timer-bubble" onclick="toggleTimerBubble()">
+  <div class="tb-dot" id="tb-dot"></div>
+  <div class="tb-controls" id="tb-controls">
+    <button class="tb-btn tb-pause" id="tb-pause-btn" onclick="event.stopPropagation();timerManualPause()" title="Pause">⏸</button>
+    <button class="tb-btn tb-stop" id="tb-stop-btn" onclick="event.stopPropagation();openStopModal()" title="Arrêter">⏹</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     MIC FAB (draggable)
+     ============================================================ -->
+<div class="mic-fab" id="mic-fab">🎤</div>
+
+<!-- ============================================================
+     SCREEN — AUJOURD'HUI
+     ============================================================ -->
+<div class="screen active" id="screen-aujourd">
+  <!-- Widget icône hebdomadaire -->
+  <div id="weekly-icon-widget" style="margin:12px 16px 0;background:linear-gradient(135deg,#5B5FEF,#9B59B6);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+    <img id="weekly-icon-img" style="display: block; width: 52px; height: 52px; border-radius: 10px; object-fit: cover; border: 2px solid rgba(255, 255, 255, 0.3);" src="./index_files/OnePiece-Icones.jpg">
+    <div id="weekly-icon-emoji" style="font-size: 40px; display: none;">🏴‍☠️</div>
+    <div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.7);font-weight:600;margin-bottom:2px">Manga de la semaine</div>
+      <div id="weekly-manga-name" style="font-family:Bangers,cursive;font-size:20px;color:white;letter-spacing:0.5px">One Piece</div>
+    </div>
+  </div>
+  <div class="pad">
+
+    <!-- Prochain cours -->
+    <div class="next-banner" id="next-banner" style="display: none;">
+      <div>
+        <div class="next-label">Prochain cours</div>
+        <div class="next-name" id="next-name">—</div>
+        <div class="next-time" id="next-time">—</div>
+      </div>
+      <div class="next-cntdwn">
+        <span class="next-num" id="next-countdown">—</span>
+        <span class="next-lbl">MIN</span>
+      </div>
+    </div>
+
+    <!-- Ce soir -->
+    <div class="ce-soir-strip" id="ce-soir-strip" style="display:none">
+      <div class="ce-soir-title">📋 Ce soir j'ai…</div>
+      <div id="ce-soir-list"></div>
+    </div>
+
+    <!-- Urgences -->
+    <div id="urgent-container"></div>
+
+    <!-- Planning -->
+    <div class="slabel">Planning du jour</div>
+    <div id="planning-wrap"><div class="card" style="text-align:center;color:var(--text-2);font-size:15px">Pas de cours aujourd'hui 🏖</div></div>
+
+    <!-- Extra scolaire -->
+    <div class="slabel" style="display:flex;align-items:center;justify-content:space-between">
+      Activités extra-scolaires
+      <button class="add-dashed" style="width:auto;border:none;padding:0;font-size:18px;color:var(--accent)" onclick="openExtraModal()">＋</button>
+    </div>
+    <div id="extra-list">
+      <div class="extra-item">
+        <span class="extra-icon">🏀</span>
+        <div>
+          <div class="extra-name">Basket — entraînement</div>
+          <div class="extra-time">17h00 · salle omnisports</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN — SEMAINE
+     ============================================================ -->
+<div class="screen" id="screen-semaine">
+  <div class="pad">
+    <div class="week-grid" id="week-grid"><div class="week-day"><div class="week-day-name">Lun</div>
+      <div class="week-day-num">13</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--latin)"></div></div></div><div class="week-day"><div class="week-day-name">Mar</div>
+      <div class="week-day-num">14</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div><div class="week-dot" style="background:var(--francais)"></div></div></div><div class="week-day"><div class="week-day-name">Mer</div>
+      <div class="week-day-num">15</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--sport)"></div></div></div><div class="week-day"><div class="week-day-name">Jeu</div>
+      <div class="week-day-num">16</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day"><div class="week-day-name">Ven</div>
+      <div class="week-day-num">17</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--religion)"></div></div></div></div>
+    <div class="week-detail" id="week-detail">
+      <div class="week-detail-title" id="week-detail-title">Sélectionne un jour</div>
+      <div id="week-detail-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN — MATIERES (liste)
+     ============================================================ -->
+<div class="screen" id="screen-matieres">
+  <div class="pad">
+    <div class="slabel">Mes espaces de travail</div>
+    <div class="mat-grid" id="matieres-grid"><div class="mat-card" style="border-left-color: var(--sciences);"><div class="mat-corner">🔬</div>
+      <span class="mat-emoji">🔬</span>
+      <div class="mat-name">Sciences</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--maths);"><div class="mat-corner">📐</div>
+      <span class="mat-emoji">📐</span>
+      <div class="mat-name">Maths</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--francais);"><div class="mat-corner">📖</div>
+      <span class="mat-emoji">📖</span>
+      <div class="mat-name">Français</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--anglais);"><div class="mat-corner">💬</div>
+      <span class="mat-emoji">💬</span>
+      <div class="mat-name">Anglais</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--edm);"><div class="mat-corner">🌍</div>
+      <span class="mat-emoji">🌍</span>
+      <div class="mat-name">EDM</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--latin);"><div class="mat-corner">🏛</div>
+      <span class="mat-emoji">🏛</span>
+      <div class="mat-name">Latin</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--sport);"><div class="mat-corner">⚽</div>
+      <span class="mat-emoji">⚽</span>
+      <div class="mat-name">Sport</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--techno);"><div class="mat-corner">⚙️</div>
+      <span class="mat-emoji">⚙️</span>
+      <div class="mat-name">Techno</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--religion);"><div class="mat-corner">🤝</div>
+      <span class="mat-emoji">🤝</span>
+      <div class="mat-name">Religion</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--natation);"><div class="mat-corner">🏊</div>
+      <span class="mat-emoji">🏊</span>
+      <div class="mat-name">Natation</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div><div class="mat-card" style="border-left-color: var(--plastique);"><div class="mat-corner">🎨</div>
+      <span class="mat-emoji">🎨</span>
+      <div class="mat-name">Plastique</div>
+      <div class="mat-stats">
+        
+        
+        <span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>
+      </div></div></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN — MATIERE DETAIL
+     ============================================================ -->
+<div class="screen" id="screen-matiere-detail">
+  <div class="mat-detail-header" id="mat-detail-header">
+    <button class="back-btn" onclick="navTo(&#39;matieres&#39;)">←</button>
+    <div style="flex:1">
+      <div style="font-family:&#39;Bangers&#39;,cursive;font-size:22px;letter-spacing:1px" id="mat-detail-title">Mathématiques</div>
+      <div style="font-size:12px;color:var(--text-2)">Programme FWB · 1ère secondaire</div>
+    </div>
+  </div>
+  <div class="inner-tabs" id="inner-tabs">
+    <button class="inner-tab active" onclick="switchInner(&#39;expliquer&#39;)">🤖 Explique-moi</button>
+    <button class="inner-tab" onclick="switchInner(&#39;notes&#39;)">✏ Mes notes</button>
+    <button class="inner-tab" onclick="switchInner(&#39;agenda&#39;)">📅 Devoirs &amp; interros</button>
+  </div>
+  <!-- Explique-moi -->
+  <div class="inner-content active" id="inner-expliquer">
+    <div class="ai-box">
+      <div class="ai-source-row" id="ai-source-row">
+        <button class="src-btn active" id="src-fwb" onclick="setAiSource(&#39;fwb&#39;)">📋 Programme FWB</button>
+        <button class="src-btn" id="src-photo" onclick="setAiSource(&#39;photo&#39;)">📷 Photo du cours</button>
+        <button class="src-btn" id="src-doc" onclick="setAiSource(&#39;doc&#39;)">📄 Document prof</button>
+      </div>
+      <div class="upload-zone" id="upload-zone" onclick="triggerCamera()">
+        <div class="upload-zone-icon" id="upload-icon">📷</div>
+        <div class="upload-zone-title" id="upload-title">Prends une photo du cours</div>
+        <div class="upload-zone-sub">Tableau, cahier, feuille du prof</div>
+      </div>
+      <!-- Input caméra caché -->
+      <input type="file" id="camera-input" accept="image/*" capture="environment" style="display:none" onchange="handlePhotoCapture(event)">
+      <!-- Prévisualisation image -->
+      <div id="upload-preview-img" style="display:none;margin:8px 0;border-radius:10px;overflow:hidden;max-height:160px">
+        <img id="captured-img" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px">
+      </div>
+      <div class="upload-preview" id="upload-preview">✓ Photo chargée — je l'analyse pour toi !</div>
+      <div class="wave-bars" id="ai-wave" style="margin-bottom:8px">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+        <span style="font-size:12px;color:var(--red);font-weight:700;margin-left:8px">Écoute…</span>
+      </div>
+      <div class="ai-question-row">
+        <textarea class="field-input note-textarea" id="ai-question" placeholder="Ce que t&#39;as pas compris… ou tape ta question" rows="2"></textarea>
+        <div class="mic-round" id="ai-mic" onmousedown="startMicFor(&#39;ai-question&#39;,event)" onmouseup="stopMic(&#39;ai-mic&#39;)" onmouseleave="stopMic(&#39;ai-mic&#39;)" ontouchstart="startMicFor(&#39;ai-question&#39;,event)" ontouchend="stopMic(&#39;ai-mic&#39;)">🎤</div>
+      </div>
+      <button class="btn btn-primary btn-full" style="margin-bottom:12px" onclick="askAI()">↗ Explique-moi !</button>
+      <div class="ai-response-box empty" id="ai-response">Pose ta question — je t'explique en langage simple.</div>
+      <button class="verify-btn" id="verify-btn" onclick="startQuiz()">🎯 Teste-moi sur ce que j'ai compris</button>
+    </div>
+    <!-- QUIZ MODULE — banque statique + photo IA -->
+    <div id="quiz-section" style="display:none">
+      <div class="slabel">🎯 Teste tes connaissances</div>
+
+      <!-- Choix du mode -->
+      <div class="quiz-mode-tabs">
+        <button class="quiz-mode-btn active" id="qmode-rapide" onclick="setQuizMode(&#39;rapide&#39;)">⚡ Question rapide</button>
+        <button class="quiz-mode-btn" id="qmode-photo" onclick="setQuizMode(&#39;photo&#39;)">📸 Quiz sur photo</button>
+      </div>
+
+      <!-- MODE RAPIDE — banque existante -->
+      <div id="quiz-mode-rapide">
+        <div class="quiz-wrap">
+          <div class="quiz-q" id="quiz-q"></div>
+          <div class="quiz-choices" id="quiz-choices"></div>
+          <div class="quiz-result" id="quiz-result" style="display:none"></div>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button class="btn btn-primary" style="flex:1" onclick="startQuiz()">↻ Autre question</button>
+            <button class="btn btn-ghost" onclick="hideQuiz()">✕</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODE PHOTO — quiz IA sur interro/notes -->
+      <div id="quiz-mode-photo" style="display:none">
+
+        <!-- Upload photo -->
+        <input type="file" id="quiz-camera-input" accept="image/*" capture="environment" style="display:none" onchange="handleQuizPhoto(event)">
+
+        <div class="quiz-photo-zone" id="quiz-photo-zone" onclick="document.getElementById(&#39;quiz-camera-input&#39;).click()">
+          <img id="quiz-photo-preview" class="quiz-photo-preview">
+          <div id="quiz-photo-placeholder">
+            <div style="font-size:36px;margin-bottom:8px">📸</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px">Photographie ton interro ou tes notes</div>
+            <div style="font-size:12px;color:var(--text-2)">L'IA va te poser des questions dessus</div>
+          </div>
+        </div>
+
+        <!-- Options -->
+        <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center">
+          <div style="font-size:13px;font-weight:700;color:var(--text-2)">Nombre de questions :</div>
+          <button class="quiz-mode-btn" id="qnum-3" onclick="setQuizNum(3)" style="flex:none;padding:6px 14px">3</button>
+          <button class="quiz-mode-btn active" id="qnum-5" onclick="setQuizNum(5)" style="flex:none;padding:6px 14px">5</button>
+          <button class="quiz-mode-btn" id="qnum-8" onclick="setQuizNum(8)" style="flex:none;padding:6px 14px">8</button>
+        </div>
+
+        <button class="btn btn-primary btn-full btn-bangers" id="quiz-generate-btn" onclick="generatePhotoQuiz()" disabled="">
+          🤖 Génère le quiz !
+        </button>
+
+        <!-- Chargement -->
+        <div class="quiz-generating" id="quiz-generating" style="display:none">
+          <div class="spin">⚙️</div>
+          <div style="margin-top:8px">Je prépare tes questions…</div>
+        </div>
+
+        <!-- Score en cours -->
+        <div class="quiz-score-bar" id="quiz-score-bar" style="display:none">
+          <div>
+            <div class="quiz-score-num" id="quiz-score-num">0/<span id="quiz-score-total">5</span></div>
+            <div class="quiz-score-label">bonnes réponses</div>
+          </div>
+          <div style="flex:1;height:8px;background:var(--text-3);border-radius:4px;overflow:hidden">
+            <div id="quiz-score-fill" style="height:100%;background:var(--ok);border-radius:4px;width:0%;transition:width 0.4s"></div>
+          </div>
+        </div>
+
+        <!-- Questions générées -->
+        <div id="quiz-photo-questions"></div>
+
+        <!-- Boutons fin -->
+        <div id="quiz-photo-actions" style="display:none;gap:8px;margin-top:8px">
+          <button class="btn btn-primary btn-full" onclick="retryQuizPhoto()">🔄 Nouvelle tentative</button>
+          <button class="btn btn-ghost btn-full" onclick="hideQuiz()">✕ Fermer</button>
+        </div>
+
+      </div><!-- fin mode photo -->
+
+    </div>
+  </div>
+  <!-- Notes -->
+  <div class="inner-content" id="inner-notes">
+    <div class="slabel">Ajouter une note</div>
+    <div class="note-input-row" style="margin-bottom:10px">
+      <input class="field-input" id="mat-note-input" placeholder="Mot-clé, formule, définition…" style="height:44px">
+      <div class="mic-round" id="mat-note-mic" onmousedown="startMicFor(&#39;mat-note-input&#39;,event)" onmouseup="stopMic(&#39;mat-note-mic&#39;)" onmouseleave="stopMic(&#39;mat-note-mic&#39;)" ontouchstart="startMicFor(&#39;mat-note-input&#39;,event)" ontouchend="stopMic(&#39;mat-note-mic&#39;)">🎤</div>
+      <button class="btn btn-primary" style="padding:0 14px;height:44px;border-radius:var(--radius-sm)" onclick="addMatNote()">+</button>
+    </div>
+    <div id="mat-notes-list"></div>
+  </div>
+  <!-- Agenda -->
+  <div class="inner-content" id="inner-agenda">
+    <div id="mat-agenda-list"></div>
+    <button class="add-dashed" onclick="openAgendaModal()" style="margin-top:4px">＋ Ajouter devoir ou interro</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN — MON QG
+     ============================================================ -->
+<div class="screen" id="screen-qg">
+  <div style="display:flex;background:var(--card);border-bottom:1px solid rgba(0,0,0,0.06);overflow-x:auto;scrollbar-width:none;position:sticky;top:65px;z-index:28" id="qg-tabs">
+    <button class="inner-tab active" onclick="switchQG(&#39;timer&#39;)">⏱ Timer</button>
+    <button class="inner-tab" onclick="switchQG(&#39;routine&#39;)">🌅 Routine</button>
+    <button class="inner-tab" onclick="switchQG(&#39;ressenti&#39;)">💬 Ressenti</button>
+    <button class="inner-tab" onclick="switchQG(&#39;evolution&#39;)">📈 Évolution</button>
+    <button class="inner-tab" onclick="switchQG(&#39;rapport&#39;)">📩 Rapport</button>
+  </div>
+
+  <!-- QG TIMER -->
+  <div class="inner-content active pad" id="qg-timer">
+    <div class="slabel">Pour quelle matière ?</div>
+    <div class="qg-mat-row" id="qg-mat-row"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
+    <div class="auto-pause-banner" id="auto-pause-banner">
+      <div class="apb-title">☕ Pause recharge !</div>
+      <div class="apb-acts">
+        <div class="apb-act" onclick="this.classList.toggle(&#39;done&#39;)"><span class="apb-icon">💧</span><span class="apb-lbl">Boire</span></div>
+        <div class="apb-act" onclick="this.classList.toggle(&#39;done&#39;)"><span class="apb-icon">🧘</span><span class="apb-lbl">Étirer</span></div>
+        <div class="apb-act" onclick="this.classList.toggle(&#39;done&#39;)"><span class="apb-icon">🚶</span><span class="apb-lbl">Bouger</span></div>
+        <div class="apb-act" onclick="this.classList.toggle(&#39;done&#39;)"><span class="apb-icon">👁</span><span class="apb-lbl">Yeux</span></div>
+      </div>
+      <button class="apb-skip" onclick="skipAutoPause()">Je saute la pause → reprendre</button>
+    </div>
+    <div style="text-align:center">
+      <div class="ring-wrap">
+        <svg class="ring-svg" viewBox="0 0 200 200">
+          <circle class="ring-bg" cx="100" cy="100" r="88"></circle>
+          <circle class="ring-track" id="t-ring" cx="100" cy="100" r="88" stroke-dasharray="553" stroke-dashoffset="553" stroke="var(--accent)"></circle>
+        </svg>
+        <div class="ring-center">
+          <div class="timer-num" id="t-num">00:00</div>
+          <div class="timer-phase-lbl" id="t-phase" style="color:var(--text-2)">PRÊT</div>
+          <div class="timer-mat-lbl" id="t-mat">Choisis une matière</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-bottom:16px">
+        <div class="status-pill stopped" id="t-status-pill">
+          <div class="status-pip"></div>
+          <span id="t-status-txt">En attente</span>
+        </div>
+      </div>
+      <div class="timer-ctrls">
+        <button class="ctrl ctrl-pause" id="btn-pause" onclick="timerManualPause()" disabled="">⏸</button>
+        <button class="ctrl ctrl-play" id="btn-play" onclick="togglePlay()">▶️</button>
+        <button class="ctrl ctrl-stop" id="btn-stop" onclick="openStopModal()" disabled="">⏹</button>
+      </div>
+      <div class="ctrl-labels">
+        <div class="ctrl-lbl" style="min-width:56px">Pause</div>
+        <div class="ctrl-lbl" style="min-width:70px">Démarrer</div>
+        <div class="ctrl-lbl" style="min-width:56px">Terminer</div>
+      </div>
+    </div>
+    <div class="timer-stats">
+      <div class="t-stat"><div class="t-stat-num" id="t-total">00:00</div><div class="t-stat-lbl">Temps total</div></div>
+      <div class="t-stat"><div class="t-stat-num" id="t-pauses">0</div><div class="t-stat-lbl">Pauses auto</div></div>
+      <div class="t-stat"><div class="t-stat-num" id="t-today">0</div><div class="t-stat-lbl">Sessions aujourd'hui</div></div>
+    </div>
+  </div>
+
+  <!-- QG ROUTINE -->
+  <div class="inner-content pad" id="qg-routine">
+    <div class="card">
+      <div class="card-title">🌅 Ma routine du matin</div>
+      <div class="row" style="justify-content:space-between;margin-bottom:14px">
+        <div>
+          <div style="font-size:15px;font-weight:600;color:var(--text)">Routine faite ?</div>
+          <div style="font-size:12px;color:var(--text-2)" id="routine-sub">Pas encore enregistrée</div>
+        </div>
+        <div class="toggle" id="routine-toggle" onclick="toggleRoutine()"><div class="toggle-ball"></div></div>
+      </div>
+      <div class="slabel">Comment tu te sens ce matin ?</div>
+      <div class="humeur-row" style="margin-bottom:14px">
+        <button class="h-btn" onclick="selHumeur(this,&#39;😤&#39;,&#39;KO&#39;)"><span class="h-emoji">😤</span><span class="h-label">KO</span></button>
+        <button class="h-btn" onclick="selHumeur(this,&#39;😕&#39;,&#39;BOF&#39;)"><span class="h-emoji">😕</span><span class="h-label">BOF</span></button>
+        <button class="h-btn" onclick="selHumeur(this,&#39;😐&#39;,&#39;OK&#39;)"><span class="h-emoji">😐</span><span class="h-label">OK</span></button>
+        <button class="h-btn" onclick="selHumeur(this,&#39;💪&#39;,&#39;GO!&#39;)"><span class="h-emoji">💪</span><span class="h-label">GO!</span></button>
+        <button class="h-btn" onclick="selHumeur(this,&#39;🔥&#39;,&#39;POWER&#39;)"><span class="h-emoji">🔥</span><span class="h-label">POWER</span></button>
+      </div>
+      <textarea class="field-input" id="routine-note" rows="2" placeholder="Un mot sur ta journée… (optionnel)" style="margin-bottom:10px"></textarea>
+      <button class="btn btn-primary btn-full btn-bangers" onclick="saveRoutine()">✓ Enregistrer ma routine</button>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 Mes derniers matins</div>
+      <div id="routine-hist">
+        <div class="rh-item"><span class="rh-date">Hier</span><span class="rh-emoji">💪</span><span class="rh-note">Bien dormi</span></div>
+        <div class="rh-item"><span class="rh-date">Lun.</span><span class="rh-emoji">😐</span><span class="rh-note">Fatigué</span></div>
+        <div class="rh-item"><span class="rh-date">Ven.</span><span class="rh-emoji">🔥</span><span class="rh-note">Super forme !</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QG RESSENTI -->
+  <div class="inner-content pad" id="qg-ressenti">
+    <div class="card">
+      <div class="card-title">💬 Après ma session</div>
+      <div class="humeur-row" id="rs-row" style="margin-bottom:12px">
+        <button class="h-btn" onclick="selRs(this,&#39;😵&#39;,&#39;Galère&#39;)"><span class="h-emoji">😵</span><span class="h-label">GALÈRE</span></button>
+        <button class="h-btn" onclick="selRs(this,&#39;😤&#39;,&#39;Dur&#39;)"><span class="h-emoji">😤</span><span class="h-label">DUR</span></button>
+        <button class="h-btn" onclick="selRs(this,&#39;😐&#39;,&#39;Moyen&#39;)"><span class="h-emoji">😐</span><span class="h-label">MOYEN</span></button>
+        <button class="h-btn" onclick="selRs(this,&#39;😊&#39;,&#39;Bien&#39;)"><span class="h-emoji">😊</span><span class="h-label">BIEN</span></button>
+        <button class="h-btn" onclick="selRs(this,&#39;🔥&#39;,&#39;Top&#39;)"><span class="h-emoji">🔥</span><span class="h-label">TOP</span></button>
+      </div>
+      <div class="note-input-row" style="margin-bottom:10px">
+        <input class="field-input" id="rs-input" placeholder="Ce qui t&#39;a aidé, ce qui était dur…" style="height:44px">
+        <div class="mic-round" id="rs-mic" onmousedown="startMicFor(&#39;rs-input&#39;,event)" onmouseup="stopMic(&#39;rs-mic&#39;)" onmouseleave="stopMic(&#39;rs-mic&#39;)" ontouchstart="startMicFor(&#39;rs-input&#39;,event)" ontouchend="stopMic(&#39;rs-mic&#39;)">🎤</div>
+        <button class="btn btn-primary" style="padding:0 14px;height:44px;border-radius:var(--radius-sm)" onclick="saveRessenti()">+</button>
+      </div>
+    </div>
+    <div class="slabel">Mon journal de bord</div>
+    <div id="journal-list">
+      <div class="jl-item">
+        <div class="jl-left"><div class="jl-date">Hier</div><span class="jl-emoji">😊</span></div>
+        <div class="jl-body"><div class="jl-session">⚡ Maths · 48 min</div><div class="jl-note">Réussi à finir sans décrocher</div></div>
+      </div>
+      <div class="jl-item">
+        <div class="jl-left"><div class="jl-date">Lun.</div><span class="jl-emoji">😤</span></div>
+        <div class="jl-body"><div class="jl-session">⚡ Français · 22 min</div><div class="jl-note">Trop de bruit</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QG EVOLUTION -->
+  <div class="inner-content pad" id="qg-evolution">
+    <div class="card">
+      <div class="card-title">📊 Cette semaine</div>
+      <div class="pb-item"><div class="pb-head"><span class="pb-lbl">Sessions complétées</span><span class="pb-val" id="ev-sessions">3/5</span></div><div class="pb-bar"><div class="pb-fill" id="ev-s-bar" style="width:60%"></div></div></div>
+      <div class="pb-item"><div class="pb-head"><span class="pb-lbl">Routine du matin</span><span class="pb-val" id="ev-routine">4/5</span></div><div class="pb-bar"><div class="pb-fill" id="ev-r-bar" style="width:80%;background:var(--ok)"></div></div></div>
+      <div class="pb-item"><div class="pb-head"><span class="pb-lbl">Devoirs complétés</span><span class="pb-val" id="ev-devoirs">2/4</span></div><div class="pb-bar"><div class="pb-fill" id="ev-d-bar" style="width:50%;background:var(--warn)"></div></div></div>
+      <div class="pb-item"><div class="pb-head"><span class="pb-lbl">Humeur générale</span><span class="pb-val">💪</span></div><div class="pb-bar"><div class="pb-fill" style="width:70%;background:var(--orange)"></div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">⚓ Check-in de la semaine</div>
+      <div class="cq">
+        <div class="cq-txt">T'as réussi à rester concentré pendant tes sessions ?</div>
+        <div class="cq-scale" id="cq1">
+          <div class="cq-v" onclick="selCq(&#39;cq1&#39;,this,1)"><div class="cq-n">1</div><div class="cq-l">Jamais</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq1&#39;,this,2)"><div class="cq-n">2</div><div class="cq-l">Parfois</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq1&#39;,this,3)"><div class="cq-n">3</div><div class="cq-l">Souvent</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq1&#39;,this,4)"><div class="cq-n">4</div><div class="cq-l">Toujours</div></div>
+        </div>
+      </div>
+      <div class="cq">
+        <div class="cq-txt">T'as demandé de l'aide quand tu bloquais ?</div>
+        <div class="cq-scale" id="cq2">
+          <div class="cq-v" onclick="selCq(&#39;cq2&#39;,this,1)"><div class="cq-n">1</div><div class="cq-l">Non</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq2&#39;,this,2)"><div class="cq-n">2</div><div class="cq-l">1 fois</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq2&#39;,this,3)"><div class="cq-n">3</div><div class="cq-l">Plusieurs</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq2&#39;,this,4)"><div class="cq-n">4</div><div class="cq-l">Oui!</div></div>
+        </div>
+      </div>
+      <div class="cq">
+        <div class="cq-txt">Comment tu te sens par rapport à l'école en ce moment ?</div>
+        <div class="cq-scale" id="cq3">
+          <div class="cq-v" onclick="selCq(&#39;cq3&#39;,this,1)"><div class="cq-n">😞</div><div class="cq-l">Pas top</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq3&#39;,this,2)"><div class="cq-n">😐</div><div class="cq-l">Bof</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq3&#39;,this,3)"><div class="cq-n">🙂</div><div class="cq-l">Ça va</div></div>
+          <div class="cq-v" onclick="selCq(&#39;cq3&#39;,this,4)"><div class="cq-n">💪</div><div class="cq-l">Bien!</div></div>
+        </div>
+      </div>
+      <button class="btn btn-ok btn-full btn-bangers" style="margin-top:14px" onclick="saveCheckin()">✓ Enregistrer mon check-in</button>
+    </div>
+  </div>
+
+  <!-- QG RAPPORT -->
+  <div class="inner-content pad" id="qg-rapport">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div style="font-size:13px;color:var(--text-2);font-weight:600">Rapport hebdomadaire</div>
+        <div style="font-size:13px;font-weight:700;color:var(--accent)" id="rapport-date">Lun 13 → Ven 17 avr</div>
+      </div>
+      <!-- Jauges rapides -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+        <div class="rd-item"><div class="rd-num" id="rd-sessions">3</div><div class="rd-lbl">Sessions</div></div>
+        <div class="rd-item"><div class="rd-num" id="rd-temps">—</div><div class="rd-lbl">Temps travail</div></div>
+        <div class="rd-item"><div class="rd-num" id="rd-routine">—</div><div class="rd-lbl">Routine matin</div></div>
+        <div class="rd-item"><div class="rd-num" id="rd-humeur">—</div><div class="rd-lbl">Humeur générale</div></div>
+      </div>
+
+      <!-- Rapport IA — 3 blocs clairs pour papa -->
+      <div id="rapport-blocs" style="display:none;margin-bottom:14px">
+
+        <!-- Bloc 1 : Bilan séances -->
+        <div style="background:var(--ok-soft);border-radius:12px;padding:14px;margin-bottom:10px">
+          <div style="font-size:11px;font-weight:700;color:var(--ok);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">📊 Bilan des séances</div>
+          <div id="rapport-bilan" style="font-size:14px;color:var(--text);line-height:1.6"></div>
+        </div>
+
+        <!-- Bloc 2 : Ressenti Ethan -->
+        <div style="background:var(--accent-soft);border-radius:12px;padding:14px;margin-bottom:10px">
+          <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">💬 Comment il se sent</div>
+          <div id="rapport-ressenti" style="font-size:14px;color:var(--text);line-height:1.6"></div>
+        </div>
+
+        <!-- Bloc 3 : Recommandation -->
+        <div id="rapport-reco-bloc" style="background:var(--warn-soft);border-radius:12px;padding:14px;margin-bottom:10px;display:none">
+          <div style="font-size:11px;font-weight:700;color:#d4950a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">💡 Recommandation</div>
+          <div id="rapport-reco-txt" style="font-size:14px;color:var(--text);line-height:1.6"></div>
+        </div>
+
+        <!-- Bloc 4 : Update appli -->
+        <div id="rapport-update-bloc" style="background:#F5EEF8;border-radius:12px;padding:14px;margin-bottom:10px;display:none">
+          <div style="font-size:11px;font-weight:700;color:#9B59B6;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">🔧 Update appli conseillé</div>
+          <div id="rapport-update-txt" style="font-size:14px;color:var(--text);line-height:1.6"></div>
+        </div>
+
+      </div>
+
+      <!-- Ancien placeholder -->
+      <div class="rapport-preview empty" id="rapport-preview" style="margin-bottom:14px">
+        Génère le rapport pour voir le bilan de la semaine.
+      </div>
+      <!-- Gardé pour compatibilité -->
+      <div class="rapport-reco" id="rapport-reco" style="display:none">
+        <div class="rapport-reco-text" id="rapport-reco-txt-old"></div>
+      </div>
+
+      <button class="btn btn-primary btn-full btn-bangers" id="generate-btn" onclick="generateRapport()" style="margin-bottom:10px">🤖 Générer le rapport</button>
+      <button class="btn btn-ok btn-full btn-bangers" id="send-btn" style="display:none" onclick="sendRapport()">📩 Envoyer à papa ↗</button>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom:8px">📋 Historique</div>
+      <div style="font-size:14px;color:var(--text-2)">
+        <div style="padding:8px 0;border-bottom:0.5px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between"><span>Semaine du 7 avril</span><span style="color:var(--ok);font-weight:700">Envoyé ✓</span></div>
+        <div style="padding:8px 0;display:flex;justify-content:space-between"><span>Semaine du 31 mars</span><span style="color:var(--ok);font-weight:700">Envoyé ✓</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     BOTTOM NAV
+     ============================================================ -->
+<div class="bottom-nav">
+  <button class="nav-btn active" id="nav-aujourd" onclick="navTo(&#39;aujourd&#39;)">
+    <span class="nav-icon">📅</span><span class="nav-label">Auj.</span>
+  </button>
+  <button class="nav-btn" id="nav-semaine" onclick="navTo(&#39;semaine&#39;)">
+    <span class="nav-icon">🗓</span><span class="nav-label">Semaine</span>
+  </button>
+  <div class="nav-spacer"></div>
+  <button class="nav-btn" id="nav-matieres" onclick="navTo(&#39;matieres&#39;)">
+    <span class="nav-icon">📚</span><span class="nav-label">Matières</span>
+  </button>
+  <button class="nav-btn" id="nav-qg" onclick="navTo(&#39;qg&#39;)">
+    <span class="nav-icon">🏴‍☠️</span><span class="nav-label">Mon QG</span>
+  </button>
+</div>
+
+<!-- ============================================================
+     MODALS
+     ============================================================ -->
+<!-- STOP MODAL -->
+<div class="modal-overlay" id="stop-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">⏹ C'est terminé ?</div>
+    <div class="modal-sub">Dis-moi comment c'était — je le note dans ton journal.</div>
+    <div class="stop-choices">
+      <div class="stop-choice c-ok" onclick="confirmStop(&#39;done&#39;,&#39;😊&#39;,&#39;Terminé !&#39;)">
+        <span class="sc-emoji">✅</span>
+        <div><div class="sc-title">C'est bon !</div><div class="sc-sub">J'ai fini ce que j'avais à faire</div></div>
+      </div>
+      <div class="stop-choice c-warn" onclick="confirmStop(&#39;review&#39;,&#39;🔄&#39;,&#39;À revoir&#39;)">
+        <span class="sc-emoji">🔄</span>
+        <div><div class="sc-title">À revoir</div><div class="sc-sub">J'ai avancé mais c'est pas fini</div></div>
+      </div>
+      <div class="stop-choice c-info" onclick="confirmStop(&#39;unsure&#39;,&#39;❓&#39;,&#39;Pas sûr&#39;)">
+        <span class="sc-emoji">❓</span>
+        <div><div class="sc-title">Pas sûr</div><div class="sc-sub">Je sais pas si c'est bien fait</div></div>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-full" style="margin-top:12px" onclick="closeModal(&#39;stop-modal&#39;)">Annuler</button>
+  </div>
+</div>
+
+<!-- BROUILLARD MODAL -->
+<div class="modal-overlay" id="brouillard-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🌫 T'as la tête dans le brouillard ?</div>
+    <div class="modal-sub">Pas de panique — choisis ce qui t'aide maintenant.</div>
+    <div class="brouillard-choices">
+      <div class="bc" onclick="doRespire()">
+        <span class="bc-icon">🫁</span>
+        <div><div class="bc-title">Respirer 30 secondes</div><div class="bc-sub">Je te guide — ça reset le cerveau</div></div>
+      </div>
+      <div class="bc" onclick="doNote()">
+        <span class="bc-icon">✏️</span>
+        <div><div class="bc-title">Écrire ce qui bloque</div><div class="bc-sub">Mettre les mots dessus ça aide</div></div>
+      </div>
+      <div class="bc" onclick="doAppeler()">
+        <span class="bc-icon">📞</span>
+        <div><div class="bc-title">Appeler papa</div><div class="bc-sub">Parfois on a juste besoin de parler</div></div>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-full" style="margin-top:12px" onclick="closeModal(&#39;brouillard-modal&#39;)">Fermer</button>
+  </div>
+</div>
+
+<!-- RESPIRATION MODAL -->
+<div class="modal-overlay" id="respire-modal">
+  <div class="modal-sheet" style="text-align:center">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🫁 Respire avec moi</div>
+    <div style="font-family:&#39;Bangers&#39;,cursive;font-size:80px;margin:20px 0;line-height:1;transition:all 1s" id="respire-circle">🟢</div>
+    <div style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px" id="respire-txt">Inspire…</div>
+    <div style="font-size:16px;color:var(--text-2)" id="respire-count">4 secondes</div>
+    <button class="btn btn-ghost btn-full" style="margin-top:20px" onclick="closeModal(&#39;respire-modal&#39;);clearRespire()">Arrêter</button>
+  </div>
+</div>
+
+<!-- MIC MODAL (global FAB) -->
+<div class="modal-overlay" id="mic-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">⚓ Ajouter une note</div>
+    <div class="modal-sub">Maintiens le micro rouge et parle — je reformule en mot-clé.</div>
+    <div class="wave-bars" id="mic-modal-wave" style="justify-content:center;margin-bottom:12px">
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+    </div>
+    <div style="display:flex;justify-content:center;margin-bottom:14px">
+      <div class="mic-round" style="width:70px;height:70px;font-size:28px" id="mic-modal-btn" onmousedown="startFabMic(event)" onmouseup="stopFabMic()" onmouseleave="stopFabMic()" ontouchstart="startFabMic(event)" ontouchend="stopFabMic()">🎤</div>
+    </div>
+    <div class="field-input" id="mic-modal-result" style="min-height:50px;margin-bottom:14px;color:var(--text-2);font-style:italic">
+      Appuie sur le micro et parle normalement…
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-ghost" style="flex:1" onclick="closeModal(&#39;mic-modal&#39;)">Annuler</button>
+      <button class="btn btn-primary" id="mic-modal-save" style="flex:1" disabled="" onclick="saveFabMic()">Enregistrer ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXTRA MODAL -->
+<div class="modal-overlay" id="extra-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="extra-modal-title">⚡ Ajouter une activité</div>
+    <div class="modal-field">
+      <label class="modal-label">Type</label>
+      <div class="type-row">
+        <button class="type-btn sel-sport" id="et-sport" onclick="selExtraType(this,&#39;🏀&#39;,&#39;Sport&#39;,&#39;sel-sport&#39;)">🏀 Sport</button>
+        <button class="type-btn" id="et-rdv" onclick="selExtraType(this,&#39;🏥&#39;,&#39;RDV&#39;,&#39;sel-rdv&#39;)">🏥 RDV</button>
+        <button class="type-btn" id="et-loisir" onclick="selExtraType(this,&#39;🎵&#39;,&#39;Loisir&#39;,&#39;sel-sport&#39;)">🎵 Loisir</button>
+        <button class="type-btn" id="et-rattrap" onclick="selExtraType(this,&#39;📚&#39;,&#39;Rattrap.&#39;,&#39;sel-rdv&#39;)">📚 Rattrap.</button>
+      </div>
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">Nom</label>
+      <input class="field-input" id="extra-name" placeholder="Ex: Basket, Logopède, Cinéma…">
+    </div>
+    <div class="modal-row2">
+      <div class="modal-field" style="flex:1">
+        <label class="modal-label">Heure</label>
+        <input class="field-input" type="time" id="extra-time" value="17:00">
+      </div>
+      <div class="modal-field" style="flex:1">
+        <label class="modal-label">Lieu</label>
+        <input class="field-input" id="extra-lieu" placeholder="Optionnel">
+      </div>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-ghost" style="flex:1" onclick="closeModal(&#39;extra-modal&#39;)">Annuler</button>
+      <button class="btn btn-warn btn-bangers" style="flex:1" onclick="saveExtra()">Ajouter ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- AGENDA MODAL -->
+<div class="modal-overlay" id="agenda-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="agenda-modal-title">📝 Ajouter un devoir</div>
+    <div class="modal-field">
+      <label class="modal-label">Type</label>
+      <div class="type-row">
+        <button class="type-btn sel-dev" id="at-dev" onclick="selAgendaType(&#39;devoir&#39;)">📝 Devoir</button>
+        <button class="type-btn" id="at-int" onclick="selAgendaType(&#39;interro&#39;)">⚡ Interro</button>
+      </div>
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">Mots-clés</label>
+      <input class="field-input" id="agenda-desc" placeholder="Ex: exercices p.34, vocab ch4…">
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">Pour le</label>
+      <input class="field-input" type="date" id="agenda-date">
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-ghost" style="flex:1" onclick="closeModal(&#39;agenda-modal&#39;)">Annuler</button>
+      <button class="btn btn-primary btn-bangers" style="flex:1" onclick="saveAgenda()">Ajouter ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* =============================================================
+   DATA — Horaire réel Saint Roch Ferrière 1D
+   ============================================================= */
+const HORAIRE = {
+  1: [ // Lundi
+    {h:'08h10',fin:'09h00',mat:'Sciences',loc:'D101'},
+    {h:'09h00',fin:'09h50',mat:'Sport',loc:'J001'},
+    {h:'09h50',fin:'10h40',mat:'Maths',loc:'E004'},
+    {h:'10h40',fin:'11h00',mat:'☕ Récréation',loc:'',pause:true},
+    {h:'11h00',fin:'11h50',mat:'Latin',loc:'C004'},
+    {h:'11h50',fin:'12h40',mat:'',loc:'',free:true},
+    {h:'12h40',fin:'13h20',mat:'🍽 Temps de midi',loc:'',pause:true},
+    {h:'13h20',fin:'14h10',mat:'Français',loc:'E104'},
+    {h:'14h10',fin:'15h00',mat:'EDM',loc:'E101'},
+    {h:'15h00',fin:'15h50',mat:'Anglais',loc:'F206'},
+  ],
+  2: [ // Mardi
+    {h:'08h10',fin:'09h00',mat:'Techno',loc:'H301'},
+    {h:'09h00',fin:'09h50',mat:'Maths',loc:'E004'},
+    {h:'09h50',fin:'10h40',mat:'Natation',loc:'Piscine'},
+    {h:'10h40',fin:'11h00',mat:'☕ Récréation',loc:'',pause:true},
+    {h:'11h00',fin:'11h50',mat:'Français',loc:'E104'},
+    {h:'11h50',fin:'12h40',mat:'',loc:'',free:true},
+    {h:'12h40',fin:'13h20',mat:'🍽 Temps de midi',loc:'',pause:true},
+    {h:'13h20',fin:'14h10',mat:'EDM',loc:'E101'},
+    {h:'14h10',fin:'15h00',mat:'Anglais',loc:'F206'},
+    {h:'15h00',fin:'15h50',mat:'Sport',loc:'J001'},
+  ],
+  3: [ // Mercredi
+    {h:'08h10',fin:'09h00',mat:'Religion',loc:'H304'},
+    {h:'09h00',fin:'09h50',mat:'Français',loc:'E104'},
+    {h:'09h50',fin:'10h40',mat:'EDM',loc:'E101'},
+    {h:'10h40',fin:'11h00',mat:'☕ Récréation',loc:'',pause:true},
+    {h:'11h00',fin:'11h50',mat:'Sport',loc:'J001'},
+    {h:'11h50',fin:'12h40',mat:'Latin',loc:'C004'},
+    {h:'12h40',fin:'13h20',mat:'🍽 Fin de journée',loc:'',pause:true},
+  ],
+  4: [ // Jeudi
+    {h:'08h10',fin:'09h00',mat:'Français',loc:'E104'},
+    {h:'09h00',fin:'09h50',mat:'Sciences',loc:'D101'},
+    {h:'09h50',fin:'10h40',mat:'Anglais',loc:'F206'},
+    {h:'10h40',fin:'11h00',mat:'☕ Récréation',loc:'',pause:true},
+    {h:'11h00',fin:'11h50',mat:'Maths',loc:'E004'},
+    {h:'11h50',fin:'12h40',mat:'',loc:'',free:true},
+    {h:'12h40',fin:'13h20',mat:'🍽 Temps de midi',loc:'',pause:true},
+    {h:'13h20',fin:'14h10',mat:'Anglais',loc:'F206'},
+    {h:'14h10',fin:'15h00',mat:'Sport',loc:'J001'},
+    {h:'15h00',fin:'15h50',mat:'Plastique',loc:'H301'},
+  ],
+  5: [ // Vendredi
+    {h:'08h10',fin:'09h00',mat:'Anglais',loc:'F206'},
+    {h:'09h00',fin:'09h50',mat:'EDM',loc:'E101'},
+    {h:'09h50',fin:'10h40',mat:'Maths',loc:'E004'},
+    {h:'10h40',fin:'11h00',mat:'☕ Récréation',loc:'',pause:true},
+    {h:'11h00',fin:'11h50',mat:'Religion',loc:'H304'},
+    {h:'11h50',fin:'12h40',mat:'',loc:'',free:true},
+    {h:'12h40',fin:'13h20',mat:'🍽 Temps de midi',loc:'',pause:true},
+    {h:'13h20',fin:'14h10',mat:'Français',loc:'E104'},
+    {h:'14h10',fin:'15h00',mat:'Français',loc:'E104'},
+    {h:'15h00',fin:'15h50',mat:'Sciences',loc:'D101'},
+  ],
+};
+
+const MATIERES_DEF = [
+  {id:'sciences',n:'Sciences',e:'🔬',c:'var(--sciences)',cs:'var(--sciences-soft)',
+   prompt:'Tu es l assistant d Ethan Claes, 12 ans, 1ere secondaire Saint Roch Ferriere. TDAH + dysphasie. Aime One Piece et le basket.\n\nPROGRAMME SCIENCES 1ERE :\n- Demarche scientifique : observation, hypothese, experience, conclusion\n- Etres vivants : vivants vs non-vivants, 3 regnes (animaux/vegetaux/champignons)\n- Nutrition : autotrophes (vegetaux = photosynthese) vs heterotrophes (animaux/champignons)\n- Appareil digestif : bouche, oesophage, estomac, intestin grele (absorption des nutriments), gros intestin, anus. Glandes annexes : foie (bile), pancreas (suc pancreatique)\n- Appareil respiratoire : narines, fosses nasales, pharynx, larynx, trachee, bronches, alveoles pulmonaires. Inspiratio/expiration. Echanges O2/CO2\n- Matiere : etats solide/liquide/gazeux, molecules, corps purs et melanges, changements d etats\n- Energie : formes d energie (mecanique, thermique, electrique, chimique, lumineuse, sonore)\n\nREGLES : 3-4 phrases MAX. Vocabulaire exact du cours explique simplement. Analogie concrete (One Piece, basket). Jamais de jargon sans explication.'},
+  {id:'maths',n:'Maths',e:'📐',c:'var(--maths)',cs:'var(--maths-soft)',
+   prompt:'Tu es l assistant d Ethan Claes, 12 ans, 1ere secondaire Saint Roch Ferriere. TDAH + dysphasie. Aime One Piece et le basket.\n\nPROGRAMME MATHS 1ERE :\n- Nombres : naturels, entiers, decimaux, fractions. Ecriture, comparaison, decomposition\n- Fractions : numerateur/denominateur, equivalences, simplification. Cles : 1/2=0,5=50%, 1/4=0,25=25%, 3/4=0,75=75%\n- Calcul : 4 operations, calcul mental (tables, x/div par 10/100/1000)\n- Geometrie : droites paralleles et perpendiculaires, angles, figures planes, perimetre, aire. Solides (prisme, pyramide). Symetries, translation, rotation\n- Algebre : equations du 1er degre (x+b=c, ax=b, ax+b=c)\n- Proportionnalite : regle de trois, pourcentages\n- Statistiques : moyenne, mediane, mode, frequence, diagrammes\n- Unites de mesure : longueur, masse, capacite, volume. Conversions prefixes kilo/hecto/deca/deci/centi/milli\n\nREGLES : 3-4 phrases MAX. Vocabulaire du cours explique. Montrer etape cle si calcul. Analogie One Piece/basket. Jamais de jargon sans explication.'},
+  {id:'francais',n:'Français',e:'📖',c:'var(--francais)',cs:'var(--francais-soft)',
+   prompt:'Tu es l assistant d Ethan Claes, 12 ans, 1ere secondaire Saint Roch Ferriere. TDAH + dysphasie.\n\nPROGRAMME FRANCAIS 1ERE (FWB general) :\n- Conjugaison : etre/avoir tous temps. Verbes 1er/2e/3e groupe : present/imparfait/futur/passe compose/plus-que-parfait/passe simple, conditionnel present, subjonctif present, imperatif present\n- Nature des mots : determinant, nom, adjectif qualificatif, verbe, pronoms (personnels sujet/objet, relatifs qui/que/dont/ou, possessifs, demonstratifs), adverbe, preposition, conjonction\n- Texte : un paragraphe = une idee. Mots de liaison temporels (d abord/ensuite/puis/enfin) et logiques (car/donc/mais/or). Procedes de reprise : pronoms, synonymes, termes generiques\n- Redaction 5 etapes : lire, chercher idees, organiser, rediger, relire\n- Schema de communication : emetteur, message, recepteur, canal, code, contexte\n- Lectures : Le Petit Prince (Saint-Exupery), Soldat Peaceful (Morpurgo - 14-18)\n- Theatre : histoire, caracteristiques du genre\n\nREGLES : 3-4 phrases MAX. Vocabulaire du cours explique immediatement. Exemple concret. Toujours encourageant.'},
+  {id:'anglais',n:'Anglais',e:'💬',c:'var(--anglais)',cs:'var(--anglais-soft)',
+   prompt:'Matiere : Anglais. Explique D\'ABORD en français clair, puis répète les mots-clés en anglais entre parenthèses. Approche progressive. 3-4 phrases max.'},
+  {id:'edm',n:'EDM',e:'🌍',c:'var(--edm)',cs:'var(--edm-soft)',
+   prompt:'Tu es l assistant d Ethan Claes, 12 ans, 1ere secondaire Saint Roch Ferriere. TDAH + dysphasie.\n\nPROGRAMME EDM 1ERE (FWB general) :\n- Histoire : Prehistoire (Paleolithique nomades / Neolithique agriculture+sedentarisation). Antiquite (-3500-476) / Moyen-Age (476-1492) / Temps modernes (1492-1789) / Epoque contemporaine (1789-auj)\n- Geographie belge : frontieres (mer du Nord, France, Luxembourg, Allemagne, Pays-Bas). 3 regions : Flandre/Wallonie/Bruxelles. Relief : plaine cotiere, plateau, Ardennes (Botrange 694m)\n- Hydrographie : fleuve se jette dans la mer. Riviere = affluent. Bassins Meuse et Escaut. Vocabulaire : amont/aval, rive gauche/droite, confluent, meandre, source, embouchure\n- Lecture carte : titre, legende, orientation (Nord en haut), echelle, source. Directions N/S/E/O\n- Paysage : avant-plan/moyen-plan/arriere-plan. Milieu naturel vs espace humanise.\n- Atlas : index alphabetique, table des matieres, signet\n\nREGLES : 3-4 phrases MAX. Vocabulaire exact explique immediatement. Exemples belges si possible.'},
+  {id:'latin',n:'Latin',e:'🏛',c:'var(--latin)',cs:'var(--latin-soft)',
+   prompt:'Matiere : Latin (FWB 1ere sec : bases de la langue latine, declinaisons, traduction). 3-4 phrases max.'},
+  {id:'sport',n:'Sport',e:'⚽',c:'var(--sport)',cs:'var(--sport-soft)',
+   prompt:'Matiere : Sport/EPS. Ethan aime le basket. 3-4 phrases max.'},
+  {id:'techno',n:'Techno',e:'⚙️',c:'var(--techno)',cs:'var(--techno-soft)',
+   prompt:'Matiere : Technologie (FWB 1ere sec). 3-4 phrases max.'},
+  {id:'religion',n:'Religion',e:'🤝',c:'var(--religion)',cs:'var(--religion-soft)',
+   prompt:'Matière : Cours de religion. 3-4 phrases max, bienveillant.'},
+  {id:'natation',n:'Natation',e:'🏊',c:'var(--natation)',cs:'var(--natation-soft)',
+   prompt:'Matière : Natation. Techniques, règles, sécurité. 3-4 phrases max.'},
+  {id:'plastique',n:'Plastique',e:'🎨',c:'var(--plastique)',cs:'var(--plastique-soft)',
+   prompt:'Matiere : Arts plastiques (FWB 1ere sec). 3-4 phrases max.'},
+];
+
+const BADGE_COLORS = {
+  'devoir':{bg:'#FFF3E0',c:'#BF360C'},
+  'interro':{bg:'#FCE4EC',c:'#880E4F'},
+  'cours':{bg:'#E8F5E9',c:'#1B5E20'},
+};
+
+const QUIZ_BANK = {
+  maths:[
+    {q:"C'est quoi 1/2 + 1/4 ?",ch:["3/4","1/6","2/8","1/2"],ok:0,ex:"3/4 ! Tu mets au même dénominateur : 2/4 + 1/4 = 3/4 🏴‍☠️"},
+    {q:"Dans un triangle rectangle, quel est le côté le plus long ?",ch:["Le plus à gauche","L'hypoténuse","Le plus court","N'importe lequel"],ok:1,ex:"L'hypoténuse — toujours opposée à l'angle droit !"},
+  ],
+  francais:[
+    {q:"Le passé simple de 'aller' à la 3ème pers. du singulier ?",ch:["alla","allait","est allé","irait"],ok:0,ex:"'Il alla' — le temps des récits épiques comme One Piece !"},
+  ],
+  sciences:[
+    {q:"La photosynthèse se passe dans quel organite ?",ch:["Le noyau","La vacuole","Le chloroplaste","La membrane"],ok:2,ex:"Dans les chloroplastes — les usines vertes de la cellule !"},
+  ],
+  anglais:[
+    {q:"Comment dit-on 'j'ai mangé' en anglais ?",ch:["I eat","I was eating","I have eaten","I ate"],ok:2,ex:"'I have eaten' — c'est le present perfect, passé composé anglais !"},
+  ],
+};
+
+/* =============================================================
+   STATE
+   ============================================================= */
+let currentNav = 'aujourdhui';
+let currentMatiere = null;
+let currentInner = 'expliquer';
+let currentQG = 'timer';
+let currentAiSource = 'fwb';
+let hasUpload = false;
+let hasAiResponse = false;
+let timerRunning = false;
+let manuallyPaused = false;
+let autoPaused = false;
+let timerInterval = null;
+let timerSec = 0;
+let secSinceAutoPause = 0;
+let autoPauseCount = 0;
+let sessionsToday = 0;
+let selTimerMat = MATIERES_DEF[1]; // Maths par défaut
+let selHumeurVal = null;
+let selRsVal = null;
+let selExtraTypeVal = {emoji:'🏀',label:'Sport'};
+let selAgendaTypeVal = 'devoir';
+let checkinAnswers = {};
+let rapportGenerated = '';
+let rapportReco = '';
+let micRecognition = null;
+let micTarget = null;
+let fabMicRecognition = null;
+let fabTranscribed = '';
+let respireInterval = null;
+let bubbleExpanded = false;
+const WORK_INTERVAL = 25 * 60;
+
+/* =============================================================
+   STORAGE — persistance
+   ============================================================= */
+function store(key, val) {
+  try { localStorage.setItem('ethan_'+key, JSON.stringify(val)); } catch(e) {}
+}
+function retrieve(key, fallback=null) {
+  try {
+    const v = localStorage.getItem('ethan_'+key);
+    return v !== null ? JSON.parse(v) : fallback;
+  } catch(e) { return fallback; }
+}
+
+/* =============================================================
+   INIT
+   ============================================================= */
+function init() {
+  setHeaderDate();
+  buildMatiereGrid();
+  buildQGMatRow();
+  buildWeekGrid();
+  buildPlanningToday();
+  buildNextBanner();
+  buildCeSoir();
+  setRapportDate();
+  loadStoredData();
+  setupDraggable();
+  setupFabMic();
+}
+
+function setHeaderDate() {
+  const now = new Date();
+  const days = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  const months = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  const h = now.getHours();
+  const greet = h < 12 ? 'Bonjour' : h < 18 ? 'Bonjour' : 'Bonsoir';
+  document.getElementById('header-title').textContent = greet + ' Ethan !';
+  document.getElementById('header-sub').textContent = days[now.getDay()] + ' ' + now.getDate() + ' ' + months[now.getMonth()];
+}
+
+function matColor(matName) {
+  const m = MATIERES_DEF.find(x => x.n === matName);
+  return m ? m.c : '#888';
+}
+
+/* =============================================================
+   PLANNING DU JOUR
+   ============================================================= */
+function getTodayHoraire() {
+  const dow = new Date().getDay(); // 0=dim, 1=lun...
+  return HORAIRE[dow] || [];
+}
+
+function timeToMin(t) {
+  const [h,m] = t.split('h').map(Number);
+  return h*60+(m||0);
+}
+
+function buildPlanningToday() {
+  const wrap = document.getElementById('planning-wrap');
+  wrap.innerHTML = '';
+  const now = new Date();
+  const nowMin = now.getHours()*60+now.getMinutes();
+  const cours = getTodayHoraire();
+
+  if(cours.length === 0) {
+    wrap.innerHTML = '<div class="card" style="text-align:center;color:var(--text-2);font-size:15px">Pas de cours aujourd\'hui 🏖</div>';
+    return;
+  }
+
+  cours.forEach((c,i) => {
+    if(c.free) return;
+    const startMin = timeToMin(c.h);
+    const endMin = timeToMin(c.fin);
+    const isPast = nowMin > endMin;
+    const isCurrent = nowMin >= startMin && nowMin < endMin;
+    const isPause = c.pause;
+    const color = matColor(c.mat);
+
+    const div = document.createElement('div');
+    div.className = 'pitem' + (isPast?' past':'') + (isCurrent?' current':'') + (isPause?' is-break':'');
+    div.id = 'pitem-'+i;
+
+    const savedNote = retrieve('note_'+new Date().toDateString()+'_'+i, '');
+
+    if(isPause) {
+      div.innerHTML = `
+        <div class="pitem-header" onclick="togglePitem(${i})">
+          <div class="pitem-stripe" style="background:#D0D0D8"></div>
+          <div class="pitem-time">${c.h}</div>
+          <div class="pitem-main">
+            <div class="pitem-name" style="color:var(--text-2)">${c.mat}</div>
+            ${savedNote?`<div class="pitem-note-prev">✏ ${savedNote}</div>`:'<div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>'}
+          </div>
+          <span class="pitem-chevron">›</span>
+        </div>
+        <div class="pitem-expanded">${buildNoteZone(i, savedNote)}</div>`;
+    } else {
+      div.innerHTML = `
+        <div class="pitem-header" onclick="togglePitem(${i})">
+          <div class="pitem-stripe" style="background:${color}"></div>
+          <div class="pitem-time">${c.h}</div>
+          <div class="pitem-main">
+            <div class="pitem-name">${c.mat}</div>
+            <div class="pitem-local">${c.loc}</div>
+            ${savedNote?`<div class="pitem-note-prev">✏ ${savedNote}</div>`:'<div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>'}
+          </div>
+          <div class="pitem-right">
+            ${isCurrent?`<span class="badge badge-cours">EN COURS</span>`:''}
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">${buildNoteZone(i, savedNote)}</div>`;
+    }
+    wrap.appendChild(div);
+  });
+}
+
+function buildNoteZone(idx, savedNote) {
+  return `
+    <div class="note-saved ${savedNote?'visible':''}" id="note-saved-${idx}">
+      <span id="note-text-${idx}">${savedNote||''}</span>
+      <div class="note-saved-time" id="note-time-${idx}"></div>
+      <button class="note-edit-btn" onclick="editNote(${idx})">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone ${savedNote?'hidden':''}" id="note-zone-${idx}">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-${idx}" rows="2" placeholder="Tape ta note ici…">${savedNote||''}</textarea>
+        <div class="mic-round" id="note-mic-${idx}"
+          onmousedown="startMicFor('note-inp-${idx}',event,${idx})" onmouseup="stopMic('note-mic-${idx}')"
+          onmouseleave="stopMic('note-mic-${idx}')"
+          ontouchstart="startMicFor('note-inp-${idx}',event,${idx})" ontouchend="stopMic('note-mic-${idx}')">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-${idx}">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(${idx})">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(${idx})">Enregistrer ✓</button>
+      </div>
+    </div>`;
+}
+
+let openPitem = null;
+function togglePitem(idx) {
+  const el = document.getElementById('pitem-'+idx);
+  if(!el) return;
+  if(openPitem !== null && openPitem !== idx) {
+    const prev = document.getElementById('pitem-'+openPitem);
+    if(prev) prev.classList.remove('open');
+  }
+  el.classList.toggle('open');
+  openPitem = el.classList.contains('open') ? idx : null;
+}
+
+function saveNote(idx) {
+  const inp = document.getElementById('note-inp-'+idx);
+  if(!inp || !inp.value.trim()) return;
+  const kw = extractKeywords(inp.value.trim());
+  const now = new Date();
+  const timeStr = now.getHours()+'h'+String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('note-text-'+idx).textContent = kw;
+  document.getElementById('note-time-'+idx).textContent = 'Enregistré à '+timeStr;
+  document.getElementById('note-saved-'+idx).classList.add('visible');
+  document.getElementById('note-zone-'+idx).classList.add('hidden');
+  // Update preview
+  const pitem = document.getElementById('pitem-'+idx);
+  const prev = pitem?.querySelector('.pitem-note-prev');
+  if(prev) { prev.textContent = '✏ '+kw; prev.style.color='var(--accent)'; }
+  else {
+    const hint = pitem?.querySelector('[style*="text-3"]');
+    if(hint) { hint.className='pitem-note-prev'; hint.textContent='✏ '+kw; }
+  }
+  // Persist
+  store('note_'+new Date().toDateString()+'_'+idx, kw);
+  showToast('Note enregistrée ✓');
+}
+
+function cancelNote(idx) {
+  const saved = retrieve('note_'+new Date().toDateString()+'_'+idx, '');
+  if(saved) {
+    document.getElementById('note-zone-'+idx).classList.add('hidden');
+    document.getElementById('note-saved-'+idx).classList.add('visible');
+  } else {
+    document.getElementById('pitem-'+idx)?.classList.remove('open');
+    openPitem = null;
+  }
+}
+
+function editNote(idx) {
+  const saved = retrieve('note_'+new Date().toDateString()+'_'+idx, '');
+  const inp = document.getElementById('note-inp-'+idx);
+  if(inp) inp.value = saved;
+  document.getElementById('note-saved-'+idx).classList.remove('visible');
+  document.getElementById('note-zone-'+idx).classList.remove('hidden');
+  setTimeout(()=>inp?.focus(), 100);
+}
+
+function extractKeywords(text) {
+  if(!text || text.length < 3) return text;
+  const t = text.toLowerCase();
+  if(t.includes('rattrapage')) return 'rattrapage · '+text.replace(/.*?rattrapage\s*/i,'').substring(0,30).trim();
+  if(t.includes('interro')||t.includes('contrôle')) return 'interro · '+text.replace(/.*?(interro|contrôle)\s*/i,'').substring(0,25).trim();
+  if(t.includes('devoir')||t.includes('exercice')) {
+    const m=text.match(/page\s*\d+/i)||text.match(/p\.?\s*\d+/i)||text.match(/chapitre\s*\d+/i);
+    return 'devoir'+(m?' · '+m[0]:'');
+  }
+  if(t.includes('lire')||t.includes('lecture')) return 'lire · '+text.replace(/.*?(lire|lecture)\s*/i,'').substring(0,30).trim();
+  if(t.includes('réviser')) return 'réviser · '+text.replace(/.*?réviser\s*/i,'').substring(0,30).trim();
+  if(t.includes('photo')||t.includes('photographier')) return 'photo du cours';
+  return text.split(' ').filter(w=>w.length>3).slice(0,6).join(' ')||text.substring(0,40);
+}
+
+/* =============================================================
+   NEXT BANNER
+   ============================================================= */
+function buildNextBanner() {
+  const now = new Date();
+  const nowMin = now.getHours()*60+now.getMinutes();
+  const cours = getTodayHoraire().filter(c=>!c.pause&&!c.free&&c.mat);
+  const next = cours.find(c=>timeToMin(c.h)>nowMin);
+  const banner = document.getElementById('next-banner');
+  if(!next) { banner.style.display='none'; return; }
+  const diff = timeToMin(next.h)-nowMin;
+  const color = matColor(next.mat);
+  banner.style.background = color;
+  document.getElementById('next-name').textContent = next.mat;
+  document.getElementById('next-time').textContent = next.h + (next.loc?' · '+next.loc:'');
+  document.getElementById('next-countdown').textContent = diff;
+}
+
+/* =============================================================
+   CE SOIR
+   ============================================================= */
+function buildCeSoir() {
+  const devoirs = retrieve('devoirs_global', []);
+  const strip = document.getElementById('ce-soir-strip');
+  const list = document.getElementById('ce-soir-list');
+  const urgent = devoirs.filter(d=>{
+    if(!d.dateObj) return false;
+    const diff = (new Date(d.dateObj)-new Date())/(1000*60*60*24);
+    return diff <= 2 && diff >= 0;
+  });
+  if(urgent.length === 0) { strip.style.display='none'; return; }
+  strip.style.display='block';
+  list.innerHTML = urgent.map(d=>`<div class="ce-soir-item"><div class="cs-dot"></div>${d.mat} · ${d.desc} (${d.type})</div>`).join('');
+}
+
+/* =============================================================
+   URGENT
+   ============================================================= */
+function buildUrgent() {
+  const devoirs = retrieve('devoirs_global', []);
+  const container = document.getElementById('urgent-container');
+  const urgent = devoirs.filter(d=>{
+    if(!d.dateObj) return false;
+    const diff=(new Date(d.dateObj)-new Date())/(1000*60*60*24);
+    return diff<=1&&diff>=0;
+  });
+  container.innerHTML = urgent.map(d=>`
+    <div class="urgent-strip">
+      <div class="urgent-pip"></div>
+      <div>
+        <div class="urgent-text">${d.type==='interro'?'Interro':'Devoir'} demain — ${d.mat}</div>
+        <div class="urgent-sub">${d.desc}</div>
+      </div>
+    </div>`).join('');
+}
+
+/* =============================================================
+   SEMAINE
+   ============================================================= */
+function buildWeekGrid() {
+  const now = new Date();
+  const grid = document.getElementById('week-grid');
+  grid.innerHTML = '';
+  const days = ['Lun','Mar','Mer','Jeu','Ven'];
+  const mon = new Date(now);
+  const dow = now.getDay();
+  mon.setDate(now.getDate()-(dow===0?6:dow-1));
+  for(let i=0;i<5;i++) {
+    const d = new Date(mon); d.setDate(mon.getDate()+i);
+    const isToday = d.toDateString()===now.toDateString();
+    const cours = (HORAIRE[i+1]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
+    const div = document.createElement('div');
+    div.className='week-day'+(isToday?' today':'');
+    div.innerHTML=`<div class="week-day-name">${days[i]}</div>
+      <div class="week-day-num">${d.getDate()}</div>
+      <div class="week-dots">${cours.slice(0,4).map(c=>`<div class="week-dot" style="background:${matColor(c.mat)}"></div>`).join('')}</div>`;
+    div.onclick=()=>showWeekDetail(i+1, days[i]+' '+d.getDate());
+    grid.appendChild(div);
+    if(isToday) showWeekDetail(i+1, days[i]+' '+d.getDate());
+  }
+}
+
+function showWeekDetail(dow, label) {
+  document.getElementById('week-detail-title').textContent = label;
+  const list = document.getElementById('week-detail-list');
+  list.innerHTML = '';
+  (HORAIRE[dow]||[]).filter(c=>!c.pause&&!c.free&&c.mat).forEach(c=>{
+    const color = matColor(c.mat);
+    const div=document.createElement('div'); div.className='week-item';
+    div.innerHTML=`<div class="week-item-dot" style="background:${color}"></div>
+      <div class="week-item-text">${c.h} · ${c.mat}</div>
+      <span style="font-size:11px;color:var(--text-3)">${c.loc}</span>`;
+    list.appendChild(div);
+  });
+}
+
+/* =============================================================
+   MATIERES
+   ============================================================= */
+function buildMatiereGrid() {
+  const grid = document.getElementById('matieres-grid');
+  MATIERES_DEF.forEach(m=>{
+    const notes = retrieve('mat_notes_'+m.id,[]);
+    const devoirs = retrieve('mat_devoirs_'+m.id,[]);
+    const urgent = devoirs.filter(d=>{
+      if(!d.dateObj) return false;
+      return (new Date(d.dateObj)-new Date())/(1000*60*60*24)<=3;
+    });
+    const div=document.createElement('div');
+    div.className='mat-card';
+    div.style.borderLeftColor=m.c;
+    div.innerHTML=`<div class="mat-corner">${m.e}</div>
+      <span class="mat-emoji">${m.e}</span>
+      <div class="mat-name">${m.n}</div>
+      <div class="mat-stats">
+        ${urgent.length?`<span class="mat-stat" style="background:${m.cs};color:${m.c}">${urgent.length} urgent${urgent.length>1?'s':''}</span>`:''}
+        ${notes.length?`<span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">${notes.length} note${notes.length>1?'s':''}</span>`:''}
+        ${!urgent.length&&!notes.length?`<span class="mat-stat" style="background:#F0F0F0;color:var(--text-2)">À jour ✓</span>`:''}
+      </div>`;
+    div.onclick=()=>openMatiere(m);
+    grid.appendChild(div);
+  });
+}
+
+function openMatiere(m) {
+  currentMatiere=m;
+  hasUpload=false;
+  capturedImageBase64=null;
+  document.getElementById('upload-preview-img').style.display='none';
+  hasAiResponse=false;
+  document.getElementById('mat-detail-title').textContent=m.e+' '+m.n;
+  document.getElementById('mat-detail-title').style.color=m.c;
+  document.getElementById('mat-detail-header').style.borderBottom=`3px solid ${m.c}`;
+  document.getElementById('ai-question').value='';
+  document.getElementById('ai-response').textContent="Pose ta question — je t'explique en langage simple.";
+  document.getElementById('ai-response').className='ai-response-box empty';
+  document.getElementById('verify-btn').classList.remove('visible');
+  document.getElementById('quiz-section').style.display='none';
+  document.getElementById('upload-preview').classList.remove('visible');
+  document.getElementById('upload-zone').classList.remove('visible');
+  setAiSource('fwb');
+  buildMatNotes(m);
+  buildMatAgenda(m);
+  switchInner('expliquer');
+  navToRaw('matiere-detail');
+}
+
+function buildMatNotes(m) {
+  const list=document.getElementById('mat-notes-list');
+  list.innerHTML='';
+  const notes=retrieve('mat_notes_'+m.id,[]);
+  notes.forEach(n=>renderMatNote(n,m.c));
+}
+
+function addMatNote() {
+  const inp=document.getElementById('mat-note-input');
+  const val=inp.value.trim();
+  if(!val||!currentMatiere) return;
+  renderMatNote(val,currentMatiere.c);
+  const notes=retrieve('mat_notes_'+currentMatiere.id,[]);
+  notes.unshift(val);
+  store('mat_notes_'+currentMatiere.id,notes);
+  inp.value='';
+  showToast('Note ajoutée ✓');
+}
+
+function renderMatNote(text,color) {
+  const now=new Date();
+  const div=document.createElement('div');
+  div.className='note-card';
+  div.innerHTML=`<div class="note-dot" style="background:${color}"></div>
+    <div class="note-body">
+      <div class="note-text">${text}</div>
+      <div class="note-date">${now.getHours()}h${String(now.getMinutes()).padStart(2,'0')}</div>
+    </div>
+    <span class="badge badge-cours">cours</span>`;
+  document.getElementById('mat-notes-list').prepend(div);
+}
+
+function buildMatAgenda(m) {
+  const list=document.getElementById('mat-agenda-list');
+  list.innerHTML='';
+  const devoirs=retrieve('mat_devoirs_'+m.id,[]);
+  devoirs.forEach(d=>renderAgendaItem(d,m.c));
+}
+
+function renderAgendaItem(a,color) {
+  const now=new Date();
+  const isUrgent=a.dateObj&&(new Date(a.dateObj)-now)/(1000*60*60*24)<=2;
+  const bc=BADGE_COLORS[a.type]||{bg:'#F0F0F0',c:'#666'};
+  const div=document.createElement('div');
+  div.className='agenda-item';
+  div.innerHTML=`<div class="agenda-stripe" style="background:${color}"></div>
+    <div class="agenda-main">
+      <div class="agenda-title">${a.desc}</div>
+      <div class="agenda-date">📅 ${a.date}</div>
+    </div>
+    <span class="badge" style="background:${bc.bg};color:${bc.c}">${a.type}</span>
+    <span class="agenda-urgence">${isUrgent?'⚠️':''}</span>`;
+  document.getElementById('mat-agenda-list').appendChild(div);
+}
+
+/* =============================================================
+   AI
+   ============================================================= */
+function setAiSource(src) {
+  currentAiSource=src;
+  ['fwb','photo','doc'].forEach(s=>document.getElementById('src-'+s).classList.toggle('active',s===src));
+  const uz=document.getElementById('upload-zone');
+  const icon=document.getElementById('upload-icon');
+  const title=document.getElementById('upload-title');
+  if(src==='fwb') { uz.classList.remove('visible'); }
+  else if(src==='photo') { icon.textContent='📷'; title.textContent='Prends une photo du cours'; uz.classList.add('visible'); }
+  else { icon.textContent='📄'; title.textContent='Charge le document du prof'; uz.classList.add('visible'); }
+  if(!hasUpload) document.getElementById('upload-preview').classList.remove('visible');
+}
+
+// IDs dossiers Drive "Photos de cours Ethan" par matière
+const DRIVE_FOLDERS = {
+  francais: '1UubgH1MBYiUhjyOqX59uwJHKITfitew4',
+  maths:    '1TFh_sw9v0i2UnLlfzcG1CnR9lLI4EdmS',
+  sciences: '1AJKQM_hBWCgoe6NtbVOarWHeVqAE4vGE',
+  anglais:  '1HxbPjK5RBPBfx9c8Prt_vWuWZAoEBJBJ',
+  edm:      '1oLE9sCV66_bVgmhDFi7UagI0NIBCygdf',
+  latin:    '1OVsU30pi7y_pyIBekKcl4DGzt7Hxc5oZ',
+  religion: '1kmNkWJ5bjtncoe5Xxb9XiFKDkD3WoJd1',
+  techno:   '1rVx4DpP4Gzh9Ov_Dsa6GSAJXd4Ri3JNs',
+  sport:    '1rVx4DpP4Gzh9Ov_Dsa6GSAJXd4Ri3JNs',
+  natation: '1rVx4DpP4Gzh9Ov_Dsa6GSAJXd4Ri3JNs',
+  plastique:'1rVx4DpP4Gzh9Ov_Dsa6GSAJXd4Ri3JNs'
+};
+
+let capturedImageBase64 = null;
+let capturedImageMime = 'image/jpeg';
+
+function triggerCamera() {
+  document.getElementById('camera-input').click();
+}
+
+async function handlePhotoCapture(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const dataUrl = e.target.result;
+    capturedImageBase64 = dataUrl.split(',')[1];
+    capturedImageMime = file.type || 'image/jpeg';
+    document.getElementById('captured-img').src = dataUrl;
+    document.getElementById('upload-preview-img').style.display = 'block';
+    document.getElementById('upload-preview').classList.add('visible');
+    document.getElementById('upload-preview').textContent = '✓ Photo chargée — pose ta question !';
+    hasUpload = true;
+    showToast('Photo prête ✓ — pose ta question !');
+    saveToDrive(file, capturedImageBase64);
+  };
+  reader.readAsDataURL(file);
+  event.target.value = '';
+}
+
+async function saveToDrive(file, base64Data) {
+  try {
+    const matId = currentMatiere ? currentMatiere.id : null;
+    const folderId = matId && DRIVE_FOLDERS[matId] ? DRIVE_FOLDERS[matId] : '1rVx4DpP4Gzh9Ov_Dsa6GSAJXd4Ri3JNs';
+    const timestamp = new Date().toISOString().slice(0,16).replace('T','_').replace(':','h');
+    const matName = currentMatiere ? currentMatiere.n : 'Cours';
+    const fileName = matName + '_' + timestamp + '.jpg';
+    const boundary = 'BOUNDARY314159';
+    const metadata = JSON.stringify({ name: fileName, parents: [folderId] });
+    const body = '--' + boundary + '\r\n'
+      + 'Content-Type: application/json; charset=UTF-8\r\n\r\n'
+      + metadata + '\r\n'
+      + '--' + boundary + '\r\n'
+      + 'Content-Type: ' + file.type + '\r\n'
+      + 'Content-Transfer-Encoding: base64\r\n\r\n'
+      + base64Data + '\r\n'
+      + '--' + boundary + '--';
+    const resp = await fetch(
+      'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',
+      { method:'POST', headers:{'Content-Type':'multipart/related; boundary="'+boundary+'"'}, body }
+    );
+    if (resp.ok) console.log('Drive ✓', fileName);
+  } catch(e) {
+    console.log('Drive upload skipped:', e.message);
+  }
+}
+
+async function askAI() {
+  const q=document.getElementById('ai-question').value.trim();
+  if(!q) { showToast('Dis-moi ce que tu nas pas compris !'); return; }
+  if(!currentMatiere) { showToast('Selectionne une matiere dabord !'); return; }
+  const resp=document.getElementById('ai-response');
+  resp.className='ai-response-box loading';
+  resp.textContent='Je réfléchis';
+  const sourceCtx = currentAiSource==='fwb'?'Appuie-toi sur le programme officiel FWB 1ère secondaire.':
+    hasUpload?'Un document de cours a été chargé — appuie-toi dessus EN PRIORITÉ, complète avec le programme FWB.':
+    'Pas de document chargé — utilise le programme FWB.';
+  try {
+    // Construction du message — avec ou sans image
+    let userContent;
+    const ethanCtx = 'Tu es un assistant scolaire bienveillant pour Ethan, 12 ans, 1ere secondaire a Saint Roch Ferriere en Wallonie. TDAH + dysphasie. Aime One Piece et le basket.\n' + getProfileCtx() + '\n\n';
+    const ethanRules = '\nRegles STRICTES :\n- Max 3-4 phrases, une idee a la fois\n- Vocabulaire du cours explique simplement\n- Analogie concrete si utile (One Piece, basket)\n- Jamais de jargon sans explication immediate\n\nQuestion d Ethan : ' + q;
+    const matPrompt = currentMatiere ? currentMatiere.prompt : '';
+
+    if (capturedImageBase64 && hasUpload && currentAiSource === 'photo') {
+      // Envoi avec image — l'IA lit la photo du cours
+      userContent = [
+        {
+          type: 'image',
+          source: {
+            type: 'base64',
+            media_type: capturedImageMime,
+            data: capturedImageBase64
+          }
+        },
+        {
+          type: 'text',
+          text: ethanCtx + matPrompt + '\n\nIMPORTANT : une photo du cours est jointe. Appuie-toi dessus EN PRIORITE.' + ethanRules
+        }
+      ];
+    } else {
+      // Texte seul
+      userContent = ethanCtx + matPrompt + '\n' + sourceCtx + ethanRules;
+    }
+
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:300,
+        messages:[{role:'user', content: userContent}]
+      })
+    });
+    if(!r.ok) throw new Error('API error '+r.status);
+    const data=await r.json();
+    const text=data.content?.[0]?.text||'Réessaie dans un moment !';
+    resp.className='ai-response-box';
+    resp.textContent=text;
+    hasAiResponse=true;
+    document.getElementById('verify-btn').classList.add('visible');
+  } catch(e) {
+    resp.className='ai-response-box';
+    resp.textContent='Pas de connexion - reessaie quand tu as du reseau.';
+  }
+}
+
+/* =============================================================
+   QUIZ
+   ============================================================= */
+/* =============================================================
+   QUIZ — Mode rapide (banque) + Mode photo (IA)
+   ============================================================= */
+let quizMode = 'rapide';
+let quizNumQuestions = 5;
+let quizPhotoBase64 = null;
+let quizPhotoMime = 'image/jpeg';
+let quizScore = 0;
+let quizTotal = 0;
+let quizAnswered = 0;
+
+function setQuizMode(mode) {
+  quizMode = mode;
+  document.getElementById('qmode-rapide').classList.toggle('active', mode === 'rapide');
+  document.getElementById('qmode-photo').classList.toggle('active', mode === 'photo');
+  document.getElementById('quiz-mode-rapide').style.display = mode === 'rapide' ? 'block' : 'none';
+  document.getElementById('quiz-mode-photo').style.display = mode === 'photo' ? 'block' : 'none';
+  if (mode === 'rapide') startQuiz();
+}
+
+function setQuizNum(n) {
+  quizNumQuestions = n;
+  [3,5,8].forEach(x => {
+    const btn = document.getElementById('qnum-'+x);
+    if(btn) btn.classList.toggle('active', x === n);
+  });
+}
+
+function startQuiz() {
+  if(!currentMatiere) return;
+  const bank = QUIZ_BANK[currentMatiere.id];
+  if(!bank || !bank.length) {
+    showToast('Quiz pas encore dispo - utilise le mode photo !');
+    setQuizMode('photo');
+    return;
+  }
+  const q = bank[Math.floor(Math.random() * bank.length)];
+  document.getElementById('quiz-q').textContent = q.q;
+  const cr = document.getElementById('quiz-result');
+  cr.style.display = 'none'; cr.className = 'quiz-result';
+  const ch = document.getElementById('quiz-choices');
+  ch.innerHTML = '';
+  q.ch.forEach((c, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-choice'; btn.textContent = c;
+    btn.onclick = () => {
+      ch.querySelectorAll('.quiz-choice').forEach(b => b.style.pointerEvents = 'none');
+      if(i === q.ok) { btn.classList.add('correct'); cr.textContent = '🔥 ' + q.ex; cr.className = 'quiz-result ok'; }
+      else { btn.classList.add('wrong'); ch.querySelectorAll('.quiz-choice')[q.ok].classList.add('correct'); cr.textContent = '💡 ' + q.ex; cr.className = 'quiz-result ko'; }
+      cr.style.display = 'block';
+    };
+    ch.appendChild(btn);
+  });
+  document.getElementById('quiz-section').style.display = 'block';
+  document.getElementById('quiz-section').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function hideQuiz() {
+  document.getElementById('quiz-section').style.display = 'none';
+  quizPhotoBase64 = null;
+}
+
+// --- MODE PHOTO ---
+
+function handleQuizPhoto(event) {
+  const file = event.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    quizPhotoBase64 = e.target.result.split(',')[1];
+    quizPhotoMime = file.type || 'image/jpeg';
+    const preview = document.getElementById('quiz-photo-preview');
+    preview.src = e.target.result;
+    preview.classList.add('visible');
+    document.getElementById('quiz-photo-placeholder').style.display = 'none';
+    document.getElementById('quiz-photo-zone').classList.add('has-photo');
+    document.getElementById('quiz-generate-btn').disabled = false;
+    showToast('Photo chargée ✓ — génère le quiz !');
+  };
+  reader.readAsDataURL(file);
+  event.target.value = '';
+}
+
+async function generatePhotoQuiz() {
+  if(!quizPhotoBase64) { showToast('Prends une photo dabord !'); return; }
+
+  // Reset
+  quizScore = 0; quizAnswered = 0; quizTotal = quizNumQuestions;
+  document.getElementById('quiz-photo-questions').innerHTML = '';
+  document.getElementById('quiz-photo-actions').style.display = 'none';
+  document.getElementById('quiz-score-bar').style.display = 'none';
+  document.getElementById('quiz-generating').style.display = 'block';
+  document.getElementById('quiz-generate-btn').disabled = true;
+
+  const matName = currentMatiere ? currentMatiere.n : 'ce cours';
+
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1500,
+        messages: [{
+          role: 'user',
+          content: [
+            {
+              type: 'image',
+              source: { type: 'base64', media_type: quizPhotoMime, data: quizPhotoBase64 }
+            },
+            {
+              type: 'text',
+              text: `Tu es un professeur bienveillant qui aide Ethan (12 ans, 1ère secondaire, TDAH). 
+Regarde cette photo de cours/interro en ${matName} et génère exactement ${quizNumQuestions} questions QCM pour tester la compréhension d'Ethan.
+
+RÈGLES STRICTES :
+- Questions basées UNIQUEMENT sur ce qui est visible dans la photo
+- 4 choix par question (A/B/C/D)
+- Une seule bonne réponse
+- Difficulté progressive (facile → difficile)
+- Langage simple, direct, 12 ans
+- Explication courte de la bonne réponse (1 phrase max)
+
+FORMAT JSON STRICT — réponds UNIQUEMENT avec ce JSON, rien d'autre :
+{
+  "questions": [
+    {
+      "q": "Question ici ?",
+      "choices": ["Choix A", "Choix B", "Choix C", "Choix D"],
+      "correct": 0,
+      "explication": "Explication courte ici."
+    }
+  ]
+}`
+            }
+          ]
+        }]
+      })
+    });
+
+    const data = await r.json();
+    const text = data.content?.[0]?.text || '';
+
+    // Parse JSON
+    let parsed;
+    try {
+      const clean = text.replace(/```json|```/g, '').trim();
+      parsed = JSON.parse(clean);
+    } catch(e) {
+      throw new Error('Format invalide');
+    }
+
+    const questions = parsed.questions || [];
+    if(!questions.length) throw new Error('Aucune question générée');
+
+    document.getElementById('quiz-generating').style.display = 'none';
+    quizTotal = questions.length;
+
+    // Affiche score bar
+    document.getElementById('quiz-score-total').textContent = quizTotal;
+    document.getElementById('quiz-score-num').textContent = '0/' + quizTotal;
+    document.getElementById('quiz-score-fill').style.width = '0%';
+    document.getElementById('quiz-score-bar').style.display = 'flex';
+
+    // Génère les questions
+    const container = document.getElementById('quiz-photo-questions');
+    questions.forEach((q, qi) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-ai-question';
+      div.id = 'quiz-ai-q-' + qi;
+
+      // Stocke les explications dans un objet global pour éviter les problèmes d'imbrication
+      if(!window._quizExpls) window._quizExpls = {};
+      window._quizExpls[qi] = q.explication || '';
+      const LETTERS = ['A','B','C','D'];
+      const choicesHtml = q.choices.map((c, ci) => {
+        const letter = LETTERS[ci];
+        return '<button class="quiz-ai-choice" onclick="answerQuizPhoto(' + qi + ',' + ci + ',' + q.correct + ',window._quizExpls[' + qi + '],this)">'
+          + '<span style="font-weight:800;color:var(--accent);margin-right:6px">' + letter + '.</span>'
+          + c + '</button>';
+      }).join('');
+
+      div.innerHTML = `
+        <div class="quiz-ai-q-num">Question ${qi + 1} / ${questions.length}</div>
+        <div class="quiz-ai-q-text">${q.q}</div>
+        <div class="quiz-ai-choices">${choicesHtml}</div>
+        <div class="quiz-ai-explication" id="quiz-expl-${qi}"></div>
+      `;
+      container.appendChild(div);
+    });
+
+    document.getElementById('quiz-generate-btn').disabled = false;
+
+  } catch(e) {
+    document.getElementById('quiz-generating').style.display = 'none';
+    document.getElementById('quiz-generate-btn').disabled = false;
+    showToast('Erreur — réessaie ou prends une photo plus nette');
+    console.error(e);
+  }
+}
+
+function answerQuizPhoto(questionIdx, choiceIdx, correctIdx, explication, btn) {
+  // Désactive tous les boutons de cette question
+  const qDiv = document.getElementById('quiz-ai-q-' + questionIdx);
+  qDiv.querySelectorAll('.quiz-ai-choice').forEach(b => b.style.pointerEvents = 'none');
+
+  // Colore correct/wrong
+  btn.classList.add(choiceIdx === correctIdx ? 'correct' : 'wrong');
+  if(choiceIdx !== correctIdx) {
+    qDiv.querySelectorAll('.quiz-ai-choice')[correctIdx].classList.add('correct');
+  }
+
+  // Explication
+  const expl = document.getElementById('quiz-expl-' + questionIdx);
+  expl.textContent = (choiceIdx === correctIdx ? '🔥 ' : '💡 ') + explication;
+  expl.className = 'quiz-ai-explication ' + (choiceIdx === correctIdx ? 'ok' : 'ko');
+
+  // Score
+  if(choiceIdx === correctIdx) quizScore++;
+  quizAnswered++;
+
+  // Met à jour barre score
+  document.getElementById('quiz-score-num').textContent = quizScore + '/' + quizTotal;
+  const pct = Math.round((quizScore / quizTotal) * 100);
+  document.getElementById('quiz-score-fill').style.width = pct + '%';
+
+  // Si toutes répondues → affiche boutons fin
+  if(quizAnswered >= quizTotal) {
+    setTimeout(() => {
+      const finalMsg = quizScore === quizTotal ? '🏆 Parfait ! ' + quizScore + '/' + quizTotal :
+                       quizScore >= quizTotal * 0.6 ? '💪 Bien joué ! ' + quizScore + '/' + quizTotal :
+                       '📚 Continue ! ' + quizScore + '/' + quizTotal + ' — relis tes notes';
+      showToast(finalMsg);
+      document.getElementById('quiz-photo-actions').style.display = 'flex';
+      document.getElementById('quiz-photo-actions').style.flexDirection = 'column';
+    }, 500);
+  }
+}
+
+function retryQuizPhoto() {
+  quizScore = 0; quizAnswered = 0;
+  document.getElementById('quiz-photo-questions').innerHTML = '';
+  document.getElementById('quiz-photo-actions').style.display = 'none';
+  document.getElementById('quiz-score-bar').style.display = 'none';
+  // Garde la même photo, regénère
+  if(quizPhotoBase64) generatePhotoQuiz();
+}
+
+/* =============================================================
+   TIMER
+   ============================================================= */
+function buildQGMatRow() {
+  const row=document.getElementById('qg-mat-row');
+  MATIERES_DEF.forEach((m,i)=>{
+    const btn=document.createElement('button');
+    btn.className='qg-mat-btn'+(i===1?' sel':'');
+    if(i===1){btn.style.borderColor=m.c;btn.style.color=m.c;}
+    btn.textContent=m.e+' '+m.n;
+    btn.onclick=()=>{
+      document.querySelectorAll('.qg-mat-btn').forEach(b=>{b.classList.remove('sel');b.style.borderColor='';b.style.color='';});
+      btn.classList.add('sel');
+      btn.style.borderColor=m.c;
+      btn.style.color=m.c;
+      selTimerMat=m;
+      document.getElementById('t-mat').textContent=m.e+' '+m.n;
+      if(!timerRunning&&!manuallyPaused&&!autoPaused) {
+        document.getElementById('t-ring').style.stroke=m.c;
+      }
+    };
+    row.appendChild(btn);
+  });
+}
+
+function updateTimerDisplay() {
+  const m=Math.floor(timerSec/60),s=timerSec%60;
+  document.getElementById('t-num').textContent=m+':'+(s<10?'0':'')+s;
+  document.getElementById('t-total').textContent=m+':'+(s<10?'0':'')+s;
+  document.getElementById('t-pauses').textContent=autoPauseCount;
+  document.getElementById('t-today').textContent=sessionsToday;
+  const circ=553, ratio=Math.min(1,timerSec/(90*60));
+  document.getElementById('t-ring').style.strokeDashoffset=circ-(circ*ratio);
+}
+
+function setTimerStatus(type,txt) {
+  const pill=document.getElementById('t-status-pill');
+  pill.className='status-pill '+type;
+  document.getElementById('t-status-txt').textContent=txt;
+}
+
+function setTimerPhase(txt,color) {
+  const el=document.getElementById('t-phase');
+  el.textContent=txt; el.style.color=color||'var(--text-2)';
+}
+
+function togglePlay() {
+  if(!timerRunning&&!manuallyPaused&&!autoPaused) startTimer();
+  else if(manuallyPaused||autoPaused) resumeTimer();
+}
+
+function startTimer() {
+  timerRunning=true; manuallyPaused=false; secSinceAutoPause=0;
+  document.getElementById('btn-play').textContent='▶️';
+  document.getElementById('btn-pause').disabled=false;
+  document.getElementById('btn-stop').disabled=false;
+  document.getElementById('t-mat').textContent=selTimerMat.e+' '+selTimerMat.n;
+  document.getElementById('t-ring').style.stroke=selTimerMat.c;
+  setTimerStatus('working','En cours…');
+  setTimerPhase('CONCENTRATION',selTimerMat.c);
+  showTimerBubble();
+  timerInterval=setInterval(timerTick,1000);
+}
+
+function timerTick() {
+  if(!timerRunning) return;
+  timerSec++; secSinceAutoPause++;
+  updateTimerDisplay();
+  if(secSinceAutoPause>=WORK_INTERVAL) triggerAutoPause();
+}
+
+function timerManualPause() {
+  if(!timerRunning) return;
+  clearInterval(timerInterval); timerRunning=false; manuallyPaused=true;
+  document.getElementById('btn-play').textContent='▶️';
+  setTimerStatus('paused-m','En pause ⏸');
+  setTimerPhase('PAUSE MANUELLE','var(--orange)');
+  updateBubblePaused();
+  showToast('En pause — reprends quand tu veux !');
+}
+
+function triggerAutoPause() {
+  clearInterval(timerInterval); timerRunning=false; autoPaused=true;
+  autoPauseCount++; secSinceAutoPause=0;
+  document.getElementById('auto-pause-banner').classList.add('visible');
+  setTimerStatus('paused-a','Pause recharge 🌿');
+  setTimerPhase('PAUSE 5 MIN','var(--ok)');
+  document.getElementById('btn-play').textContent='▶️';
+  updateBubblePaused();
+  playBeep();
+  showToast('Pause ! Lève-toi, bois, étire-toi 💧');
+}
+
+function skipAutoPause() {
+  document.getElementById('auto-pause-banner').classList.remove('visible');
+  autoPaused=false; resumeTimer();
+}
+
+function resumeTimer() {
+  manuallyPaused=false; autoPaused=false; timerRunning=true;
+  document.getElementById('auto-pause-banner').classList.remove('visible');
+  setTimerStatus('working','En cours…');
+  setTimerPhase('CONCENTRATION',selTimerMat.c);
+  updateBubbleWorking();
+  timerInterval=setInterval(timerTick,1000);
+  showToast('C\'est reparti ! 💪');
+}
+
+function openStopModal() {
+  clearInterval(timerInterval); timerRunning=false;
+  document.getElementById('stop-modal').classList.add('open');
+}
+
+function confirmStop(result,emoji,label) {
+  closeModal('stop-modal');
+  sessionsToday++;
+  // Journal
+  const now=new Date();
+  const days=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+  const mins=Math.floor(timerSec/60);
+  const item=document.createElement('div');
+  item.className='jl-item';
+  item.innerHTML=`<div class="jl-left"><div class="jl-date">${days[now.getDay()]}</div><span class="jl-emoji">${emoji}</span></div>
+    <div class="jl-body"><div class="jl-session">⚡ ${selTimerMat.e} ${selTimerMat.n} · ${mins} min</div><div class="jl-note">${label}</div></div>`;
+  document.getElementById('journal-list').prepend(item);
+  // Persist sessions
+  store('sessions_today', sessionsToday);
+  store('total_work_mins', (retrieve('total_work_mins',0)+mins));
+  // Reset
+  timerSec=0; manuallyPaused=false; autoPaused=false; secSinceAutoPause=0;
+  document.getElementById('btn-pause').disabled=true;
+  document.getElementById('btn-stop').disabled=true;
+  document.getElementById('btn-play').textContent='▶️';
+  setTimerStatus('stopped','Session terminée');
+  setTimerPhase('TERMINÉ','var(--ok)');
+  updateTimerDisplay();
+  hideTimerBubble();
+  document.getElementById('t-today').textContent=sessionsToday;
+  const msgs={done:'🔥 Bien joué !',review:'👍 T\'as avancé, continue !',unsure:'💡 Si pas sûr, demande à papa ce soir.'};
+  showToast(msgs[result]||'Session enregistrée ✓');
+  playBeep();
+  // Update stats rapport
+  document.getElementById('rd-sessions').textContent=sessionsToday;
+  const totalM=retrieve('total_work_mins',0);
+  document.getElementById('rd-temps').textContent=totalM>=60?Math.floor(totalM/60)+'h'+(totalM%60?String(totalM%60)+'min':''):totalM+'min';
+}
+
+/* =============================================================
+   TIMER BUBBLE
+   ============================================================= */
+function showTimerBubble() {
+  const b=document.getElementById('timer-bubble');
+  b.classList.add('visible');
+  b.classList.remove('paused');
+  b.style.background='var(--accent)';
+}
+function hideTimerBubble() {
+  const b=document.getElementById('timer-bubble');
+  b.classList.remove('visible','expanded');
+  bubbleExpanded=false;
+}
+function updateBubblePaused() {
+  const b=document.getElementById('timer-bubble');
+  b.classList.add('paused');
+  b.style.background='var(--orange)';
+}
+function updateBubbleWorking() {
+  const b=document.getElementById('timer-bubble');
+  b.classList.remove('paused');
+  b.style.background=selTimerMat.c||'var(--accent)';
+}
+function toggleTimerBubble() {
+  const b=document.getElementById('timer-bubble');
+  bubbleExpanded=!bubbleExpanded;
+  b.classList.toggle('expanded',bubbleExpanded);
+}
+
+/* =============================================================
+   QG — ROUTINE
+   ============================================================= */
+function toggleRoutine() {
+  const t=document.getElementById('routine-toggle');
+  t.classList.toggle('on');
+  const sub=document.getElementById('routine-sub');
+  if(t.classList.contains('on')){
+    const now=new Date();
+    const str='Faite à '+now.getHours()+'h'+String(now.getMinutes()).padStart(2,'0');
+    sub.textContent=str; sub.style.color='var(--ok)';
+    store('routine_today',{done:true,time:str,date:new Date().toDateString()});
+    document.getElementById('rd-routine').textContent=(parseInt(document.getElementById('rd-routine').textContent)||4)+'/5';
+  } else {
+    sub.textContent='Pas encore'; sub.style.color='';
+  }
+}
+
+function selHumeur(btn,emoji,label) {
+  document.querySelectorAll('#qg-routine .h-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  selHumeurVal={emoji,label};
+}
+
+function saveRoutine() {
+  if(!selHumeurVal){showToast('Dis-moi comment tu te sens !');return;}
+  const note=document.getElementById('routine-note').value.trim();
+  const now=new Date();
+  const days=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+  const item=document.createElement('div'); item.className='rh-item';
+  item.innerHTML=`<span class="rh-date">${days[now.getDay()]}</span><span class="rh-emoji">${selHumeurVal.emoji}</span><span class="rh-note">${note||selHumeurVal.label}</span>`;
+  document.getElementById('routine-hist').prepend(item);
+  document.getElementById('routine-note').value='';
+  document.querySelectorAll('#qg-routine .h-btn').forEach(b=>b.classList.remove('sel'));
+  // Persist
+  const hist=retrieve('routine_hist',[]);
+  hist.unshift({day:days[now.getDay()],emoji:selHumeurVal.emoji,note:note||selHumeurVal.label});
+  store('routine_hist',hist.slice(0,10));
+  document.getElementById('rd-humeur').textContent=selHumeurVal.emoji;
+  selHumeurVal=null;
+  showToast('Routine enregistrée ✓');
+}
+
+/* =============================================================
+   QG — RESSENTI
+   ============================================================= */
+function selRs(btn,emoji,label) {
+  document.querySelectorAll('#rs-row .h-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  selRsVal={emoji,label};
+}
+
+function saveRessenti() {
+  const note=document.getElementById('rs-input').value.trim();
+  if(!selRsVal&&!note){showToast('Note ton ressenti !');return;}
+  const now=new Date();
+  const days=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+  const mins=Math.floor(timerSec/60)||25;
+  const item=document.createElement('div'); item.className='jl-item';
+  item.innerHTML=`<div class="jl-left"><div class="jl-date">${days[now.getDay()]}</div><span class="jl-emoji">${selRsVal?selRsVal.emoji:'😐'}</span></div>
+    <div class="jl-body"><div class="jl-session">⚡ ${selTimerMat.e} ${selTimerMat.n} · ${mins} min</div><div class="jl-note">${note||selRsVal?.label||''}</div></div>`;
+  document.getElementById('journal-list').prepend(item);
+  document.getElementById('rs-input').value='';
+  document.querySelectorAll('#rs-row .h-btn').forEach(b=>b.classList.remove('sel'));
+  // Persist
+  const jl=retrieve('journal',[]);
+  jl.unshift({day:days[now.getDay()],emoji:selRsVal?selRsVal.emoji:'😐',mat:selTimerMat.n,mins,note:note||selRsVal?.label||''});
+  store('journal',jl.slice(0,30));
+  selRsVal=null;
+  showToast('Noté dans ton journal ✓');
+}
+
+/* =============================================================
+   QG — EVOLUTION
+   ============================================================= */
+function selCq(id,btn,val) {
+  document.getElementById(id).querySelectorAll('.cq-v').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  checkinAnswers[id]=val;
+}
+function saveCheckin() {
+  if(Object.keys(checkinAnswers).length<2){showToast('Réponds à au moins 2 questions !');return;}
+  store('checkin_week',checkinAnswers);
+  showToast('Check-in enregistré ✓');
+}
+
+/* =============================================================
+   QG — RAPPORT
+   ============================================================= */
+function setRapportDate() {
+  const now=new Date();
+  const days=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+  const months=['jan','fév','mar','avr','mai','juin','juil','août','sep','oct','nov','déc'];
+  const mon=new Date(now);
+  mon.setDate(now.getDate()-(now.getDay()===0?6:now.getDay()-1));
+  const fri=new Date(mon); fri.setDate(mon.getDate()+4);
+  document.getElementById('rapport-date').textContent=
+    days[mon.getDay()]+' '+mon.getDate()+' → '+days[fri.getDay()]+' '+fri.getDate()+' '+months[fri.getMonth()];
+}
+
+async function generateRapport() {
+  const btn=document.getElementById('generate-btn');
+  const prev=document.getElementById('rapport-preview');
+  btn.textContent='⏳ Génération…'; btn.disabled=true;
+  prev.className='rapport-preview loading'; prev.textContent='Analyse en cours…';
+  document.getElementById('rapport-blocs').style.display='none';
+
+  const sessions=document.getElementById('rd-sessions').textContent;
+  const temps=document.getElementById('rd-temps').textContent;
+  const routine=document.getElementById('rd-routine').textContent;
+  const humeur=document.getElementById('rd-humeur').textContent;
+  const jl=retrieve('journal',[]);
+  const jlSummary=jl.slice(0,5).map(j=>`${j.mat||'?'}: ${j.note}`).join(' | ')||'aucun ressenti noté';
+  const questionsAI=jl.slice(0,5).map(j=>j.note).filter(Boolean).join(', ')||'aucune';
+  const ciScore=Object.values(checkinAnswers||{}).length?
+    (Object.values(checkinAnswers).reduce((a,b)=>a+b,0)/Object.values(checkinAnswers).length).toFixed(1):'non renseigné';
+
+  try {
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:500,
+        messages:[{role:'user',content:`Tu es l'assistant d'une tablette scolaire utilisée par Ethan Claes, 12 ans, 1ère secondaire (TDAH, dysphasie, sous Equasym). Tu rédiges un rapport HEBDOMADAIRE pour son père Jacek.
+
+DONNÉES DE LA SEMAINE :
+- Sessions de travail : ${sessions}
+- Temps total : ${temps}
+- Routine matin suivie : ${routine} jours
+- Humeur globale : ${humeur}
+- Score check-in bien-être : ${ciScore}/4
+- Ressentis notés : "${jlSummary}"
+
+FORMAT DE RÉPONSE STRICT — utilise exactement ces balises :
+
+BILAN: [1-2 phrases max — Ethan était-il motivé, concentré, appliqué cette semaine ? Base-toi sur les données. Sois factuel et bienveillant.]
+
+RESSENTI: [1 phrase — Comment il a vécu les séances en général ? S'il a eu du mal, l'exprime clairement sans dramatiser.]
+
+RECO: [1 recommandation concrète pour le père OU "RAS" si tout va bien. Peut concerner l'organisation, l'encouragement, le timing...]
+
+UPDATE: [Si les données suggèrent un ajustement de l'appli (ex: sessions trop courtes = réduire le timer, humeur basse = ajouter du renforcement positif), écris-le en 1 phrase. Sinon écris "RAS".]`}]
+      })
+    });
+    const data=await r.json();
+    const text=data.content?.[0]?.text||'';
+
+    // Parse les 4 blocs
+    // Parse les 4 blocs — méthode robuste sans regex multiline
+    function parseBloc(txt, key) {
+      const idx = txt.indexOf(key + ':');
+      if (idx === -1) return '';
+      const after = txt.slice(idx + key.length + 1).trim();
+      const keys = ['BILAN','RESSENTI','RECO','UPDATE'];
+      let end = after.length;
+      keys.forEach(k => {
+        if (k === key) return;
+        const i = after.indexOf('\n' + k + ':');
+        if (i !== -1 && i < end) end = i;
+      });
+      return after.slice(0, end).trim();
+    }
+    const bilan = parseBloc(text,'BILAN') || 'Données insuffisantes pour cette semaine.';
+    const ressenti = parseBloc(text,'RESSENTI') || '';
+    const reco = parseBloc(text,'RECO') || '';
+    const update = parseBloc(text,'UPDATE') || '';
+
+    rapportGenerated = bilan;
+    rapportReco = reco;
+
+    // Affiche les blocs
+    prev.style.display='none';
+    document.getElementById('rapport-blocs').style.display='block';
+    document.getElementById('rapport-bilan').textContent = bilan;
+    document.getElementById('rapport-ressenti').textContent = ressenti || 'Pas de ressenti noté cette semaine.';
+
+    if(reco && reco !== 'RAS') {
+      document.getElementById('rapport-reco-txt').textContent = reco;
+      document.getElementById('rapport-reco-bloc').style.display='block';
+    } else {
+      document.getElementById('rapport-reco-bloc').style.display='none';
+    }
+
+    if(update && update !== 'RAS') {
+      document.getElementById('rapport-update-txt').textContent = update;
+      document.getElementById('rapport-update-bloc').style.display='block';
+    } else {
+      document.getElementById('rapport-update-bloc').style.display='none';
+    }
+
+    document.getElementById('send-btn').style.display='block';
+    btn.textContent='🔄 Regénérer'; btn.disabled=false;
+
+  } catch(e) {
+    prev.style.display='block';
+    prev.className='rapport-preview';
+    prev.textContent='Pas de connexion — réessaie plus tard.';
+    btn.textContent='🤖 Générer le rapport'; btn.disabled=false;
+  }
+}
+
+function sendRapport() {
+  const date=document.getElementById('rapport-date').textContent;
+  const sessions=document.getElementById('rd-sessions').textContent;
+  const temps=document.getElementById('rd-temps').textContent;
+  const routine=document.getElementById('rd-routine').textContent;
+  const humeur=document.getElementById('rd-humeur').textContent;
+
+  const bilan=document.getElementById('rapport-bilan').textContent||rapportGenerated||'';
+  const ressenti=document.getElementById('rapport-ressenti').textContent||'';
+  const recoBloc=document.getElementById('rapport-reco-bloc');
+  const updateBloc=document.getElementById('rapport-update-bloc');
+  const reco=recoBloc&&recoBloc.style.display!=='none'?'\n\n💡 Recommandation :\n'+document.getElementById('rapport-reco-txt').textContent:'';
+  const update=updateBloc&&updateBloc.style.display!=='none'?'\n\n🔧 Update appli conseillé :\n'+document.getElementById('rapport-update-txt').textContent:'';
+
+  const body=[
+    `📊 RAPPORT TABLETTE ETHAN — ${date}`,
+    ``,
+    `📈 BILAN DES SÉANCES`,
+    bilan,
+    ``,
+    `💬 COMMENT IL S'EST SENTI`,
+    ressenti,
+    reco,
+    update,
+    ``,
+    `—`,
+    `Sessions : ${sessions} · Temps : ${temps} · Routine : ${routine} jours · Humeur : ${humeur}`,
+    `Généré depuis la tablette d'Ethan`
+  ].join('\n');
+
+  window.open('mailto:jacek.claes@gmail.com?subject=📊 Rapport Ethan — '+date+'&body='+encodeURIComponent(body),'_blank');
+  showToast('Email prêt à envoyer ✓');
+}
+
+/* =============================================================
+   EXTRA SCOLAIRE
+   ============================================================= */
+function selExtraType(btn,emoji,label,cls) {
+  document.querySelectorAll('#extra-modal .type-btn').forEach(b=>{b.className='type-btn';});
+  btn.classList.add(cls);
+  selExtraTypeVal={emoji,label};
+}
+function openExtraModal() { openModal('extra-modal'); }
+function saveExtra() {
+  const name=document.getElementById('extra-name').value.trim();
+  const time=document.getElementById('extra-time').value;
+  const lieu=document.getElementById('extra-lieu').value.trim();
+  if(!name){showToast('Donne un nom !');return;}
+  const h=time.split(':')[0]+'h'+time.split(':')[1];
+  const div=document.createElement('div'); div.className='extra-item';
+  div.innerHTML=`<span class="extra-icon">${selExtraTypeVal.emoji}</span>
+    <div><div class="extra-name">${selExtraTypeVal.label} — ${name}</div><div class="extra-time">${h}${lieu?' · '+lieu:''}</div></div>`;
+  document.getElementById('extra-list').appendChild(div);
+  closeModal('extra-modal');
+  document.getElementById('extra-name').value='';
+  document.getElementById('extra-lieu').value='';
+  showToast('Activité ajoutée ✓');
+}
+
+/* =============================================================
+   AGENDA MATIERE
+   ============================================================= */
+function selAgendaType(type) {
+  selAgendaTypeVal=type;
+  document.getElementById('at-dev').className='type-btn'+(type==='devoir'?' sel-dev':'');
+  document.getElementById('at-int').className='type-btn'+(type==='interro'?' sel-int':'');
+  document.getElementById('agenda-modal-title').textContent=type==='devoir'?'📝 Ajouter un devoir':'⚡ Ajouter une interro';
+}
+function openAgendaModal() {
+  const tomorrow=new Date(); tomorrow.setDate(tomorrow.getDate()+1);
+  document.getElementById('agenda-date').valueAsDate=tomorrow;
+  openModal('agenda-modal');
+}
+function saveAgenda() {
+  if(!currentMatiere) return;
+  const desc=document.getElementById('agenda-desc').value.trim();
+  const dateVal=document.getElementById('agenda-date').value;
+  if(!desc){showToast('Décris le devoir !');return;}
+  const d=new Date(dateVal);
+  const days=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+  const months=['jan','fév','mar','avr','mai','jun','jul','août','sep','oct','nov','déc'];
+  const dateStr=days[d.getDay()]+' '+d.getDate()+' '+months[d.getMonth()];
+  const item={type:selAgendaTypeVal,desc,date:dateStr,dateObj:dateVal,mat:currentMatiere.n};
+  // Persist
+  const list=retrieve('mat_devoirs_'+currentMatiere.id,[]);
+  list.push(item); store('mat_devoirs_'+currentMatiere.id,list);
+  const global=retrieve('devoirs_global',[]); global.push(item); store('devoirs_global',global);
+  renderAgendaItem(item,currentMatiere.c);
+  closeModal('agenda-modal');
+  document.getElementById('agenda-desc').value='';
+  showToast('Ajouté au planning ✓');
+  buildCeSoir(); buildUrgent();
+}
+
+/* =============================================================
+   BROUILLARD
+   ============================================================= */
+function openBrouillard() { openModal('brouillard-modal'); }
+function doRespire() {
+  closeModal('brouillard-modal');
+  openModal('respire-modal');
+  startRespire();
+}
+function doNote() {
+  closeModal('brouillard-modal');
+  navTo('aujourd');
+  showToast('Prends ton journal de bord…');
+}
+function doAppeler() {
+  closeModal('brouillard-modal');
+  window.open('tel:','_self');
+}
+function startRespire() {
+  const phases=[
+    {txt:'Inspire…',dur:4},{txt:'Retiens…',dur:4},
+    {txt:'Expire…',dur:4},{txt:'Retiens…',dur:4}
+  ];
+  let pi=0, tick=0;
+  const circle=document.getElementById('respire-circle');
+  const txt=document.getElementById('respire-txt');
+  const cnt=document.getElementById('respire-count');
+  const sizes=['🟢','🟡','🟠','🔴'];
+  respireInterval=setInterval(()=>{
+    const phase=phases[pi%phases.length];
+    txt.textContent=phase.txt;
+    cnt.textContent=(phase.dur-tick)+' secondes';
+    circle.textContent=sizes[Math.floor((tick/phase.dur)*4)%4]||'🟢';
+    tick++;
+    if(tick>=phase.dur){tick=0;pi++;}
+    if(pi>=phases.length*3){clearInterval(respireInterval);closeModal('respire-modal');showToast('Mieux ? 💪');}
+  },1000);
+}
+function clearRespire() { clearInterval(respireInterval); }
+
+/* =============================================================
+   MIC
+   ============================================================= */
+function startMicFor(targetId, e, pitemIdx) {
+  if(e) e.preventDefault();
+  const micId=e?.target?.id||'';
+  const micEl=document.getElementById(micId)||e?.currentTarget;
+  if(micEl){micEl.classList.add('pressing');micEl.textContent='🔴';}
+  const waveId=pitemIdx!==undefined?'note-wave-'+pitemIdx:'ai-wave';
+  const wave=document.getElementById(waveId);
+  if(wave) wave.classList.add('active');
+  if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    micRecognition=new SR();
+    micRecognition.lang='fr-FR'; micRecognition.continuous=true; micRecognition.interimResults=true;
+    micRecognition.onresult=ev=>{
+      const txt=Array.from(ev.results).map(r=>r[0].transcript).join('');
+      const el=document.getElementById(targetId);
+      if(el) el.value=txt;
+    };
+    micRecognition.onerror=()=>stopMic(micId);
+    micRecognition.start();
+  } else {
+    setTimeout(()=>{
+      const el=document.getElementById(targetId);
+      if(el) el.value='exemple de dictée';
+    },1000);
+  }
+  micTarget=targetId;
+}
+
+function stopMic(micId) {
+  const micEl=document.getElementById(micId);
+  if(micEl){micEl.classList.remove('pressing');micEl.textContent='🎤';}
+  document.querySelectorAll('.wave-bars').forEach(w=>w.classList.remove('active'));
+  if(micRecognition){try{micRecognition.stop();}catch(e){} micRecognition=null;}
+  // Extract keywords if note field
+  if(micTarget&&micTarget.includes('note-inp')){
+    const el=document.getElementById(micTarget);
+    if(el&&el.value.trim()) el.value=extractKeywords(el.value.trim());
+  }
+}
+
+/* =============================================================
+   FAB MIC
+   ============================================================= */
+function setupFabMic() {
+  const fab=document.getElementById('mic-fab');
+  fab.addEventListener('click',()=>openModal('mic-modal'));
+}
+
+function startFabMic(e) {
+  if(e) e.preventDefault();
+  const btn=document.getElementById('mic-modal-btn');
+  btn.classList.add('pressing'); btn.textContent='🔴';
+  document.getElementById('mic-modal-wave').classList.add('active');
+  if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    fabMicRecognition=new SR();
+    fabMicRecognition.lang='fr-FR'; fabMicRecognition.continuous=false;
+    fabMicRecognition.onresult=ev=>{
+      fabTranscribed=ev.results[0][0].transcript;
+      const kw=extractKeywords(fabTranscribed);
+      const res=document.getElementById('mic-modal-result');
+      res.style.cssText='color:var(--text);font-style:normal;min-height:50px;margin-bottom:14px';
+      res.innerHTML=`<span style="font-size:11px;color:var(--text-2)">T'as dit :</span> ${fabTranscribed}<br><span style="font-size:11px;color:var(--text-2);display:block;margin-top:6px">→</span> <strong>${kw}</strong>`;
+      document.getElementById('mic-modal-save').disabled=false;
+      stopFabMic();
+    };
+    fabMicRecognition.onerror=()=>stopFabMic();
+    fabMicRecognition.start();
+  } else {
+    setTimeout(()=>{
+      fabTranscribed='devoir maths page 34';
+      const res=document.getElementById('mic-modal-result');
+      res.style.cssText='color:var(--text);font-style:normal;min-height:50px;margin-bottom:14px';
+      res.innerHTML=`→ <strong>${extractKeywords(fabTranscribed)}</strong>`;
+      document.getElementById('mic-modal-save').disabled=false;
+      stopFabMic();
+    },1000);
+  }
+}
+
+function stopFabMic() {
+  const btn=document.getElementById('mic-modal-btn');
+  btn.classList.remove('pressing'); btn.textContent='🎤';
+  document.getElementById('mic-modal-wave').classList.remove('active');
+  if(fabMicRecognition){try{fabMicRecognition.stop();}catch(e){}}
+}
+
+function saveFabMic() {
+  closeModal('mic-modal');
+  showToast('Note enregistrée dans le journal ✓');
+  document.getElementById('mic-modal-result').textContent='Appuie sur le micro et parle normalement…';
+  document.getElementById('mic-modal-result').style.cssText='';
+  document.getElementById('mic-modal-save').disabled=true;
+  fabTranscribed='';
+}
+
+/* =============================================================
+   DRAGGABLE — mic-fab + timer-bubble
+   ============================================================= */
+function setupDraggable() {
+  makeDraggable(document.getElementById('mic-fab'));
+  makeDraggable(document.getElementById('timer-bubble'),true);
+}
+
+function makeDraggable(el, bubbleMode=false) {
+  if(!el) return;
+  let startX,startY,origX,origY,isDragging=false,isMouseDown=false;
+
+  function onStart(e) {
+    if(bubbleMode && bubbleExpanded) return;
+    isMouseDown=true; isDragging=false;
+    const touch=e.touches?e.touches[0]:e;
+    startX=touch.clientX; startY=touch.clientY;
+    const rect=el.getBoundingClientRect();
+    origX=rect.left; origY=rect.top;
+    el.style.cursor='grabbing';
+    e.preventDefault();
+  }
+
+  function onMove(e) {
+    if(!isMouseDown) return;
+    const touch=e.touches?e.touches[0]:e;
+    const dx=touch.clientX-startX;
+    const dy=touch.clientY-startY;
+    if(!isDragging && (Math.abs(dx)>8||Math.abs(dy)>8)) isDragging=true;
+    if(!isDragging) return;
+    const nx=Math.max(0,Math.min(window.innerWidth-el.offsetWidth,origX+dx));
+    const ny=Math.max(0,Math.min(window.innerHeight-el.offsetHeight,origY+dy));
+    el.style.left=nx+'px';
+    el.style.top=ny+'px';
+    el.style.right='auto';
+    el.style.bottom='auto';
+    el.style.transform='none';
+    e.preventDefault();
+  }
+
+  function onEnd(e) {
+    if(!isMouseDown) return;
+    isMouseDown=false;
+    el.style.cursor='grab';
+    if(!isDragging && !bubbleMode) openModal('mic-modal');
+    isDragging=false;
+  }
+
+  el.addEventListener('mousedown',onStart);
+  el.addEventListener('touchstart',onStart,{passive:false});
+  window.addEventListener('mousemove',onMove);
+  window.addEventListener('touchmove',onMove,{passive:false});
+  window.addEventListener('mouseup',onEnd);
+  window.addEventListener('touchend',onEnd);
+}
+
+/* =============================================================
+   NAVIGATION
+   ============================================================= */
+function navTo(section) {
+  const screens=['aujourd','semaine','matieres','matiere-detail','qg'];
+  screens.forEach(s=>document.getElementById('screen-'+s)?.classList.remove('active'));
+  const el=document.getElementById('screen-'+section);
+  if(el) el.classList.add('active');
+  // Tab bar
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  const tabMap={'aujourd':0,'semaine':1,'matieres':2,'qg':3};
+  const tabs=document.querySelectorAll('.tab-btn');
+  if(tabMap[section]!==undefined) tabs[tabMap[section]]?.classList.add('active');
+  // Bottom nav
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const navMap={'aujourd':'nav-aujourd','semaine':'nav-semaine','matieres':'nav-matieres','qg':'nav-qg'};
+  if(navMap[section]) document.getElementById(navMap[section])?.classList.add('active');
+  // Header
+  const titles={'aujourd':'Mon École','semaine':'Ma semaine','matieres':'Mes matières','matiere-detail':'','qg':'Mon QG'};
+  if(titles[section]!==undefined) document.getElementById('header-title').textContent=titles[section]==='Mon QG'?'🏴‍☠️ Mon QG':titles[section];
+  currentNav=section;
+  // Show/hide tabs
+  const showTabs=['aujourd','semaine','matieres','qg'];
+  document.getElementById('tab-bar').style.display=showTabs.includes(section)?'flex':'none';
+}
+
+function navToRaw(section) { navTo(section); }
+
+function switchInner(tab) {
+  ['expliquer','notes','agenda'].forEach(t=>{
+    document.getElementById('inner-'+t)?.classList.toggle('active',t===tab);
+  });
+  document.querySelectorAll('#inner-tabs .inner-tab').forEach((el,i)=>{
+    el.classList.toggle('active',['expliquer','notes','agenda'][i]===tab);
+  });
+  currentInner=tab;
+}
+
+function switchQG(tab) {
+  ['timer','routine','ressenti','evolution','rapport'].forEach(t=>{
+    document.getElementById('qg-'+t)?.classList.toggle('active',t===tab);
+  });
+  document.querySelectorAll('#qg-tabs .inner-tab').forEach((el,i)=>{
+    el.classList.toggle('active',['timer','routine','ressenti','evolution','rapport'][i]===tab);
+  });
+  currentQG=tab;
+}
+
+/* =============================================================
+   MODALS
+   ============================================================= */
+function openModal(id) { document.getElementById(id)?.classList.add('open'); }
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m=>{
+  m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('open'); });
+});
+
+/* =============================================================
+   STORED DATA RESTORE
+   ============================================================= */
+function loadStoredData() {
+  // Sessions today
+  const today=new Date().toDateString();
+  const lastDay=retrieve('sessions_last_day','');
+  if(lastDay!==today) { store('sessions_today',0); store('sessions_last_day',today); store('total_work_mins',0); }
+  sessionsToday=retrieve('sessions_today',0);
+  document.getElementById('t-today').textContent=sessionsToday;
+  document.getElementById('rd-sessions').textContent=sessionsToday||3;
+  // Routine hist
+  const hist=retrieve('routine_hist',[]);
+  if(hist.length) {
+    document.getElementById('routine-hist').innerHTML='';
+    hist.slice(0,5).forEach(h=>{
+      const item=document.createElement('div'); item.className='rh-item';
+      item.innerHTML=`<span class="rh-date">${h.day}</span><span class="rh-emoji">${h.emoji}</span><span class="rh-note">${h.note}</span>`;
+      document.getElementById('routine-hist').appendChild(item);
+    });
+  }
+  // Journal
+  const jl=retrieve('journal',[]);
+  if(jl.length) {
+    document.getElementById('journal-list').innerHTML='';
+    jl.slice(0,5).forEach(j=>{
+      const item=document.createElement('div'); item.className='jl-item';
+      item.innerHTML=`<div class="jl-left"><div class="jl-date">${j.day}</div><span class="jl-emoji">${j.emoji}</span></div>
+        <div class="jl-body"><div class="jl-session">⚡ ${j.mat} · ${j.mins} min</div><div class="jl-note">${j.note}</div></div>`;
+      document.getElementById('journal-list').appendChild(item);
+    });
+  }
+  // Total work
+  const totalM=retrieve('total_work_mins',0);
+  if(totalM>0) document.getElementById('rd-temps').textContent=totalM>=60?Math.floor(totalM/60)+'h'+(totalM%60?String(totalM%60)+'min':''):totalM+'min';
+  buildUrgent();
+}
+
+/* =============================================================
+   AUDIO
+   ============================================================= */
+function playBeep() {
+  try{
+    const ctx=new(window.AudioContext||window.webkitAudioContext)();
+    [523,659,784].forEach((f,i)=>{
+      const o=ctx.createOscillator(),g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);
+      o.frequency.value=f;o.type='sine';
+      g.gain.setValueAtTime(0.1,ctx.currentTime+i*0.15);
+      g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+i*0.15+0.3);
+      o.start(ctx.currentTime+i*0.15);
+      o.stop(ctx.currentTime+i*0.15+0.3);
+    });
+  }catch(e){}
+}
+
+/* =============================================================
+   TOAST
+   ============================================================= */
+function showToast(msg) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+/* =============================================================
+   START
+   ============================================================= */
+
+/* =============================================================
+   ONBOARDING
+   ============================================================= */
+const OB_STEPS = 8; // nombre de questions
+let obStep = 0;
+let obAnswers = {}; // {stepIndex: value}
+let obMultiAnswers = {}; // {stepIndex: [values]}
+
+function obInitProgress() {
+  const prog = document.getElementById('ob-progress');
+  prog.innerHTML = '';
+  for (let i = 0; i < OB_STEPS; i++) {
+    const d = document.createElement('div');
+    d.className = 'ob-dot' + (i === 0 ? ' active' : '');
+    d.id = 'ob-dot-' + i;
+    prog.appendChild(d);
+  }
+}
+
+function obUpdateProgress() {
+  for (let i = 0; i < OB_STEPS; i++) {
+    const d = document.getElementById('ob-dot-' + i);
+    if (!d) continue;
+    d.className = 'ob-dot' + (i < obStep ? ' done' : i === obStep ? ' active' : '');
+  }
+}
+
+function obSelect(step, el, value) {
+  // Single select — désélectionne les autres
+  el.closest('.ob-choices').querySelectorAll('.ob-choice').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  obAnswers[step] = value;
+  document.getElementById('ob-next').disabled = false;
+}
+
+function obMultiSelect(step, el, value) {
+  el.classList.toggle('selected');
+  if (!obMultiAnswers[step]) obMultiAnswers[step] = [];
+  const idx = obMultiAnswers[step].indexOf(value);
+  if (idx > -1) obMultiAnswers[step].splice(idx, 1);
+  else obMultiAnswers[step].push(value);
+  // Multi : toujours valide (au moins 0 sélection acceptée, on force au moins 1)
+  document.getElementById('ob-next').disabled = obMultiAnswers[step].length === 0;
+}
+
+function obNext() {
+  // Cache l'étape actuelle
+  document.getElementById('ob-step-' + obStep).classList.remove('active');
+
+  // Si dernière étape → affiche résultat
+  if (obStep === OB_STEPS - 1) {
+    obShowResult();
+    return;
+  }
+
+  obStep++;
+  document.getElementById('ob-step-' + obStep).classList.add('active');
+  obUpdateProgress();
+
+  // Reset bouton next
+  const isMulti = obStep === 5; // étape multi-select
+  if (isMulti) {
+    document.getElementById('ob-next').disabled = true;
+  } else {
+    document.getElementById('ob-next').disabled = !(obAnswers[obStep] !== undefined);
+  }
+
+  // Cache bouton retour à l'étape 0
+  document.getElementById('ob-back').style.display = obStep === 0 ? 'none' : 'block';
+}
+
+function obBack() {
+  if (obStep === 0) return;
+  document.getElementById('ob-step-' + obStep).classList.remove('active');
+  obStep--;
+  document.getElementById('ob-step-' + obStep).classList.add('active');
+  obUpdateProgress();
+  document.getElementById('ob-next').disabled = false;
+  document.getElementById('ob-back').style.display = obStep === 0 ? 'none' : 'block';
+}
+
+function obShowResult() {
+  // Cache nav et progress
+  document.getElementById('ob-nav').style.display = 'none';
+  document.getElementById('ob-progress').style.display = 'none';
+
+  // Affiche écran résultat
+  document.getElementById('ob-step-result').classList.add('active');
+
+  // Avatar selon passion
+  const passion = obAnswers[0];
+  const avatarMap = {
+    'one-piece':'🏴‍☠️', 'basket':'🏀', 'gaming':'🎮',
+    'musique':'🎵', 'sport':'⚽', 'autre':'✨'
+  };
+  document.getElementById('ob-avatar').textContent = avatarMap[passion] || '🌟';
+
+  // Labels lisibles
+  const passionLabels = {'one-piece':'One Piece','basket':'Basket','gaming':'Jeux vidéo','musique':'Musique','sport':'Sport','autre':'Autre'};
+  const styleLabels = {'exemple':'Exemples concrets','image':'Schémas/visuels','oral':'Explications orales','etapes':'Étape par étape'};
+  const momentLabels = {'matin':'Le matin','aprem':'L\'après-midi','soir':'Le soir','variable':'Variable'};
+  const blocLabels = {'trop-long':'Explications trop longues','trop-dur':'Trop difficile d\'un coup','ennui':'L\'ennui','stress':'Le stress'};
+  const objectifLabels = {'passer':'Passer en 2ème','progresser':'Progresser','confiance':'Être plus confiant','organisation':"Mieux m'organiser"};
+  const matLabels = {'sport':'Sport','sciences':'Sciences','anglais':'Anglais','francais':'Français','maths':'Maths','edm':'EDM','latin':'Latin'};
+
+  const focusItems = (obMultiAnswers[5] || []).join(', ') || '—';
+
+  const summary = document.getElementById('ob-profile-summary');
+  summary.innerHTML = `
+    <div class="ob-profile-row"><span class="ob-profile-label">🎯 Passion</span><span class="ob-profile-val">${passionLabels[passion]||passion}</span></div>
+    <div class="ob-profile-row"><span class="ob-profile-label">📚 J'apprends</span><span class="ob-profile-val">${styleLabels[obAnswers[1]]||obAnswers[1]}</span></div>
+    <div class="ob-profile-row"><span class="ob-profile-label">⭐ Je préfère</span><span class="ob-profile-val">${matLabels[obAnswers[2]]||obAnswers[2]}</span></div>
+    <div class="ob-profile-row"><span class="ob-profile-label">💪 Je bosse</span><span class="ob-profile-val">${momentLabels[obAnswers[4]]||obAnswers[4]}</span></div>
+    <div class="ob-profile-row"><span class="ob-profile-label">🎧 Focus</span><span class="ob-profile-val">${focusItems}</span></div>
+    <div class="ob-profile-row"><span class="ob-profile-label">🚀 Objectif</span><span class="ob-profile-val">${objectifLabels[obAnswers[7]]||obAnswers[7]}</span></div>
+  `;
+}
+
+function obFinish() {
+  // Sauvegarde le profil dans localStorage
+  const profile = {
+    passion: obAnswers[0],
+    style: obAnswers[1],
+    matPref: obAnswers[2],
+    matDiff: obAnswers[3],
+    moment: obAnswers[4],
+    focus: obMultiAnswers[5] || [],
+    blocage: obAnswers[6],
+    objectif: obAnswers[7],
+    done: true
+  };
+  localStorage.setItem('ethan_profile', JSON.stringify(profile));
+
+  // Cache l'onboarding et lance l'appli
+  document.getElementById('screen-onboarding').classList.add('hidden');
+  navTo('aujourd');
+
+  showToast('Bienvenue Ethan ! Ton espace est prêt 🏴‍☠️');
+}
+
+function checkOnboarding() {
+  const profile = localStorage.getItem('ethan_profile');
+  if (!profile || !JSON.parse(profile).done) {
+    // Premier lancement → affiche l'onboarding
+    document.getElementById('screen-onboarding').classList.remove('hidden');
+    obInitProgress();
+    document.getElementById('ob-back').style.display = 'none';
+  } else {
+    // Déjà fait → appli normale
+    document.getElementById('screen-onboarding').classList.add('hidden');
+    navTo('aujourd');
+    // Injecte le profil dans les prompts IA
+    injectProfileIntoAI(JSON.parse(profile));
+  }
+}
+
+function injectProfileIntoAI(profile) {
+  // Enrichit le contexte IA avec le profil Ethan
+  const passionMap = {'one-piece':'One Piece et les pirates','basket':'le basket','gaming':'les jeux vidéo','musique':'la musique','sport':'le sport','autre':'ses passions'};
+  const styleMap = {'exemple':'utilise des exemples concrets','image':'utilise des analogies visuelles','oral':"explique clairement à l'oral",'etapes':'décompose étape par étape'};
+  const blocMap = {'trop-long':'évite les longues explications','trop-dur':'y va progressivement','ennui':"rends ça intéressant",'stress':'sois rassurant'};
+
+  window.ETHAN_PROFILE_CTX = `Ethan aime ${passionMap[profile.passion]||'ses passions'}. Pour lui expliquer : ${styleMap[profile.style]||'sois clair'}. Important : ${blocMap[profile.blocage]||'reste simple'}.`;
+}
+
+function getProfileCtx() {
+  return window.ETHAN_PROFILE_CTX || '';
+}
+
+
+/* =============================================================
+   ICÔNES HEBDOMADAIRES — rotation chaque lundi
+   Dossier Drive : 1OtCD9uyUuPAO9NMfZSCjXRskeRXqgO3C
+   Le nom du fichier = nom du manga (ex: OnePiece-Icones.webp)
+   ============================================================= */
+
+const ICONES_FOLDER_ID = '1OtCD9uyUuPAO9NMfZSCjXRskeRXqgO3C';
+
+// Calcule le numéro de semaine depuis le lundi
+function getWeekNumber() {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 1);
+  const diff = now - start;
+  return Math.floor(diff / (7 * 24 * 60 * 60 * 1000));
+}
+
+// Extrait le nom du manga depuis le titre du fichier (ex: "OnePiece-Icones.webp" → "One Piece")
+function mangaNameFromTitle(title) {
+  const base = title.replace(/\.[^.]+$/, '').replace(/-Icones?$/i, '').replace(/-/g, ' ');
+  return base.trim();
+}
+
+// Charge et applique l'icône de la semaine
+async function loadWeeklyIcon() {
+  try {
+    // Vérifie si on a déjà chargé cette semaine
+    const savedWeek = localStorage.getItem('ethan_icon_week');
+    const currentWeek = getWeekNumber();
+    const savedData = localStorage.getItem('ethan_icon_data');
+
+    if (savedWeek == currentWeek && savedData) {
+      applyIcon(JSON.parse(savedData));
+      return;
+    }
+
+    // Nouveau lundi — charge depuis Drive
+    const resp = await fetch(
+      `https://www.googleapis.com/drive/v3/files?q=parentId+%3D+%27${ICONES_FOLDER_ID}%27+and+mimeType+contains+%27image%27&fields=files(id,name)&key=`,
+      { headers: { 'Accept': 'application/json' } }
+    );
+
+    // Si pas d'accès OAuth, on utilise les IDs connus directement
+    throw new Error('fallback');
+
+  } catch(e) {
+    // Fallback : rotation locale basée sur les fichiers connus
+    loadIconFallback();
+  }
+}
+
+// Liste des icônes connues — mise à jour automatiquement via le système de scan
+let KNOWN_ICONS = JSON.parse(localStorage.getItem('ethan_known_icons') || 'null') || [
+  { id: '1tdr5cHRufXLx7_tuv5QN7D1GEYMGJ3be', manga: 'One Piece' }
+];
+
+function loadIconFallback() {
+  if (!KNOWN_ICONS.length) return;
+  const week = getWeekNumber();
+  const icon = KNOWN_ICONS[week % KNOWN_ICONS.length];
+  const savedData = { id: icon.id, manga: icon.manga };
+  localStorage.setItem('ethan_icon_week', week);
+  localStorage.setItem('ethan_icon_data', JSON.stringify(savedData));
+  applyIcon(savedData);
+}
+
+function applyIcon(data) {
+  const imgUrl = `https://drive.google.com/thumbnail?id=${data.id}&sz=w400`;
+  
+  // Applique l'image dans l'header de bienvenue
+  const headerIcon = document.getElementById('weekly-icon-img');
+  if (headerIcon) {
+    headerIcon.src = imgUrl;
+    headerIcon.style.display = 'block';
+  }
+
+  // Applique le nom du manga comme badge dans le header
+  const mangaBadge = document.getElementById('manga-badge');
+  if (mangaBadge) {
+    mangaBadge.textContent = '🏴‍☠️ ' + data.manga;
+    mangaBadge.style.display = 'inline-block';
+  }
+
+  // Met à jour l'avatar de l'onboarding résultat
+  const obAvatar = document.getElementById('ob-avatar');
+  if (obAvatar && !localStorage.getItem('ethan_profile')) {
+    // Seulement si pas encore de profil
+  }
+
+  // Sauvegarde le manga courant pour l'IA
+  window.CURRENT_MANGA = data.manga;
+  
+  // Met à jour le widget "manga de la semaine"
+  const weeklyName = document.getElementById('weekly-manga-name');
+  if (weeklyName) weeklyName.textContent = data.manga;
+  const weeklyEmoji = document.getElementById('weekly-icon-emoji');
+  if (weeklyEmoji) weeklyEmoji.style.display = 'none';
+  if (headerIcon) headerIcon.style.display = 'block';
+
+  // Clone l'image aussi dans le widget principal
+  const widgetImg = document.getElementById('weekly-icon-img');
+  if (widgetImg) {{
+    widgetImg.src = imgUrl;
+    widgetImg.style.display = 'block';
+    widgetImg.onerror = () => {{
+      widgetImg.style.display = 'none';
+      if (weeklyEmoji) weeklyEmoji.style.display = 'block';
+    }};
+  }}
+
+  console.log('Icône de la semaine:', data.manga);
+}
+
+// Scan du dossier Drive pour mettre à jour la liste locale
+// À appeler occasionnellement pour détecter les nouvelles icônes
+async function scanIconsFolder() {
+  try {
+    // Utilise l'URL de thumbnail publique pour tester l'accès
+    const testId = KNOWN_ICONS[0]?.id;
+    if (!testId) return;
+    
+    // Cette fonction sera enrichie après déploiement avec OAuth
+    console.log('Scan icônes Drive — disponible après déploiement OAuth');
+  } catch(e) {}
+}
+
+// Enregistre une nouvelle icône détectée
+function registerNewIcon(id, filename) {
+  const manga = mangaNameFromTitle(filename);
+  const exists = KNOWN_ICONS.find(i => i.id === id);
+  if (!exists) {
+    KNOWN_ICONS.push({ id, manga });
+    localStorage.setItem('ethan_known_icons', JSON.stringify(KNOWN_ICONS));
+    console.log('Nouvelle icône enregistrée:', manga);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => { init(); checkOnboarding(); loadWeeklyIcon(); });
+</script>
+
+
+</body></html>
