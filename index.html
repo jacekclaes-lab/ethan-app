@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_6.html -->
+<!-- saved from url=(0045)file:///C:/Users/User/Downloads/index_12.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1527,7 +1527,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 <!-- ============================================================
      MIC FAB (draggable)
      ============================================================ -->
-<div class="mic-fab" id="mic-fab">🎤</div>
+<!-- micro FAB supprime -->
 
 <!-- ============================================================
      SCREEN — AUJOURD'HUI
@@ -1537,11 +1537,11 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <!-- Widget motivation rapide -->
     <div id="motivation-strip" style="background:linear-gradient(135deg,#1A1A2E,#2D2D5E);border-radius:14px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between">
       <div>
-        <div style="font-family:&#39;Bangers&#39;,cursive;font-size:22px;color:#F7B731;letter-spacing:1px" id="mot-points">10 💰</div>
+        <div style="font-family:&#39;Bangers&#39;,cursive;font-size:22px;color:#F7B731;letter-spacing:1px" id="mot-points">0 💰</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px" id="mot-rank">Recrue 🏴‍☠️</div>
       </div>
       <div style="text-align:right">
-        <div style="font-size:20px" id="mot-streak-num">1 🔥</div>
+        <div style="font-size:20px" id="mot-streak-num">0 🔥</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.6)">jours de suite</div>
       </div>
     </div>
@@ -1568,7 +1568,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <!-- Demain -->
     <div id="demain-strip" style="display: block; background: var(--accent-soft); border-radius: var(--radius-sm); padding: 10px 14px; margin-bottom: 10px; border-left: 4px solid var(--accent);">
       <div style="font-family:&#39;Nunito&#39;,sans-serif;font-size:12px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">📅 Demain j'ai…</div>
-      <div id="demain-list"><div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:0"><span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">Techno</span><span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">Maths</span><span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">Natation</span><span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">Français</span></div></div>
+      <div id="demain-list"><div style="font-size:13px;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:6px"><span style="color:var(--francais);font-weight:800;font-size:15px">📌</span><span><strong style="color:var(--francais)">Français</strong> · dissert</span></div></div>
     </div>
 
     <!-- Urgences -->
@@ -1887,34 +1887,104 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
       <div id="week-label" style="font-family:&#39;Nunito&#39;,sans-serif;font-weight:800;font-size:15px;color:var(--text)">Cette semaine</div>
       <button onclick="nextWeek()" id="week-next-btn" style="background:var(--card);border:none;border-radius:10px;padding:8px 14px;font-size:20px;box-shadow:var(--shadow);cursor:pointer;opacity:0.3" disabled="">›</button>
     </div>
-    <div class="week-grid" id="week-grid"><div class="week-day today selected-day" data-dow="1" data-date="2026-04-19"><div class="week-day-name">Lun</div>
+    <div class="week-grid" id="week-grid"><div class="week-day today selected-day" data-dow="1" data-date="2026-04-20"><div class="week-day-name">Lun</div>
       <div class="week-day-num">20</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day future" data-dow="2" data-date="2026-04-20"><div class="week-day-name">Mar</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day future" data-dow="2" data-date="2026-04-21"><div class="week-day-name">Mar</div>
       <div class="week-day-num">21</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div></div></div><div class="week-day future" data-dow="3" data-date="2026-04-21"><div class="week-day-name">Mer</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div></div></div><div class="week-day future" data-dow="3" data-date="2026-04-22"><div class="week-day-name">Mer</div>
       <div class="week-day-num">22</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div></div></div><div class="week-day future" data-dow="4" data-date="2026-04-22"><div class="week-day-name">Jeu</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div></div></div><div class="week-day future" data-dow="4" data-date="2026-04-23"><div class="week-day-name">Jeu</div>
       <div class="week-day-num">23</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div></div></div><div class="week-day future" data-dow="5" data-date="2026-04-23"><div class="week-day-name">Ven</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div></div></div><div class="week-day future" data-dow="5" data-date="2026-04-24"><div class="week-day-name">Ven</div>
       <div class="week-day-num">24</div>
       <div class="week-dots"><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div></div>
     <div class="week-detail" id="week-detail">
       <div class="week-detail-title" id="week-detail-title">Lun 20 avr</div>
-      <div id="week-detail-list"><div style="font-size: 11px; font-weight: 800; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; margin-top: 4px;">📚 Cours</div><div class="week-item"><div class="week-item-dot" style="background:var(--sciences)"></div>
-        <div class="week-item-text">08h10 · Sciences</div>
-        <span style="font-size:11px;color:var(--text-3)">D101</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--sport)"></div>
-        <div class="week-item-text">09h00 · Sport</div>
-        <span style="font-size:11px;color:var(--text-3)">J001</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--maths)"></div>
-        <div class="week-item-text">09h50 · Maths</div>
-        <span style="font-size:11px;color:var(--text-3)">E004</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--latin)"></div>
-        <div class="week-item-text">11h00 · Latin</div>
-        <span style="font-size:11px;color:var(--text-3)">C004</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--francais)"></div>
-        <div class="week-item-text">13h20 · Français</div>
-        <span style="font-size:11px;color:var(--text-3)">E104</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--edm)"></div>
-        <div class="week-item-text">14h10 · EDM</div>
-        <span style="font-size:11px;color:var(--text-3)">E101</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--anglais)"></div>
-        <div class="week-item-text">15h00 · Anglais</div>
-        <span style="font-size:11px;color:var(--text-3)">F206</span></div></div>
+      <div id="week-detail-list"><div style="font-size: 11px; font-weight: 800; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; margin-top: 4px;">📚 Cours</div><div class="week-item" style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0px;">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <div class="week-item-dot" style="background:var(--sciences);flex-shrink:0"></div>
+          <div class="week-item-text" style="font-weight:700">08h10 · Sciences</div>
+          <span style="font-size:11px;color:var(--text-3);margin-left:auto">D101</span>
+        </div>
+        <div style="width:100%;padding-left:16px">
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="text" value="" placeholder="To do..." id="todo-todo_2026-04-20_sciences" style="flex:1;padding:6px 10px;border:1.5px solid var(--text-3);border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;background:var(--bg);" onchange="saveTodo(&#39;todo_2026-04-20_sciences&#39;,&#39;Sciences&#39;,this.value,&#39;2026-04-20&#39;)" onkeydown="if(event.key===&#39;Enter&#39;)saveTodo(&#39;todo_2026-04-20_sciences&#39;,&#39;Sciences&#39;,this.value,&#39;2026-04-20&#39;)">
+            
+          </div>
+          
+        </div></div><div class="week-item" style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0px;">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <div class="week-item-dot" style="background:var(--sport);flex-shrink:0"></div>
+          <div class="week-item-text" style="font-weight:700">09h00 · Sport</div>
+          <span style="font-size:11px;color:var(--text-3);margin-left:auto">J001</span>
+        </div>
+        <div style="width:100%;padding-left:16px">
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="text" value="" placeholder="To do..." id="todo-todo_2026-04-20_sport" style="flex:1;padding:6px 10px;border:1.5px solid var(--text-3);border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;background:var(--bg);" onchange="saveTodo(&#39;todo_2026-04-20_sport&#39;,&#39;Sport&#39;,this.value,&#39;2026-04-20&#39;)" onkeydown="if(event.key===&#39;Enter&#39;)saveTodo(&#39;todo_2026-04-20_sport&#39;,&#39;Sport&#39;,this.value,&#39;2026-04-20&#39;)">
+            
+          </div>
+          
+        </div></div><div class="week-item" style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0px;">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <div class="week-item-dot" style="background:var(--maths);flex-shrink:0"></div>
+          <div class="week-item-text" style="font-weight:700">09h50 · Maths</div>
+          <span style="font-size:11px;color:var(--text-3);margin-left:auto">E004</span>
+        </div>
+        <div style="width:100%;padding-left:16px">
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="text" value="test" placeholder="To do..." id="todo-todo_2026-04-20_maths" style="flex:1;padding:6px 10px;border:1.5px solid var(--maths);border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;background:var(--maths)22;" onchange="saveTodo(&#39;todo_2026-04-20_maths&#39;,&#39;Maths&#39;,this.value,&#39;2026-04-20&#39;)" onkeydown="if(event.key===&#39;Enter&#39;)saveTodo(&#39;todo_2026-04-20_maths&#39;,&#39;Maths&#39;,this.value,&#39;2026-04-20&#39;)">
+            <button onclick="saveTodo(&#39;todo_2026-04-20_maths&#39;,&#39;Maths&#39;,&#39;&#39;,&#39;2026-04-20&#39;)" style="background:none;border:none;font-size:16px;cursor:pointer;color:var(--text-3)">✕</button>
+          </div>
+          <div style="font-size:11px;color:var(--maths);font-weight:700;margin-top:3px;padding-left:4px">📌 test</div>
+        </div></div><div class="week-item" style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0px;">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <div class="week-item-dot" style="background:var(--latin);flex-shrink:0"></div>
+          <div class="week-item-text" style="font-weight:700">11h00 · Latin</div>
+          <span style="font-size:11px;color:var(--text-3);margin-left:auto">C004</span>
+        </div>
+        <div style="width:100%;padding-left:16px">
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="text" value="" placeholder="To do..." id="todo-todo_2026-04-20_latin" style="flex:1;padding:6px 10px;border:1.5px solid var(--text-3);border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;background:var(--bg);" onchange="saveTodo(&#39;todo_2026-04-20_latin&#39;,&#39;Latin&#39;,this.value,&#39;2026-04-20&#39;)" onkeydown="if(event.key===&#39;Enter&#39;)saveTodo(&#39;todo_2026-04-20_latin&#39;,&#39;Latin&#39;,this.value,&#39;2026-04-20&#39;)">
+            
+          </div>
+          
+        </div></div><div class="week-item" style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0px;">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <div class="week-item-dot" style="background:var(--francais);flex-shrink:0"></div>
+          <div class="week-item-text" style="font-weight:700">13h20 · Français</div>
+          <span style="font-size:11px;color:var(--text-3);margin-left:auto">E104</span>
+        </div>
+        <div style="width:100%;padding-left:16px">
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="text" value="" placeholder="To do..." id="todo-todo_2026-04-20_francais" style="flex:1;padding:6px 10px;border:1.5px solid var(--text-3);border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;background:var(--bg);" onchange="saveTodo(&#39;todo_2026-04-20_francais&#39;,&#39;Français&#39;,this.value,&#39;2026-04-20&#39;)" onkeydown="if(event.key===&#39;Enter&#39;)saveTodo(&#39;todo_2026-04-20_francais&#39;,&#39;Français&#39;,this.value,&#39;2026-04-20&#39;)">
+            
+          </div>
+          
+        </div></div><div class="week-item" style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0px;">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <div class="week-item-dot" style="background:var(--edm);flex-shrink:0"></div>
+          <div class="week-item-text" style="font-weight:700">14h10 · EDM</div>
+          <span style="font-size:11px;color:var(--text-3);margin-left:auto">E101</span>
+        </div>
+        <div style="width:100%;padding-left:16px">
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="text" value="" placeholder="To do..." id="todo-todo_2026-04-20_edm" style="flex:1;padding:6px 10px;border:1.5px solid var(--text-3);border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;background:var(--bg);" onchange="saveTodo(&#39;todo_2026-04-20_edm&#39;,&#39;EDM&#39;,this.value,&#39;2026-04-20&#39;)" onkeydown="if(event.key===&#39;Enter&#39;)saveTodo(&#39;todo_2026-04-20_edm&#39;,&#39;EDM&#39;,this.value,&#39;2026-04-20&#39;)">
+            
+          </div>
+          
+        </div></div><div class="week-item" style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0px;">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <div class="week-item-dot" style="background:var(--anglais);flex-shrink:0"></div>
+          <div class="week-item-text" style="font-weight:700">15h00 · Anglais</div>
+          <span style="font-size:11px;color:var(--text-3);margin-left:auto">F206</span>
+        </div>
+        <div style="width:100%;padding-left:16px">
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="text" value="" placeholder="To do..." id="todo-todo_2026-04-20_anglais" style="flex:1;padding:6px 10px;border:1.5px solid var(--text-3);border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;background:var(--bg);" onchange="saveTodo(&#39;todo_2026-04-20_anglais&#39;,&#39;Anglais&#39;,this.value,&#39;2026-04-20&#39;)" onkeydown="if(event.key===&#39;Enter&#39;)saveTodo(&#39;todo_2026-04-20_anglais&#39;,&#39;Anglais&#39;,this.value,&#39;2026-04-20&#39;)">
+            
+          </div>
+          
+        </div></div></div>
     </div>
   </div>
 </div>
@@ -2494,62 +2564,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
   </div>
 </div>
 
-<!-- MIC MODAL (global FAB) -->
-<div class="modal-overlay" id="mic-modal">
-  <div class="modal-sheet">
-    <div class="modal-handle"></div>
-    <div class="modal-title">⚓ Ajouter une note</div>
-    <div class="modal-sub">Maintiens le micro rouge et parle — je reformule en mot-clé.</div>
-    <div class="wave-bars" id="mic-modal-wave" style="justify-content:center;margin-bottom:12px">
-      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-    </div>
-    <div style="display:flex;justify-content:center;margin-bottom:14px">
-      <div class="mic-round" style="width:70px;height:70px;font-size:28px" id="mic-modal-btn" onmousedown="startFabMic(event)" onmouseup="stopFabMic()" onmouseleave="stopFabMic()" ontouchstart="startFabMic(event)" ontouchend="stopFabMic()">🎤</div>
-    </div>
-    <div class="field-input" id="mic-modal-result" style="min-height:50px;margin-bottom:14px;color:var(--text-2);font-style:italic">
-      Appuie sur le micro et parle normalement…
-    </div>
-    <div style="display:flex;gap:10px">
-      <button class="btn btn-ghost" style="flex:1" onclick="closeModal(&#39;mic-modal&#39;)">Annuler</button>
-      <button class="btn btn-primary" id="mic-modal-save" style="flex:1" disabled="" onclick="saveFabMic()">Enregistrer ✓</button>
-    </div>
-  </div>
-</div>
-
-<!-- EXTRA MODAL -->
-<div class="modal-overlay" id="extra-modal">
-  <div class="modal-sheet">
-    <div class="modal-handle"></div>
-    <div class="modal-title" id="extra-modal-title">⚡ Ajouter une activité</div>
-    <div class="modal-field">
-      <label class="modal-label">Type</label>
-      <div class="type-row">
-        <button class="type-btn sel-sport" id="et-sport" onclick="selExtraType(this,&#39;🏀&#39;,&#39;Sport&#39;,&#39;sel-sport&#39;)">🏀 Sport</button>
-        <button class="type-btn" id="et-rdv" onclick="selExtraType(this,&#39;🏥&#39;,&#39;RDV&#39;,&#39;sel-rdv&#39;)">🏥 RDV</button>
-        <button class="type-btn" id="et-loisir" onclick="selExtraType(this,&#39;🎵&#39;,&#39;Loisir&#39;,&#39;sel-sport&#39;)">🎵 Loisir</button>
-        <button class="type-btn" id="et-rattrap" onclick="selExtraType(this,&#39;📚&#39;,&#39;Rattrap.&#39;,&#39;sel-rdv&#39;)">📚 Rattrap.</button>
-      </div>
-    </div>
-    <div class="modal-field">
-      <label class="modal-label">Nom</label>
-      <input class="field-input" id="extra-name" placeholder="Ex: Basket, Logopède, Cinéma…">
-    </div>
-    <div class="modal-row2">
-      <div class="modal-field" style="flex:1">
-        <label class="modal-label">Heure</label>
-        <input class="field-input" type="time" id="extra-time" value="17:00">
-      </div>
-      <div class="modal-field" style="flex:1">
-        <label class="modal-label">Lieu</label>
-        <input class="field-input" id="extra-lieu" placeholder="Optionnel">
-      </div>
-    </div>
-    <div style="display:flex;gap:10px">
-      <button class="btn btn-ghost" style="flex:1" onclick="closeModal(&#39;extra-modal&#39;)">Annuler</button>
-      <button class="btn btn-warn btn-bangers" style="flex:1" onclick="saveExtra()">Ajouter ✓</button>
-    </div>
-  </div>
-</div>
+<!-- mic modal supprime -->
 
 <!-- AGENDA MODAL -->
 <div class="modal-overlay" id="agenda-modal">
@@ -2786,6 +2801,9 @@ let fabTranscribed = '';
 let respireInterval = null;
 let bubbleExpanded = false;
 const WORK_INTERVAL = 25 * 60;
+const BREAK_INTERVAL = 5 * 60;
+let breakSec = 0;
+let breakInterval = null;
 
 /* =============================================================
    STORAGE — persistance
@@ -2855,7 +2873,6 @@ function init() {
   setRapportDate();
   loadStoredData();
   setupDraggable();
-  setupFabMic();
 }
 
 function setHeaderDate() {
@@ -3068,8 +3085,8 @@ function buildCeSoir() {
   const list = document.getElementById('ce-soir-list');
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate()+1);
-  const tomorrowStr = tomorrow.toISOString().split('T')[0];
-  const today = new Date().toISOString().split('T')[0];
+  const tomorrowStr = dateToLocalStr(tomorrow);
+  const today = dateToLocalStr(new Date());
   const urgent = devoirs.filter(d=>{
     if(!d.dateObj) return false;
     return d.dateObj === tomorrowStr || d.dateObj === today;
@@ -3094,38 +3111,39 @@ function buildCeSoir() {
    URGENT
    ============================================================= */
 function buildDemain() {
-  const devoirs = retrieve('devoirs_global', []);
   const strip = document.getElementById('demain-strip');
   const list = document.getElementById('demain-list');
   if (!strip || !list) return;
+
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate()+1);
-  const tomorrowStr = tomorrow.toISOString().split('T')[0];
-  // Cours de demain
-  const tomorrowDow = tomorrow.getDay(); // 0=dim
-  const coursD = (HORAIRE[tomorrowDow]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
-  // Devoirs pour demain
-  const devoirsD = devoirs.filter(d => d.dateObj === tomorrowStr);
-  
-  if (coursD.length === 0 && devoirsD.length === 0) { strip.style.display='none'; return; }
-  strip.style.display='block';
-  
+  // Utiliser les composantes locales pour éviter le bug UTC
+  const ty = tomorrow.getFullYear();
+  const tm = String(tomorrow.getMonth()+1).padStart(2,'0');
+  const td = String(tomorrow.getDate()).padStart(2,'0');
+  const tomorrowStr = ty+'-'+tm+'-'+td;
+  const tomorrowDow = tomorrow.getDay();
+
+  // Toujours visible
+  strip.style.display = 'block';
+
+  const todosD = getTodosForDate(tomorrowStr);
+
+  if (todosD.length === 0) {
+    list.innerHTML = '<div style="font-size:13px;color:var(--text-2);font-style:italic">Rien de noté pour demain ✓</div>';
+    return;
+  }
+
   let html = '';
-  // Matières du lendemain (3 premières)
-  if (coursD.length) {
-    const uniq = [...new Set(coursD.map(c=>c.mat))].slice(0,4);
-    html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:'+(devoirsD.length?'6px':'0')+'">';
-    html += uniq.map(mat => `<span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">${mat}</span>`).join('');
-    html += '</div>';
-  }
-  // Devoirs
-  if (devoirsD.length) {
-    html += devoirsD.map(d => {
-      const icon = d.type==='interro'?'⚡':'📝';
-      const color = d.type==='interro'?'#E63946':'#F7B731';
-      return `<div style="font-size:13px;color:var(--text);margin-top:4px"><span style="color:${color};font-weight:800">${icon} ${d.mat}</span> · ${(d.desc||'').split(' ').slice(0,5).join(' ')}</div>`;
-    }).join('');
-  }
+  todosD.forEach(t => {
+    const matDef = MATIERES_DEF.find(m => m.n === t.mat);
+    const color = matDef ? matDef.c : 'var(--accent)';
+    html += '<div style="font-size:13px;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:6px">'
+      + '<span style="color:' + color + ';font-weight:800;font-size:15px">📌</span>'
+      + '<span><strong style="color:' + color + '">' + t.mat + '</strong> · ' + t.todo + '</span>'
+      + '</div>';
+  });
+
   list.innerHTML = html;
 }
 
@@ -3152,6 +3170,13 @@ function buildUrgent() {
    ============================================================= */
 // Offset semaine courante (0 = cette semaine, -1 = semaine passée, etc.)
 let weekOffset = 0;
+
+function dateToLocalStr(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return y+'-'+m+'-'+day;
+}
 
 function getMondayOfWeek(offset) {
   const now = new Date();
@@ -3204,7 +3229,7 @@ function buildWeekGrid() {
 
   for(let i=0;i<5;i++) {
     const d = new Date(mon); d.setDate(mon.getDate()+i);
-    const dateStr = d.toISOString().split('T')[0];
+    const dateStr = dateToLocalStr(d);
     const isToday = d.toDateString()===now.toDateString();
     const isFuture = d > now;
     const cours = (HORAIRE[i+1]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
@@ -3250,25 +3275,7 @@ function showWeekDetail(dow, label, forceDateStr) {
   const list = document.getElementById('week-detail-list');
   list.innerHTML = '';
 
-  // --- Cours de la journée ---
-  const cours = (HORAIRE[dow]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
-  if (cours.length) {
-    const titre = document.createElement('div');
-    titre.style.cssText = 'font-size:11px;font-weight:800;color:var(--text-2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;margin-top:4px';
-    titre.textContent = '📚 Cours';
-    list.appendChild(titre);
-    cours.forEach(c=>{
-      const color = matColor(c.mat);
-      const div=document.createElement('div'); div.className='week-item';
-      div.innerHTML=`<div class="week-item-dot" style="background:${color}"></div>
-        <div class="week-item-text">${c.h} · ${c.mat}</div>
-        <span style="font-size:11px;color:var(--text-3)">${c.loc||''}</span>`;
-      list.appendChild(div);
-    });
-  }
-
-  // --- Devoirs & interros pour CE jour ---
-  // Calcul de la date cible
+  // --- Calcul de la date cible EN PREMIER ---
   let targetStr;
   if (forceDateStr) {
     targetStr = forceDateStr;
@@ -3281,8 +3288,48 @@ function showWeekDetail(dow, label, forceDateStr) {
     mon2.setHours(0,0,0,0);
     const tgt = new Date(mon2);
     tgt.setDate(mon2.getDate() + (dow - 1));
-    targetStr = tgt.toISOString().split('T')[0];
+    targetStr = dateToLocalStr(tgt);
   }
+
+  // --- Cours de la journée ---
+  const cours = (HORAIRE[dow]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
+  if (cours.length) {
+    const titre = document.createElement('div');
+    titre.style.cssText = 'font-size:11px;font-weight:800;color:var(--text-2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;margin-top:4px';
+    titre.textContent = '📚 Cours';
+    list.appendChild(titre);
+    cours.forEach(c=>{
+      const color = matColor(c.mat);
+      const todoKey = 'todo_' + targetStr + '_' + matToKey(c.mat);
+      const savedTodo = retrieve(todoKey, '');
+      const div=document.createElement('div');
+      div.className='week-item';
+      div.style.cssText='flex-direction:column;align-items:flex-start;gap:4px;padding:10px 0';
+      div.innerHTML=`
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <div class="week-item-dot" style="background:${color};flex-shrink:0"></div>
+          <div class="week-item-text" style="font-weight:700">${c.h} · ${c.mat}</div>
+          <span style="font-size:11px;color:var(--text-3);margin-left:auto">${c.loc||''}</span>
+        </div>
+        <div style="width:100%;padding-left:16px">
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="text" 
+              value="${(savedTodo||'').replace(/"/g,'&quot;')}"
+              placeholder="To do..."
+              id="todo-${todoKey}"
+              style="flex:1;padding:6px 10px;border:1.5px solid ${savedTodo?color:'var(--text-3)'};border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;background:${savedTodo?color+'22':'var(--bg)'};"
+              onchange="saveTodo('${todoKey}','${c.mat}',this.value,'${targetStr}')"
+              onkeydown="if(event.key==='Enter')saveTodo('${todoKey}','${c.mat}',this.value,'${targetStr}')"
+            />
+            ${savedTodo ? `<button onclick="saveTodo('${todoKey}','${c.mat}','','${targetStr}')" style="background:none;border:none;font-size:16px;cursor:pointer;color:var(--text-3)">✕</button>` : ''}
+          </div>
+          ${savedTodo ? `<div style="font-size:11px;color:${color};font-weight:700;margin-top:3px;padding-left:4px">📌 ${savedTodo}</div>` : ''}
+        </div>`;
+      list.appendChild(div);
+    });
+  }
+
+  // --- Devoirs & interros pour CE jour ---
 
   const devoirs = retrieve('devoirs_global', []);
   const dujour = devoirs.filter(d => d.dateObj === targetStr);
@@ -3321,6 +3368,52 @@ function showWeekDetail(dow, label, forceDateStr) {
   }
 }
 
+function saveTodo(key, matName, value, dateStr) {
+  if (value.trim()) {
+    store(key, value.trim());
+  } else {
+    localStorage.removeItem('ethan_' + key);
+  }
+  // Rebuild la vue semaine pour ce jour
+  const selected = document.querySelector('.week-day.selected-day');
+  if (selected) {
+    const dow = parseInt(selected.dataset.dow);
+    const ds = selected.dataset.date || dateStr;
+    const now = new Date(ds);
+    const days = ['Lun','Mar','Mer','Jeu','Ven'];
+    const months = ['jan','fev','mar','avr','mai','jun','jul','aout','sep','oct','nov','dec'];
+    showWeekDetail(dow, days[dow-1]+' '+now.getDate()+' '+months[now.getMonth()], ds);
+  }
+  // Mettre à jour buildDemain si c'est pour demain
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate()+1);
+  if (dateStr === dateToLocalStr(tomorrow)) {
+    buildDemain();
+  }
+}
+
+function matToKey(matName) {
+  // Clé stable sans accents ni caractères spéciaux
+  return matName.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]/g,'').toLowerCase();
+}
+
+function getTodosForDate(dateStr) {
+  const todos = [];
+  const parts = dateStr.split('-');
+  const d = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+  const dow = d.getDay();
+  const coursJour = (HORAIRE[dow]||[]).filter(c => c.mat && !c.pause && !c.free);
+  const seen = new Set();
+  coursJour.forEach(c => {
+    if (seen.has(c.mat)) return;
+    seen.add(c.mat);
+    const key = 'todo_' + dateStr + '_' + matToKey(c.mat);
+    const val = retrieve(key, '');
+    if (val) todos.push({ mat: c.mat, todo: val });
+  });
+  return todos;
+}
+
 function toggleDevoirDone(dateObj, descPartial, btn) {
   const key = 'devoir_done_'+dateObj+'_'+descPartial;
   const isDone = retrieve(key, false);
@@ -3356,7 +3449,7 @@ function supprimerDevoir(dateObj, descPartial) {
   const days = ['Lun','Mar','Mer','Jeu','Ven'];
   for (let i=0;i<5;i++) {
     const d = new Date(mon); d.setDate(mon.getDate()+i);
-    const ds = d.toISOString().split('T')[0];
+    const ds = dateToLocalStr(d);
     if (ds === dateObj) { showWeekDetail(i+1, days[i]+' '+d.getDate(), ds); break; }
   }
   buildCeSoir(); buildUrgent(); buildDemain();
@@ -4022,28 +4115,85 @@ function timerManualPause() {
 function triggerAutoPause() {
   clearInterval(timerInterval); timerRunning=false; autoPaused=true;
   autoPauseCount++; secSinceAutoPause=0;
+  breakSec = 0;
   document.getElementById('auto-pause-banner').classList.add('visible');
   setTimerStatus('paused-a','Pause recharge 🌿');
-  setTimerPhase('PAUSE 5 MIN','var(--ok)');
+  setTimerPhase('PAUSE 5:00','var(--ok)');
   document.getElementById('btn-play').textContent='▶️';
+  document.getElementById('btn-play').disabled = true;
   updateBubblePaused();
   playBeep();
-  showToast('Pause ! Lève-toi, bois, étire-toi 💧');
+  showToast('Pause ! Leve-toi, bois, etire-toi !');
+  // Lancer le décompte de 5 min
+  clearInterval(breakInterval);
+  breakInterval = setInterval(breakTick, 1000);
+}
+
+function breakTick() {
+  breakSec++;
+  const remaining = BREAK_INTERVAL - breakSec;
+  if (remaining <= 0) {
+    clearInterval(breakInterval);
+    // Pause terminée → demander confirmation
+    setTimerPhase('PAUSE TERMINEE', 'var(--ok)');
+    document.getElementById('btn-play').disabled = false;
+    document.getElementById('btn-play').textContent = '▶️';
+    playBeep();
+    showToast('Pause terminee ! Appuie sur Play pour reprendre');
+    // Afficher bouton de confirmation dans le banner
+    const banner = document.getElementById('auto-pause-banner');
+    if (banner) {
+      const existing = banner.querySelector('.apb-confirm');
+      if (!existing) {
+        const btn = document.createElement('button');
+        btn.className = 'apb-skip apb-confirm';
+        btn.style.cssText = 'background:var(--accent);color:white;font-size:16px;margin-top:8px';
+        btn.textContent = 'Je suis pret ! Reprendre les 25 min';
+        btn.onclick = confirmResume;
+        banner.appendChild(btn);
+      }
+    }
+    return;
+  }
+  const mins = Math.floor(remaining/60);
+  const secs = remaining % 60;
+  const display = mins + ':' + (secs < 10 ? '0' : '') + secs;
+  setTimerPhase('PAUSE ' + display, 'var(--ok)');
+  // Mettre à jour l'affichage du timer aussi
+  document.getElementById('t-num').textContent = mins.toString().padStart(2,'0') + ':' + (secs<10?'0':'') + secs;
+}
+
+function confirmResume() {
+  clearInterval(breakInterval);
+  autoPaused = false;
+  document.getElementById('btn-play').disabled = false;
+  // Supprimer le bouton de confirmation
+  const btn = document.querySelector('.apb-confirm');
+  if (btn) btn.remove();
+  resumeTimer();
 }
 
 function skipAutoPause() {
+  clearInterval(breakInterval);
+  breakSec = 0;
+  const btn = document.querySelector('.apb-confirm');
+  if (btn) btn.remove();
   document.getElementById('auto-pause-banner').classList.remove('visible');
+  document.getElementById('btn-play').disabled = false;
   autoPaused=false; resumeTimer();
 }
 
 function resumeTimer() {
+  clearInterval(breakInterval);
+  breakSec = 0;
   manuallyPaused=false; autoPaused=false; timerRunning=true;
   document.getElementById('auto-pause-banner').classList.remove('visible');
-  setTimerStatus('working','En cours…');
+  document.getElementById('btn-play').disabled = false;
+  setTimerStatus('working','En cours...');
   setTimerPhase('CONCENTRATION',selTimerMat.c);
   updateBubbleWorking();
   timerInterval=setInterval(timerTick,1000);
-  showToast('C\'est reparti ! 💪');
+  showToast('Cest reparti ! Allez on lache rien !');
 }
 
 function openStopModal() {
@@ -4573,7 +4723,7 @@ function saveFabMic() {
       const d = new Date();
       const diff = (dayNum - d.getDay() + 7) % 7 || 7;
       d.setDate(d.getDate() + diff);
-      dateObj = d.toISOString().split('T')[0];
+      dateObj = dateToLocalStr(d);
       const months = ['jan','fév','mar','avr','mai','jun','jul','août','sep','oct','nov','déc'];
       const dnames = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
       dateStr = dnames[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()];
@@ -4583,7 +4733,7 @@ function saveFabMic() {
   // Fallback : demain si pas de jour détecté
   if (!dateObj) {
     const d = new Date(); d.setDate(d.getDate()+1);
-    dateObj = d.toISOString().split('T')[0];
+    dateObj = dateToLocalStr(d);
     const months = ['jan','fév','mar','avr','mai','jun','jul','août','sep','oct','nov','déc'];
     const dnames = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
     dateStr = dnames[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()];
