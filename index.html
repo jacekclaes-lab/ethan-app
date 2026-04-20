@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_4.html -->
+<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_1.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -754,6 +754,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
   transition: all 0.15s;
 }
 .week-day.today { border-color: var(--accent); background: var(--accent-soft); }
+.week-day.selected-day { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(91,95,239,0.25); }
 .week-day-name { font-size: 9px; font-weight: 700; color: var(--text-2); text-transform: uppercase; }
 .week-day-num { font-family: 'Bangers', cursive; font-size: 20px; margin: 2px 0; color: var(--text); letter-spacing: 1px; }
 .week-day.today .week-day-num { color: var(--accent); }
@@ -1535,14 +1536,14 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
   <div class="pad">
 
     <!-- Prochain cours -->
-    <div class="next-banner" id="next-banner" style="display: none; background: var(--edm);">
+    <div class="next-banner" id="next-banner" style="display: none; background: var(--anglais);">
       <div>
         <div class="next-label">Prochain cours</div>
-        <div class="next-name" id="next-name">EDM</div>
-        <div class="next-time" id="next-time">14h10 · E101</div>
+        <div class="next-name" id="next-name">Anglais</div>
+        <div class="next-time" id="next-time">15h00 · F206</div>
       </div>
       <div class="next-cntdwn">
-        <span class="next-num" id="next-countdown">8</span>
+        <span class="next-num" id="next-countdown">41</span>
         <span class="next-lbl">MIN</span>
       </div>
     </div>
@@ -1742,7 +1743,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
         <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(6)">Annuler</button>
         <button class="btn btn-ok" style="flex:1" onclick="saveNote(6)">Enregistrer ✓</button>
       </div>
-    </div></div></div><div class="pitem current" id="pitem-7">
+    </div></div></div><div class="pitem past" id="pitem-7">
         <div class="pitem-header" onclick="togglePitem(7)">
           <div class="pitem-stripe" style="background:var(--francais)"></div>
           <div class="pitem-time">13h20</div>
@@ -1752,7 +1753,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
             <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
           </div>
           <div class="pitem-right">
-            <span class="badge badge-cours">EN COURS</span>
+            
             <span class="pitem-chevron">›</span>
           </div>
         </div>
@@ -1774,7 +1775,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
         <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(7)">Annuler</button>
         <button class="btn btn-ok" style="flex:1" onclick="saveNote(7)">Enregistrer ✓</button>
       </div>
-    </div></div></div><div class="pitem" id="pitem-8">
+    </div></div></div><div class="pitem current" id="pitem-8">
         <div class="pitem-header" onclick="togglePitem(8)">
           <div class="pitem-stripe" style="background:var(--edm)"></div>
           <div class="pitem-time">14h10</div>
@@ -1784,7 +1785,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
             <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
           </div>
           <div class="pitem-right">
-            
+            <span class="badge badge-cours">EN COURS</span>
             <span class="pitem-chevron">›</span>
           </div>
         </div>
@@ -1863,15 +1864,15 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
      ============================================================ -->
 <div class="screen" id="screen-semaine">
   <div class="pad">
-    <div class="week-grid" id="week-grid"><div class="week-day today"><div class="week-day-name">Lun</div>
+    <div class="week-grid" id="week-grid"><div class="week-day today selected-day" data-dow="1"><div class="week-day-name">Lun</div>
       <div class="week-day-num">20</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--latin)"></div></div></div><div class="week-day"><div class="week-day-name">Mar</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--latin)"></div></div></div><div class="week-day" data-dow="2"><div class="week-day-name">Mar</div>
       <div class="week-day-num">21</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div><div class="week-dot" style="background:var(--francais)"></div></div></div><div class="week-day"><div class="week-day-name">Mer</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div><div class="week-dot" style="background:var(--francais)"></div></div></div><div class="week-day" data-dow="3"><div class="week-day-name">Mer</div>
       <div class="week-day-num">22</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--sport)"></div></div></div><div class="week-day"><div class="week-day-name">Jeu</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--sport)"></div></div></div><div class="week-day" data-dow="4"><div class="week-day-name">Jeu</div>
       <div class="week-day-num">23</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day"><div class="week-day-name">Ven</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day" data-dow="5"><div class="week-day-name">Ven</div>
       <div class="week-day-num">24</div>
       <div class="week-dots"><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--religion)"></div></div></div></div>
     <div class="week-detail" id="week-detail">
@@ -2030,7 +2031,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
       <div class="ai-response-box empty" id="ai-response">Pose ta question — je t'explique en langage simple.</div>
       <div style="display:flex;gap:8px;margin-top:6px;margin-bottom:4px">
         <button id="tts-stop-btn" onclick="stopSpeak()" style="display:none;padding:8px 16px;background:#E63946;color:#fff;border:none;border-radius:10px;font-family:&#39;Nunito&#39;,sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer">⏹ Stop</button>
-        <button id="tts-replay-btn" onclick="speakText(document.getElementById(&#39;ai-response&#39;).textContent)" style="display:none;padding:8px 16px;background:#f0f0ff;color:#5B5FEF;border:2px solid #5B5FEF;border-radius:10px;font-family:&#39;Nunito&#39;,sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer">🔊 Réécouter</button>
+        <button id="tts-replay-btn" onclick="speakText(document.getElementById(&#39;ai-response&#39;).innerText)" style="display:none;padding:8px 16px;background:#f0f0ff;color:#5B5FEF;border:2px solid #5B5FEF;border-radius:10px;font-family:&#39;Nunito&#39;,sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer">🔊 Réécouter</button>
       </div>
       <button class="verify-btn" id="verify-btn" onclick="startQuiz()">🎯 Teste-moi sur ce que j'ai compris</button>
     </div>
@@ -3009,12 +3010,21 @@ function buildWeekGrid() {
     const cours = (HORAIRE[i+1]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
     const div = document.createElement('div');
     div.className='week-day'+(isToday?' today':'');
+    div.dataset.dow = i+1;
     div.innerHTML=`<div class="week-day-name">${days[i]}</div>
       <div class="week-day-num">${d.getDate()}</div>
       <div class="week-dots">${cours.slice(0,4).map(c=>`<div class="week-dot" style="background:${matColor(c.mat)}"></div>`).join('')}</div>`;
-    div.onclick=()=>showWeekDetail(i+1, days[i]+' '+d.getDate());
+    div.onclick=()=>{
+      // Retire surbrillance de tous les jours
+      document.querySelectorAll('.week-day').forEach(el => el.classList.remove('selected-day'));
+      div.classList.add('selected-day');
+      showWeekDetail(i+1, days[i]+' '+d.getDate());
+    };
     grid.appendChild(div);
-    if(isToday) showWeekDetail(i+1, days[i]+' '+d.getDate());
+    if(isToday) {
+      div.classList.add('selected-day');
+      showWeekDetail(i+1, days[i]+' '+d.getDate());
+    }
   }
 }
 
@@ -3042,12 +3052,15 @@ function showWeekDetail(dow, label) {
 
   // --- Devoirs & interros pour CE jour ---
   // On récupère la date correspondant à ce dow dans la semaine courante
+  // dow=1=Lundi, dow=2=Mardi ... dow=5=Vendredi
   const now = new Date();
-  const dow0 = now.getDay();
+  const dow0 = now.getDay(); // 0=dim,1=lun,...,6=sam
+  const mondayOffset = dow0 === 0 ? -6 : 1 - dow0;
   const mon = new Date(now);
-  mon.setDate(now.getDate()-(dow0===0?6:dow0-1));
+  mon.setDate(now.getDate() + mondayOffset);
+  mon.setHours(0,0,0,0);
   const targetDate = new Date(mon);
-  targetDate.setDate(mon.getDate()+(dow-1));
+  targetDate.setDate(mon.getDate() + (dow - 1));
   const targetStr = targetDate.toISOString().split('T')[0];
 
   const devoirs = retrieve('devoirs_global', []);
@@ -3089,8 +3102,10 @@ function supprimerDevoir(dateObj, descPartial) {
   // Rebuild la vue
   const now = new Date();
   const dow0 = now.getDay();
+  const mondayOff = dow0 === 0 ? -6 : 1 - dow0;
   const mon = new Date(now);
-  mon.setDate(now.getDate()-(dow0===0?6:dow0-1));
+  mon.setDate(now.getDate() + mondayOff);
+  mon.setHours(0,0,0,0);
   const days = ['Lun','Mar','Mer','Jeu','Ven'];
   for (let i=0;i<5;i++) {
     const d = new Date(mon); d.setDate(mon.getDate()+i);
@@ -3302,30 +3317,39 @@ let currentUtterance = null;
 
 function speakText(text) {
   if (!window.speechSynthesis) return;
-  // Arrête si déjà en train de parler
   window.speechSynthesis.cancel();
   if (!text) return;
 
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'fr-FR';
-  utterance.rate = 0.9;
-  utterance.pitch = 1.0;
-  utterance.volume = 1.0;
+  function doSpeak(voices) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'fr-FR';
+    utterance.rate = 0.88;
+    utterance.pitch = 1.05;
+    utterance.volume = 1.0;
 
-  // Cherche une voix française
+    // Priorité : voix fr-FR, puis fr-, puis fallback
+    const frVoice = voices.find(v => v.lang === 'fr-FR')
+      || voices.find(v => v.lang.startsWith('fr'))
+      || null;
+    if (frVoice) utterance.voice = frVoice;
+
+    currentUtterance = utterance;
+    const stopBtn = document.getElementById('tts-stop-btn');
+    if (stopBtn) stopBtn.style.display = 'inline-block';
+    utterance.onend = () => { if (stopBtn) stopBtn.style.display = 'none'; };
+    utterance.onerror = () => { if (stopBtn) stopBtn.style.display = 'none'; };
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // Les voix sont chargées de façon async — on attend si nécessaire
   const voices = window.speechSynthesis.getVoices();
-  const frVoice = voices.find(v => v.lang.startsWith('fr')) || null;
-  if (frVoice) utterance.voice = frVoice;
-
-  currentUtterance = utterance;
-
-  // Bouton stop pendant la lecture
-  const stopBtn = document.getElementById('tts-stop-btn');
-  if (stopBtn) stopBtn.style.display = 'inline-block';
-  utterance.onend = () => { if (stopBtn) stopBtn.style.display = 'none'; };
-  utterance.onerror = () => { if (stopBtn) stopBtn.style.display = 'none'; };
-
-  window.speechSynthesis.speak(utterance);
+  if (voices.length > 0) {
+    doSpeak(voices);
+  } else {
+    window.speechSynthesis.onvoiceschanged = () => {
+      doSpeak(window.speechSynthesis.getVoices());
+    };
+  }
 }
 
 function stopSpeak() {
@@ -3390,12 +3414,19 @@ async function askAI() {
     const data=await r.json();
     const text=data.content?.[0]?.text||'Réessaie dans un moment !';
     resp.className='ai-response-box';
-    resp.textContent=text;
+    // Formatage : convertit **gras**, sauts de ligne, listes
+    const formatted = text
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+      .replace(/^[-•] (.+)$/gm,'<span style="display:block;padding-left:12px">▸ $1</span>')
+      .replace(/\n\n/g,'</p><p style="margin:8px 0">')
+      .replace(/\n/g,'<br>');
+    resp.innerHTML = '<p style="margin:0">' + formatted + '</p>';
     hasAiResponse=true;
     document.getElementById('verify-btn').classList.add('visible');
     const replayBtn = document.getElementById('tts-replay-btn');
     if (replayBtn) replayBtn.style.display = 'inline-block';
-    // Lecture vocale automatique
+    // Lecture vocale automatique — utilise le texte brut
     speakText(text);
   } catch(e) {
     resp.className='ai-response-box';
