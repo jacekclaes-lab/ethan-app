@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_3.html -->
+<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_6.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1474,7 +1474,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 <!-- ============================================================
      TOAST
      ============================================================ -->
-<div class="toast" id="toast">Cle API sauvegardee !</div>
+<div class="toast" id="toast"></div>
 
 <!-- ============================================================
      HEADER
@@ -1494,11 +1494,11 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
      TAB BAR
      ============================================================ -->
 <div class="tab-bar" id="tab-bar" style="display: flex;">
-  <button class="tab-btn" onclick="navTo(&#39;semaine&#39;)">
-    <span class="tab-icon">🗓</span>Ma Semaine
-  </button>
-  <button class="tab-btn active" onclick="navTo(&#39;aujourd&#39;)">
+  <button class="tab-btn" onclick="navTo(&#39;aujourd&#39;)">
     <span class="tab-icon">📅</span>Aujourd'hui
+  </button>
+  <button class="tab-btn active" onclick="navTo(&#39;semaine&#39;)">
+    <span class="tab-icon">🗓</span>Ma Semaine
   </button>
   <button class="tab-btn" onclick="navTo(&#39;matieres&#39;)">
     <span class="tab-icon">📚</span>Matières
@@ -1537,11 +1537,11 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <!-- Widget motivation rapide -->
     <div id="motivation-strip" style="background:linear-gradient(135deg,#1A1A2E,#2D2D5E);border-radius:14px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between">
       <div>
-        <div style="font-family:&#39;Bangers&#39;,cursive;font-size:22px;color:#F7B731;letter-spacing:1px" id="mot-points">0 💰</div>
+        <div style="font-family:&#39;Bangers&#39;,cursive;font-size:22px;color:#F7B731;letter-spacing:1px" id="mot-points">10 💰</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px" id="mot-rank">Recrue 🏴‍☠️</div>
       </div>
       <div style="text-align:right">
-        <div style="font-size:20px" id="mot-streak-num">0 🔥</div>
+        <div style="font-size:20px" id="mot-streak-num">1 🔥</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.6)">jours de suite</div>
       </div>
     </div>
@@ -1885,7 +1885,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
       <button onclick="prevWeek()" style="background:var(--card);border:none;border-radius:10px;padding:8px 14px;font-size:20px;box-shadow:var(--shadow);cursor:pointer">‹</button>
       <div id="week-label" style="font-family:&#39;Nunito&#39;,sans-serif;font-weight:800;font-size:15px;color:var(--text)">Cette semaine</div>
-      <button onclick="nextWeek()" id="week-next-btn" style="background: var(--card); border: none; border-radius: 10px; padding: 8px 14px; font-size: 20px; box-shadow: var(--shadow); cursor: pointer; opacity: 0.3;" disabled="">›</button>
+      <button onclick="nextWeek()" id="week-next-btn" style="background:var(--card);border:none;border-radius:10px;padding:8px 14px;font-size:20px;box-shadow:var(--shadow);cursor:pointer;opacity:0.3" disabled="">›</button>
     </div>
     <div class="week-grid" id="week-grid"><div class="week-day today selected-day" data-dow="1" data-date="2026-04-19"><div class="week-day-name">Lun</div>
       <div class="week-day-num">20</div>
@@ -4713,8 +4713,15 @@ function makeDraggable(el, bubbleMode=false) {
 function navTo(section) {
   const screens=['aujourd','semaine','matieres','matiere-detail','qg'];
   screens.forEach(s=>document.getElementById('screen-'+s)?.classList.remove('active'));
-  // Refresh widgets de motivation
+  // Refresh selon section
+  if (section === 'semaine') {
+    buildWeekGrid();
+  }
   if (section === 'aujourd') {
+    buildPlanningToday();
+    buildNextBanner();
+    buildCeSoir();
+    buildDemain();
     const mp = document.getElementById('mot-points');
     if (mp) mp.textContent = ethanPoints + ' 💰';
     const mr = document.getElementById('mot-rank');
@@ -5200,7 +5207,7 @@ document.addEventListener('DOMContentLoaded', () => { init(); checkOnboarding();
 
 
 <!-- MODAL CLE API -->
-<div id="modal-apikey" style="display: none; position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.7); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+<div id="modal-apikey" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;padding:20px">
   <div style="background:#fff;border-radius:20px;padding:28px;max-width:420px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,0.2)">
     <div style="font-size:2rem;text-align:center;margin-bottom:8px">🔑</div>
     <h2 style="font-family:&#39;Nunito&#39;,sans-serif;font-size:1.2rem;font-weight:800;color:#1A1A2E;text-align:center;margin:0 0 8px">Cle API Anthropic</h2>
