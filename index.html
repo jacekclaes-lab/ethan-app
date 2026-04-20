@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_1.html -->
+<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_2.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -755,6 +755,8 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 }
 .week-day.today { border-color: var(--accent); background: var(--accent-soft); }
 .week-day.selected-day { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(91,95,239,0.25); }
+.week-day.future { opacity: 0.7; }
+.ce-soir-item { padding: 4px 0; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 600; }
 .week-day-name { font-size: 9px; font-weight: 700; color: var(--text-2); text-transform: uppercase; }
 .week-day-num { font-family: 'Bangers', cursive; font-size: 20px; margin: 2px 0; color: var(--text); letter-spacing: 1px; }
 .week-day.today .week-day-num { color: var(--accent); }
@@ -1482,7 +1484,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <span class="header-anchor">⚓</span>
     <div class="header-texts">
       <div class="header-title" id="header-title">Mon École</div>
-      <div class="header-sub" id="header-sub">Lundi 20 avril</div>
+      <div class="header-sub" id="header-sub">Dimanche 19 avril</div>
     </div>
   </div>
   <div class="header-avatar" onclick="navTo(&#39;qg&#39;)">EC</div>
@@ -1492,11 +1494,11 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
      TAB BAR
      ============================================================ -->
 <div class="tab-bar" id="tab-bar" style="display: flex;">
-  <button class="tab-btn active" onclick="navTo(&#39;aujourd&#39;)">
-    <span class="tab-icon">📅</span>Aujourd'hui
+  <button class="tab-btn active" onclick="navTo(&#39;semaine&#39;)">
+    <span class="tab-icon">🗓</span>Ma Semaine
   </button>
-  <button class="tab-btn" onclick="navTo(&#39;semaine&#39;)">
-    <span class="tab-icon">🗓</span>Semaine
+  <button class="tab-btn" onclick="navTo(&#39;aujourd&#39;)">
+    <span class="tab-icon">📅</span>Aujourd'hui
   </button>
   <button class="tab-btn" onclick="navTo(&#39;matieres&#39;)">
     <span class="tab-icon">📚</span>Matières
@@ -1530,20 +1532,29 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 <!-- ============================================================
      SCREEN — AUJOURD'HUI
      ============================================================ -->
-<div class="screen active" id="screen-aujourd">
-  <!-- Widget icône hebdomadaire -->
-  
+<div class="screen" id="screen-aujourd">
   <div class="pad">
+    <!-- Widget motivation rapide -->
+    <div id="motivation-strip" style="background:linear-gradient(135deg,#1A1A2E,#2D2D5E);border-radius:14px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-family:&#39;Bangers&#39;,cursive;font-size:22px;color:#F7B731;letter-spacing:1px" id="mot-points">0 💰</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px" id="mot-rank">Recrue 🏴‍☠️</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:20px" id="mot-streak-num">0 🔥</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6)">jours de suite</div>
+      </div>
+    </div>
 
     <!-- Prochain cours -->
-    <div class="next-banner" id="next-banner" style="display: none; background: var(--anglais);">
+    <div class="next-banner" id="next-banner" style="display: none;">
       <div>
         <div class="next-label">Prochain cours</div>
-        <div class="next-name" id="next-name">Anglais</div>
-        <div class="next-time" id="next-time">15h00 · F206</div>
+        <div class="next-name" id="next-name">—</div>
+        <div class="next-time" id="next-time">—</div>
       </div>
       <div class="next-cntdwn">
-        <span class="next-num" id="next-countdown">41</span>
+        <span class="next-num" id="next-countdown">—</span>
         <span class="next-lbl">MIN</span>
       </div>
     </div>
@@ -1554,292 +1565,18 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
       <div id="ce-soir-list"></div>
     </div>
 
+    <!-- Demain -->
+    <div id="demain-strip" style="display:none;background:var(--accent-soft);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;border-left:4px solid var(--accent)">
+      <div style="font-family:&#39;Nunito&#39;,sans-serif;font-size:12px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">📅 Demain j'ai…</div>
+      <div id="demain-list"></div>
+    </div>
+
     <!-- Urgences -->
     <div id="urgent-container"></div>
 
     <!-- Planning -->
     <div class="slabel">Planning du jour</div>
-    <div id="planning-wrap"><div class="pitem past" id="pitem-0">
-        <div class="pitem-header" onclick="togglePitem(0)">
-          <div class="pitem-stripe" style="background:var(--sciences)"></div>
-          <div class="pitem-time">08h10</div>
-          <div class="pitem-main">
-            <div class="pitem-name">Sciences</div>
-            <div class="pitem-local">D101</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <div class="pitem-right">
-            
-            <span class="pitem-chevron">›</span>
-          </div>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-0">
-      <span id="note-text-0"></span>
-      <div class="note-saved-time" id="note-time-0"></div>
-      <button class="note-edit-btn" onclick="editNote(0)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-0">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-0" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-0" onmousedown="startMicFor(&#39;note-inp-0&#39;,event,0)" onmouseup="stopMic(&#39;note-mic-0&#39;)" onmouseleave="stopMic(&#39;note-mic-0&#39;)" ontouchstart="startMicFor(&#39;note-inp-0&#39;,event,0)" ontouchend="stopMic(&#39;note-mic-0&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-0">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(0)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(0)">Enregistrer ✓</button>
-      </div>
-    </div></div></div><div class="pitem past" id="pitem-1">
-        <div class="pitem-header" onclick="togglePitem(1)">
-          <div class="pitem-stripe" style="background:var(--sport)"></div>
-          <div class="pitem-time">09h00</div>
-          <div class="pitem-main">
-            <div class="pitem-name">Sport</div>
-            <div class="pitem-local">J001</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <div class="pitem-right">
-            
-            <span class="pitem-chevron">›</span>
-          </div>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-1">
-      <span id="note-text-1"></span>
-      <div class="note-saved-time" id="note-time-1"></div>
-      <button class="note-edit-btn" onclick="editNote(1)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-1">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-1" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-1" onmousedown="startMicFor(&#39;note-inp-1&#39;,event,1)" onmouseup="stopMic(&#39;note-mic-1&#39;)" onmouseleave="stopMic(&#39;note-mic-1&#39;)" ontouchstart="startMicFor(&#39;note-inp-1&#39;,event,1)" ontouchend="stopMic(&#39;note-mic-1&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-1">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(1)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(1)">Enregistrer ✓</button>
-      </div>
-    </div></div></div><div class="pitem past" id="pitem-2">
-        <div class="pitem-header" onclick="togglePitem(2)">
-          <div class="pitem-stripe" style="background:var(--maths)"></div>
-          <div class="pitem-time">09h50</div>
-          <div class="pitem-main">
-            <div class="pitem-name">Maths</div>
-            <div class="pitem-local">E004</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <div class="pitem-right">
-            
-            <span class="pitem-chevron">›</span>
-          </div>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-2">
-      <span id="note-text-2"></span>
-      <div class="note-saved-time" id="note-time-2"></div>
-      <button class="note-edit-btn" onclick="editNote(2)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-2">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-2" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-2" onmousedown="startMicFor(&#39;note-inp-2&#39;,event,2)" onmouseup="stopMic(&#39;note-mic-2&#39;)" onmouseleave="stopMic(&#39;note-mic-2&#39;)" ontouchstart="startMicFor(&#39;note-inp-2&#39;,event,2)" ontouchend="stopMic(&#39;note-mic-2&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-2">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(2)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(2)">Enregistrer ✓</button>
-      </div>
-    </div></div></div><div class="pitem past is-break" id="pitem-3">
-        <div class="pitem-header" onclick="togglePitem(3)">
-          <div class="pitem-stripe" style="background:#D0D0D8"></div>
-          <div class="pitem-time">10h40</div>
-          <div class="pitem-main">
-            <div class="pitem-name" style="color:var(--text-2)">☕ Récréation</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <span class="pitem-chevron">›</span>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-3">
-      <span id="note-text-3"></span>
-      <div class="note-saved-time" id="note-time-3"></div>
-      <button class="note-edit-btn" onclick="editNote(3)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-3">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-3" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-3" onmousedown="startMicFor(&#39;note-inp-3&#39;,event,3)" onmouseup="stopMic(&#39;note-mic-3&#39;)" onmouseleave="stopMic(&#39;note-mic-3&#39;)" ontouchstart="startMicFor(&#39;note-inp-3&#39;,event,3)" ontouchend="stopMic(&#39;note-mic-3&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-3">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(3)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(3)">Enregistrer ✓</button>
-      </div>
-    </div></div></div><div class="pitem past" id="pitem-4">
-        <div class="pitem-header" onclick="togglePitem(4)">
-          <div class="pitem-stripe" style="background:var(--latin)"></div>
-          <div class="pitem-time">11h00</div>
-          <div class="pitem-main">
-            <div class="pitem-name">Latin</div>
-            <div class="pitem-local">C004</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <div class="pitem-right">
-            
-            <span class="pitem-chevron">›</span>
-          </div>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-4">
-      <span id="note-text-4"></span>
-      <div class="note-saved-time" id="note-time-4"></div>
-      <button class="note-edit-btn" onclick="editNote(4)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-4">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-4" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-4" onmousedown="startMicFor(&#39;note-inp-4&#39;,event,4)" onmouseup="stopMic(&#39;note-mic-4&#39;)" onmouseleave="stopMic(&#39;note-mic-4&#39;)" ontouchstart="startMicFor(&#39;note-inp-4&#39;,event,4)" ontouchend="stopMic(&#39;note-mic-4&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-4">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(4)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(4)">Enregistrer ✓</button>
-      </div>
-    </div></div></div><div class="pitem past is-break" id="pitem-6">
-        <div class="pitem-header" onclick="togglePitem(6)">
-          <div class="pitem-stripe" style="background:#D0D0D8"></div>
-          <div class="pitem-time">12h40</div>
-          <div class="pitem-main">
-            <div class="pitem-name" style="color:var(--text-2)">🍽 Temps de midi</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <span class="pitem-chevron">›</span>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-6">
-      <span id="note-text-6"></span>
-      <div class="note-saved-time" id="note-time-6"></div>
-      <button class="note-edit-btn" onclick="editNote(6)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-6">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-6" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-6" onmousedown="startMicFor(&#39;note-inp-6&#39;,event,6)" onmouseup="stopMic(&#39;note-mic-6&#39;)" onmouseleave="stopMic(&#39;note-mic-6&#39;)" ontouchstart="startMicFor(&#39;note-inp-6&#39;,event,6)" ontouchend="stopMic(&#39;note-mic-6&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-6">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(6)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(6)">Enregistrer ✓</button>
-      </div>
-    </div></div></div><div class="pitem past" id="pitem-7">
-        <div class="pitem-header" onclick="togglePitem(7)">
-          <div class="pitem-stripe" style="background:var(--francais)"></div>
-          <div class="pitem-time">13h20</div>
-          <div class="pitem-main">
-            <div class="pitem-name">Français</div>
-            <div class="pitem-local">E104</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <div class="pitem-right">
-            
-            <span class="pitem-chevron">›</span>
-          </div>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-7">
-      <span id="note-text-7"></span>
-      <div class="note-saved-time" id="note-time-7"></div>
-      <button class="note-edit-btn" onclick="editNote(7)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-7">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-7" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-7" onmousedown="startMicFor(&#39;note-inp-7&#39;,event,7)" onmouseup="stopMic(&#39;note-mic-7&#39;)" onmouseleave="stopMic(&#39;note-mic-7&#39;)" ontouchstart="startMicFor(&#39;note-inp-7&#39;,event,7)" ontouchend="stopMic(&#39;note-mic-7&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-7">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(7)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(7)">Enregistrer ✓</button>
-      </div>
-    </div></div></div><div class="pitem current" id="pitem-8">
-        <div class="pitem-header" onclick="togglePitem(8)">
-          <div class="pitem-stripe" style="background:var(--edm)"></div>
-          <div class="pitem-time">14h10</div>
-          <div class="pitem-main">
-            <div class="pitem-name">EDM</div>
-            <div class="pitem-local">E101</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <div class="pitem-right">
-            <span class="badge badge-cours">EN COURS</span>
-            <span class="pitem-chevron">›</span>
-          </div>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-8">
-      <span id="note-text-8"></span>
-      <div class="note-saved-time" id="note-time-8"></div>
-      <button class="note-edit-btn" onclick="editNote(8)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-8">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-8" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-8" onmousedown="startMicFor(&#39;note-inp-8&#39;,event,8)" onmouseup="stopMic(&#39;note-mic-8&#39;)" onmouseleave="stopMic(&#39;note-mic-8&#39;)" ontouchstart="startMicFor(&#39;note-inp-8&#39;,event,8)" ontouchend="stopMic(&#39;note-mic-8&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-8">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(8)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(8)">Enregistrer ✓</button>
-      </div>
-    </div></div></div><div class="pitem" id="pitem-9">
-        <div class="pitem-header" onclick="togglePitem(9)">
-          <div class="pitem-stripe" style="background:var(--anglais)"></div>
-          <div class="pitem-time">15h00</div>
-          <div class="pitem-main">
-            <div class="pitem-name">Anglais</div>
-            <div class="pitem-local">F206</div>
-            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
-          </div>
-          <div class="pitem-right">
-            
-            <span class="pitem-chevron">›</span>
-          </div>
-        </div>
-        <div class="pitem-expanded">
-    <div class="note-saved " id="note-saved-9">
-      <span id="note-text-9"></span>
-      <div class="note-saved-time" id="note-time-9"></div>
-      <button class="note-edit-btn" onclick="editNote(9)">✏ Modifier</button>
-    </div>
-    <div class="note-input-zone " id="note-zone-9">
-      <div class="note-input-row">
-        <textarea class="field-input note-textarea" id="note-inp-9" rows="2" placeholder="Tape ta note ici…"></textarea>
-        <div class="mic-round" id="note-mic-9" onmousedown="startMicFor(&#39;note-inp-9&#39;,event,9)" onmouseup="stopMic(&#39;note-mic-9&#39;)" onmouseleave="stopMic(&#39;note-mic-9&#39;)" ontouchstart="startMicFor(&#39;note-inp-9&#39;,event,9)" ontouchend="stopMic(&#39;note-mic-9&#39;)">🎤</div>
-      </div>
-      <div class="wave-bars" id="note-wave-9">
-        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      </div>
-      <div class="note-save-row">
-        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(9)">Annuler</button>
-        <button class="btn btn-ok" style="flex:1" onclick="saveNote(9)">Enregistrer ✓</button>
-      </div>
-    </div></div></div></div>
+    <div id="planning-wrap"><div class="card" style="text-align:center;color:var(--text-2);font-size:15px">Pas de cours aujourd'hui 🏖</div></div>
 
     <!-- Extra scolaire -->
     <div class="slabel" style="display:flex;align-items:center;justify-content:space-between">
@@ -1862,36 +1599,28 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 <!-- ============================================================
      SCREEN — SEMAINE
      ============================================================ -->
-<div class="screen" id="screen-semaine">
+<div class="screen active" id="screen-semaine">
   <div class="pad">
-    <div class="week-grid" id="week-grid"><div class="week-day today selected-day" data-dow="1"><div class="week-day-name">Lun</div>
-      <div class="week-day-num">20</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--latin)"></div></div></div><div class="week-day" data-dow="2"><div class="week-day-name">Mar</div>
-      <div class="week-day-num">21</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div><div class="week-dot" style="background:var(--francais)"></div></div></div><div class="week-day" data-dow="3"><div class="week-day-name">Mer</div>
-      <div class="week-day-num">22</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--sport)"></div></div></div><div class="week-day" data-dow="4"><div class="week-day-name">Jeu</div>
-      <div class="week-day-num">23</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day" data-dow="5"><div class="week-day-name">Ven</div>
-      <div class="week-day-num">24</div>
+    <!-- Navigation semaines -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <button onclick="prevWeek()" style="background:var(--card);border:none;border-radius:10px;padding:8px 14px;font-size:20px;box-shadow:var(--shadow);cursor:pointer">‹</button>
+      <div id="week-label" style="font-family:&#39;Nunito&#39;,sans-serif;font-weight:800;font-size:15px;color:var(--text)">Cette semaine</div>
+      <button onclick="nextWeek()" id="week-next-btn" style="background:var(--card);border:none;border-radius:10px;padding:8px 14px;font-size:20px;box-shadow:var(--shadow);cursor:pointer;opacity:0.3" disabled="">›</button>
+    </div>
+    <div class="week-grid" id="week-grid"><div class="week-day"><div class="week-day-name">Lun</div>
+      <div class="week-day-num">13</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--latin)"></div></div></div><div class="week-day"><div class="week-day-name">Mar</div>
+      <div class="week-day-num">14</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div><div class="week-dot" style="background:var(--francais)"></div></div></div><div class="week-day"><div class="week-day-name">Mer</div>
+      <div class="week-day-num">15</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--sport)"></div></div></div><div class="week-day"><div class="week-day-name">Jeu</div>
+      <div class="week-day-num">16</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day"><div class="week-day-name">Ven</div>
+      <div class="week-day-num">17</div>
       <div class="week-dots"><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--religion)"></div></div></div></div>
     <div class="week-detail" id="week-detail">
-      <div class="week-detail-title" id="week-detail-title">Lun 20</div>
-      <div id="week-detail-list"><div style="font-size: 11px; font-weight: 800; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; margin-top: 4px;">📚 Cours</div><div class="week-item"><div class="week-item-dot" style="background:var(--sciences)"></div>
-        <div class="week-item-text">08h10 · Sciences</div>
-        <span style="font-size:11px;color:var(--text-3)">D101</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--sport)"></div>
-        <div class="week-item-text">09h00 · Sport</div>
-        <span style="font-size:11px;color:var(--text-3)">J001</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--maths)"></div>
-        <div class="week-item-text">09h50 · Maths</div>
-        <span style="font-size:11px;color:var(--text-3)">E004</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--latin)"></div>
-        <div class="week-item-text">11h00 · Latin</div>
-        <span style="font-size:11px;color:var(--text-3)">C004</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--francais)"></div>
-        <div class="week-item-text">13h20 · Français</div>
-        <span style="font-size:11px;color:var(--text-3)">E104</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--edm)"></div>
-        <div class="week-item-text">14h10 · EDM</div>
-        <span style="font-size:11px;color:var(--text-3)">E101</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--anglais)"></div>
-        <div class="week-item-text">15h00 · Anglais</div>
-        <span style="font-size:11px;color:var(--text-3)">F206</span></div></div>
+      <div class="week-detail-title" id="week-detail-title">Sélectionne un jour</div>
+      <div id="week-detail-list"></div>
     </div>
   </div>
 </div>
@@ -2146,7 +1875,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 
   <!-- QG TIMER -->
   <div class="inner-content active pad" id="qg-timer">
-    <div class="qg-mat-row" id="qg-mat-row" style="display:none"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
+    <div class="qg-mat-row" id="qg-mat-row" style="display:none"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
     <div class="auto-pause-banner" id="auto-pause-banner">
       <div class="apb-title">☕ Pause recharge !</div>
       <div class="apb-acts">
@@ -2236,10 +1965,9 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
         <button class="h-btn" onclick="selRs(this,&#39;😊&#39;,&#39;Bien&#39;)"><span class="h-emoji">😊</span><span class="h-label">BIEN</span></button>
         <button class="h-btn" onclick="selRs(this,&#39;🔥&#39;,&#39;Top&#39;)"><span class="h-emoji">🔥</span><span class="h-label">TOP</span></button>
       </div>
-      <div class="note-input-row" style="margin-bottom:10px">
-        <input class="field-input" id="rs-input" placeholder="Ce qui t&#39;a aidé, ce qui était dur…" style="height:44px">
-        <div class="mic-round" id="rs-mic" onmousedown="startMicFor(&#39;rs-input&#39;,event)" onmouseup="stopMic(&#39;rs-mic&#39;)" onmouseleave="stopMic(&#39;rs-mic&#39;)" ontouchstart="startMicFor(&#39;rs-input&#39;,event)" ontouchend="stopMic(&#39;rs-mic&#39;)">🎤</div>
-        <button class="btn btn-primary" style="padding:0 14px;height:44px;border-radius:var(--radius-sm)" onclick="saveRessenti()">+</button>
+      <div style="margin-bottom:10px">
+        <textarea class="field-input" id="rs-input" placeholder="Ce qui t&#39;a aidé, ce qui était dur… (écris ici)" rows="2" style="margin-bottom:8px;resize:none"></textarea>
+        <button class="btn btn-primary btn-full btn-bangers" onclick="saveRessenti()">✓ Enregistrer</button>
       </div>
     </div>
     <div class="slabel">Mon journal de bord</div>
@@ -2257,6 +1985,24 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 
   <!-- QG EVOLUTION -->
   <div class="inner-content pad" id="qg-evolution">
+    <!-- Widget Points -->
+    <div class="card" style="background:linear-gradient(135deg,#1A1A2E 0%,#2D2D5E 100%);color:white;border:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <span style="font-family:&#39;Bangers&#39;,cursive;font-size:18px;letter-spacing:1px">Mes Berry 💰</span>
+        <span id="ev-points-big" style="font-family:&#39;Bangers&#39;,cursive;font-size:28px;color:var(--warn)">0</span>
+      </div>
+      <div style="display:flex;gap:8px">
+        <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;flex:1;text-align:center">
+          <div style="font-size:20px" id="ev-streak-num">0</div>
+          <div style="font-size:11px;opacity:0.7">jours de suite 🔥</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;flex:1;text-align:center">
+          <div id="ev-rank" style="font-size:14px;font-weight:700">Recrue</div>
+          <div style="font-size:11px;opacity:0.7">ton rang 🏴‍☠️</div>
+        </div>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-title">📊 Cette semaine</div>
       <div class="pb-item"><div class="pb-head"><span class="pb-lbl">Sessions complétées</span><span class="pb-val" id="ev-sessions">3/5</span></div><div class="pb-bar"><div class="pb-fill" id="ev-s-bar" style="width:60%"></div></div></div>
@@ -2302,7 +2048,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <div style="font-size:13px;color:var(--text-2);font-weight:600">Rapport hebdomadaire</div>
-        <div style="font-size:13px;font-weight:700;color:var(--accent)" id="rapport-date">Lun 20 → Ven 24 avr</div>
+        <div style="font-size:13px;font-weight:700;color:var(--accent)" id="rapport-date">Lun 13 → Ven 17 avr</div>
       </div>
       <!-- Jauges rapides -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
@@ -2672,6 +2418,67 @@ let autoPauseCount = 0;
 let sessionsToday = 0;
 let selTimerMat = MATIERES_DEF[1]; // Maths par défaut
 let selHumeurVal = null;
+
+/* =============================================================
+   SYSTÈME DE POINTS — Motivation One Piece
+   ============================================================= */
+let ethanPoints = 0;
+let ethanStreak = 0;
+
+function loadPoints() {
+  ethanPoints = parseInt(localStorage.getItem('ethan_points') || '0');
+  ethanStreak = parseInt(localStorage.getItem('ethan_streak') || '0');
+  updatePointsDisplay();
+}
+
+function addPoints(amount, reason) {
+  ethanPoints += amount;
+  localStorage.setItem('ethan_points', ethanPoints);
+  updatePointsDisplay();
+  // Toast de motivation One Piece
+  const msgs = [
+    `+${amount} Berry ! ${reason} 🏴‍☠️`,
+    `+${amount} Berry ! Tu progresses comme Luffy ! 💪`,
+    `+${amount} Berry ! Nakama serait fier ! ⚓`,
+    `+${amount} Berry ! ${reason} 🔥`,
+  ];
+  showToast(msgs[Math.floor(Math.random()*msgs.length)]);
+}
+
+function updatePointsDisplay() {
+  const el = document.getElementById('points-display');
+  if (el) {
+    el.textContent = ethanPoints + ' 💰';
+    // Titre selon les points
+    let title = 'Recrue';
+    if (ethanPoints >= 500) title = 'Pirate';
+    if (ethanPoints >= 1000) title = 'Capitaine';
+    if (ethanPoints >= 2000) title = 'Commandant';
+    if (ethanPoints >= 5000) title = 'Warlord';
+    const tEl = document.getElementById('points-title');
+    if (tEl) tEl.textContent = title + ' 🏴‍☠️';
+  }
+}
+
+function checkDailyStreak() {
+  const lastDay = localStorage.getItem('ethan_last_day');
+  const today = new Date().toDateString();
+  if (lastDay === today) return;
+  if (lastDay) {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate()-1);
+    if (lastDay === yesterday.toDateString()) {
+      ethanStreak++;
+    } else {
+      ethanStreak = 1;
+    }
+  } else {
+    ethanStreak = 1;
+  }
+  localStorage.setItem('ethan_streak', ethanStreak);
+  localStorage.setItem('ethan_last_day', today);
+  addPoints(10, 'Présent aujourd'hui !');
+}
 let selRsVal = null;
 let selExtraTypeVal = {emoji:'🏀',label:'Sport'};
 let selAgendaTypeVal = 'devoir';
@@ -2742,12 +2549,15 @@ function retrieve(key, fallback=null) {
    ============================================================= */
 function init() {
   setHeaderDate();
+  loadPoints();
+  checkDailyStreak();
   buildMatiereGrid();
   buildQGMatRow();
   buildWeekGrid();
   buildPlanningToday();
   buildNextBanner();
   buildCeSoir();
+  buildDemain();
   setRapportDate();
   loadStoredData();
   setupDraggable();
@@ -2962,19 +2772,69 @@ function buildCeSoir() {
   const devoirs = retrieve('devoirs_global', []);
   const strip = document.getElementById('ce-soir-strip');
   const list = document.getElementById('ce-soir-list');
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate()+1);
+  const tomorrowStr = tomorrow.toISOString().split('T')[0];
+  const today = new Date().toISOString().split('T')[0];
   const urgent = devoirs.filter(d=>{
     if(!d.dateObj) return false;
-    const diff = (new Date(d.dateObj)-new Date())/(1000*60*60*24);
-    return diff <= 2 && diff >= 0;
+    return d.dateObj === tomorrowStr || d.dateObj === today;
   });
   if(urgent.length === 0) { strip.style.display='none'; return; }
   strip.style.display='block';
-  list.innerHTML = urgent.map(d=>`<div class="ce-soir-item"><div class="cs-dot"></div>${d.mat} · ${d.desc} (${d.type})</div>`).join('');
+  // Mots-clés seulement : matière + type
+  list.innerHTML = urgent.map(d=>{
+    const icon = d.type==='interro'?'⚡':'📝';
+    const color = d.type==='interro'?'#E63946':'#F7B731';
+    const label = d.type==='interro'?'Interro':'Devoir';
+    // Extrait les mots-clés (max 3 mots)
+    const kw = (d.desc||'').split(' ').slice(0,4).join(' ');
+    return `<div class="ce-soir-item" style="border-left:3px solid ${color}">
+      <span style="font-weight:800;color:${color}">${icon} ${d.mat}</span>
+      <span style="color:var(--text-2);font-size:13px"> · ${kw}</span>
+    </div>`;
+  }).join('');
 }
 
 /* =============================================================
    URGENT
    ============================================================= */
+function buildDemain() {
+  const devoirs = retrieve('devoirs_global', []);
+  const strip = document.getElementById('demain-strip');
+  const list = document.getElementById('demain-list');
+  if (!strip || !list) return;
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate()+1);
+  const tomorrowStr = tomorrow.toISOString().split('T')[0];
+  // Cours de demain
+  const tomorrowDow = tomorrow.getDay(); // 0=dim
+  const coursD = (HORAIRE[tomorrowDow]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
+  // Devoirs pour demain
+  const devoirsD = devoirs.filter(d => d.dateObj === tomorrowStr);
+  
+  if (coursD.length === 0 && devoirsD.length === 0) { strip.style.display='none'; return; }
+  strip.style.display='block';
+  
+  let html = '';
+  // Matières du lendemain (3 premières)
+  if (coursD.length) {
+    const uniq = [...new Set(coursD.map(c=>c.mat))].slice(0,4);
+    html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:'+(devoirsD.length?'6px':'0')+'">';
+    html += uniq.map(mat => `<span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">${mat}</span>`).join('');
+    html += '</div>';
+  }
+  // Devoirs
+  if (devoirsD.length) {
+    html += devoirsD.map(d => {
+      const icon = d.type==='interro'?'⚡':'📝';
+      const color = d.type==='interro'?'#E63946':'#F7B731';
+      return `<div style="font-size:13px;color:var(--text);margin-top:4px"><span style="color:${color};font-weight:800">${icon} ${d.mat}</span> · ${(d.desc||'').split(' ').slice(0,5).join(' ')}</div>`;
+    }).join('');
+  }
+  list.innerHTML = html;
+}
+
 function buildUrgent() {
   const devoirs = retrieve('devoirs_global', []);
   const container = document.getElementById('urgent-container');
@@ -2996,39 +2856,102 @@ function buildUrgent() {
 /* =============================================================
    SEMAINE
    ============================================================= */
+// Offset semaine courante (0 = cette semaine, -1 = semaine passée, etc.)
+let weekOffset = 0;
+
+function getMondayOfWeek(offset) {
+  const now = new Date();
+  const dow = now.getDay();
+  const mon = new Date(now);
+  mon.setDate(now.getDate() - (dow===0?6:dow-1) + (offset*7));
+  mon.setHours(0,0,0,0);
+  return mon;
+}
+
+function prevWeek() {
+  weekOffset--;
+  buildWeekGrid();
+  // Activer bouton next
+  document.getElementById('week-next-btn').disabled = false;
+  document.getElementById('week-next-btn').style.opacity = '1';
+}
+
+function nextWeek() {
+  if (weekOffset >= 0) return;
+  weekOffset++;
+  buildWeekGrid();
+  if (weekOffset >= 0) {
+    document.getElementById('week-next-btn').disabled = true;
+    document.getElementById('week-next-btn').style.opacity = '0.3';
+  }
+}
+
 function buildWeekGrid() {
+  const mon = getMondayOfWeek(weekOffset);
   const now = new Date();
   const grid = document.getElementById('week-grid');
   grid.innerHTML = '';
   const days = ['Lun','Mar','Mer','Jeu','Ven'];
-  const mon = new Date(now);
-  const dow = now.getDay();
-  mon.setDate(now.getDate()-(dow===0?6:dow-1));
+  const months = ['jan','fév','mar','avr','mai','jun','jul','août','sep','oct','nov','déc'];
+
+  // Label semaine
+  const label = document.getElementById('week-label');
+  if (label) {
+    if (weekOffset === 0) label.textContent = 'Cette semaine';
+    else if (weekOffset === -1) label.textContent = 'Semaine passée';
+    else {
+      const endMon = new Date(mon); endMon.setDate(mon.getDate()+4);
+      label.textContent = mon.getDate()+' '+months[mon.getMonth()]+' → '+endMon.getDate()+' '+months[endMon.getMonth()];
+    }
+  }
+
+  // Récupérer tous les devoirs pour colorer les points
+  const devoirs = retrieve('devoirs_global', []);
+
   for(let i=0;i<5;i++) {
     const d = new Date(mon); d.setDate(mon.getDate()+i);
+    const dateStr = d.toISOString().split('T')[0];
     const isToday = d.toDateString()===now.toDateString();
+    const isFuture = d > now;
     const cours = (HORAIRE[i+1]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
+    const devoirsJour = devoirs.filter(dv => dv.dateObj === dateStr);
+
     const div = document.createElement('div');
-    div.className='week-day'+(isToday?' today':'');
+    div.className='week-day'+(isToday?' today':'')+(isFuture&&weekOffset===0?' future':'');
     div.dataset.dow = i+1;
+    div.dataset.date = dateStr;
+
+    // Indicateur devoirs
+    const devoirDots = devoirsJour.map(dv =>
+      `<div class="week-dot" style="background:${dv.type==='interro'?'#E63946':'#F7B731'}"></div>`
+    ).join('');
+
     div.innerHTML=`<div class="week-day-name">${days[i]}</div>
       <div class="week-day-num">${d.getDate()}</div>
-      <div class="week-dots">${cours.slice(0,4).map(c=>`<div class="week-dot" style="background:${matColor(c.mat)}"></div>`).join('')}</div>`;
+      <div class="week-dots">${cours.slice(0,3).map(c=>`<div class="week-dot" style="background:${matColor(c.mat)}"></div>`).join('')}${devoirDots}</div>`;
     div.onclick=()=>{
-      // Retire surbrillance de tous les jours
       document.querySelectorAll('.week-day').forEach(el => el.classList.remove('selected-day'));
       div.classList.add('selected-day');
-      showWeekDetail(i+1, days[i]+' '+d.getDate());
+      showWeekDetail(i+1, days[i]+' '+d.getDate()+' '+months[d.getMonth()], dateStr);
     };
     grid.appendChild(div);
     if(isToday) {
       div.classList.add('selected-day');
-      showWeekDetail(i+1, days[i]+' '+d.getDate());
+      showWeekDetail(i+1, days[i]+' '+d.getDate()+' '+months[d.getMonth()], dateStr);
+    }
+  }
+  // Si pas de jour aujourd'hui dans la semaine affichée, montrer lundi
+  if (weekOffset !== 0) {
+    const firstDay = grid.firstChild;
+    if (firstDay) {
+      firstDay.classList.add('selected-day');
+      const ds = firstDay.dataset.date;
+      showWeekDetail(1, days[0]+' '+new Date(ds).getDate()+' '+months[new Date(ds).getMonth()], ds);
     }
   }
 }
 
-function showWeekDetail(dow, label) {
+function showWeekDetail(dow, label, forceDateStr) {
   document.getElementById('week-detail-title').textContent = label;
   const list = document.getElementById('week-detail-list');
   list.innerHTML = '';
@@ -3051,17 +2974,21 @@ function showWeekDetail(dow, label) {
   }
 
   // --- Devoirs & interros pour CE jour ---
-  // On récupère la date correspondant à ce dow dans la semaine courante
-  // dow=1=Lundi, dow=2=Mardi ... dow=5=Vendredi
-  const now = new Date();
-  const dow0 = now.getDay(); // 0=dim,1=lun,...,6=sam
-  const mondayOffset = dow0 === 0 ? -6 : 1 - dow0;
-  const mon = new Date(now);
-  mon.setDate(now.getDate() + mondayOffset);
-  mon.setHours(0,0,0,0);
-  const targetDate = new Date(mon);
-  targetDate.setDate(mon.getDate() + (dow - 1));
-  const targetStr = targetDate.toISOString().split('T')[0];
+  // Calcul de la date cible
+  let targetStr;
+  if (forceDateStr) {
+    targetStr = forceDateStr;
+  } else {
+    const now2 = new Date();
+    const dow0 = now2.getDay();
+    const mondayOff2 = dow0 === 0 ? -6 : 1 - dow0;
+    const mon2 = new Date(now2);
+    mon2.setDate(now2.getDate() + mondayOff2 + (weekOffset||0)*7);
+    mon2.setHours(0,0,0,0);
+    const tgt = new Date(mon2);
+    tgt.setDate(mon2.getDate() + (dow - 1));
+    targetStr = tgt.toISOString().split('T')[0];
+  }
 
   const devoirs = retrieve('devoirs_global', []);
   const dujour = devoirs.filter(d => d.dateObj === targetStr);
@@ -3080,18 +3007,44 @@ function showWeekDetail(dow, label) {
       const div = document.createElement('div');
       div.className = 'week-item';
       div.style.cssText = `background:${bg};border-radius:10px;padding:10px;margin-bottom:6px;border:none`;
-      div.innerHTML = `<div class="week-item-dot" style="background:${color}"></div>
-        <div class="week-item-text">
-          <span style="font-weight:700;color:${color}">${icon} ${isInterro?'Interro':'Devoir'} · ${d.mat||''}</span><br>
+      const descKey = (d.desc||'').replace(/'/g,'').substring(0,20);
+      const isDone = retrieve('devoir_done_'+d.dateObj+'_'+descKey, false);
+      div.innerHTML = `<div class="week-item-dot" style="background:${isDone?'#ccc':color}"></div>
+        <div class="week-item-text" style="${isDone?'opacity:0.5;text-decoration:line-through':''}">
+          <span style="font-weight:700;color:${isDone?'var(--text-3)':color}">${icon} ${isInterro?'Interro':'Devoir'} · ${d.mat||''}</span><br>
           <span style="font-size:13px;color:var(--text)">${d.desc||''}</span>
         </div>
-        <button onclick="supprimerDevoir('${d.dateObj}','${(d.desc||'').replace(/'/g,'').substring(0,20)}')" style="background:none;border:none;font-size:16px;cursor:pointer;color:var(--text-3)">🗑</button>`;
+        <div style="display:flex;gap:6px">
+          <button onclick="toggleDevoirDone('${d.dateObj}','${descKey}',this)" style="background:${isDone?'var(--ok)':'var(--ok-soft)'};border:none;border-radius:8px;padding:6px 10px;font-size:14px;cursor:pointer;color:${isDone?'white':'var(--ok)'}">✓</button>
+          <button onclick="supprimerDevoir('${d.dateObj}','${descKey}')" style="background:none;border:none;font-size:16px;cursor:pointer;color:var(--text-3)">🗑</button>
+        </div>`;
       list.appendChild(div);
     });
   }
 
   if (!cours.length && !dujour.length) {
     list.innerHTML = '<div style="color:var(--text-2);font-size:14px;padding:10px 0">Rien de prévu ce jour ✓</div>';
+  }
+}
+
+function toggleDevoirDone(dateObj, descPartial, btn) {
+  const key = 'devoir_done_'+dateObj+'_'+descPartial;
+  const isDone = retrieve(key, false);
+  store(key, !isDone);
+  if (!isDone) {
+    // Vient de cocher → points !
+    addPoints(20, 'Devoir fait ! 💪');
+  }
+  // Rebuild la vue pour ce jour
+  const allDays = document.querySelectorAll('.week-day.selected-day');
+  if (allDays.length) {
+    const dow = parseInt(allDays[0].dataset.dow);
+    const ds = allDays[0].dataset.date;
+    const now = new Date();
+    const days = ['Lun','Mar','Mer','Jeu','Ven'];
+    const months = ['jan','fév','mar','avr','mai','jun','jul','août','sep','oct','nov','déc'];
+    const d = new Date(ds);
+    showWeekDetail(dow, days[dow-1]+' '+d.getDate()+' '+months[d.getMonth()], ds);
   }
 }
 
@@ -3110,9 +3063,9 @@ function supprimerDevoir(dateObj, descPartial) {
   for (let i=0;i<5;i++) {
     const d = new Date(mon); d.setDate(mon.getDate()+i);
     const ds = d.toISOString().split('T')[0];
-    if (ds === dateObj) { showWeekDetail(i+1, days[i]+' '+d.getDate()); break; }
+    if (ds === dateObj) { showWeekDetail(i+1, days[i]+' '+d.getDate(), ds); break; }
   }
-  buildCeSoir(); buildUrgent();
+  buildCeSoir(); buildUrgent(); buildDemain();
   showToast('Devoir supprimé ✓');
 }
 
@@ -3372,7 +3325,7 @@ async function askAI() {
     // Construction du message — avec ou sans image
     let userContent;
     const ethanCtx = 'Tu es le grand frere cool d Ethan, 16 ans, tu lui expliques ses cours comme un pote qui sait de quoi il parle. Parle naturellement, style oral detendu, comme si tu lui parlais en vrai. Pas de langage scolaire. Ethan a 12 ans, TDAH, aime One Piece et le basket.\n' + getProfileCtx() + '\n\n';
-    const ethanRules = '\nSTYLE GRAND FRERE :\n- Max 3-4 phrases, vas direct au but\n- Commence par ok, donc, ecoute, ou vas-y\n- Utilise des mots simples, des analogies One Piece ou basket\n- Si y a un mot complique, explique-le direct apres avec genre ou cest comme\n- Sois encourageant mais pas niais\n- Parle comme a l oral, pas comme dans un livre\n\nQuestion d Ethan : ' + q;
+    const ethanRules = '\nSTYLE GRAND FRERE :\n- Max 3-4 phrases, vas direct au but\n- Commence par ok, donc, ecoute, ou vas-y\n- Utilise des mots simples, des analogies One Piece ou basket si pertinent\n- Si y a un mot complique, explique-le direct apres avec genre ou cest comme\n- Termine TOUJOURS par une courte phrase encourageante (ex: tu geres frere ! ou trop facile pour toi !)\n- Parle comme a l oral, pas comme dans un livre\n- Met en gras (**mot**) les 1-2 mots vraiment importants\n\nQuestion d Ethan : ' + q;
     const matPrompt = currentMatiere ? currentMatiere.prompt : '';
 
     if (capturedImageBase64 && hasUpload && currentAiSource === 'photo') {
@@ -3426,6 +3379,8 @@ async function askAI() {
     document.getElementById('verify-btn').classList.add('visible');
     const replayBtn = document.getElementById('tts-replay-btn');
     if (replayBtn) replayBtn.style.display = 'inline-block';
+    // Points pour avoir posé une question !
+    addPoints(5, 'Bonne question posée !');
     // Lecture vocale automatique — utilise le texte brut
     speakText(text);
   } catch(e) {
@@ -3906,7 +3861,8 @@ function saveRoutine() {
   store('routine_hist',hist.slice(0,10));
   document.getElementById('rd-humeur').textContent=selHumeurVal.emoji;
   selHumeurVal=null;
-  showToast('Routine enregistrée ✓');
+  addPoints(15, 'Routine du matin faite !');
+  showToast('Routine enregistrée ✓ +15 Berry 💰');
 }
 
 /* =============================================================
@@ -4170,8 +4126,9 @@ function saveAgenda() {
   renderAgendaItem(item,currentMatiere.c);
   closeModal('agenda-modal');
   document.getElementById('agenda-desc').value='';
-  showToast('Ajouté au planning ✓');
-  buildCeSoir(); buildUrgent();
+  showToast('Ajouté au planning ✓ +5 Berry 💰');
+  addPoints(5, 'Devoir noté !');
+  buildCeSoir(); buildUrgent(); buildDemain();
 }
 
 /* =============================================================
@@ -4372,8 +4329,8 @@ function saveFabMic() {
       list.push(item);
       store('mat_devoirs_' + matFound.id, list);
     }
-    buildCeSoir(); buildUrgent();
-    showToast(type === 'interro' ? 'Interro ajoutée au planning ✓' : 'Devoir ajouté au planning ✓');
+    buildCeSoir(); buildUrgent(); buildDemain();
+    showToast(type === 'interro' ? 'Interro ajoutee au planning ✓' : 'Devoir ajouté au planning ✓');
   } else {
     // Sinon note dans le journal
     const now2 = new Date();
@@ -4462,6 +4419,20 @@ function makeDraggable(el, bubbleMode=false) {
 function navTo(section) {
   const screens=['aujourd','semaine','matieres','matiere-detail','qg'];
   screens.forEach(s=>document.getElementById('screen-'+s)?.classList.remove('active'));
+  // Refresh widgets de motivation
+  if (section === 'aujourd') {
+    const mp = document.getElementById('mot-points');
+    if (mp) mp.textContent = ethanPoints + ' 💰';
+    const mr = document.getElementById('mot-rank');
+    let rank = 'Recrue';
+    if (ethanPoints >= 500) rank = 'Pirate';
+    if (ethanPoints >= 1000) rank = 'Capitaine';
+    if (ethanPoints >= 2000) rank = 'Commandant';
+    if (ethanPoints >= 5000) rank = 'Warlord';
+    if (mr) mr.textContent = rank + ' 🏴‍☠️';
+    const ms = document.getElementById('mot-streak-num');
+    if (ms) ms.textContent = ethanStreak + ' 🔥';
+  }
   const el=document.getElementById('screen-'+section);
   if(el) el.classList.add('active');
   // Tab bar
@@ -4495,6 +4466,20 @@ function switchInner(tab) {
 }
 
 function switchQG(tab) {
+  // Mettre à jour le widget points si on va sur évolution
+  if (tab === 'evolution') {
+    const bigEl = document.getElementById('ev-points-big');
+    if (bigEl) bigEl.textContent = ethanPoints;
+    const streakEl = document.getElementById('ev-streak-num');
+    if (streakEl) streakEl.textContent = ethanStreak;
+    let rank = 'Recrue';
+    if (ethanPoints >= 500) rank = 'Pirate';
+    if (ethanPoints >= 1000) rank = 'Capitaine';
+    if (ethanPoints >= 2000) rank = 'Commandant';
+    if (ethanPoints >= 5000) rank = 'Warlord';
+    const rankEl = document.getElementById('ev-rank');
+    if (rankEl) rankEl.textContent = rank;
+  }
   ['timer','routine','ressenti','evolution','rapport'].forEach(t=>{
     document.getElementById('qg-'+t)?.classList.toggle('active',t===tab);
   });
@@ -4739,6 +4724,7 @@ function skipOnboardingTest() {
   };
   window.ETHAN_PROFILE_CTX = 'Mode test papa actif.';
   document.getElementById('screen-onboarding').classList.add('hidden');
+  navTo('semaine');
   showToast('Mode test actif — profil Ethan non modifie');
 }
 
@@ -4752,7 +4738,7 @@ function checkOnboarding() {
   } else {
     // Déjà fait → appli normale
     document.getElementById('screen-onboarding').classList.add('hidden');
-    navTo('aujourd');
+    navTo('semaine');
     // Injecte le profil dans les prompts IA
     injectProfileIntoAI(JSON.parse(profile));
   }
@@ -4920,7 +4906,7 @@ document.addEventListener('DOMContentLoaded', () => { init(); checkOnboarding();
 
 
 <!-- MODAL CLE API -->
-<div id="modal-apikey" style="display: flex; position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.7); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+<div id="modal-apikey" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;padding:20px">
   <div style="background:#fff;border-radius:20px;padding:28px;max-width:420px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,0.2)">
     <div style="font-size:2rem;text-align:center;margin-bottom:8px">🔑</div>
     <h2 style="font-family:&#39;Nunito&#39;,sans-serif;font-size:1.2rem;font-weight:800;color:#1A1A2E;text-align:center;margin:0 0 8px">Cle API Anthropic</h2>
