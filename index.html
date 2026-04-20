@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_2.html -->
+<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_3.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1474,7 +1474,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 <!-- ============================================================
      TOAST
      ============================================================ -->
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast">Cle API sauvegardee !</div>
 
 <!-- ============================================================
      HEADER
@@ -1483,8 +1483,8 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
   <div class="header-brand">
     <span class="header-anchor">⚓</span>
     <div class="header-texts">
-      <div class="header-title" id="header-title">Mon École</div>
-      <div class="header-sub" id="header-sub">Dimanche 19 avril</div>
+      <div class="header-title" id="header-title">Ma semaine</div>
+      <div class="header-sub" id="header-sub">Lundi 20 avril</div>
     </div>
   </div>
   <div class="header-avatar" onclick="navTo(&#39;qg&#39;)">EC</div>
@@ -1494,10 +1494,10 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
      TAB BAR
      ============================================================ -->
 <div class="tab-bar" id="tab-bar" style="display: flex;">
-  <button class="tab-btn active" onclick="navTo(&#39;semaine&#39;)">
+  <button class="tab-btn" onclick="navTo(&#39;semaine&#39;)">
     <span class="tab-icon">🗓</span>Ma Semaine
   </button>
-  <button class="tab-btn" onclick="navTo(&#39;aujourd&#39;)">
+  <button class="tab-btn active" onclick="navTo(&#39;aujourd&#39;)">
     <span class="tab-icon">📅</span>Aujourd'hui
   </button>
   <button class="tab-btn" onclick="navTo(&#39;matieres&#39;)">
@@ -1566,9 +1566,9 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     </div>
 
     <!-- Demain -->
-    <div id="demain-strip" style="display:none;background:var(--accent-soft);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;border-left:4px solid var(--accent)">
+    <div id="demain-strip" style="display: block; background: var(--accent-soft); border-radius: var(--radius-sm); padding: 10px 14px; margin-bottom: 10px; border-left: 4px solid var(--accent);">
       <div style="font-family:&#39;Nunito&#39;,sans-serif;font-size:12px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">📅 Demain j'ai…</div>
-      <div id="demain-list"></div>
+      <div id="demain-list"><div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:0"><span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">Techno</span><span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">Maths</span><span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">Natation</span><span style="background:white;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;color:var(--accent)">Français</span></div></div>
     </div>
 
     <!-- Urgences -->
@@ -1576,7 +1576,287 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 
     <!-- Planning -->
     <div class="slabel">Planning du jour</div>
-    <div id="planning-wrap"><div class="card" style="text-align:center;color:var(--text-2);font-size:15px">Pas de cours aujourd'hui 🏖</div></div>
+    <div id="planning-wrap"><div class="pitem past" id="pitem-0">
+        <div class="pitem-header" onclick="togglePitem(0)">
+          <div class="pitem-stripe" style="background:var(--sciences)"></div>
+          <div class="pitem-time">08h10</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Sciences</div>
+            <div class="pitem-local">D101</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-0">
+      <span id="note-text-0"></span>
+      <div class="note-saved-time" id="note-time-0"></div>
+      <button class="note-edit-btn" onclick="editNote(0)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-0">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-0" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-0" onmousedown="startMicFor(&#39;note-inp-0&#39;,event,0)" onmouseup="stopMic(&#39;note-mic-0&#39;)" onmouseleave="stopMic(&#39;note-mic-0&#39;)" ontouchstart="startMicFor(&#39;note-inp-0&#39;,event,0)" ontouchend="stopMic(&#39;note-mic-0&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-0">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(0)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(0)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-1">
+        <div class="pitem-header" onclick="togglePitem(1)">
+          <div class="pitem-stripe" style="background:var(--sport)"></div>
+          <div class="pitem-time">09h00</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Sport</div>
+            <div class="pitem-local">J001</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-1">
+      <span id="note-text-1"></span>
+      <div class="note-saved-time" id="note-time-1"></div>
+      <button class="note-edit-btn" onclick="editNote(1)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-1">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-1" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-1" onmousedown="startMicFor(&#39;note-inp-1&#39;,event,1)" onmouseup="stopMic(&#39;note-mic-1&#39;)" onmouseleave="stopMic(&#39;note-mic-1&#39;)" ontouchstart="startMicFor(&#39;note-inp-1&#39;,event,1)" ontouchend="stopMic(&#39;note-mic-1&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-1">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(1)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(1)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-2">
+        <div class="pitem-header" onclick="togglePitem(2)">
+          <div class="pitem-stripe" style="background:var(--maths)"></div>
+          <div class="pitem-time">09h50</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Maths</div>
+            <div class="pitem-local">E004</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-2">
+      <span id="note-text-2"></span>
+      <div class="note-saved-time" id="note-time-2"></div>
+      <button class="note-edit-btn" onclick="editNote(2)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-2">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-2" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-2" onmousedown="startMicFor(&#39;note-inp-2&#39;,event,2)" onmouseup="stopMic(&#39;note-mic-2&#39;)" onmouseleave="stopMic(&#39;note-mic-2&#39;)" ontouchstart="startMicFor(&#39;note-inp-2&#39;,event,2)" ontouchend="stopMic(&#39;note-mic-2&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-2">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(2)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(2)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past is-break" id="pitem-3">
+        <div class="pitem-header" onclick="togglePitem(3)">
+          <div class="pitem-stripe" style="background:#D0D0D8"></div>
+          <div class="pitem-time">10h40</div>
+          <div class="pitem-main">
+            <div class="pitem-name" style="color:var(--text-2)">☕ Récréation</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <span class="pitem-chevron">›</span>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-3">
+      <span id="note-text-3"></span>
+      <div class="note-saved-time" id="note-time-3"></div>
+      <button class="note-edit-btn" onclick="editNote(3)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-3">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-3" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-3" onmousedown="startMicFor(&#39;note-inp-3&#39;,event,3)" onmouseup="stopMic(&#39;note-mic-3&#39;)" onmouseleave="stopMic(&#39;note-mic-3&#39;)" ontouchstart="startMicFor(&#39;note-inp-3&#39;,event,3)" ontouchend="stopMic(&#39;note-mic-3&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-3">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(3)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(3)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-4">
+        <div class="pitem-header" onclick="togglePitem(4)">
+          <div class="pitem-stripe" style="background:var(--latin)"></div>
+          <div class="pitem-time">11h00</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Latin</div>
+            <div class="pitem-local">C004</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-4">
+      <span id="note-text-4"></span>
+      <div class="note-saved-time" id="note-time-4"></div>
+      <button class="note-edit-btn" onclick="editNote(4)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-4">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-4" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-4" onmousedown="startMicFor(&#39;note-inp-4&#39;,event,4)" onmouseup="stopMic(&#39;note-mic-4&#39;)" onmouseleave="stopMic(&#39;note-mic-4&#39;)" ontouchstart="startMicFor(&#39;note-inp-4&#39;,event,4)" ontouchend="stopMic(&#39;note-mic-4&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-4">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(4)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(4)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past is-break" id="pitem-6">
+        <div class="pitem-header" onclick="togglePitem(6)">
+          <div class="pitem-stripe" style="background:#D0D0D8"></div>
+          <div class="pitem-time">12h40</div>
+          <div class="pitem-main">
+            <div class="pitem-name" style="color:var(--text-2)">🍽 Temps de midi</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <span class="pitem-chevron">›</span>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-6">
+      <span id="note-text-6"></span>
+      <div class="note-saved-time" id="note-time-6"></div>
+      <button class="note-edit-btn" onclick="editNote(6)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-6">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-6" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-6" onmousedown="startMicFor(&#39;note-inp-6&#39;,event,6)" onmouseup="stopMic(&#39;note-mic-6&#39;)" onmouseleave="stopMic(&#39;note-mic-6&#39;)" ontouchstart="startMicFor(&#39;note-inp-6&#39;,event,6)" ontouchend="stopMic(&#39;note-mic-6&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-6">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(6)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(6)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-7">
+        <div class="pitem-header" onclick="togglePitem(7)">
+          <div class="pitem-stripe" style="background:var(--francais)"></div>
+          <div class="pitem-time">13h20</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Français</div>
+            <div class="pitem-local">E104</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-7">
+      <span id="note-text-7"></span>
+      <div class="note-saved-time" id="note-time-7"></div>
+      <button class="note-edit-btn" onclick="editNote(7)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-7">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-7" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-7" onmousedown="startMicFor(&#39;note-inp-7&#39;,event,7)" onmouseup="stopMic(&#39;note-mic-7&#39;)" onmouseleave="stopMic(&#39;note-mic-7&#39;)" ontouchstart="startMicFor(&#39;note-inp-7&#39;,event,7)" ontouchend="stopMic(&#39;note-mic-7&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-7">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(7)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(7)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-8">
+        <div class="pitem-header" onclick="togglePitem(8)">
+          <div class="pitem-stripe" style="background:var(--edm)"></div>
+          <div class="pitem-time">14h10</div>
+          <div class="pitem-main">
+            <div class="pitem-name">EDM</div>
+            <div class="pitem-local">E101</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-8">
+      <span id="note-text-8"></span>
+      <div class="note-saved-time" id="note-time-8"></div>
+      <button class="note-edit-btn" onclick="editNote(8)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-8">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-8" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-8" onmousedown="startMicFor(&#39;note-inp-8&#39;,event,8)" onmouseup="stopMic(&#39;note-mic-8&#39;)" onmouseleave="stopMic(&#39;note-mic-8&#39;)" ontouchstart="startMicFor(&#39;note-inp-8&#39;,event,8)" ontouchend="stopMic(&#39;note-mic-8&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-8">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(8)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(8)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-9">
+        <div class="pitem-header" onclick="togglePitem(9)">
+          <div class="pitem-stripe" style="background:var(--anglais)"></div>
+          <div class="pitem-time">15h00</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Anglais</div>
+            <div class="pitem-local">F206</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-9">
+      <span id="note-text-9"></span>
+      <div class="note-saved-time" id="note-time-9"></div>
+      <button class="note-edit-btn" onclick="editNote(9)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-9">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-9" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-9" onmousedown="startMicFor(&#39;note-inp-9&#39;,event,9)" onmouseup="stopMic(&#39;note-mic-9&#39;)" onmouseleave="stopMic(&#39;note-mic-9&#39;)" ontouchstart="startMicFor(&#39;note-inp-9&#39;,event,9)" ontouchend="stopMic(&#39;note-mic-9&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-9">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(9)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(9)">Enregistrer ✓</button>
+      </div>
+    </div></div></div></div>
 
     <!-- Extra scolaire -->
     <div class="slabel" style="display:flex;align-items:center;justify-content:space-between">
@@ -1605,22 +1885,36 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
       <button onclick="prevWeek()" style="background:var(--card);border:none;border-radius:10px;padding:8px 14px;font-size:20px;box-shadow:var(--shadow);cursor:pointer">‹</button>
       <div id="week-label" style="font-family:&#39;Nunito&#39;,sans-serif;font-weight:800;font-size:15px;color:var(--text)">Cette semaine</div>
-      <button onclick="nextWeek()" id="week-next-btn" style="background:var(--card);border:none;border-radius:10px;padding:8px 14px;font-size:20px;box-shadow:var(--shadow);cursor:pointer;opacity:0.3" disabled="">›</button>
+      <button onclick="nextWeek()" id="week-next-btn" style="background: var(--card); border: none; border-radius: 10px; padding: 8px 14px; font-size: 20px; box-shadow: var(--shadow); cursor: pointer; opacity: 0.3;" disabled="">›</button>
     </div>
-    <div class="week-grid" id="week-grid"><div class="week-day"><div class="week-day-name">Lun</div>
-      <div class="week-day-num">13</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--latin)"></div></div></div><div class="week-day"><div class="week-day-name">Mar</div>
-      <div class="week-day-num">14</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div><div class="week-dot" style="background:var(--francais)"></div></div></div><div class="week-day"><div class="week-day-name">Mer</div>
-      <div class="week-day-num">15</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--sport)"></div></div></div><div class="week-day"><div class="week-day-name">Jeu</div>
-      <div class="week-day-num">16</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day"><div class="week-day-name">Ven</div>
-      <div class="week-day-num">17</div>
-      <div class="week-dots"><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--religion)"></div></div></div></div>
+    <div class="week-grid" id="week-grid"><div class="week-day today selected-day" data-dow="1" data-date="2026-04-19"><div class="week-day-name">Lun</div>
+      <div class="week-day-num">20</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day future" data-dow="2" data-date="2026-04-20"><div class="week-day-name">Mar</div>
+      <div class="week-day-num">21</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div></div></div><div class="week-day future" data-dow="3" data-date="2026-04-21"><div class="week-day-name">Mer</div>
+      <div class="week-day-num">22</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div></div></div><div class="week-day future" data-dow="4" data-date="2026-04-22"><div class="week-day-name">Jeu</div>
+      <div class="week-day-num">23</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div></div></div><div class="week-day future" data-dow="5" data-date="2026-04-23"><div class="week-day-name">Ven</div>
+      <div class="week-day-num">24</div>
+      <div class="week-dots"><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div></div>
     <div class="week-detail" id="week-detail">
-      <div class="week-detail-title" id="week-detail-title">Sélectionne un jour</div>
-      <div id="week-detail-list"></div>
+      <div class="week-detail-title" id="week-detail-title">Lun 20 avr</div>
+      <div id="week-detail-list"><div style="font-size: 11px; font-weight: 800; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; margin-top: 4px;">📚 Cours</div><div class="week-item"><div class="week-item-dot" style="background:var(--sciences)"></div>
+        <div class="week-item-text">08h10 · Sciences</div>
+        <span style="font-size:11px;color:var(--text-3)">D101</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--sport)"></div>
+        <div class="week-item-text">09h00 · Sport</div>
+        <span style="font-size:11px;color:var(--text-3)">J001</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--maths)"></div>
+        <div class="week-item-text">09h50 · Maths</div>
+        <span style="font-size:11px;color:var(--text-3)">E004</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--latin)"></div>
+        <div class="week-item-text">11h00 · Latin</div>
+        <span style="font-size:11px;color:var(--text-3)">C004</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--francais)"></div>
+        <div class="week-item-text">13h20 · Français</div>
+        <span style="font-size:11px;color:var(--text-3)">E104</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--edm)"></div>
+        <div class="week-item-text">14h10 · EDM</div>
+        <span style="font-size:11px;color:var(--text-3)">E101</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--anglais)"></div>
+        <div class="week-item-text">15h00 · Anglais</div>
+        <span style="font-size:11px;color:var(--text-3)">F206</span></div></div>
     </div>
   </div>
 </div>
@@ -1875,7 +2169,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 
   <!-- QG TIMER -->
   <div class="inner-content active pad" id="qg-timer">
-    <div class="qg-mat-row" id="qg-mat-row" style="display:none"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
+    <div class="qg-mat-row" id="qg-mat-row" style="display:none"><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button><button class="qg-mat-btn">🔬 Sciences</button><button class="qg-mat-btn sel" style="border-color: var(--maths); color: var(--maths);">📐 Maths</button><button class="qg-mat-btn">📖 Français</button><button class="qg-mat-btn">💬 Anglais</button><button class="qg-mat-btn">🌍 EDM</button><button class="qg-mat-btn">🏛 Latin</button><button class="qg-mat-btn">⚽ Sport</button><button class="qg-mat-btn">⚙️ Techno</button><button class="qg-mat-btn">🤝 Religion</button><button class="qg-mat-btn">🏊 Natation</button><button class="qg-mat-btn">🎨 Plastique</button></div>
     <div class="auto-pause-banner" id="auto-pause-banner">
       <div class="apb-title">☕ Pause recharge !</div>
       <div class="apb-acts">
@@ -2048,7 +2342,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <div style="font-size:13px;color:var(--text-2);font-weight:600">Rapport hebdomadaire</div>
-        <div style="font-size:13px;font-weight:700;color:var(--accent)" id="rapport-date">Lun 13 → Ven 17 avr</div>
+        <div style="font-size:13px;font-weight:700;color:var(--accent)" id="rapport-date">Lun 20 → Ven 24 avr</div>
       </div>
       <!-- Jauges rapides -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
@@ -2122,10 +2416,10 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
      BOTTOM NAV
      ============================================================ -->
 <div class="bottom-nav">
-  <button class="nav-btn active" id="nav-aujourd" onclick="navTo(&#39;aujourd&#39;)">
+  <button class="nav-btn" id="nav-aujourd" onclick="navTo(&#39;aujourd&#39;)">
     <span class="nav-icon">📅</span><span class="nav-label">Auj.</span>
   </button>
-  <button class="nav-btn" id="nav-semaine" onclick="navTo(&#39;semaine&#39;)">
+  <button class="nav-btn active" id="nav-semaine" onclick="navTo(&#39;semaine&#39;)">
     <span class="nav-icon">🗓</span><span class="nav-label">Semaine</span>
   </button>
   <div class="nav-spacer"></div>
@@ -2477,7 +2771,7 @@ function checkDailyStreak() {
   }
   localStorage.setItem('ethan_streak', ethanStreak);
   localStorage.setItem('ethan_last_day', today);
-  addPoints(10, 'Présent aujourd'hui !');
+  addPoints(10, "Present aujourd'hui !");
 }
 let selRsVal = null;
 let selExtraTypeVal = {emoji:'🏀',label:'Sport'};
@@ -4906,7 +5200,7 @@ document.addEventListener('DOMContentLoaded', () => { init(); checkOnboarding();
 
 
 <!-- MODAL CLE API -->
-<div id="modal-apikey" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;padding:20px">
+<div id="modal-apikey" style="display: none; position: fixed; inset: 0px; background: rgba(0, 0, 0, 0.7); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
   <div style="background:#fff;border-radius:20px;padding:28px;max-width:420px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,0.2)">
     <div style="font-size:2rem;text-align:center;margin-bottom:8px">🔑</div>
     <h2 style="font-family:&#39;Nunito&#39;,sans-serif;font-size:1.2rem;font-weight:800;color:#1A1A2E;text-align:center;margin:0 0 8px">Cle API Anthropic</h2>
