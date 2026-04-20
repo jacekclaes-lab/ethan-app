@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_3.html -->
+<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_4.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1243,6 +1243,8 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 </style>
+<script src="./index_files/email.min.js.téléchargement"></script>
+<script>emailjs.init("c8sc9Sc3KRe3dksAS");</script>
 </head>
 <body>
 
@@ -1479,7 +1481,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <span class="header-anchor">⚓</span>
     <div class="header-texts">
       <div class="header-title" id="header-title">Mon École</div>
-      <div class="header-sub" id="header-sub">Dimanche 19 avril</div>
+      <div class="header-sub" id="header-sub">Lundi 20 avril</div>
     </div>
   </div>
   <div class="header-avatar" onclick="navTo(&#39;qg&#39;)">EC</div>
@@ -1533,14 +1535,14 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
   <div class="pad">
 
     <!-- Prochain cours -->
-    <div class="next-banner" id="next-banner" style="display: none;">
+    <div class="next-banner" id="next-banner" style="display: none; background: var(--edm);">
       <div>
         <div class="next-label">Prochain cours</div>
-        <div class="next-name" id="next-name">—</div>
-        <div class="next-time" id="next-time">—</div>
+        <div class="next-name" id="next-name">EDM</div>
+        <div class="next-time" id="next-time">14h10 · E101</div>
       </div>
       <div class="next-cntdwn">
-        <span class="next-num" id="next-countdown">—</span>
+        <span class="next-num" id="next-countdown">8</span>
         <span class="next-lbl">MIN</span>
       </div>
     </div>
@@ -1556,7 +1558,287 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
 
     <!-- Planning -->
     <div class="slabel">Planning du jour</div>
-    <div id="planning-wrap"><div class="card" style="text-align:center;color:var(--text-2);font-size:15px">Pas de cours aujourd'hui 🏖</div></div>
+    <div id="planning-wrap"><div class="pitem past" id="pitem-0">
+        <div class="pitem-header" onclick="togglePitem(0)">
+          <div class="pitem-stripe" style="background:var(--sciences)"></div>
+          <div class="pitem-time">08h10</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Sciences</div>
+            <div class="pitem-local">D101</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-0">
+      <span id="note-text-0"></span>
+      <div class="note-saved-time" id="note-time-0"></div>
+      <button class="note-edit-btn" onclick="editNote(0)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-0">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-0" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-0" onmousedown="startMicFor(&#39;note-inp-0&#39;,event,0)" onmouseup="stopMic(&#39;note-mic-0&#39;)" onmouseleave="stopMic(&#39;note-mic-0&#39;)" ontouchstart="startMicFor(&#39;note-inp-0&#39;,event,0)" ontouchend="stopMic(&#39;note-mic-0&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-0">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(0)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(0)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-1">
+        <div class="pitem-header" onclick="togglePitem(1)">
+          <div class="pitem-stripe" style="background:var(--sport)"></div>
+          <div class="pitem-time">09h00</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Sport</div>
+            <div class="pitem-local">J001</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-1">
+      <span id="note-text-1"></span>
+      <div class="note-saved-time" id="note-time-1"></div>
+      <button class="note-edit-btn" onclick="editNote(1)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-1">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-1" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-1" onmousedown="startMicFor(&#39;note-inp-1&#39;,event,1)" onmouseup="stopMic(&#39;note-mic-1&#39;)" onmouseleave="stopMic(&#39;note-mic-1&#39;)" ontouchstart="startMicFor(&#39;note-inp-1&#39;,event,1)" ontouchend="stopMic(&#39;note-mic-1&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-1">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(1)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(1)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-2">
+        <div class="pitem-header" onclick="togglePitem(2)">
+          <div class="pitem-stripe" style="background:var(--maths)"></div>
+          <div class="pitem-time">09h50</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Maths</div>
+            <div class="pitem-local">E004</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-2">
+      <span id="note-text-2"></span>
+      <div class="note-saved-time" id="note-time-2"></div>
+      <button class="note-edit-btn" onclick="editNote(2)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-2">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-2" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-2" onmousedown="startMicFor(&#39;note-inp-2&#39;,event,2)" onmouseup="stopMic(&#39;note-mic-2&#39;)" onmouseleave="stopMic(&#39;note-mic-2&#39;)" ontouchstart="startMicFor(&#39;note-inp-2&#39;,event,2)" ontouchend="stopMic(&#39;note-mic-2&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-2">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(2)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(2)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past is-break" id="pitem-3">
+        <div class="pitem-header" onclick="togglePitem(3)">
+          <div class="pitem-stripe" style="background:#D0D0D8"></div>
+          <div class="pitem-time">10h40</div>
+          <div class="pitem-main">
+            <div class="pitem-name" style="color:var(--text-2)">☕ Récréation</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <span class="pitem-chevron">›</span>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-3">
+      <span id="note-text-3"></span>
+      <div class="note-saved-time" id="note-time-3"></div>
+      <button class="note-edit-btn" onclick="editNote(3)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-3">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-3" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-3" onmousedown="startMicFor(&#39;note-inp-3&#39;,event,3)" onmouseup="stopMic(&#39;note-mic-3&#39;)" onmouseleave="stopMic(&#39;note-mic-3&#39;)" ontouchstart="startMicFor(&#39;note-inp-3&#39;,event,3)" ontouchend="stopMic(&#39;note-mic-3&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-3">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(3)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(3)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past" id="pitem-4">
+        <div class="pitem-header" onclick="togglePitem(4)">
+          <div class="pitem-stripe" style="background:var(--latin)"></div>
+          <div class="pitem-time">11h00</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Latin</div>
+            <div class="pitem-local">C004</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-4">
+      <span id="note-text-4"></span>
+      <div class="note-saved-time" id="note-time-4"></div>
+      <button class="note-edit-btn" onclick="editNote(4)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-4">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-4" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-4" onmousedown="startMicFor(&#39;note-inp-4&#39;,event,4)" onmouseup="stopMic(&#39;note-mic-4&#39;)" onmouseleave="stopMic(&#39;note-mic-4&#39;)" ontouchstart="startMicFor(&#39;note-inp-4&#39;,event,4)" ontouchend="stopMic(&#39;note-mic-4&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-4">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(4)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(4)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem past is-break" id="pitem-6">
+        <div class="pitem-header" onclick="togglePitem(6)">
+          <div class="pitem-stripe" style="background:#D0D0D8"></div>
+          <div class="pitem-time">12h40</div>
+          <div class="pitem-main">
+            <div class="pitem-name" style="color:var(--text-2)">🍽 Temps de midi</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <span class="pitem-chevron">›</span>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-6">
+      <span id="note-text-6"></span>
+      <div class="note-saved-time" id="note-time-6"></div>
+      <button class="note-edit-btn" onclick="editNote(6)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-6">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-6" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-6" onmousedown="startMicFor(&#39;note-inp-6&#39;,event,6)" onmouseup="stopMic(&#39;note-mic-6&#39;)" onmouseleave="stopMic(&#39;note-mic-6&#39;)" ontouchstart="startMicFor(&#39;note-inp-6&#39;,event,6)" ontouchend="stopMic(&#39;note-mic-6&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-6">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(6)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(6)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem current" id="pitem-7">
+        <div class="pitem-header" onclick="togglePitem(7)">
+          <div class="pitem-stripe" style="background:var(--francais)"></div>
+          <div class="pitem-time">13h20</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Français</div>
+            <div class="pitem-local">E104</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            <span class="badge badge-cours">EN COURS</span>
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-7">
+      <span id="note-text-7"></span>
+      <div class="note-saved-time" id="note-time-7"></div>
+      <button class="note-edit-btn" onclick="editNote(7)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-7">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-7" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-7" onmousedown="startMicFor(&#39;note-inp-7&#39;,event,7)" onmouseup="stopMic(&#39;note-mic-7&#39;)" onmouseleave="stopMic(&#39;note-mic-7&#39;)" ontouchstart="startMicFor(&#39;note-inp-7&#39;,event,7)" ontouchend="stopMic(&#39;note-mic-7&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-7">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(7)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(7)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem" id="pitem-8">
+        <div class="pitem-header" onclick="togglePitem(8)">
+          <div class="pitem-stripe" style="background:var(--edm)"></div>
+          <div class="pitem-time">14h10</div>
+          <div class="pitem-main">
+            <div class="pitem-name">EDM</div>
+            <div class="pitem-local">E101</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-8">
+      <span id="note-text-8"></span>
+      <div class="note-saved-time" id="note-time-8"></div>
+      <button class="note-edit-btn" onclick="editNote(8)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-8">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-8" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-8" onmousedown="startMicFor(&#39;note-inp-8&#39;,event,8)" onmouseup="stopMic(&#39;note-mic-8&#39;)" onmouseleave="stopMic(&#39;note-mic-8&#39;)" ontouchstart="startMicFor(&#39;note-inp-8&#39;,event,8)" ontouchend="stopMic(&#39;note-mic-8&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-8">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(8)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(8)">Enregistrer ✓</button>
+      </div>
+    </div></div></div><div class="pitem" id="pitem-9">
+        <div class="pitem-header" onclick="togglePitem(9)">
+          <div class="pitem-stripe" style="background:var(--anglais)"></div>
+          <div class="pitem-time">15h00</div>
+          <div class="pitem-main">
+            <div class="pitem-name">Anglais</div>
+            <div class="pitem-local">F206</div>
+            <div style="font-size:12px;color:var(--text-3)">Tap pour noter</div>
+          </div>
+          <div class="pitem-right">
+            
+            <span class="pitem-chevron">›</span>
+          </div>
+        </div>
+        <div class="pitem-expanded">
+    <div class="note-saved " id="note-saved-9">
+      <span id="note-text-9"></span>
+      <div class="note-saved-time" id="note-time-9"></div>
+      <button class="note-edit-btn" onclick="editNote(9)">✏ Modifier</button>
+    </div>
+    <div class="note-input-zone " id="note-zone-9">
+      <div class="note-input-row">
+        <textarea class="field-input note-textarea" id="note-inp-9" rows="2" placeholder="Tape ta note ici…"></textarea>
+        <div class="mic-round" id="note-mic-9" onmousedown="startMicFor(&#39;note-inp-9&#39;,event,9)" onmouseup="stopMic(&#39;note-mic-9&#39;)" onmouseleave="stopMic(&#39;note-mic-9&#39;)" ontouchstart="startMicFor(&#39;note-inp-9&#39;,event,9)" ontouchend="stopMic(&#39;note-mic-9&#39;)">🎤</div>
+      </div>
+      <div class="wave-bars" id="note-wave-9">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      <div class="note-save-row">
+        <button class="btn btn-ghost" style="flex:1" onclick="cancelNote(9)">Annuler</button>
+        <button class="btn btn-ok" style="flex:1" onclick="saveNote(9)">Enregistrer ✓</button>
+      </div>
+    </div></div></div></div>
 
     <!-- Extra scolaire -->
     <div class="slabel" style="display:flex;align-items:center;justify-content:space-between">
@@ -1581,20 +1863,34 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
      ============================================================ -->
 <div class="screen" id="screen-semaine">
   <div class="pad">
-    <div class="week-grid" id="week-grid"><div class="week-day"><div class="week-day-name">Lun</div>
-      <div class="week-day-num">13</div>
+    <div class="week-grid" id="week-grid"><div class="week-day today"><div class="week-day-name">Lun</div>
+      <div class="week-day-num">20</div>
       <div class="week-dots"><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--sport)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--latin)"></div></div></div><div class="week-day"><div class="week-day-name">Mar</div>
-      <div class="week-day-num">14</div>
+      <div class="week-day-num">21</div>
       <div class="week-dots"><div class="week-dot" style="background:var(--techno)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--natation)"></div><div class="week-dot" style="background:var(--francais)"></div></div></div><div class="week-day"><div class="week-day-name">Mer</div>
-      <div class="week-day-num">15</div>
+      <div class="week-day-num">22</div>
       <div class="week-dots"><div class="week-dot" style="background:var(--religion)"></div><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--sport)"></div></div></div><div class="week-day"><div class="week-day-name">Jeu</div>
-      <div class="week-day-num">16</div>
+      <div class="week-day-num">23</div>
       <div class="week-dots"><div class="week-dot" style="background:var(--francais)"></div><div class="week-dot" style="background:var(--sciences)"></div><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--maths)"></div></div></div><div class="week-day"><div class="week-day-name">Ven</div>
-      <div class="week-day-num">17</div>
+      <div class="week-day-num">24</div>
       <div class="week-dots"><div class="week-dot" style="background:var(--anglais)"></div><div class="week-dot" style="background:var(--edm)"></div><div class="week-dot" style="background:var(--maths)"></div><div class="week-dot" style="background:var(--religion)"></div></div></div></div>
     <div class="week-detail" id="week-detail">
-      <div class="week-detail-title" id="week-detail-title">Sélectionne un jour</div>
-      <div id="week-detail-list"></div>
+      <div class="week-detail-title" id="week-detail-title">Lun 20</div>
+      <div id="week-detail-list"><div style="font-size: 11px; font-weight: 800; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; margin-top: 4px;">📚 Cours</div><div class="week-item"><div class="week-item-dot" style="background:var(--sciences)"></div>
+        <div class="week-item-text">08h10 · Sciences</div>
+        <span style="font-size:11px;color:var(--text-3)">D101</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--sport)"></div>
+        <div class="week-item-text">09h00 · Sport</div>
+        <span style="font-size:11px;color:var(--text-3)">J001</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--maths)"></div>
+        <div class="week-item-text">09h50 · Maths</div>
+        <span style="font-size:11px;color:var(--text-3)">E004</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--latin)"></div>
+        <div class="week-item-text">11h00 · Latin</div>
+        <span style="font-size:11px;color:var(--text-3)">C004</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--francais)"></div>
+        <div class="week-item-text">13h20 · Français</div>
+        <span style="font-size:11px;color:var(--text-3)">E104</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--edm)"></div>
+        <div class="week-item-text">14h10 · EDM</div>
+        <span style="font-size:11px;color:var(--text-3)">E101</span></div><div class="week-item"><div class="week-item-dot" style="background:var(--anglais)"></div>
+        <div class="week-item-text">15h00 · Anglais</div>
+        <span style="font-size:11px;color:var(--text-3)">F206</span></div></div>
     </div>
   </div>
 </div>
@@ -1732,6 +2028,10 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
       </div>
       <button class="btn btn-primary btn-full" style="margin-bottom:12px" onclick="askAI()">↗ Explique-moi !</button>
       <div class="ai-response-box empty" id="ai-response">Pose ta question — je t'explique en langage simple.</div>
+      <div style="display:flex;gap:8px;margin-top:6px;margin-bottom:4px">
+        <button id="tts-stop-btn" onclick="stopSpeak()" style="display:none;padding:8px 16px;background:#E63946;color:#fff;border:none;border-radius:10px;font-family:&#39;Nunito&#39;,sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer">⏹ Stop</button>
+        <button id="tts-replay-btn" onclick="speakText(document.getElementById(&#39;ai-response&#39;).textContent)" style="display:none;padding:8px 16px;background:#f0f0ff;color:#5B5FEF;border:2px solid #5B5FEF;border-radius:10px;font-family:&#39;Nunito&#39;,sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer">🔊 Réécouter</button>
+      </div>
       <button class="verify-btn" id="verify-btn" onclick="startQuiz()">🎯 Teste-moi sur ce que j'ai compris</button>
     </div>
     <!-- QUIZ MODULE — banque statique + photo IA -->
@@ -2001,7 +2301,7 @@ p, li { font-size: 15px; line-height: 1.6; color: var(--text); }
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <div style="font-size:13px;color:var(--text-2);font-weight:600">Rapport hebdomadaire</div>
-        <div style="font-size:13px;font-weight:700;color:var(--accent)" id="rapport-date">Lun 13 → Ven 17 avr</div>
+        <div style="font-size:13px;font-weight:700;color:var(--accent)" id="rapport-date">Lun 20 → Ven 24 avr</div>
       </div>
       <!-- Jauges rapides -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
@@ -2306,15 +2606,15 @@ const HORAIRE = {
 
 const MATIERES_DEF = [
   {id:'sciences',n:'Sciences',e:'🔬',c:'var(--sciences)',cs:'var(--sciences-soft)',
-   prompt:'Tu es l assistant d Ethan Claes, 12 ans, 1ere secondaire Saint Roch Ferriere. TDAH + dysphasie. Aime One Piece et le basket.\n\nPROGRAMME SCIENCES 1ERE :\n- Demarche scientifique : observation, hypothese, experience, conclusion\n- Etres vivants : vivants vs non-vivants, 3 regnes (animaux/vegetaux/champignons)\n- Nutrition : autotrophes (vegetaux = photosynthese) vs heterotrophes (animaux/champignons)\n- Appareil digestif : bouche, oesophage, estomac, intestin grele (absorption des nutriments), gros intestin, anus. Glandes annexes : foie (bile), pancreas (suc pancreatique)\n- Appareil respiratoire : narines, fosses nasales, pharynx, larynx, trachee, bronches, alveoles pulmonaires. Inspiratio/expiration. Echanges O2/CO2\n- Matiere : etats solide/liquide/gazeux, molecules, corps purs et melanges, changements d etats\n- Energie : formes d energie (mecanique, thermique, electrique, chimique, lumineuse, sonore)\n\nREGLES : 3-4 phrases MAX. Vocabulaire exact du cours explique simplement. Analogie concrete (One Piece, basket). Jamais de jargon sans explication.'},
+   prompt:'Tu es le grand frere cool d Ethan, 16 ans. Tu lui expliques ses cours comme un pote qui maitrise le sujet. Style oral, detendu, direct. Ethan a 12 ans, TDAH, aime One Piece et le basket.\n\nPROGRAMME SCIENCES 1ERE :\n- Demarche scientifique : observation, hypothese, experience, conclusion\n- Etres vivants : vivants vs non-vivants, 3 regnes (animaux/vegetaux/champignons)\n- Nutrition : autotrophes (vegetaux = photosynthese) vs heterotrophes (animaux/champignons)\n- Appareil digestif : bouche, oesophage, estomac, intestin grele (absorption des nutriments), gros intestin, anus. Glandes annexes : foie (bile), pancreas (suc pancreatique)\n- Appareil respiratoire : narines, fosses nasales, pharynx, larynx, trachee, bronches, alveoles pulmonaires. Inspiratio/expiration. Echanges O2/CO2\n- Matiere : etats solide/liquide/gazeux, molecules, corps purs et melanges, changements d etats\n- Energie : formes d energie (mecanique, thermique, electrique, chimique, lumineuse, sonore)\n\nREGLES : 3-4 phrases MAX. Vocabulaire exact du cours explique simplement. Analogie concrete (One Piece, basket). Jamais de jargon sans explication.'},
   {id:'maths',n:'Maths',e:'📐',c:'var(--maths)',cs:'var(--maths-soft)',
-   prompt:'Tu es l assistant d Ethan Claes, 12 ans, 1ere secondaire Saint Roch Ferriere. TDAH + dysphasie. Aime One Piece et le basket.\n\nPROGRAMME MATHS 1ERE :\n- Nombres : naturels, entiers, decimaux, fractions. Ecriture, comparaison, decomposition\n- Fractions : numerateur/denominateur, equivalences, simplification. Cles : 1/2=0,5=50%, 1/4=0,25=25%, 3/4=0,75=75%\n- Calcul : 4 operations, calcul mental (tables, x/div par 10/100/1000)\n- Geometrie : droites paralleles et perpendiculaires, angles, figures planes, perimetre, aire. Solides (prisme, pyramide). Symetries, translation, rotation\n- Algebre : equations du 1er degre (x+b=c, ax=b, ax+b=c)\n- Proportionnalite : regle de trois, pourcentages\n- Statistiques : moyenne, mediane, mode, frequence, diagrammes\n- Unites de mesure : longueur, masse, capacite, volume. Conversions prefixes kilo/hecto/deca/deci/centi/milli\n\nREGLES : 3-4 phrases MAX. Vocabulaire du cours explique. Montrer etape cle si calcul. Analogie One Piece/basket. Jamais de jargon sans explication.'},
+   prompt:'Tu es le grand frere cool d Ethan, 16 ans. Tu lui expliques ses cours comme un pote qui maitrise le sujet. Style oral, detendu, direct. Ethan a 12 ans, TDAH, aime One Piece et le basket.\n\nPROGRAMME MATHS 1ERE :\n- Nombres : naturels, entiers, decimaux, fractions. Ecriture, comparaison, decomposition\n- Fractions : numerateur/denominateur, equivalences, simplification. Cles : 1/2=0,5=50%, 1/4=0,25=25%, 3/4=0,75=75%\n- Calcul : 4 operations, calcul mental (tables, x/div par 10/100/1000)\n- Geometrie : droites paralleles et perpendiculaires, angles, figures planes, perimetre, aire. Solides (prisme, pyramide). Symetries, translation, rotation\n- Algebre : equations du 1er degre (x+b=c, ax=b, ax+b=c)\n- Proportionnalite : regle de trois, pourcentages\n- Statistiques : moyenne, mediane, mode, frequence, diagrammes\n- Unites de mesure : longueur, masse, capacite, volume. Conversions prefixes kilo/hecto/deca/deci/centi/milli\n\nREGLES : 3-4 phrases MAX. Vocabulaire du cours explique. Montrer etape cle si calcul. Analogie One Piece/basket. Jamais de jargon sans explication.'},
   {id:'francais',n:'Français',e:'📖',c:'var(--francais)',cs:'var(--francais-soft)',
-   prompt:'Tu es l assistant d Ethan Claes, 12 ans, 1ere secondaire Saint Roch Ferriere. TDAH + dysphasie.\n\nPROGRAMME FRANCAIS 1ERE (FWB general) :\n- Conjugaison : etre/avoir tous temps. Verbes 1er/2e/3e groupe : present/imparfait/futur/passe compose/plus-que-parfait/passe simple, conditionnel present, subjonctif present, imperatif present\n- Nature des mots : determinant, nom, adjectif qualificatif, verbe, pronoms (personnels sujet/objet, relatifs qui/que/dont/ou, possessifs, demonstratifs), adverbe, preposition, conjonction\n- Texte : un paragraphe = une idee. Mots de liaison temporels (d abord/ensuite/puis/enfin) et logiques (car/donc/mais/or). Procedes de reprise : pronoms, synonymes, termes generiques\n- Redaction 5 etapes : lire, chercher idees, organiser, rediger, relire\n- Schema de communication : emetteur, message, recepteur, canal, code, contexte\n- Lectures : Le Petit Prince (Saint-Exupery), Soldat Peaceful (Morpurgo - 14-18)\n- Theatre : histoire, caracteristiques du genre\n\nREGLES : 3-4 phrases MAX. Vocabulaire du cours explique immediatement. Exemple concret. Toujours encourageant.'},
+   prompt:'Tu es le grand frere cool d Ethan, 16 ans. Tu lui expliques ses cours comme un pote. Style oral, direct, encourageant. Ethan a 12 ans, TDAH.\n\nPROGRAMME FRANCAIS 1ERE (FWB general) :\n- Conjugaison : etre/avoir tous temps. Verbes 1er/2e/3e groupe : present/imparfait/futur/passe compose/plus-que-parfait/passe simple, conditionnel present, subjonctif present, imperatif present\n- Nature des mots : determinant, nom, adjectif qualificatif, verbe, pronoms (personnels sujet/objet, relatifs qui/que/dont/ou, possessifs, demonstratifs), adverbe, preposition, conjonction\n- Texte : un paragraphe = une idee. Mots de liaison temporels (d abord/ensuite/puis/enfin) et logiques (car/donc/mais/or). Procedes de reprise : pronoms, synonymes, termes generiques\n- Redaction 5 etapes : lire, chercher idees, organiser, rediger, relire\n- Schema de communication : emetteur, message, recepteur, canal, code, contexte\n- Lectures : Le Petit Prince (Saint-Exupery), Soldat Peaceful (Morpurgo - 14-18)\n- Theatre : histoire, caracteristiques du genre\n\nREGLES : 3-4 phrases MAX. Vocabulaire du cours explique immediatement. Exemple concret. Toujours encourageant.'},
   {id:'anglais',n:'Anglais',e:'💬',c:'var(--anglais)',cs:'var(--anglais-soft)',
    prompt:'Matiere : Anglais. Explique D\'ABORD en français clair, puis répète les mots-clés en anglais entre parenthèses. Approche progressive. 3-4 phrases max.'},
   {id:'edm',n:'EDM',e:'🌍',c:'var(--edm)',cs:'var(--edm-soft)',
-   prompt:'Tu es l assistant d Ethan Claes, 12 ans, 1ere secondaire Saint Roch Ferriere. TDAH + dysphasie.\n\nPROGRAMME EDM 1ERE (FWB general) :\n- Histoire : Prehistoire (Paleolithique nomades / Neolithique agriculture+sedentarisation). Antiquite (-3500-476) / Moyen-Age (476-1492) / Temps modernes (1492-1789) / Epoque contemporaine (1789-auj)\n- Geographie belge : frontieres (mer du Nord, France, Luxembourg, Allemagne, Pays-Bas). 3 regions : Flandre/Wallonie/Bruxelles. Relief : plaine cotiere, plateau, Ardennes (Botrange 694m)\n- Hydrographie : fleuve se jette dans la mer. Riviere = affluent. Bassins Meuse et Escaut. Vocabulaire : amont/aval, rive gauche/droite, confluent, meandre, source, embouchure\n- Lecture carte : titre, legende, orientation (Nord en haut), echelle, source. Directions N/S/E/O\n- Paysage : avant-plan/moyen-plan/arriere-plan. Milieu naturel vs espace humanise.\n- Atlas : index alphabetique, table des matieres, signet\n\nREGLES : 3-4 phrases MAX. Vocabulaire exact explique immediatement. Exemples belges si possible.'},
+   prompt:'Tu es le grand frere cool d Ethan, 16 ans. Tu lui expliques ses cours comme un pote. Style oral, direct, encourageant. Ethan a 12 ans, TDAH.\n\nPROGRAMME EDM 1ERE (FWB general) :\n- Histoire : Prehistoire (Paleolithique nomades / Neolithique agriculture+sedentarisation). Antiquite (-3500-476) / Moyen-Age (476-1492) / Temps modernes (1492-1789) / Epoque contemporaine (1789-auj)\n- Geographie belge : frontieres (mer du Nord, France, Luxembourg, Allemagne, Pays-Bas). 3 regions : Flandre/Wallonie/Bruxelles. Relief : plaine cotiere, plateau, Ardennes (Botrange 694m)\n- Hydrographie : fleuve se jette dans la mer. Riviere = affluent. Bassins Meuse et Escaut. Vocabulaire : amont/aval, rive gauche/droite, confluent, meandre, source, embouchure\n- Lecture carte : titre, legende, orientation (Nord en haut), echelle, source. Directions N/S/E/O\n- Paysage : avant-plan/moyen-plan/arriere-plan. Milieu naturel vs espace humanise.\n- Atlas : index alphabetique, table des matieres, signet\n\nREGLES : 3-4 phrases MAX. Vocabulaire exact explique immediatement. Exemples belges si possible.'},
   {id:'latin',n:'Latin',e:'🏛',c:'var(--latin)',cs:'var(--latin-soft)',
    prompt:'Matiere : Latin (FWB 1ere sec : bases de la langue latine, declinaisons, traduction). 3-4 phrases max.'},
   {id:'sport',n:'Sport',e:'⚽',c:'var(--sport)',cs:'var(--sport-soft)',
@@ -2322,7 +2622,7 @@ const MATIERES_DEF = [
   {id:'techno',n:'Techno',e:'⚙️',c:'var(--techno)',cs:'var(--techno-soft)',
    prompt:'Matiere : Technologie (FWB 1ere sec). 3-4 phrases max.'},
   {id:'religion',n:'Religion',e:'🤝',c:'var(--religion)',cs:'var(--religion-soft)',
-   prompt:'Matière : Cours de religion. 3-4 phrases max, bienveillant.'},
+   prompt:'Tu es le grand frere cool d Ethan, 16 ans. Matiere : Religion. Explique simplement, style pote, 3-4 phrases max.'},
   {id:'natation',n:'Natation',e:'🏊',c:'var(--natation)',cs:'var(--natation-soft)',
    prompt:'Matière : Natation. Techniques, règles, sécurité. 3-4 phrases max.'},
   {id:'plastique',n:'Plastique',e:'🎨',c:'var(--plastique)',cs:'var(--plastique-soft)',
@@ -2722,14 +3022,83 @@ function showWeekDetail(dow, label) {
   document.getElementById('week-detail-title').textContent = label;
   const list = document.getElementById('week-detail-list');
   list.innerHTML = '';
-  (HORAIRE[dow]||[]).filter(c=>!c.pause&&!c.free&&c.mat).forEach(c=>{
-    const color = matColor(c.mat);
-    const div=document.createElement('div'); div.className='week-item';
-    div.innerHTML=`<div class="week-item-dot" style="background:${color}"></div>
-      <div class="week-item-text">${c.h} · ${c.mat}</div>
-      <span style="font-size:11px;color:var(--text-3)">${c.loc}</span>`;
-    list.appendChild(div);
-  });
+
+  // --- Cours de la journée ---
+  const cours = (HORAIRE[dow]||[]).filter(c=>!c.pause&&!c.free&&c.mat);
+  if (cours.length) {
+    const titre = document.createElement('div');
+    titre.style.cssText = 'font-size:11px;font-weight:800;color:var(--text-2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;margin-top:4px';
+    titre.textContent = '📚 Cours';
+    list.appendChild(titre);
+    cours.forEach(c=>{
+      const color = matColor(c.mat);
+      const div=document.createElement('div'); div.className='week-item';
+      div.innerHTML=`<div class="week-item-dot" style="background:${color}"></div>
+        <div class="week-item-text">${c.h} · ${c.mat}</div>
+        <span style="font-size:11px;color:var(--text-3)">${c.loc||''}</span>`;
+      list.appendChild(div);
+    });
+  }
+
+  // --- Devoirs & interros pour CE jour ---
+  // On récupère la date correspondant à ce dow dans la semaine courante
+  const now = new Date();
+  const dow0 = now.getDay();
+  const mon = new Date(now);
+  mon.setDate(now.getDate()-(dow0===0?6:dow0-1));
+  const targetDate = new Date(mon);
+  targetDate.setDate(mon.getDate()+(dow-1));
+  const targetStr = targetDate.toISOString().split('T')[0];
+
+  const devoirs = retrieve('devoirs_global', []);
+  const dujour = devoirs.filter(d => d.dateObj === targetStr);
+
+  if (dujour.length) {
+    const titre2 = document.createElement('div');
+    titre2.style.cssText = 'font-size:11px;font-weight:800;color:var(--text-2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;margin-top:12px';
+    titre2.textContent = '📝 Devoirs & interros';
+    list.appendChild(titre2);
+
+    dujour.forEach(d=>{
+      const isInterro = d.type === 'interro';
+      const color = isInterro ? '#E63946' : '#F7B731';
+      const bg = isInterro ? '#FEF0F1' : '#FEF9E7';
+      const icon = isInterro ? '⚡' : '📝';
+      const div = document.createElement('div');
+      div.className = 'week-item';
+      div.style.cssText = `background:${bg};border-radius:10px;padding:10px;margin-bottom:6px;border:none`;
+      div.innerHTML = `<div class="week-item-dot" style="background:${color}"></div>
+        <div class="week-item-text">
+          <span style="font-weight:700;color:${color}">${icon} ${isInterro?'Interro':'Devoir'} · ${d.mat||''}</span><br>
+          <span style="font-size:13px;color:var(--text)">${d.desc||''}</span>
+        </div>
+        <button onclick="supprimerDevoir('${d.dateObj}','${(d.desc||'').replace(/'/g,'').substring(0,20)}')" style="background:none;border:none;font-size:16px;cursor:pointer;color:var(--text-3)">🗑</button>`;
+      list.appendChild(div);
+    });
+  }
+
+  if (!cours.length && !dujour.length) {
+    list.innerHTML = '<div style="color:var(--text-2);font-size:14px;padding:10px 0">Rien de prévu ce jour ✓</div>';
+  }
+}
+
+function supprimerDevoir(dateObj, descPartial) {
+  let devoirs = retrieve('devoirs_global', []);
+  devoirs = devoirs.filter(d => !(d.dateObj === dateObj && (d.desc||'').substring(0,20) === descPartial));
+  store('devoirs_global', devoirs);
+  // Rebuild la vue
+  const now = new Date();
+  const dow0 = now.getDay();
+  const mon = new Date(now);
+  mon.setDate(now.getDate()-(dow0===0?6:dow0-1));
+  const days = ['Lun','Mar','Mer','Jeu','Ven'];
+  for (let i=0;i<5;i++) {
+    const d = new Date(mon); d.setDate(mon.getDate()+i);
+    const ds = d.toISOString().split('T')[0];
+    if (ds === dateObj) { showWeekDetail(i+1, days[i]+' '+d.getDate()); break; }
+  }
+  buildCeSoir(); buildUrgent();
+  showToast('Devoir supprimé ✓');
 }
 
 /* =============================================================
@@ -2774,6 +3143,9 @@ function openMatiere(m) {
   document.getElementById('ai-response').textContent="Pose ta question — je t'explique en langage simple.";
   document.getElementById('ai-response').className='ai-response-box empty';
   document.getElementById('verify-btn').classList.remove('visible');
+  const rb = document.getElementById('tts-replay-btn');
+  if (rb) rb.style.display = 'none';
+  stopSpeak();
   document.getElementById('quiz-section').style.display='none';
   document.getElementById('upload-preview').classList.remove('visible');
   document.getElementById('upload-zone').classList.remove('visible');
@@ -2923,6 +3295,45 @@ async function saveToDrive(file, base64Data) {
   }
 }
 
+/* =============================================================
+   SYNTHESE VOCALE — Text to Speech
+   ============================================================= */
+let currentUtterance = null;
+
+function speakText(text) {
+  if (!window.speechSynthesis) return;
+  // Arrête si déjà en train de parler
+  window.speechSynthesis.cancel();
+  if (!text) return;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'fr-FR';
+  utterance.rate = 0.9;
+  utterance.pitch = 1.0;
+  utterance.volume = 1.0;
+
+  // Cherche une voix française
+  const voices = window.speechSynthesis.getVoices();
+  const frVoice = voices.find(v => v.lang.startsWith('fr')) || null;
+  if (frVoice) utterance.voice = frVoice;
+
+  currentUtterance = utterance;
+
+  // Bouton stop pendant la lecture
+  const stopBtn = document.getElementById('tts-stop-btn');
+  if (stopBtn) stopBtn.style.display = 'inline-block';
+  utterance.onend = () => { if (stopBtn) stopBtn.style.display = 'none'; };
+  utterance.onerror = () => { if (stopBtn) stopBtn.style.display = 'none'; };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function stopSpeak() {
+  window.speechSynthesis.cancel();
+  const stopBtn = document.getElementById('tts-stop-btn');
+  if (stopBtn) stopBtn.style.display = 'none';
+}
+
 async function askAI() {
   const q=document.getElementById('ai-question').value.trim();
   if(!q) { showToast('Dis-moi ce que tu nas pas compris !'); return; }
@@ -2936,8 +3347,8 @@ async function askAI() {
   try {
     // Construction du message — avec ou sans image
     let userContent;
-    const ethanCtx = 'Tu es un assistant scolaire bienveillant pour Ethan, 12 ans, 1ere secondaire a Saint Roch Ferriere en Wallonie. TDAH + dysphasie. Aime One Piece et le basket.\n' + getProfileCtx() + '\n\n';
-    const ethanRules = '\nRegles STRICTES :\n- Max 3-4 phrases, une idee a la fois\n- Vocabulaire du cours explique simplement\n- Analogie concrete si utile (One Piece, basket)\n- Jamais de jargon sans explication immediate\n\nQuestion d Ethan : ' + q;
+    const ethanCtx = 'Tu es le grand frere cool d Ethan, 16 ans, tu lui expliques ses cours comme un pote qui sait de quoi il parle. Parle naturellement, style oral detendu, comme si tu lui parlais en vrai. Pas de langage scolaire. Ethan a 12 ans, TDAH, aime One Piece et le basket.\n' + getProfileCtx() + '\n\n';
+    const ethanRules = '\nSTYLE GRAND FRERE :\n- Max 3-4 phrases, vas direct au but\n- Commence par ok, donc, ecoute, ou vas-y\n- Utilise des mots simples, des analogies One Piece ou basket\n- Si y a un mot complique, explique-le direct apres avec genre ou cest comme\n- Sois encourageant mais pas niais\n- Parle comme a l oral, pas comme dans un livre\n\nQuestion d Ethan : ' + q;
     const matPrompt = currentMatiere ? currentMatiere.prompt : '';
 
     if (capturedImageBase64 && hasUpload && currentAiSource === 'photo') {
@@ -2982,6 +3393,10 @@ async function askAI() {
     resp.textContent=text;
     hasAiResponse=true;
     document.getElementById('verify-btn').classList.add('visible');
+    const replayBtn = document.getElementById('tts-replay-btn');
+    if (replayBtn) replayBtn.style.display = 'inline-block';
+    // Lecture vocale automatique
+    speakText(text);
   } catch(e) {
     resp.className='ai-response-box';
     resp.textContent='Pas de connexion - reessaie quand tu as du reseau.';
@@ -3108,15 +3523,14 @@ async function generatePhotoQuiz() {
             },
             {
               type: 'text',
-              text: `Tu es un professeur bienveillant qui aide Ethan (12 ans, 1ère secondaire, TDAH). 
-Regarde cette photo de cours/interro en ${matName} et génère exactement ${quizNumQuestions} questions QCM pour tester la compréhension d'Ethan.
+              text: `Tu es le grand frere d Ethan, 16 ans, cool et pedagogique. Tu regardes sa photo de cours et tu lui fais un quiz pour l aider a reviser. Style detendu, direct, encourageant. Regarde cette photo de cours/interro en ${matName} et génère exactement ${quizNumQuestions} questions QCM pour tester la compréhension d'Ethan.
 
 RÈGLES STRICTES :
 - Questions basées UNIQUEMENT sur ce qui est visible dans la photo
 - 4 choix par question (A/B/C/D)
 - Une seule bonne réponse
 - Difficulté progressive (facile → difficile)
-- Langage simple, direct, 12 ans
+- Langage simple et naturel, style grand frere, pas prof
 - Explication courte de la bonne réponse (1 phrase max)
 
 FORMAT JSON STRICT — réponds UNIQUEMENT avec ce JSON, rien d'autre :
@@ -3628,38 +4042,45 @@ UPDATE: [Si les données suggèrent un ajustement de l'appli (ex: sessions trop 
   }
 }
 
-function sendRapport() {
-  const date=document.getElementById('rapport-date').textContent;
-  const sessions=document.getElementById('rd-sessions').textContent;
-  const temps=document.getElementById('rd-temps').textContent;
-  const routine=document.getElementById('rd-routine').textContent;
-  const humeur=document.getElementById('rd-humeur').textContent;
+async function sendRapport() {
+  const btn = document.getElementById('send-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Envoi en cours...'; }
 
-  const bilan=document.getElementById('rapport-bilan').textContent||rapportGenerated||'';
-  const ressenti=document.getElementById('rapport-ressenti').textContent||'';
-  const recoBloc=document.getElementById('rapport-reco-bloc');
-  const updateBloc=document.getElementById('rapport-update-bloc');
-  const reco=recoBloc&&recoBloc.style.display!=='none'?'\n\n💡 Recommandation :\n'+document.getElementById('rapport-reco-txt').textContent:'';
-  const update=updateBloc&&updateBloc.style.display!=='none'?'\n\n🔧 Update appli conseillé :\n'+document.getElementById('rapport-update-txt').textContent:'';
+  const date = document.getElementById('rapport-date').textContent;
+  const sessions = document.getElementById('rd-sessions').textContent;
+  const temps = document.getElementById('rd-temps').textContent;
+  const routine = document.getElementById('rd-routine').textContent;
+  const humeur = document.getElementById('rd-humeur').textContent;
 
-  const body=[
-    `📊 RAPPORT TABLETTE ETHAN — ${date}`,
-    ``,
-    `📈 BILAN DES SÉANCES`,
-    bilan,
-    ``,
-    `💬 COMMENT IL S'EST SENTI`,
-    ressenti,
-    reco,
-    update,
-    ``,
-    `—`,
-    `Sessions : ${sessions} · Temps : ${temps} · Routine : ${routine} jours · Humeur : ${humeur}`,
-    `Généré depuis la tablette d'Ethan`
-  ].join('\n');
+  const bilan = document.getElementById('rapport-bilan').textContent || '';
+  const ressenti = document.getElementById('rapport-ressenti').textContent || '';
+  const recoBloc = document.getElementById('rapport-reco-bloc');
+  const updateBloc = document.getElementById('rapport-update-bloc');
+  const reco = recoBloc && recoBloc.style.display !== 'none'
+    ? document.getElementById('rapport-reco-txt').textContent
+    : 'RAS';
+  const update = updateBloc && updateBloc.style.display !== 'none'
+    ? document.getElementById('rapport-update-txt').textContent
+    : 'RAS';
 
-  window.open('mailto:jacek.claes@gmail.com?subject=📊 Rapport Ethan — '+date+'&body='+encodeURIComponent(body),'_blank');
-  showToast('Email prêt à envoyer ✓');
+  const templateParams = {
+    semaine: date,
+    bilan: bilan || 'Pas de donnees cette semaine.',
+    ressenti: ressenti || '',
+    reco: reco || 'RAS',
+    update: update || 'RAS',
+    sessions, temps, routine, humeur
+  };
+
+  try {
+    await emailjs.send('service_ssx0yk8', '82ong5d', templateParams);
+    showToast('Rapport envoyé à jacek.claes@gmail.com ✓');
+    if (btn) { btn.disabled = false; btn.textContent = '📩 Envoyer à papa ↗'; }
+  } catch(e) {
+    showToast('Erreur envoi email — verifie ta connexion');
+    if (btn) { btn.disabled = false; btn.textContent = '📩 Envoyer à papa ↗'; }
+    console.error('EmailJS error:', e);
+  }
 }
 
 /* =============================================================
@@ -3853,8 +4274,95 @@ function stopFabMic() {
 }
 
 function saveFabMic() {
+  if (!fabTranscribed) return;
+  const t = fabTranscribed.toLowerCase();
+
+  // Détecte si c'est un devoir ou une interro
+  const isDevoir = t.includes('devoir') || t.includes('exercice') || t.includes('apprendre') || t.includes('finir') || t.includes('terminer');
+  const isInterro = t.includes('interro') || t.includes('controle') || t.includes('test') || t.includes('examen');
+
+  // Détecte la date mentionnée
+  const days = {'lundi':1,'mardi':2,'mercredi':3,'jeudi':4,'vendredi':5,'samedi':6,'dimanche':0};
+  let dateObj = null;
+  let dateStr = '';
+  const now = new Date();
+  for (const [day, dayNum] of Object.entries(days)) {
+    if (t.includes(day)) {
+      const d = new Date();
+      const diff = (dayNum - d.getDay() + 7) % 7 || 7;
+      d.setDate(d.getDate() + diff);
+      dateObj = d.toISOString().split('T')[0];
+      const months = ['jan','fév','mar','avr','mai','jun','jul','août','sep','oct','nov','déc'];
+      const dnames = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+      dateStr = dnames[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()];
+      break;
+    }
+  }
+  // Fallback : demain si pas de jour détecté
+  if (!dateObj) {
+    const d = new Date(); d.setDate(d.getDate()+1);
+    dateObj = d.toISOString().split('T')[0];
+    const months = ['jan','fév','mar','avr','mai','jun','jul','août','sep','oct','nov','déc'];
+    const dnames = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+    dateStr = dnames[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()];
+  }
+
+  // Détecte la matière mentionnée
+  const matieres = [
+    {mots:['maths','mathématique','math'], n:'Maths', id:'maths'},
+    {mots:['français','francais','lecture','rédaction'], n:'Français', id:'francais'},
+    {mots:['sciences','science','biologie','physique','chimie'], n:'Sciences', id:'sciences'},
+    {mots:['anglais','english'], n:'Anglais', id:'anglais'},
+    {mots:['latin'], n:'Latin', id:'latin'},
+    {mots:['edm','histoire','géographie','geographie'], n:'EDM', id:'edm'},
+    {mots:['religion'], n:'Religion', id:'religion'},
+    {mots:['techno','technologie'], n:'Techno', id:'techno'},
+    {mots:['plastique','dessin','art'], n:'Plastique', id:'plastique'},
+    {mots:['sport','gym','natation'], n:'Sport', id:'sport'},
+  ];
+  let matFound = {n:'Général', id:'general'};
+  for (const m of matieres) {
+    if (m.mots.some(mot => t.includes(mot))) { matFound = m; break; }
+  }
+
+  if (isDevoir || isInterro) {
+    // Crée un vrai devoir
+    const type = isInterro ? 'interro' : 'devoir';
+    const item = {
+      type, desc: fabTranscribed, date: dateStr, dateObj,
+      mat: matFound.n, id: matFound.id
+    };
+    const global = retrieve('devoirs_global', []);
+    global.push(item);
+    store('devoirs_global', global);
+    // Aussi dans la matière si connue
+    if (matFound.id !== 'general') {
+      const list = retrieve('mat_devoirs_' + matFound.id, []);
+      list.push(item);
+      store('mat_devoirs_' + matFound.id, list);
+    }
+    buildCeSoir(); buildUrgent();
+    showToast(type === 'interro' ? 'Interro ajoutée au planning ✓' : 'Devoir ajouté au planning ✓');
+  } else {
+    // Sinon note dans le journal
+    const now2 = new Date();
+    const h = now2.getHours().toString().padStart(2,'0') + ':' + now2.getMinutes().toString().padStart(2,'0');
+    const jl = retrieve('journal', []);
+    jl.unshift({ text: fabTranscribed, time: h, date: now2.toLocaleDateString('fr-BE') });
+    store('journal', jl.slice(0, 30));
+    // Affiche dans le journal si visible
+    const jlist = document.getElementById('journal-list');
+    if (jlist) {
+      const item = document.createElement('div');
+      item.className = 'journal-item';
+      item.innerHTML = '<span class="j-time">' + h + '</span><span class="j-text">' + fabTranscribed + '</span>';
+      jlist.prepend(item);
+    }
+    showToast('Note enregistrée dans le journal ✓');
+  }
+
+  // Reset modal
   closeModal('mic-modal');
-  showToast('Note enregistrée dans le journal ✓');
   document.getElementById('mic-modal-result').textContent='Appuie sur le micro et parle normalement…';
   document.getElementById('mic-modal-result').style.cssText='';
   document.getElementById('mic-modal-save').disabled=true;
