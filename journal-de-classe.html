@@ -12,10 +12,8 @@
     --blue: #4A90E2;
     --orange: #FF6B35;
     --green: #4CAF50;
-    --yellow: #FFD93D;
     --purple: #9B59B6;
     --red: #E74C3C;
-    --pink: #FF6B9D;
     --shadow: 3px 3px 0px rgba(0,0,0,0.12);
   }
 
@@ -27,7 +25,7 @@
     min-height: 100vh;
   }
 
-  /* TOP BAR */
+  /* ── TOP BAR ── */
   .topbar {
     background: white;
     border-bottom: 3px solid var(--dark);
@@ -39,7 +37,6 @@
     top: 0;
     z-index: 100;
   }
-
   .back-btn {
     background: var(--cream);
     border: 2px solid var(--dark);
@@ -49,18 +46,13 @@
     font-weight: 800;
     font-size: 0.85rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
   }
-
   .topbar-title {
     font-family: 'Fredoka One', cursive;
     font-size: 1.3rem;
     color: var(--blue);
     flex: 1;
   }
-
   .agenda-btn {
     position: relative;
     background: var(--orange);
@@ -72,11 +64,7 @@
     font-size: 0.85rem;
     color: white;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
   }
-
   .badge {
     background: var(--red);
     color: white;
@@ -94,285 +82,211 @@
     border: 2px solid white;
   }
 
-  /* NAV JOURS */
-  .days-nav {
+  /* ── AGENDA PANEL ── */
+  .agenda-panel {
+    display: none;
+    padding: 8px 16px 20px;
     background: white;
     border-bottom: 2px solid #eee;
-    padding: 10px 12px;
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
   }
-  .days-nav::-webkit-scrollbar { display: none; }
-
-  .day-pill {
-    flex-shrink: 0;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 2px solid #ddd;
-    font-weight: 800;
-    font-size: 0.82rem;
-    cursor: pointer;
-    background: white;
-    color: #999;
-    transition: all 0.15s;
-    position: relative;
-  }
-
-  .day-pill.active {
-    background: var(--blue);
-    border-color: var(--blue);
-    color: white;
-    box-shadow: 2px 2px 0px rgba(74,144,226,0.4);
-  }
-
-  .day-pill.today:not(.active) {
-    border-color: var(--orange);
-    color: var(--orange);
-  }
-
-  .day-pill.weekend {
-    background: #F5F0FF;
-    border-color: #C8B8E8;
-    color: var(--purple);
-  }
-  .day-pill.weekend.active {
-    background: var(--purple);
-    border-color: var(--purple);
-    color: white;
-  }
-
-  .day-pill.ferie {
-    background: #FFF0EE;
-    border-color: #F9C0B8;
-    color: var(--red);
-  }
-  .day-pill.ferie.active {
-    background: var(--red);
-    border-color: var(--red);
-    color: white;
-  }
-
-  .dot {
-    width: 6px;
-    height: 6px;
-    background: var(--orange);
-    border-radius: 50%;
-    position: absolute;
-    bottom: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  /* DATE HEADER */
-  .date-header {
-    padding: 14px 16px 6px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .date-nav-btn {
-    background: white;
-    border: 2px solid var(--dark);
-    border-radius: 10px;
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-  }
-
-  .date-label {
-    flex: 1;
+  .agenda-panel.open { display: block; }
+  .agenda-title {
     font-family: 'Fredoka One', cursive;
     font-size: 1.2rem;
-    color: var(--dark);
-    text-align: center;
-  }
-
-  /* PRÉVU AUJOURD'HUI */
-  .due-today {
-    margin: 8px 16px;
-    background: white;
-    border: 2px solid var(--orange);
-    border-radius: 16px;
-    padding: 12px 14px;
-  }
-
-  .due-today-title {
-    font-family: 'Fredoka One', cursive;
-    font-size: 1rem;
     color: var(--orange);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    margin-bottom: 12px;
+    margin-top: 8px;
   }
-
-  .due-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  .due-item:last-child { border-bottom: none; }
-
-  .due-item input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    accent-color: var(--green);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  .due-item-label {
-    flex: 1;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--dark);
-  }
-  .due-item-label.done {
-    text-decoration: line-through;
+  .agenda-empty {
+    text-align: center;
     color: #aaa;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 20px;
   }
-
-  .due-subject-chip {
-    font-size: 0.72rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 10px;
-    border: 2px solid currentColor;
-    flex-shrink: 0;
-  }
-
-  /* CONGE BANNER */
-  .conge-banner {
-    margin: 8px 16px;
-    background: #FFF0F0;
-    border: 2px solid var(--red);
-    border-radius: 14px;
-    padding: 14px 16px;
-    text-align: center;
-  }
-  .conge-banner .icon { font-size: 2rem; }
-  .conge-banner .name {
-    font-family: 'Fredoka One', cursive;
-    font-size: 1.2rem;
-    color: var(--red);
-    margin-top: 4px;
-  }
-  .conge-banner .sub { font-size: 0.85rem; color: #888; margin-top: 2px; }
-
-  /* WEEKEND VIEW */
-  .free-day {
-    margin: 8px 16px;
-    background: white;
-    border: 2px solid var(--purple);
-    border-radius: 16px;
-    padding: 16px;
-  }
-  .free-day-title {
-    font-family: 'Fredoka One', cursive;
-    color: var(--purple);
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-  }
-
-  /* GRILLE HORAIRE */
-  .schedule {
-    padding: 8px 16px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .slot {
-    background: white;
-    border: 2px solid #E8E8E8;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-
-  .slot-header {
-    display: flex;
-    align-items: center;
-    padding: 10px 14px;
-    cursor: pointer;
-    gap: 10px;
-    transition: background 0.1s;
-  }
-  .slot-header:active { background: #f8f8f8; }
-
-  .slot-time {
+  .agenda-group-title {
     font-size: 0.78rem;
     font-weight: 800;
-    color: #aaa;
-    min-width: 50px;
-    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #bbb;
+    margin: 10px 0 6px;
   }
-
-  .slot-color {
-    width: 10px;
-    height: 40px;
-    border-radius: 4px;
-    flex-shrink: 0;
+  .agenda-item {
+    background: white;
+    border: 2px solid #E8E8E8;
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
+  .agenda-item.urgent { border-color: var(--red);    background: #FFF5F5; }
+  .agenda-item.soon   { border-color: var(--orange); background: #FFF8F0; }
+  .agenda-check { width: 22px; height: 22px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; }
+  .agenda-info  { flex: 1; }
+  .agenda-item-text { font-size: 0.9rem; font-weight: 700; color: var(--dark); }
+  .agenda-item-meta { font-size: 0.76rem; color: #aaa; font-weight: 600; margin-top: 2px; }
+  .urgency-chip { font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 8px; flex-shrink: 0; }
+  .chip-red    { background: #FFE0E0; color: var(--red); }
+  .chip-orange { background: #FFE8D6; color: var(--orange); }
+  .chip-green  { background: #E0F5E0; color: var(--green); }
 
-  .slot-info {
+  /* ── WEEK NAV ── */
+  .week-nav {
+    background: white;
+    border-bottom: 2px solid #eee;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .week-nav-btn {
+    background: var(--cream);
+    border: 2px solid var(--dark);
+    border-radius: 10px;
+    padding: 6px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .week-label {
     flex: 1;
-  }
-
-  .slot-subject {
+    text-align: center;
     font-family: 'Fredoka One', cursive;
     font-size: 1.05rem;
     color: var(--dark);
   }
-
-  .slot-room {
-    font-size: 0.76rem;
-    color: #aaa;
-    font-weight: 600;
-  }
-
-  .slot-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-left: 70px;
-    margin-bottom: 10px;
-    padding: 0 14px 8px;
-    display: none;
-  }
-
-  .slot-tags.has-content {
-    display: flex;
-  }
-
-  .tag {
-    font-size: 0.76rem;
-    font-weight: 800;
-    padding: 3px 10px;
+  .today-btn {
+    background: var(--blue);
+    color: white;
+    border: 2px solid var(--dark);
     border-radius: 10px;
-    border: 2px solid currentColor;
+    padding: 6px 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
     cursor: pointer;
+  }
+
+  /* ── WEEK GRID ── */
+  .week-grid {
     display: flex;
-    align-items: center;
+    gap: 5px;
+    padding: 10px 8px 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    align-items: flex-start;
+  }
+  .week-grid::-webkit-scrollbar { display: none; }
+
+  .day-col {
+    flex: 1;
+    min-width: 115px;
+    display: flex;
+    flex-direction: column;
     gap: 4px;
   }
-  .tag-note     { color: var(--purple); background: #F8F0FF; }
-  .tag-devoir   { color: var(--blue);   background: #EEF4FF; }
-  .tag-interro  { color: var(--red);    background: #FFF0EE; }
-  .tag-done     { color: var(--green);  background: #EEFBEE; text-decoration: line-through; opacity: 0.7; }
 
-  /* MODAL */
+  /* Day header */
+  .day-col-header {
+    text-align: center;
+    padding: 8px 4px 6px;
+    border-radius: 12px;
+    background: white;
+    border: 2px solid #E8E8E8;
+    margin-bottom: 2px;
+  }
+  .day-col-header.today {
+    border-color: var(--orange);
+    background: #FFF3ED;
+  }
+  .day-col-header.ferie {
+    border-color: var(--red);
+    background: #FFF0F0;
+  }
+  .day-col-header .day-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    color: var(--dark);
+  }
+  .day-col-header.today .day-name { color: var(--orange); }
+  .day-col-header.ferie .day-name { color: var(--red); }
+  .day-col-header .day-date {
+    font-size: 0.72rem;
+    color: #bbb;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+
+  /* Slot card */
+  .week-slot {
+    background: white;
+    border: 2px solid #E8E8E8;
+    border-left: 5px solid #E8E8E8;
+    border-radius: 10px;
+    padding: 6px 7px 6px 9px;
+    cursor: pointer;
+    transition: opacity 0.1s;
+    min-height: 50px;
+  }
+  .week-slot:active { opacity: 0.65; }
+
+  .week-slot.pause {
+    background: #FAFAFA;
+    border: 1px dashed #ddd !important;
+    cursor: default;
+    min-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ws-time    { font-size: 0.62rem; color: #ccc; font-weight: 700; }
+  .ws-subject { font-family: 'Fredoka One', cursive; font-size: 0.9rem; color: var(--dark); line-height: 1.2; }
+  .ws-room    { font-size: 0.64rem; color: #bbb; font-weight: 600; }
+
+  .ws-tags {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ws-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .wt-note    { color: var(--purple); background: #F5EEFF; }
+  .wt-devoir  { color: var(--blue);   background: #EAF2FF; }
+  .wt-interro { color: var(--red);    background: #FFF0EE; }
+  .wt-done    { color: #bbb;          background: #F0F0F0; text-decoration: line-through; }
+  .wt-more    { color: #aaa;          background: #F5F5F5; }
+
+  /* Bannière congé en haut DE PAGE (semaine entière) */
+  .week-alert {
+    background: #FFF3CD;
+    border-left: 5px solid #FF6B35;
+    border-radius: 0;
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #7A4100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    line-height: 1.4;
+  }
+  #weekBanner { display: none; }
+
+  /* ── MODAL ── */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -384,7 +298,6 @@
     padding: 20px;
   }
   .modal-overlay.open { display: flex; }
-
   .modal {
     background: white;
     border: 3px solid var(--dark);
@@ -394,29 +307,16 @@
     max-height: 85vh;
     overflow-y: auto;
     padding: 20px;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
   }
-
   .modal-title {
     font-family: 'Fredoka One', cursive;
     font-size: 1.3rem;
     color: var(--dark);
     margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
-
-  .type-buttons {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-  }
-
+  .type-buttons { display: flex; gap: 8px; margin-bottom: 14px; }
   .type-btn {
     flex: 1;
-    min-width: 80px;
     padding: 10px 8px;
     border-radius: 14px;
     border: 2px solid #ddd;
@@ -426,22 +326,12 @@
     font-size: 0.85rem;
     cursor: pointer;
     text-align: center;
-    transition: all 0.15s;
   }
-  .type-btn.active-note   { border-color: var(--purple); background: #F8F0FF; color: var(--purple); }
-  .type-btn.active-devoir { border-color: var(--blue);   background: #EEF4FF; color: var(--blue); }
-  .type-btn.active-interro{ border-color: var(--red);    background: #FFF0EE; color: var(--red); }
-
-  .modal-field {
-    margin-bottom: 12px;
-  }
-  .modal-field label {
-    display: block;
-    font-weight: 800;
-    font-size: 0.85rem;
-    color: #666;
-    margin-bottom: 5px;
-  }
+  .type-btn.active-note    { border-color: var(--purple); background: #F8F0FF; color: var(--purple); }
+  .type-btn.active-devoir  { border-color: var(--blue);   background: #EEF4FF; color: var(--blue); }
+  .type-btn.active-interro { border-color: var(--red);    background: #FFF0EE; color: var(--red); }
+  .modal-field { margin-bottom: 12px; }
+  .modal-field label { display: block; font-weight: 800; font-size: 0.85rem; color: #666; margin-bottom: 5px; }
   .modal-field input, .modal-field textarea {
     width: 100%;
     padding: 10px 14px;
@@ -454,182 +344,19 @@
     background: #FAFAFA;
   }
   .modal-field input:focus, .modal-field textarea:focus {
-    outline: none;
-    border-color: var(--blue);
-    background: white;
+    outline: none; border-color: var(--blue); background: white;
   }
-
-  .modal-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
-  }
-
+  .modal-actions { display: flex; gap: 10px; margin-top: 16px; }
   .btn-cancel {
-    flex: 1;
-    padding: 12px;
-    border-radius: 14px;
-    border: 2px solid #ddd;
-    background: white;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    cursor: pointer;
-    font-size: 0.95rem;
+    flex: 1; padding: 12px; border-radius: 14px;
+    border: 2px solid #ddd; background: white;
+    font-family: 'Nunito', sans-serif; font-weight: 800; cursor: pointer; font-size: 0.95rem;
   }
-
   .btn-save {
-    flex: 2;
-    padding: 12px;
-    border-radius: 14px;
-    border: 2px solid var(--blue);
-    background: var(--blue);
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    cursor: pointer;
-    font-size: 0.95rem;
+    flex: 2; padding: 12px; border-radius: 14px;
+    border: 2px solid var(--blue); background: var(--blue); color: white;
+    font-family: 'Nunito', sans-serif; font-weight: 800; cursor: pointer; font-size: 0.95rem;
   }
-
-  /* AGENDA PANEL */
-  .agenda-panel {
-    display: none;
-    padding: 8px 16px 20px;
-  }
-  .agenda-panel.open { display: block; }
-
-  .agenda-title {
-    font-family: 'Fredoka One', cursive;
-    font-size: 1.2rem;
-    color: var(--orange);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .agenda-empty {
-    text-align: center;
-    color: #aaa;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 20px;
-  }
-
-  .agenda-group-title {
-    font-size: 0.78rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #bbb;
-    margin: 10px 0 6px;
-  }
-
-  .agenda-item {
-    background: white;
-    border: 2px solid #E8E8E8;
-    border-radius: 14px;
-    padding: 10px 12px;
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .agenda-item.urgent   { border-color: var(--red);    background: #FFF5F5; }
-  .agenda-item.soon     { border-color: var(--orange);  background: #FFF8F0; }
-  .agenda-item.ok       { border-color: #ddd; }
-
-  .agenda-check {
-    width: 22px;
-    height: 22px;
-    accent-color: var(--green);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  .agenda-info { flex: 1; }
-
-  .agenda-item-text {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--dark);
-  }
-
-  .agenda-item-meta {
-    font-size: 0.76rem;
-    color: #aaa;
-    font-weight: 600;
-    margin-top: 2px;
-  }
-
-  .urgency-chip {
-    font-size: 0.72rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 8px;
-    flex-shrink: 0;
-  }
-  .chip-red    { background: #FFE0E0; color: var(--red); }
-  .chip-orange { background: #FFE8D6; color: var(--orange); }
-  .chip-green  { background: #E0F5E0; color: var(--green); }
-
-  /* EXTRA ACTIVITY */
-  .extra-section {
-    margin: 0 16px 16px;
-    background: white;
-    border: 2px solid #E8E8E8;
-    border-radius: 16px;
-    padding: 12px 14px;
-  }
-  .extra-title {
-    font-family: 'Fredoka One', cursive;
-    font-size: 0.95rem;
-    color: #888;
-    margin-bottom: 10px;
-  }
-  .extra-input-row {
-    display: flex;
-    gap: 8px;
-  }
-  .extra-input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-  .extra-add-btn {
-    background: var(--green);
-    border: 2px solid var(--dark);
-    border-radius: 10px;
-    color: white;
-    font-weight: 800;
-    font-size: 1rem;
-    width: 38px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .extra-list {
-    margin-top: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .extra-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--dark);
-    padding: 4px 0;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  .extra-del { background: none; border: none; cursor: pointer; font-size: 1rem; color: #ccc; }
 </style>
 </head>
 <body>
@@ -638,7 +365,7 @@
 <div class="topbar">
   <button class="back-btn" onclick="window.location.href='index.html'">← Accueil</button>
   <div class="topbar-title">📓 Journal de classe</div>
-  <button class="agenda-btn" onclick="toggleAgenda()" id="agendaBtn">
+  <button class="agenda-btn" onclick="toggleAgenda()">
     📋 À faire
     <span class="badge" id="agendaBadge" style="display:none"></span>
   </button>
@@ -650,13 +377,21 @@
   <div id="agendaContent"></div>
 </div>
 
-<!-- NAV JOURS -->
-<div class="days-nav" id="daysNav"></div>
+<!-- WEEK NAV -->
+<div class="week-nav">
+  <button class="week-nav-btn" onclick="changeWeek(-1)">←</button>
+  <div class="week-label" id="weekLabel"></div>
+  <button class="today-btn" onclick="goToNow()">Auj.</button>
+  <button class="week-nav-btn" onclick="changeWeek(1)">→</button>
+</div>
 
-<!-- CONTENU DU JOUR -->
-<div id="dayContent"></div>
+<!-- WEEK BANNER (jours fériés / congés de la semaine) -->
+<div id="weekBanner"></div>
 
-<!-- MODAL AJOUT NOTE -->
+<!-- WEEK GRID -->
+<div class="week-grid" id="weekGrid"></div>
+
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <div class="modal-title" id="modalTitle">📝 Ajouter</div>
@@ -669,10 +404,10 @@
 
     <div class="modal-field">
       <label>Description</label>
-      <textarea id="noteText" rows="2" placeholder="Ex : exercices page 42, chapitre 3…"></textarea>
+      <textarea id="noteText" rows="2" placeholder="Ex : exercices page 42, apporter le livre…"></textarea>
     </div>
 
-    <div class="modal-field" id="dueDateField">
+    <div class="modal-field" id="dueDateField" style="display:none">
       <label id="dueDateLabel">Pour le</label>
       <input type="date" id="dueDate">
     </div>
@@ -687,371 +422,304 @@
 </div>
 
 <script>
-// ═══════════════════════════════
-//  EMPLOI DU TEMPS SAINT-ROCH
-// ═══════════════════════════════
-const SCHEDULE = {
+// ═══════════════════════════════════════
+//  EMPLOI DU TEMPS SAINT-ROCH FERRIÈRE
+// ═══════════════════════════════════════
+var SCHEDULE = {
   1: [ // Lundi
-    {t:'08:00–08:55', s:'Sciences',  c:'#4CAF50', r:''},
-    {t:'08:55–09:50', s:'Sport',     c:'#FF9800', r:'Gym'},
-    {t:'09:50–10:45', s:'Math',      c:'#4A90E2', r:''},
-    {t:'10:45–11:40', s:'Latin',     c:'#9B59B6', r:''},
-    {t:'11:40–13:00', s:'🍽 Pause midi', c:'#ddd', r:''},
-    {t:'13:00–13:55', s:'Français',  c:'#E74C3C', r:''},
-    {t:'13:55–14:50', s:'EDM',       c:'#00BCD4', r:''},
-    {t:'14:50–15:45', s:'Anglais',   c:'#FF6B35', r:''},
+    {t:'08:00', s:'Sciences',  c:'#4CAF50', r:''},
+    {t:'08:55', s:'Sport',     c:'#FF9800', r:'Gym'},
+    {t:'09:50', s:'Math',      c:'#4A90E2', r:''},
+    {t:'10:45', s:'Latin',     c:'#9B59B6', r:''},
+    {t:'11:40', s:'Midi',      c:'#ddd',    r:'', pause:true},
+    {t:'13:00', s:'Français',  c:'#E74C3C', r:''},
+    {t:'13:55', s:'EDM',       c:'#00BCD4', r:''},
+    {t:'14:50', s:'Anglais',   c:'#FF6B35', r:''}
   ],
   2: [ // Mardi
-    {t:'08:00–08:55', s:'Techno',    c:'#607D8B', r:''},
-    {t:'08:55–09:50', s:'Math',      c:'#4A90E2', r:''},
-    {t:'09:50–10:45', s:'Natation',  c:'#03A9F4', r:'Piscine'},
-    {t:'10:45–11:40', s:'Français',  c:'#E74C3C', r:''},
-    {t:'11:40–13:00', s:'🍽 Pause midi', c:'#ddd', r:''},
-    {t:'13:00–13:55', s:'EDM',       c:'#00BCD4', r:''},
-    {t:'13:55–14:50', s:'Anglais',   c:'#FF6B35', r:''},
-    {t:'14:50–15:45', s:'Sport',     c:'#FF9800', r:'Gym'},
+    {t:'08:00', s:'Techno',    c:'#607D8B', r:''},
+    {t:'08:55', s:'Math',      c:'#4A90E2', r:''},
+    {t:'09:50', s:'Natation',  c:'#03A9F4', r:'Piscine'},
+    {t:'10:45', s:'Français',  c:'#E74C3C', r:''},
+    {t:'11:40', s:'Midi',      c:'#ddd',    r:'', pause:true},
+    {t:'13:00', s:'EDM',       c:'#00BCD4', r:''},
+    {t:'13:55', s:'Anglais',   c:'#FF6B35', r:''},
+    {t:'14:50', s:'Sport',     c:'#FF9800', r:'Gym'}
   ],
   3: [ // Mercredi
-    {t:'08:00–08:55', s:'Religion',  c:'#8BC34A', r:''},
-    {t:'08:55–09:50', s:'Français',  c:'#E74C3C', r:''},
-    {t:'09:50–10:45', s:'EDM',       c:'#00BCD4', r:''},
-    {t:'10:45–11:40', s:'Sport',     c:'#FF9800', r:'Gym'},
-    {t:'11:40–12:35', s:'Latin',     c:'#9B59B6', r:''},
+    {t:'08:00', s:'Religion',  c:'#8BC34A', r:''},
+    {t:'08:55', s:'Français',  c:'#E74C3C', r:''},
+    {t:'09:50', s:'EDM',       c:'#00BCD4', r:''},
+    {t:'10:45', s:'Sport',     c:'#FF9800', r:'Gym'},
+    {t:'11:40', s:'Latin',     c:'#9B59B6', r:''}
   ],
   4: [ // Jeudi
-    {t:'08:00–08:55', s:'Français',  c:'#E74C3C', r:''},
-    {t:'08:55–09:50', s:'Sciences',  c:'#4CAF50', r:''},
-    {t:'09:50–10:45', s:'Anglais',   c:'#FF6B35', r:''},
-    {t:'10:45–11:40', s:'Math',      c:'#4A90E2', r:''},
-    {t:'11:40–13:00', s:'🍽 Pause midi', c:'#ddd', r:''},
-    {t:'13:00–13:55', s:'Anglais',   c:'#FF6B35', r:''},
-    {t:'13:55–14:50', s:'Sport',     c:'#FF9800', r:'Gym'},
-    {t:'14:50–15:45', s:'Plastique', c:'#FF6B9D', r:''},
+    {t:'08:00', s:'Français',  c:'#E74C3C', r:''},
+    {t:'08:55', s:'Sciences',  c:'#4CAF50', r:''},
+    {t:'09:50', s:'Anglais',   c:'#FF6B35', r:''},
+    {t:'10:45', s:'Math',      c:'#4A90E2', r:''},
+    {t:'11:40', s:'Midi',      c:'#ddd',    r:'', pause:true},
+    {t:'13:00', s:'Anglais',   c:'#FF6B35', r:''},
+    {t:'13:55', s:'Sport',     c:'#FF9800', r:'Gym'},
+    {t:'14:50', s:'Plastique', c:'#FF6B9D', r:''}
   ],
   5: [ // Vendredi
-    {t:'08:00–08:55', s:'Anglais',   c:'#FF6B35', r:''},
-    {t:'08:55–09:50', s:'EDM',       c:'#00BCD4', r:''},
-    {t:'09:50–10:45', s:'Math',      c:'#4A90E2', r:''},
-    {t:'10:45–11:40', s:'Religion',  c:'#8BC34A', r:''},
-    {t:'11:40–13:00', s:'🍽 Pause midi', c:'#ddd', r:''},
-    {t:'13:00–13:55', s:'Français',  c:'#E74C3C', r:''},
-    {t:'13:55–14:50', s:'Français',  c:'#E74C3C', r:''},
-    {t:'14:50–15:45', s:'Sciences',  c:'#4CAF50', r:''},
-  ],
+    {t:'08:00', s:'Anglais',   c:'#FF6B35', r:''},
+    {t:'08:55', s:'EDM',       c:'#00BCD4', r:''},
+    {t:'09:50', s:'Math',      c:'#4A90E2', r:''},
+    {t:'10:45', s:'Religion',  c:'#8BC34A', r:''},
+    {t:'11:40', s:'Midi',      c:'#ddd',    r:'', pause:true},
+    {t:'13:00', s:'Français',  c:'#E74C3C', r:''},
+    {t:'13:55', s:'Français',  c:'#E74C3C', r:''},
+    {t:'14:50', s:'Sciences',  c:'#4CAF50', r:''}
+  ]
 };
 
 // Jours fériés et congés FWB 2025-2026
-const CONGES = {
-  '2025-11-01': 'Toussaint',
-  '2025-11-02': 'Congé Toussaint',
-  '2025-11-03': 'Congé Toussaint',
-  '2025-11-04': 'Congé Toussaint',
-  '2025-11-05': 'Congé Toussaint',
-  '2025-11-11': 'Armistice',
-  '2025-12-22': 'Vacances de Noël',
-  '2025-12-23': 'Vacances de Noël',
-  '2025-12-24': 'Vacances de Noël',
-  '2025-12-25': 'Noël',
-  '2025-12-26': 'Vacances de Noël',
-  '2025-12-29': 'Vacances de Noël',
-  '2025-12-30': 'Vacances de Noël',
-  '2025-12-31': 'Vacances de Noël',
-  '2026-01-01': 'Nouvel An',
-  '2026-01-02': 'Vacances de Noël',
-  '2026-02-16': 'Carnaval',
-  '2026-02-17': 'Carnaval',
-  '2026-02-18': 'Carnaval',
-  '2026-02-19': 'Carnaval',
-  '2026-02-20': 'Carnaval',
-  '2026-04-06': 'Vacances de Pâques',
-  '2026-04-07': 'Vacances de Pâques',
-  '2026-04-08': 'Vacances de Pâques',
-  '2026-04-09': 'Vacances de Pâques',
-  '2026-04-10': 'Vacances de Pâques',
-  '2026-04-13': 'Vacances de Pâques',
-  '2026-04-14': 'Vacances de Pâques',
-  '2026-04-15': 'Vacances de Pâques',
-  '2026-04-16': 'Vacances de Pâques',
-  '2026-04-17': 'Vacances de Pâques',
-  '2026-05-01': 'Fête du Travail',
-  '2026-05-14': 'Ascension',
-  '2026-05-15': 'Pont Ascension',
-  '2026-05-25': 'Lundi de Pentecôte',
-  '2026-06-29': 'Début vacances été',
+// Pâques 2026 = 5 avril → Ascension = 14 mai → Pentecôte dimanche = 24 mai → Lundi de Pentecôte = 25 mai
+var CONGES = {
+  '2025-11-01':'Toussaint',
+  '2025-11-02':'Congé Toussaint','2025-11-03':'Congé Toussaint',
+  '2025-11-04':'Congé Toussaint','2025-11-05':'Congé Toussaint',
+  '2025-11-11':'Armistice',
+  '2025-12-22':'Vacances Noël','2025-12-23':'Vacances Noël',
+  '2025-12-24':'Vacances Noël','2025-12-25':'Noël',
+  '2025-12-26':'Vacances Noël','2025-12-29':'Vacances Noël',
+  '2025-12-30':'Vacances Noël','2025-12-31':'Vacances Noël',
+  '2026-01-01':'Nouvel An','2026-01-02':'Vacances Noël',
+  '2026-02-16':'Carnaval','2026-02-17':'Carnaval',
+  '2026-02-18':'Carnaval','2026-02-19':'Carnaval','2026-02-20':'Carnaval',
+  '2026-04-06':'Vacances Pâques','2026-04-07':'Vacances Pâques',
+  '2026-04-08':'Vacances Pâques','2026-04-09':'Vacances Pâques',
+  '2026-04-10':'Vacances Pâques','2026-04-13':'Vacances Pâques',
+  '2026-04-14':'Vacances Pâques','2026-04-15':'Vacances Pâques',
+  '2026-04-16':'Vacances Pâques','2026-04-17':'Vacances Pâques',
+  '2026-05-01':'Fête du Travail',
+  '2026-05-14':'Ascension','2026-05-15':'Pont de l\'Ascension',
+  '2026-05-25':'Lundi de Pentecôte',
+  '2026-06-29':'Début des grandes vacances',
+  '2026-06-30':'Vacances été','2026-07-01':'Vacances été',
+  '2026-07-02':'Vacances été','2026-07-03':'Vacances été'
 };
 
-const JOURS_COURT = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
-const JOURS_LONG  = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
-const MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+var JOURS = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+var MOIS  = ['jan','fév','mar','avr','mai','juin','juil','août','sep','oct','nov','déc'];
+var MOIS_L = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
 
-// ═══════════════════════════════
+// Map matière → couleur
+var SUBJECT_COLORS = {};
+Object.keys(SCHEDULE).forEach(function(d) {
+  SCHEDULE[d].forEach(function(s) { if (!s.pause) SUBJECT_COLORS[s.s] = s.c; });
+});
+
+// ═══════════════════════════════════════
 //  ÉTAT
-// ═══════════════════════════════
-let currentDate = new Date();
-currentDate.setHours(0,0,0,0);
+// ═══════════════════════════════════════
+var currentWeekStart = getWeekStart(new Date());
+var currentSlot      = null;
+var currentType      = 'note';
+var agendaOpen       = false;
 
-let currentSlot = null;   // {dateKey, slotIdx, subject}
-let currentType = 'note';
-let agendaOpen  = false;
+function getWeekStart(date) {
+  var d = new Date(date);
+  d.setHours(0,0,0,0);
+  var dow = d.getDay();
+  d.setDate(d.getDate() - (dow === 0 ? 6 : dow - 1));
+  return d;
+}
 
-// Données localStorage
-// slotNotes[dateKey_slotIdx] = [{id, text, type:'note'}]
-// tasks = [{id, subject, text, type:'devoir'|'interro', dueDate:'YYYY-MM-DD', done:false, createdDate:'YYYY-MM-DD'}]
-// extras[dateKey] = [{id, text}]
+function changeWeek(delta) {
+  currentWeekStart = new Date(currentWeekStart);
+  currentWeekStart.setDate(currentWeekStart.getDate() + delta * 7);
+  render();
+}
 
+function goToNow() {
+  currentWeekStart = getWeekStart(new Date());
+  render();
+}
+
+function dateKey(d) {
+  var y = d.getFullYear();
+  var m = String(d.getMonth()+1).padStart(2,'0');
+  var j = String(d.getDate()).padStart(2,'0');
+  return y + '-' + m + '-' + j;
+}
+
+// ═══════════════════════════════════════
+//  DONNÉES (localStorage)
+// ═══════════════════════════════════════
 function getData() {
   return {
     slotNotes: JSON.parse(localStorage.getItem('zone_slot_notes') || '{}'),
-    tasks:     JSON.parse(localStorage.getItem('zone_jdc_tasks')  || '[]'),
-    extras:    JSON.parse(localStorage.getItem('zone_extras')     || '{}'),
+    tasks:     JSON.parse(localStorage.getItem('zone_jdc_tasks')  || '[]')
   };
 }
 
 function saveData(d) {
   localStorage.setItem('zone_slot_notes', JSON.stringify(d.slotNotes));
   localStorage.setItem('zone_jdc_tasks',  JSON.stringify(d.tasks));
-  localStorage.setItem('zone_extras',     JSON.stringify(d.extras));
 }
 
-function dateKey(d) {
-  return d.toISOString().split('T')[0];
-}
-
-function parseDateKey(key) {
-  const p = new Date(key + 'T00:00:00');
-  return p;
-}
-
-// ═══════════════════════════════
-//  NAV JOURS
-// ═══════════════════════════════
-function buildDaysNav() {
-  const nav = document.getElementById('daysNav');
-  nav.innerHTML = '';
-  const today = new Date();
-  today.setHours(0,0,0,0);
-
-  // Afficher 7 jours centrés sur aujourd'hui (3 avant, auj, 3 après)
-  const start = new Date(today);
-  start.setDate(today.getDate() - 14);
-
-  for (let i = 0; i < 42; i++) {
-    const d = new Date(start);
-    d.setDate(start.getDate() + i);
-    const key = dateKey(d);
-    const dow = d.getDay(); // 0=dim, 6=sam
-    const isWE    = (dow === 0 || dow === 6);
-    const isFerie = !!CONGES[key];
-    const isToday = (d.getTime() === today.getTime());
-    const isActive= (d.getTime() === currentDate.getTime());
-
-    const data = getData();
-    const hasNotes = hasDataForDay(data, key);
-
-    const pill = document.createElement('div');
-    pill.className = 'day-pill' +
-      (isWE && !isFerie ? ' weekend' : '') +
-      (isFerie ? ' ferie' : '') +
-      (isToday ? ' today' : '') +
-      (isActive ? ' active' : '');
-
-    pill.innerHTML = `<div>${JOURS_COURT[dow]}</div><div style="font-size:0.7rem">${d.getDate()}</div>`;
-    if (hasNotes) pill.innerHTML += '<div class="dot"></div>';
-    pill.onclick = () => { currentDate = d; render(); scrollNav(pill); };
-    nav.appendChild(pill);
-
-    if (isActive) setTimeout(() => scrollNav(pill), 50);
-  }
-}
-
-function scrollNav(pill) {
-  pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-}
-
-function hasDataForDay(data, key) {
-  if (data.tasks.some(t => t.dueDate === key)) return true;
-  if (Object.keys(data.slotNotes).some(k => k.startsWith(key))) return true;
-  if (data.extras[key] && data.extras[key].length > 0) return true;
-  return false;
-}
-
-// ═══════════════════════════════
+// ═══════════════════════════════════════
 //  RENDER PRINCIPAL
-// ═══════════════════════════════
+// ═══════════════════════════════════════
 function render() {
-  buildDaysNav();
-  renderDayContent();
+  renderWeekLabel();
+  renderWeekBanner();
+  renderWeekGrid();
   renderAgendaBadge();
   if (agendaOpen) renderAgendaPanel();
 }
 
-function renderDayContent() {
-  const key = dateKey(currentDate);
-  const dow = currentDate.getDay(); // 0=dim, 6=sam
-  const isWE    = (dow === 0 || dow === 6);
-  const isFerie = CONGES[key];
-  const container = document.getElementById('dayContent');
-  container.innerHTML = '';
+// Bannière en haut de page listant les jours fériés/congés de la semaine affichée
+function renderWeekBanner() {
+  var container = document.getElementById('weekBanner');
+  var items = [];
 
-  // En-tête date
-  const dh = document.createElement('div');
-  dh.className = 'date-header';
-  dh.innerHTML = `
-    <button class="date-nav-btn" onclick="changeDay(-1)">←</button>
-    <div class="date-label">${JOURS_LONG[dow]} ${currentDate.getDate()} ${MOIS[currentDate.getMonth()]} ${currentDate.getFullYear()}</div>
-    <button class="date-nav-btn" onclick="changeDay(1)">→</button>
-  `;
-  container.appendChild(dh);
-
-  // Bloc "Prévu aujourd'hui"
-  renderDueToday(container, key);
-
-  // Congé ou WE
-  if (isFerie) {
-    const b = document.createElement('div');
-    b.className = 'conge-banner';
-    b.innerHTML = `<div class="icon">🎉</div><div class="name">${isFerie}</div><div class="sub">Jour férié / Congé scolaire</div>`;
-    container.appendChild(b);
-  }
-
-  if (isWE || isFerie) {
-    // Vue jour libre
-    renderFreeDaySection(container, key);
-  } else {
-    // Grille horaire
-    const slots = SCHEDULE[dow];
-    if (slots) {
-      const sched = document.createElement('div');
-      sched.className = 'schedule';
-      slots.forEach((slot, idx) => {
-        sched.appendChild(buildSlot(slot, idx, key));
-      });
-      container.appendChild(sched);
+  for (var i = 0; i < 5; i++) {
+    var d = new Date(currentWeekStart);
+    d.setDate(currentWeekStart.getDate() + i);
+    var key   = dateKey(d);
+    var conge = CONGES[key];
+    if (conge) {
+      var dayName  = JOURS[i + 1];
+      var dateStr  = d.getDate() + '/' + (d.getMonth() + 1);
+      items.push('<span>' + dayName + ' ' + dateStr + ' : <strong>' + conge + '</strong></span>');
     }
   }
 
-  // Activités extra
-  renderExtras(container, key);
-}
-
-function renderDueToday(container, key) {
-  const data = getData();
-  const todayTasks = data.tasks.filter(t => t.dueDate === key && !t.done);
-  if (todayTasks.length === 0) return;
-
-  const block = document.createElement('div');
-  block.className = 'due-today';
-  block.innerHTML = `<div class="due-today-title">⚡ Prévu aujourd'hui (${todayTasks.length})</div>`;
-
-  todayTasks.forEach(task => {
-    const item = document.createElement('div');
-    item.className = 'due-item';
-    const color = SUBJECT_COLORS[task.subject] || '#888';
-    item.innerHTML = `
-      <input type="checkbox" onchange="toggleTask('${task.id}', this.checked)">
-      <div class="due-item-label">${task.text}</div>
-      <span class="due-subject-chip" style="color:${color};border-color:${color}">${task.subject}</span>
-    `;
-    block.appendChild(item);
-  });
-  container.appendChild(block);
-}
-
-// Map subject → color
-const SUBJECT_COLORS = {};
-Object.values(SCHEDULE).flat().forEach(s => { SUBJECT_COLORS[s.s] = s.c; });
-
-function renderFreeDaySection(container, key) {
-  const data = getData();
-  const dayTasks = data.tasks.filter(t => t.dueDate === key);
-
-  const free = document.createElement('div');
-  free.className = 'free-day';
-  free.innerHTML = `<div class="free-day-title">🏠 Jour libre</div>`;
-
-  if (dayTasks.length > 0) {
-    const ul = document.createElement('div');
-    dayTasks.forEach(task => {
-      const it = document.createElement('div');
-      it.className = 'due-item';
-      const color = SUBJECT_COLORS[task.subject] || '#888';
-      it.innerHTML = `
-        <input type="checkbox" ${task.done?'checked':''} onchange="toggleTask('${task.id}', this.checked)">
-        <div class="due-item-label ${task.done?'done':''}">${task.text}</div>
-        <span class="due-subject-chip" style="color:${color};border-color:${color}">${task.subject}</span>
-      `;
-      ul.appendChild(it);
-    });
-    free.appendChild(ul);
+  if (items.length > 0) {
+    container.innerHTML = '<div class="week-alert">📅 ' + items.join(' &nbsp;·&nbsp; ') + ' — cours maintenus</div>';
+    container.style.display = 'block';
   } else {
-    free.innerHTML += `<div style="color:#aaa;font-size:0.85rem;font-weight:700">Rien de prévu 🎉</div>`;
+    container.innerHTML = '';
+    container.style.display = 'none';
   }
-  container.appendChild(free);
 }
 
-function buildSlot(slot, idx, dayKey) {
-  const isPause = slot.s.includes('Pause');
-  const data = getData();
-  const slotKey = `${dayKey}_${idx}`;
-
-  // Notes (type note) sur ce slot
-  const slotNotes = (data.slotNotes[slotKey] || []);
-  // Tâches (devoirs/interros) dues ce jour pour cette matière
-  const slotTasks = data.tasks.filter(t => t.dueDate === dayKey && t.subject === slot.s);
-
-  const div = document.createElement('div');
-  div.className = 'slot';
-
-  const header = document.createElement('div');
-  header.className = 'slot-header';
-  header.innerHTML = `
-    <div class="slot-time">${slot.t.split('–')[0]}</div>
-    <div class="slot-color" style="background:${slot.c}"></div>
-    <div class="slot-info">
-      <div class="slot-subject">${slot.s}</div>
-      ${slot.r ? `<div class="slot-room">📍 ${slot.r}</div>` : ''}
-    </div>
-    ${!isPause ? '<div style="color:#ccc;font-size:1.1rem">＋</div>' : ''}
-  `;
-  if (!isPause) {
-    header.onclick = () => openModal(dayKey, idx, slot.s);
+function renderWeekLabel() {
+  var end = new Date(currentWeekStart);
+  end.setDate(currentWeekStart.getDate() + 4);
+  var s = currentWeekStart, e = end;
+  var label;
+  if (s.getMonth() === e.getMonth()) {
+    label = s.getDate() + ' – ' + e.getDate() + ' ' + MOIS_L[e.getMonth()] + ' ' + e.getFullYear();
+  } else {
+    label = s.getDate() + ' ' + MOIS[s.getMonth()] + ' – ' + e.getDate() + ' ' + MOIS[e.getMonth()] + ' ' + e.getFullYear();
   }
-  div.appendChild(header);
+  document.getElementById('weekLabel').textContent = label;
+}
 
-  // Tags pour notes + tâches
-  const tagsAll = [...slotNotes, ...slotTasks];
-  if (tagsAll.length > 0) {
-    const tagsDiv = document.createElement('div');
-    tagsDiv.className = 'slot-tags has-content';
-    tagsAll.forEach(item => {
-      const tag = document.createElement('div');
-      const isDone = item.done || false;
-      const cls = isDone ? 'tag-done' : (item.type === 'interro' ? 'tag-interro' : item.type === 'devoir' ? 'tag-devoir' : 'tag-note');
-      const icon = item.type === 'interro' ? '🔴' : item.type === 'devoir' ? '📚' : '📝';
-      tag.className = `tag ${cls}`;
-      tag.innerHTML = `${icon} ${item.text.length > 30 ? item.text.substring(0,30)+'…' : item.text}`;
-      tag.onclick = (e) => { e.stopPropagation(); openModal(dayKey, idx, slot.s); };
-      tagsDiv.appendChild(tag);
-    });
-    div.appendChild(tagsDiv);
+function renderWeekGrid() {
+  var grid = document.getElementById('weekGrid');
+  grid.innerHTML = '';
+  var today = new Date(); today.setHours(0,0,0,0);
+
+  for (var i = 0; i < 5; i++) {
+    var d = new Date(currentWeekStart);
+    d.setDate(currentWeekStart.getDate() + i);
+    var key   = dateKey(d);
+    var dow   = i + 1; // 1=Lun … 5=Ven
+    var isToday = (d.getTime() === today.getTime());
+    var conge   = CONGES[key] || null;
+
+    var col = document.createElement('div');
+    col.className = 'day-col';
+
+    // En-tête du jour
+    var hdr = document.createElement('div');
+    hdr.className = 'day-col-header' + (isToday ? ' today' : '') + (conge ? ' ferie' : '');
+    hdr.innerHTML = '<div class="day-name">' + JOURS[dow] + '</div>'
+      + '<div class="day-date">' + d.getDate() + '/' + (d.getMonth()+1) + '</div>';
+    col.appendChild(hdr);
+
+    // Pas de bannière par colonne : la notice est affichée en haut de page (weekBanner)
+    var slots = SCHEDULE[dow] || [];
+    for (var j = 0; j < slots.length; j++) {
+      col.appendChild(buildWeekSlot(slots[j], j, key));
+    }
+
+    grid.appendChild(col);
   }
+}
+
+function buildWeekSlot(slot, idx, dayKey) {
+  var div = document.createElement('div');
+
+  // Pause déjeuner
+  if (slot.pause) {
+    div.className = 'week-slot pause';
+    div.innerHTML = '<span style="font-size:0.8rem;color:#ccc">&#127869;</span>';
+    return div;
+  }
+
+  var data = getData();
+  var slotKey = dayKey + '_' + idx;
+
+  // Notes : attachées au slot du jour de CRÉATION (clé = jour où on a tapé)
+  var slotNotes = data.slotNotes[slotKey] || [];
+
+  // Devoirs / Interros : attachés à la matière sur la date d'ÉCHÉANCE
+  var slotTasks = data.tasks.filter(function(t) {
+    return t.dueDate === dayKey && t.subject === slot.s;
+  });
+
+  var all = slotNotes.concat(slotTasks);
+
+  div.className = 'week-slot';
+  div.style.borderLeftColor = slot.c;
+
+  // Tags
+  var tagsHTML = '';
+  if (all.length > 0) {
+    tagsHTML = '<div class="ws-tags">';
+    var shown = all.slice(0, 3);
+    for (var k = 0; k < shown.length; k++) {
+      var item = shown[k];
+      var cls  = item.done ? 'wt-done'
+               : item.type === 'interro' ? 'wt-interro'
+               : item.type === 'devoir'  ? 'wt-devoir'
+               : 'wt-note';
+      var icon = item.type === 'interro' ? '&#128308;'
+               : item.type === 'devoir'  ? '&#128218;'
+               : '&#128221;';
+      var txt  = item.text.length > 17 ? item.text.substring(0,17) + '…' : item.text;
+      tagsHTML += '<div class="ws-tag ' + cls + '">' + icon + ' ' + txt + '</div>';
+    }
+    if (all.length > 3) {
+      tagsHTML += '<div class="ws-tag wt-more">+' + (all.length - 3) + '</div>';
+    }
+    tagsHTML += '</div>';
+  }
+
+  div.innerHTML = '<div class="ws-time">' + slot.t + '</div>'
+    + '<div class="ws-subject">' + slot.s + '</div>'
+    + (slot.r ? '<div class="ws-room">&#128205; ' + slot.r + '</div>' : '')
+    + tagsHTML;
+
+  (function(dk, si, sn) {
+    div.onclick = function() { openModal(dk, si, sn); };
+  })(dayKey, idx, slot.s);
 
   return div;
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════
 //  MODAL
-// ═══════════════════════════════
+// ═══════════════════════════════════════
 function openModal(dayKey, slotIdx, subject) {
-  currentSlot = {dayKey, slotIdx, subject};
+  currentSlot = { dayKey: dayKey, slotIdx: slotIdx, subject: subject };
   currentType = 'note';
   updateTypeButtons();
 
-  document.getElementById('modalTitle').innerHTML = `📝 ${subject}`;
+  document.getElementById('modalTitle').textContent = subject;
   document.getElementById('noteText').value = '';
 
-  const today = dateKey(new Date());
-  document.getElementById('dueDate').value = today;
+  // Date par défaut = lendemain du slot
+  var slotDay = new Date(dayKey + 'T00:00:00');
+  slotDay.setDate(slotDay.getDate() + 1);
+  document.getElementById('dueDate').value = dateKey(slotDay);
   document.getElementById('dueDateField').style.display = 'none';
 
   renderExistingItems();
@@ -1067,54 +735,69 @@ function setType(type) {
   currentType = type;
   updateTypeButtons();
   document.getElementById('dueDateField').style.display = (type === 'note') ? 'none' : 'block';
-  document.getElementById('dueDateLabel').textContent = type === 'interro' ? 'Date de l\'interro' : 'Pour le';
+  document.getElementById('dueDateLabel').textContent =
+    type === 'interro' ? 'Date de l\'interro' : 'Pour le';
 }
 
 function updateTypeButtons() {
-  document.getElementById('btnNote').className    = 'type-btn' + (currentType==='note'   ? ' active-note'   : '');
-  document.getElementById('btnDevoir').className  = 'type-btn' + (currentType==='devoir' ? ' active-devoir' : '');
-  document.getElementById('btnInterro').className = 'type-btn' + (currentType==='interro'? ' active-interro': '');
+  document.getElementById('btnNote').className    = 'type-btn' + (currentType==='note'    ? ' active-note'    : '');
+  document.getElementById('btnDevoir').className  = 'type-btn' + (currentType==='devoir'  ? ' active-devoir'  : '');
+  document.getElementById('btnInterro').className = 'type-btn' + (currentType==='interro' ? ' active-interro' : '');
 }
 
 function renderExistingItems() {
   if (!currentSlot) return;
-  const data = getData();
-  const {dayKey, slotIdx, subject} = currentSlot;
-  const slotKey = `${dayKey}_${slotIdx}`;
-  const notes = data.slotNotes[slotKey] || [];
-  const tasks = data.tasks.filter(t => t.dueDate === dayKey && t.subject === subject);
-  const all   = [...notes, ...tasks];
+  var data     = getData();
+  var dayKey   = currentSlot.dayKey;
+  var slotIdx  = currentSlot.slotIdx;
+  var subject  = currentSlot.subject;
+  var slotKey  = dayKey + '_' + slotIdx;
+  var notes    = data.slotNotes[slotKey] || [];
+  var tasks    = data.tasks.filter(function(t) { return t.dueDate === dayKey && t.subject === subject; });
+  var all      = notes.concat(tasks);
 
-  const el = document.getElementById('existingItems');
+  var el = document.getElementById('existingItems');
   if (all.length === 0) { el.innerHTML = ''; return; }
 
-  el.innerHTML = '<div style="font-size:0.8rem;font-weight:800;color:#aaa;margin:8px 0 4px">Déjà enregistré :</div>';
-  all.forEach(item => {
-    const d = document.createElement('div');
-    d.style.cssText = 'display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid #f0f0f0;';
-    const icon = item.type==='interro' ? '🔴' : item.type==='devoir' ? '📚' : '📝';
-    const isTask = !!item.dueDate;
-    const delFn = isTask ? `deleteTask('${item.id}')` : `deleteSlotNote('${slotKey}','${item.id}')`;
-    d.innerHTML = `<span style="font-size:0.85rem;flex:1;font-weight:700;color:#555">${icon} ${item.text}</span><button onclick="${delFn}" style="background:none;border:none;cursor:pointer;color:#ccc;font-size:0.9rem">✕</button>`;
-    el.appendChild(d);
-  });
+  var html = '<div style="font-size:0.8rem;font-weight:800;color:#aaa;margin:8px 0 4px">Déjà enregistré :</div>';
+  for (var i = 0; i < all.length; i++) {
+    var item   = all[i];
+    var icon   = item.type==='interro' ? '&#128308;' : item.type==='devoir' ? '&#128218;' : '&#128221;';
+    var isTask = !!item.dueDate;
+    var delFn  = isTask
+      ? 'deleteTask(\'' + item.id + '\')'
+      : 'deleteSlotNote(\'' + slotKey + '\',\'' + item.id + '\')';
+    html += '<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f5f5f5">'
+      + '<span style="font-size:0.85rem;flex:1;font-weight:700;color:#555">' + icon + ' ' + item.text + '</span>'
+      + '<button onclick="' + delFn + '" style="background:none;border:none;cursor:pointer;color:#ccc;font-size:1rem">✕</button>'
+      + '</div>';
+  }
+  el.innerHTML = html;
 }
 
 function saveNote() {
-  const text = document.getElementById('noteText').value.trim();
+  var text = document.getElementById('noteText').value.trim();
   if (!text || !currentSlot) return;
 
-  const data = getData();
-  const {dayKey, slotIdx, subject} = currentSlot;
-  const id = Date.now().toString();
+  var data    = getData();
+  var dayKey  = currentSlot.dayKey;
+  var slotIdx = currentSlot.slotIdx;
+  var subject = currentSlot.subject;
+  var id      = Date.now().toString();
 
   if (currentType === 'note') {
-    const key = `${dayKey}_${slotIdx}`;
-    if (!data.slotNotes[key]) data.slotNotes[key] = [];
-    data.slotNotes[key].push({id, text, type:'note'});
+    // Note → attachée au slot du jour de création
+    var k = dayKey + '_' + slotIdx;
+    if (!data.slotNotes[k]) data.slotNotes[k] = [];
+    data.slotNotes[k].push({ id: id, text: text, type: 'note' });
   } else {
-    const dueDate = document.getElementById('dueDate').value || dayKey;
-    data.tasks.push({id, subject, text, type:currentType, dueDate, done:false, createdDate:dayKey});
+    // Devoir / Interro → attaché à la date d'échéance choisie
+    var dueDate = document.getElementById('dueDate').value || dayKey;
+    data.tasks.push({
+      id: id, subject: subject, text: text,
+      type: currentType, dueDate: dueDate,
+      done: false, createdDate: dayKey
+    });
   }
 
   saveData(data);
@@ -1124,9 +807,9 @@ function saveNote() {
 }
 
 function deleteSlotNote(slotKey, id) {
-  const data = getData();
+  var data = getData();
   if (data.slotNotes[slotKey]) {
-    data.slotNotes[slotKey] = data.slotNotes[slotKey].filter(n => n.id !== id);
+    data.slotNotes[slotKey] = data.slotNotes[slotKey].filter(function(n) { return n.id !== id; });
     if (data.slotNotes[slotKey].length === 0) delete data.slotNotes[slotKey];
   }
   saveData(data);
@@ -1135,24 +818,24 @@ function deleteSlotNote(slotKey, id) {
 }
 
 function deleteTask(id) {
-  const data = getData();
-  data.tasks = data.tasks.filter(t => t.id !== id);
+  var data = getData();
+  data.tasks = data.tasks.filter(function(t) { return t.id !== id; });
   saveData(data);
   renderExistingItems();
   render();
 }
 
 function toggleTask(id, done) {
-  const data = getData();
-  const t = data.tasks.find(t => t.id === id);
+  var data = getData();
+  var t = data.tasks.find(function(x) { return x.id === id; });
   if (t) t.done = done;
   saveData(data);
   render();
 }
 
-// ═══════════════════════════════
-//  AGENDA
-// ═══════════════════════════════
+// ═══════════════════════════════════════
+//  AGENDA (panel "À faire")
+// ═══════════════════════════════════════
 function toggleAgenda() {
   agendaOpen = !agendaOpen;
   document.getElementById('agendaPanel').classList.toggle('open', agendaOpen);
@@ -1160,159 +843,96 @@ function toggleAgenda() {
 }
 
 function renderAgendaBadge() {
-  const data = getData();
-  const todo = data.tasks.filter(t => !t.done).length;
-  const badge = document.getElementById('agendaBadge');
+  var data = getData();
+  var todo = data.tasks.filter(function(t) { return !t.done; }).length;
+  var badge = document.getElementById('agendaBadge');
   if (todo > 0) { badge.textContent = todo; badge.style.display = 'flex'; }
   else badge.style.display = 'none';
 }
 
 function renderAgendaPanel() {
-  const data = getData();
-  const container = document.getElementById('agendaContent');
+  var data = getData();
+  var container = document.getElementById('agendaContent');
   container.innerHTML = '';
+  var today = new Date(); today.setHours(0,0,0,0);
 
-  const today = new Date(); today.setHours(0,0,0,0);
-
-  const pending = data.tasks.filter(t => !t.done).sort((a,b) => new Date(a.dueDate)-new Date(b.dueDate));
-  const done    = data.tasks.filter(t => t.done);
+  var pending = data.tasks.filter(function(t) { return !t.done; })
+    .sort(function(a,b) { return new Date(a.dueDate) - new Date(b.dueDate); });
+  var done = data.tasks.filter(function(t) { return t.done; });
 
   if (pending.length === 0 && done.length === 0) {
-    container.innerHTML = '<div class="agenda-empty">Rien à faire ! 🎉</div>';
+    container.innerHTML = '<div class="agenda-empty">Rien à faire ! &#127881;</div>';
     return;
   }
 
-  const groups = {late:[], today:[], soon:[], ok:[]};
-  pending.forEach(t => {
-    const due = new Date(t.dueDate + 'T00:00:00');
-    const diff = Math.floor((due - today) / 86400000);
-    if (diff < 0)      groups.late.push({...t, diff});
-    else if (diff <= 1) groups.today.push({...t, diff});
-    else if (diff <= 5) groups.soon.push({...t, diff});
-    else                groups.ok.push({...t, diff});
+  var groups = { late:[], today:[], soon:[], ok:[] };
+  pending.forEach(function(t) {
+    var due  = new Date(t.dueDate + 'T00:00:00');
+    var diff = Math.floor((due - today) / 86400000);
+    var obj  = Object.assign({}, t, { diff: diff });
+    if (diff < 0)       groups.late.push(obj);
+    else if (diff <= 1) groups.today.push(obj);
+    else if (diff <= 5) groups.soon.push(obj);
+    else                groups.ok.push(obj);
   });
 
-  const renderGroup = (items, label) => {
+  function renderGroup(items, label) {
     if (items.length === 0) return;
-    const gt = document.createElement('div');
+    var gt = document.createElement('div');
     gt.className = 'agenda-group-title';
     gt.textContent = label;
     container.appendChild(gt);
-    items.forEach(t => container.appendChild(buildAgendaItem(t)));
-  };
+    items.forEach(function(t) { container.appendChild(buildAgendaItem(t)); });
+  }
 
-  renderGroup(groups.late,  '🔴 En retard');
-  renderGroup(groups.today, '⚡ Aujourd\'hui / Demain');
-  renderGroup(groups.soon,  '🟠 Cette semaine');
-  renderGroup(groups.ok,    '✅ Plus tard');
+  renderGroup(groups.late,  '&#128308; En retard');
+  renderGroup(groups.today, '&#9889; Aujourd\'hui / Demain');
+  renderGroup(groups.soon,  '&#129505; Cette semaine');
+  renderGroup(groups.ok,    '&#9989; Plus tard');
 
   if (done.length > 0) {
-    const gt = document.createElement('div');
-    gt.className = 'agenda-group-title';
-    gt.textContent = '✓ Terminé';
-    container.appendChild(gt);
-    done.forEach(t => container.appendChild(buildAgendaItem(t)));
+    var gt2 = document.createElement('div');
+    gt2.className = 'agenda-group-title';
+    gt2.textContent = '✓ Terminé';
+    container.appendChild(gt2);
+    done.forEach(function(t) { container.appendChild(buildAgendaItem(t)); });
   }
 }
 
 function buildAgendaItem(t) {
-  const due = new Date(t.dueDate + 'T00:00:00');
-  const today = new Date(); today.setHours(0,0,0,0);
-  const diff = Math.floor((due - today) / 86400000);
+  var due   = new Date(t.dueDate + 'T00:00:00');
+  var today = new Date(); today.setHours(0,0,0,0);
+  var diff  = Math.floor((due - today) / 86400000);
 
-  let urgClass = 'ok';
-  let chipClass = 'chip-green';
-  let chipText  = `Dans ${diff}j`;
-  if (diff < 0)      { urgClass='urgent'; chipClass='chip-red';   chipText='En retard'; }
-  else if (diff===0) { urgClass='urgent'; chipClass='chip-red';   chipText='Aujourd\'hui'; }
+  var urgClass = 'ok', chipClass = 'chip-green', chipText = 'Dans ' + diff + 'j';
+  if (diff < 0)      { urgClass='urgent'; chipClass='chip-red';    chipText='En retard'; }
+  else if (diff===0) { urgClass='urgent'; chipClass='chip-red';    chipText='Aujourd\'hui'; }
   else if (diff===1) { urgClass='soon';   chipClass='chip-orange'; chipText='Demain'; }
-  else if (diff<=5)  { urgClass='soon';   chipClass='chip-orange'; chipText=`Dans ${diff}j`; }
-  if (t.done)        { urgClass='ok'; chipClass='chip-green'; chipText='Fait ✓'; }
+  else if (diff<=5)  { urgClass='soon';   chipClass='chip-orange'; chipText='Dans ' + diff + 'j'; }
+  if (t.done)        { urgClass='ok';     chipClass='chip-green';  chipText='Fait ✓'; }
 
-  const div = document.createElement('div');
-  div.className = `agenda-item ${t.done?'ok':urgClass}`;
+  var div = document.createElement('div');
+  div.className = 'agenda-item ' + (t.done ? 'ok' : urgClass);
 
-  const color = SUBJECT_COLORS[t.subject] || '#888';
-  const dueStr = due.getDate() + '/' + (due.getMonth()+1);
-  const icon = t.type==='interro' ? '🔴' : '📚';
+  var color  = SUBJECT_COLORS[t.subject] || '#888';
+  var dueStr = due.getDate() + '/' + (due.getMonth()+1);
+  var icon   = t.type==='interro' ? '&#128308;' : '&#128218;';
 
-  div.innerHTML = `
-    <input type="checkbox" class="agenda-check" ${t.done?'checked':''} onchange="toggleTask('${t.id}', this.checked)">
-    <div class="agenda-info">
-      <div class="agenda-item-text ${t.done?'':''}">
-        ${icon} ${t.text}
-      </div>
-      <div class="agenda-item-meta">
-        <span style="color:${color};font-weight:800">${t.subject}</span> · ${dueStr}
-      </div>
-    </div>
-    <span class="urgency-chip ${chipClass}">${chipText}</span>
-  `;
+  div.innerHTML = '<input type="checkbox" class="agenda-check" '
+    + (t.done ? 'checked' : '') + ' onchange="toggleTask(\'' + t.id + '\', this.checked)">'
+    + '<div class="agenda-info">'
+    + '<div class="agenda-item-text">' + icon + ' ' + t.text + '</div>'
+    + '<div class="agenda-item-meta"><span style="color:' + color + ';font-weight:800">'
+    + t.subject + '</span> &middot; ' + dueStr + '</div>'
+    + '</div>'
+    + '<span class="urgency-chip ' + chipClass + '">' + chipText + '</span>';
+
   return div;
 }
 
-// ═══════════════════════════════
-//  ACTIVITÉS EXTRA
-// ═══════════════════════════════
-function renderExtras(container, key) {
-  const data = getData();
-  const extras = data.extras[key] || [];
-
-  const section = document.createElement('div');
-  section.className = 'extra-section';
-  section.innerHTML = `<div class="extra-title">🏃 Activités / Rappels du jour</div>`;
-
-  const row = document.createElement('div');
-  row.className = 'extra-input-row';
-  row.innerHTML = `
-    <input class="extra-input" id="extraInput_${key}" type="text" placeholder="Sport, rdv, matériel…">
-    <button class="extra-add-btn" onclick="addExtra('${key}')">+</button>
-  `;
-  section.appendChild(row);
-
-  const list = document.createElement('div');
-  list.className = 'extra-list';
-  extras.forEach(ex => {
-    const item = document.createElement('div');
-    item.className = 'extra-item';
-    item.innerHTML = `<span>• ${ex.text}</span><button class="extra-del" onclick="deleteExtra('${key}','${ex.id}')">✕</button>`;
-    list.appendChild(item);
-  });
-  section.appendChild(list);
-  container.appendChild(section);
-}
-
-function addExtra(key) {
-  const input = document.getElementById(`extraInput_${key}`);
-  const text  = input.value.trim();
-  if (!text) return;
-  const data = getData();
-  if (!data.extras[key]) data.extras[key] = [];
-  data.extras[key].push({id: Date.now().toString(), text});
-  saveData(data);
-  input.value = '';
-  render();
-}
-
-function deleteExtra(key, id) {
-  const data = getData();
-  if (data.extras[key]) data.extras[key] = data.extras[key].filter(e => e.id !== id);
-  saveData(data);
-  render();
-}
-
-// ═══════════════════════════════
-//  NAVIGATION JOURS
-// ═══════════════════════════════
-function changeDay(delta) {
-  currentDate = new Date(currentDate);
-  currentDate.setDate(currentDate.getDate() + delta);
-  render();
-}
-
-// ═══════════════════════════════
+// ═══════════════════════════════════════
 //  INIT
-// ═══════════════════════════════
+// ═══════════════════════════════════════
 render();
 </script>
 </body>
