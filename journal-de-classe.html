@@ -357,6 +357,59 @@
     border: 2px solid var(--blue); background: var(--blue); color: white;
     font-family: 'Nunito', sans-serif; font-weight: 800; cursor: pointer; font-size: 0.95rem;
   }
+
+  /* ── ÉDITEUR D'ÉTAPES (modal) ── */
+  .steps-add { display: flex; gap: 8px; margin-top: 8px; }
+  .steps-add input {
+    flex: 1; padding: 9px 12px; border: 2px solid #ddd; border-radius: 10px;
+    font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 600;
+    color: var(--dark); background: #FAFAFA;
+  }
+  .steps-add input:focus { outline: none; border-color: var(--blue); background: white; }
+  .steps-add button {
+    background: var(--blue); color: white; border: 2px solid var(--dark);
+    border-radius: 10px; width: 44px; font-size: 1.2rem; font-weight: 800; cursor: pointer;
+  }
+  .step-edit-row {
+    display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f5f5f5;
+  }
+  .step-edit-row .num {
+    font-size: 0.75rem; font-weight: 800; color: var(--blue);
+    background: #EAF2FF; border-radius: 6px; padding: 2px 7px; flex-shrink: 0;
+  }
+  .step-edit-row .txt { flex: 1; font-size: 0.9rem; font-weight: 700; color: #555; }
+  .step-edit-row button { background: none; border: none; cursor: pointer; color: #ccc; font-size: 1rem; }
+  .steps-hint { font-size: 0.78rem; color: var(--green); font-weight: 700; margin-top: 8px; line-height: 1.4; }
+  .step-relire-edit { font-size: 0.82rem; font-weight: 700; color: #999; padding: 8px 0 2px; }
+
+  /* ── ÉTAPES DANS L'AGENDA "À FAIRE" ── */
+  .agenda-item.has-steps { align-items: flex-start; }
+  .agenda-item.has-steps .agenda-check,
+  .agenda-item.has-steps .urgency-chip { margin-top: 2px; }
+  .agenda-steps { margin-top: 8px; padding-top: 8px; border-top: 1px dashed #eee; }
+  .progress-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .progress-bar { flex: 1; height: 10px; background: #EEE; border-radius: 6px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--green); border-radius: 6px; transition: width 0.2s; }
+  .progress-label { font-size: 0.74rem; font-weight: 800; color: #888; flex-shrink: 0; }
+  .step-row {
+    display: flex; align-items: center; gap: 9px; padding: 7px 8px; border-radius: 10px; margin-bottom: 4px;
+  }
+  .step-row input { width: 20px; height: 20px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; }
+  .step-row .step-text { font-size: 0.88rem; font-weight: 700; line-height: 1.3; }
+  .step-todo .step-text { color: #c4c4c4; }
+  .step-done .step-text { color: #bbb; text-decoration: line-through; }
+  .step-current { background: #FFF3ED; border: 2px solid var(--orange); }
+  .step-current .step-text { color: var(--dark); }
+  .steps-done-msg { font-size: 0.8rem; font-weight: 800; color: var(--green); padding: 6px 2px 2px; }
+  .step-add-btn {
+    background: none; border: 2px dashed var(--blue); color: var(--blue); border-radius: 9px;
+    padding: 5px 11px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem;
+    cursor: pointer; margin-top: 4px;
+  }
+  .step-cut-btn {
+    background: #EAF2FF; border: 2px solid var(--blue); color: var(--blue); border-radius: 10px;
+    padding: 7px 12px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem; cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -410,6 +463,16 @@
     <div class="modal-field" id="dueDateField" style="display:none">
       <label id="dueDateLabel">Pour le</label>
       <input type="date" id="dueDate">
+    </div>
+
+    <div class="modal-field" id="stepsField" style="display:none">
+      <label>Étapes (facultatif) — découpe en petits bouts</label>
+      <div id="stepsList"></div>
+      <div class="steps-add">
+        <input type="text" id="stepInput" placeholder="Ex : faire le plan…" onkeydown="if(event.key==='Enter'){event.preventDefault();addStep();}">
+        <button type="button" onclick="addStep()">＋</button>
+      </div>
+      <div class="steps-hint">💡 Une dernière étape « relire avant de rendre » s'ajoute toute seule.</div>
     </div>
 
     <div id="existingItems"></div>
@@ -518,6 +581,7 @@ Object.keys(SCHEDULE).forEach(function(d) {
 var currentWeekStart = getWeekStart(new Date());
 var currentSlot      = null;
 var currentType      = 'note';
+var currentSteps     = [];
 var agendaOpen       = false;
 
 function getWeekStart(date) {
@@ -685,7 +749,9 @@ function buildWeekSlot(slot, idx, dayKey) {
                : item.type === 'devoir'  ? '&#128218;'
                : '&#128221;';
       var txt  = item.text.length > 17 ? item.text.substring(0,17) + '…' : item.text;
-      tagsHTML += '<div class="ws-tag ' + cls + '">' + icon + ' ' + txt + '</div>';
+      var prog = item.dueDate ? stepProgress(item) : null;
+      var prefix = (prog && !item.done) ? prog.done + '/' + prog.total + ' ' : '';
+      tagsHTML += '<div class="ws-tag ' + cls + '">' + icon + ' ' + prefix + txt + '</div>';
     }
     if (all.length > 3) {
       tagsHTML += '<div class="ws-tag wt-more">+' + (all.length - 3) + '</div>';
@@ -716,6 +782,12 @@ function openModal(dayKey, slotIdx, subject) {
   document.getElementById('modalTitle').textContent = subject;
   document.getElementById('noteText').value = '';
 
+  // Étapes : remise à zéro de l'éditeur (caché tant qu'on est sur "Note")
+  currentSteps = [];
+  document.getElementById('stepInput').value = '';
+  document.getElementById('stepsField').style.display = 'none';
+  renderStepsEditor();
+
   // Date par défaut = lendemain du slot
   var slotDay = new Date(dayKey + 'T00:00:00');
   slotDay.setDate(slotDay.getDate() + 1);
@@ -735,8 +807,51 @@ function setType(type) {
   currentType = type;
   updateTypeButtons();
   document.getElementById('dueDateField').style.display = (type === 'note') ? 'none' : 'block';
+  document.getElementById('stepsField').style.display   = (type === 'note') ? 'none' : 'block';
   document.getElementById('dueDateLabel').textContent =
     type === 'interro' ? 'Date de l\'interro' : 'Pour le';
+}
+
+// ── Éditeur d'étapes (au moment de créer un devoir/interro) ──
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function newStepId() {
+  return Date.now().toString() + Math.floor(Math.random() * 1000);
+}
+
+function addStep() {
+  var input = document.getElementById('stepInput');
+  var v = input.value.trim();
+  if (!v) return;
+  currentSteps.push({ id: newStepId(), text: v, done: false });
+  input.value = '';
+  input.focus();
+  renderStepsEditor();
+}
+
+function removeStep(idx) {
+  currentSteps.splice(idx, 1);
+  renderStepsEditor();
+}
+
+function renderStepsEditor() {
+  var el = document.getElementById('stepsList');
+  if (!el) return;
+  var html = '';
+  for (var i = 0; i < currentSteps.length; i++) {
+    html += '<div class="step-edit-row">'
+      + '<span class="num">' + (i + 1) + '</span>'
+      + '<span class="txt">' + escapeHtml(currentSteps[i].text) + '</span>'
+      + '<button type="button" onclick="removeStep(' + i + ')">✕</button>'
+      + '</div>';
+  }
+  if (currentSteps.length > 0) {
+    html += '<div class="step-relire-edit">👀 ' + (currentSteps.length + 1)
+      + '. Relire avant de rendre</div>';
+  }
+  el.innerHTML = html;
 }
 
 function updateTypeButtons() {
@@ -796,12 +911,16 @@ function saveNote() {
     data.tasks.push({
       id: id, subject: subject, text: text,
       type: currentType, dueDate: dueDate,
-      done: false, createdDate: dayKey
+      done: false, createdDate: dayKey,
+      steps: currentSteps.slice(), relireDone: false
     });
   }
 
   saveData(data);
   document.getElementById('noteText').value = '';
+  currentSteps = [];
+  document.getElementById('stepInput').value = '';
+  renderStepsEditor();
   renderExistingItems();
   render();
 }
@@ -829,6 +948,49 @@ function toggleTask(id, done) {
   var data = getData();
   var t = data.tasks.find(function(x) { return x.id === id; });
   if (t) t.done = done;
+  saveData(data);
+  render();
+}
+
+// ── Étapes d'un devoir/interro (cochage + ajout depuis l'agenda) ──
+// Progression : étapes de l'élève + 1 étape "relire" toujours ajoutée à la fin.
+function stepProgress(t) {
+  var arr = t.steps || [];
+  if (arr.length === 0) return null;
+  var total = arr.length + 1; // +1 = relecture finale
+  var done  = arr.filter(function(s) { return s.done; }).length + (t.relireDone ? 1 : 0);
+  return { done: done, total: total };
+}
+
+function toggleStep(taskId, stepId, done) {
+  var data = getData();
+  var t = data.tasks.find(function(x) { return x.id === taskId; });
+  if (t && t.steps) {
+    var s = t.steps.find(function(y) { return y.id === stepId; });
+    if (s) s.done = done;
+  }
+  saveData(data);
+  render();
+}
+
+function toggleRelire(taskId, done) {
+  var data = getData();
+  var t = data.tasks.find(function(x) { return x.id === taskId; });
+  if (t) t.relireDone = done;
+  saveData(data);
+  render();
+}
+
+function addAgendaStep(taskId) {
+  var v = prompt('Nouvelle étape :');
+  if (v === null) return;
+  v = v.trim();
+  if (!v) return;
+  var data = getData();
+  var t = data.tasks.find(function(x) { return x.id === taskId; });
+  if (!t) return;
+  if (!t.steps) t.steps = [];
+  t.steps.push({ id: newStepId(), text: v, done: false });
   saveData(data);
   render();
 }
@@ -911,19 +1073,66 @@ function buildAgendaItem(t) {
   else if (diff<=5)  { urgClass='soon';   chipClass='chip-orange'; chipText='Dans ' + diff + 'j'; }
   if (t.done)        { urgClass='ok';     chipClass='chip-green';  chipText='Fait ✓'; }
 
-  var div = document.createElement('div');
-  div.className = 'agenda-item ' + (t.done ? 'ok' : urgClass);
-
   var color  = SUBJECT_COLORS[t.subject] || '#888';
   var dueStr = due.getDate() + '/' + (due.getMonth()+1);
   var icon   = t.type==='interro' ? '&#128308;' : '&#128218;';
 
+  // ── Bloc étapes (devoir/interro non terminé) ──
+  var stepsHTML = '';
+  if (!t.done && (t.type === 'devoir' || t.type === 'interro')) {
+    var prog = stepProgress(t);
+    if (prog) {
+      var pct = Math.round(prog.done / prog.total * 100);
+      stepsHTML += '<div class="agenda-steps">';
+      stepsHTML += '<div class="progress-wrap"><div class="progress-bar">'
+        + '<div class="progress-fill" style="width:' + pct + '%"></div></div>'
+        + '<span class="progress-label">' + prog.done + '/' + prog.total + '</span></div>';
+
+      // étapes affichées = étapes de l'élève + l'étape "relire" finale
+      var dsteps = (t.steps || []).map(function(s) {
+        return { id: s.id, text: s.text, done: s.done, relire: false };
+      });
+      dsteps.push({ id: '__relire', text: 'Relire avant de rendre', done: !!t.relireDone, relire: true });
+
+      var currentIdx = -1;
+      for (var ci = 0; ci < dsteps.length; ci++) { if (!dsteps[ci].done) { currentIdx = ci; break; } }
+
+      for (var k = 0; k < dsteps.length; k++) {
+        var st = dsteps[k];
+        var rowCls = st.done ? 'step-done' : (k === currentIdx ? 'step-current' : 'step-todo');
+        var label = (st.relire ? '👀 ' : '') + escapeHtml(st.text);
+        if (k === currentIdx && !st.done) label = '👉 ' + label;
+        var toggleFn = st.relire
+          ? 'toggleRelire(\'' + t.id + '\', this.checked)'
+          : 'toggleStep(\'' + t.id + '\', \'' + st.id + '\', this.checked)';
+        stepsHTML += '<div class="step-row ' + rowCls + '">'
+          + '<input type="checkbox" ' + (st.done ? 'checked' : '') + ' onchange="' + toggleFn + '">'
+          + '<span class="step-text">' + label + '</span>'
+          + '</div>';
+      }
+
+      if (prog.done === prog.total) {
+        stepsHTML += '<div class="steps-done-msg">✅ Tout est fait — coche le devoir en haut !</div>';
+      }
+      stepsHTML += '<button class="step-add-btn" onclick="addAgendaStep(\'' + t.id + '\')">＋ étape</button>';
+      stepsHTML += '</div>';
+    } else {
+      stepsHTML = '<div class="agenda-steps">'
+        + '<button class="step-cut-btn" onclick="addAgendaStep(\'' + t.id + '\')">✂️ Découper en petites étapes</button>'
+        + '</div>';
+    }
+  }
+
+  var div = document.createElement('div');
+  div.className = 'agenda-item ' + (t.done ? 'ok' : urgClass) + (stepsHTML ? ' has-steps' : '');
+
   div.innerHTML = '<input type="checkbox" class="agenda-check" '
     + (t.done ? 'checked' : '') + ' onchange="toggleTask(\'' + t.id + '\', this.checked)">'
     + '<div class="agenda-info">'
-    + '<div class="agenda-item-text">' + icon + ' ' + t.text + '</div>'
+    + '<div class="agenda-item-text">' + icon + ' ' + escapeHtml(t.text) + '</div>'
     + '<div class="agenda-item-meta"><span style="color:' + color + ';font-weight:800">'
     + t.subject + '</span> &middot; ' + dueStr + '</div>'
+    + stepsHTML
     + '</div>'
     + '<span class="urgency-chip ' + chipClass + '">' + chipText + '</span>';
 
